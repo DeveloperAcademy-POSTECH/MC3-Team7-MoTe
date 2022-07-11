@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
 		EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */; };
 		EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */; };
 		EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F2287BC77D00D9F267 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFFD73EB287BC77D00D9F267 /* Alarmi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		EFFD73E2287BC77D00D9F267 = {
 			isa = PBXGroup;
 			children = (
+				EF25AD1F287BD05E0014B41B /* .swiftlint.yml */,
 				EFFD73ED287BC77D00D9F267 /* Alarmi */,
 				EFFD7404287BC77F00D9F267 /* AlarmiTests */,
 				EFFD740E287BC77F00D9F267 /* AlarmiUITests */,
@@ -150,6 +153,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFFD7415287BC77F00D9F267 /* Build configuration list for PBXNativeTarget "Alarmi" */;
 			buildPhases = (
+				EF25AD1E287BCDC40014B41B /* SwiftLint Script */,
 				EFFD73E7287BC77D00D9F267 /* Sources */,
 				EFFD73E8287BC77D00D9F267 /* Frameworks */,
 				EFFD73E9287BC77D00D9F267 /* Resources */,
@@ -248,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */,
 				EFFD73FB287BC77E00D9F267 /* LaunchScreen.storyboard in Resources */,
 				EFFD73F8287BC77E00D9F267 /* Assets.xcassets in Resources */,
 				EFFD73F6287BC77D00D9F267 /* Main.storyboard in Resources */,
@@ -269,6 +274,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EF25AD1E287BCDC40014B41B /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# 설정하기 https://github.com/realm/SwiftLint\n# ⚠️ M1 과 Intel 에서 SwiftLint 파일 경로가 다르기 때문에 주의\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EFFD73E7287BC77D00D9F267 /* Sources */ = {
