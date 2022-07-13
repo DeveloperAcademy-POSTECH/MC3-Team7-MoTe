@@ -3,7 +3,8 @@
 
 ## Daily Scrum
 
-https://www.notion.so/ae94a8ce11e34e6baae68990f49e2953?v=46cf45b530f2410b90bdc1bb20d9ffc4
+- [기획 daily scrum](https://www.notion.so/ae94a8ce11e34e6baae68990f49e2953?v=46cf45b530f2410b90bdc1bb20d9ffc4)
+- [개발 daily scrum](https://github.com/DeveloperAcademy-POSTECH/MC3-Team7-MoTe/wiki/Daily-Scrum)
 
 ## Coding Convention
 
