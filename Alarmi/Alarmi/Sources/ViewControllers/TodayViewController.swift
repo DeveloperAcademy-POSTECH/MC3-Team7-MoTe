@@ -12,7 +12,10 @@ class TodayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        attribute()
     }
 
+    private func attribute() {
+        title = "오늘"
+    }
 }

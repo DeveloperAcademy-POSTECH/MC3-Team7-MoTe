@@ -14,4 +14,9 @@ extension UITabBarItem {
         let image = UIImage(systemName: imageName)
         self.init(title: title, image: image, selectedImage: nil)
     }
+
+    convenience init(item: MainTabBarController.TabItem) {
+        let image = UIImage(systemName: item.imageName)
+        self.init(title: item.title, image: image, selectedImage: nil)
+    }
 }

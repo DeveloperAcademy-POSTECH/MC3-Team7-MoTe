@@ -10,17 +10,23 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
 
-    private let todayViewController: TodayViewController = {
-        $0.view.backgroundColor = .systemGroupedBackground
-        $0.tabBarItem = UITabBarItem(title: "오늘", imageName: "doc.text.image")
+    private let todayViewController: UINavigationController = {
+        let todayViewController = TodayViewController()
+        todayViewController.view.backgroundColor = .systemGroupedBackground
+        $0.tabBarItem = UITabBarItem(item: .today)
+        $0.setViewControllers([todayViewController], animated: true)
+        $0.navigationBar.prefersLargeTitles = true
         return $0
-    }(TodayViewController())
+    }(UINavigationController())
 
-    private let dummyViewController: DummyViewController = {
-        $0.view.backgroundColor = .brown
-        $0.tabBarItem = UITabBarItem(title: "기록", imageName: "calendar")
+    private let recordViewController: UINavigationController = {
+        let recordViewController = RecordViewController()
+        recordViewController.view.backgroundColor = .systemGroupedBackground
+        $0.tabBarItem = UITabBarItem(item: .record)
+        $0.setViewControllers([recordViewController], animated: true)
+        $0.navigationBar.prefersLargeTitles = true
         return $0
-    }(DummyViewController())
+    }(UINavigationController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,33 @@ class MainTabBarController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.tintColor = .systemBlue
         tabBar.backgroundColor = .systemGroupedBackground
-        viewControllers = [todayViewController, dummyViewController]
+        viewControllers = [todayViewController, recordViewController]
     }
+}
+
+extension MainTabBarController {
+
+    enum TabItem {
+        case today
+        case record
+
+        var title: String {
+            switch self {
+            case .today:
+                return "오늘"
+            case .record:
+                return "기록"
+            }
+        }
+
+        var imageName: String {
+            switch self {
+            case .today:
+                return "doc.text.image"
+            case .record:
+                return "calendar"
+            }
+        }
+    }
+
 }
