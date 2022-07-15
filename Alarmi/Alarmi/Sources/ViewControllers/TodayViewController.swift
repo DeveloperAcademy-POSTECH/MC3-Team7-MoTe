@@ -11,6 +11,7 @@ import UIKit
 class TodayViewController: UIViewController {
 
     // MARK: View
+    
     private let stackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -24,14 +25,17 @@ class TodayViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "마지막으로 전화한지 5일이 지났어요."
         $0.font = UIFont.preferredFont(forTextStyle: .title2)
+        $0.adjustsFontSizeToFitWidth = true
         return $0
     }(UILabel())
 
     private let subDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "2일 후면 전화하기로 한 날이에요."
-        $0.font = UIFont.preferredFont(forTextStyle: .body)
         $0.textColor = .secondaryLabel
+        $0.font = UIFont.preferredFont(forTextStyle: .body)
+        $0.adjustsFontSizeToFitWidth = true
+
         return $0
     }(UILabel())
 
@@ -48,7 +52,7 @@ class TodayViewController: UIViewController {
 
         var container = AttributeContainer()
         container.font = UIFont.preferredFont(forTextStyle: .footnote)
-        $0.configuration?.attributedTitle = AttributedString("이번 연락 미루기", attributes: container)
+        $0.configuration?.attributedTitle = AttributedString("이번 연락 미루기 ", attributes: container)
 
         return $0
     }(UIButton(configuration: .plain()))
@@ -58,10 +62,11 @@ class TodayViewController: UIViewController {
         $0.configuration?.baseBackgroundColor = .systemBlue
         $0.configuration?.titleAlignment = .center
         $0.configuration?.cornerStyle = .medium
+        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
 
         var container = AttributeContainer()
         container.font = UIFont.preferredFont(forTextStyle: .body)
-        $0.configuration?.attributedTitle = AttributedString("오늘 전화 기록하기 ", attributes: container)
+        $0.configuration?.attributedTitle = AttributedString("오늘 전화 기록하기", attributes: container)
 
         return $0
     }(UIButton(configuration: .filled()))
@@ -89,13 +94,10 @@ class TodayViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
 
-        stackView.addArrangedSubviews(descriptionLabel, subDescriptionLabel, delayButton)
-
         NSLayoutConstraint.activate([
             callButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            callButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 105),
-            callButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -105),
-            callButton.heightAnchor.constraint(equalToConstant: 64)
+            callButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            callButton.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width - 32)
         ])
     }
     
