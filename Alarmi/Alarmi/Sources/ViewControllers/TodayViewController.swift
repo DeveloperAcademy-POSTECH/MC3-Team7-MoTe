@@ -24,8 +24,7 @@ class TodayViewController: UIViewController {
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "마지막으로 전화한지 5일이 지났어요."
-        $0.font = UIFont.preferredFont(forTextStyle: .title2)
-        $0.adjustsFontForContentSizeCategory = true
+        $0.setDynamicFont(.title2)
         return $0
     }(UILabel())
 
@@ -33,9 +32,7 @@ class TodayViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "2일 후면 전화하기로 한 날이에요."
         $0.textColor = .secondaryLabel
-        $0.font = UIFont.preferredFont(forTextStyle: .body)
-        $0.adjustsFontForContentSizeCategory = true
-
+        $0.setDynamicFont(.body)
         return $0
     }(UILabel())
 
