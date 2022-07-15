@@ -86,14 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EFF8D2972880EF81005A4D10 /* Views */ = {
+		EFF8D2972880EF81005A4D10 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
 				EFF8D29C2880F232005A4D10 /* DummyViewController.swift */,
 			);
-			path = Views;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		EFF8D29E2880F4F1005A4D10 /* Global */ = {
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF8D29E2880F4F1005A4D10 /* Global */,
-				EFF8D2972880EF81005A4D10 /* Views */,
+				EFF8D2972880EF81005A4D10 /* ViewControllers */,
 				EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */,
 				EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */,
 				EFFD73F2287BC77D00D9F267 /* ViewController.swift */,
