@@ -12,6 +12,7 @@ class RecordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         attribute()
     }
 
