@@ -8,36 +8,44 @@
 
 import UIKit
 
+extension UIViewController {
+    func wrappedByNavigationController() -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: self)
+        navigationController.navigationBar.prefersLargeTitles = true
+        return navigationController
+    }
+}
 class MainTabBarController: UITabBarController {
 
     private let todayViewController: UINavigationController = {
         let todayViewController = TodayViewController()
         todayViewController.view.backgroundColor = .systemGroupedBackground
-        $0.tabBarItem = UITabBarItem(item: .today)
-        $0.setViewControllers([todayViewController], animated: true)
-        $0.navigationBar.prefersLargeTitles = true
-        return $0
-    }(UINavigationController())
+        return todayViewController.wrappedByNavigationController()
+    }()
 
     private let recordViewController: UINavigationController = {
         let recordViewController = RecordViewController()
         recordViewController.view.backgroundColor = .systemGroupedBackground
-        $0.tabBarItem = UITabBarItem(item: .record)
-        $0.setViewControllers([recordViewController], animated: true)
-        $0.navigationBar.prefersLargeTitles = true
-        return $0
-    }(UINavigationController())
+        return recordViewController.wrappedByNavigationController()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setup()
         attribute()
+    }
+
+    private func setup() {
+        todayViewController.tabBarItem = UITabBarItem(item: .today)
+        recordViewController.tabBarItem = UITabBarItem(item: .record)
+        viewControllers = [todayViewController, recordViewController]
     }
 
     private func attribute() {
         tabBar.isTranslucent = false
         tabBar.tintColor = .systemBlue
         tabBar.backgroundColor = .systemGroupedBackground
-        viewControllers = [todayViewController, recordViewController]
     }
 }
 
