@@ -8,30 +8,14 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
-
-    enum TabItem {
-        case today
-        case record
-
-        var title: String {
-            switch self {
-            case .today:
-                return "오늘"
-            case .record:
-                return "기록"
-            }
-        }
-
-        var imageName: String {
-            switch self {
-            case .today:
-                return "doc.text.image"
-            case .record:
-                return "calendar"
-            }
-        }
+extension UIViewController {
+    func wrappedByNavigationController() -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: self)
+        navigationController.navigationBar.prefersLargeTitles = true
+        return navigationController
     }
+}
+class MainTabBarController: UITabBarController {
 
     private let todayViewController: UINavigationController = {
         let todayViewController = TodayViewController()
@@ -59,7 +43,35 @@ class MainTabBarController: UITabBarController {
     }
 
     private func attribute() {
+        tabBar.isTranslucent = false
         tabBar.tintColor = .systemBlue
         tabBar.backgroundColor = .systemGroupedBackground
     }
+}
+
+extension MainTabBarController {
+
+    enum TabItem {
+        case today
+        case record
+
+        var title: String {
+            switch self {
+            case .today:
+                return "오늘"
+            case .record:
+                return "기록"
+            }
+        }
+
+        var imageName: String {
+            switch self {
+            case .today:
+                return "doc.text.image"
+            case .record:
+                return "calendar"
+            }
+        }
+    }
+
 }
