@@ -1,5 +1,5 @@
 //
-//  DummyViewController.swift
+//  RecordViewController.swift
 //  Alarmi
 //
 //  Created by Woody on 2022/07/15.
@@ -8,10 +8,14 @@
 
 import UIKit
 
-class DummyViewController: UIViewController {
-    
+class RecordViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        attribute()
+    }
+
+    private func attribute() {
+        title = "기록"
     }
 }
