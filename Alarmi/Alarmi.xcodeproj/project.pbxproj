@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
+		EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */; };
+		EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D29A2880F226005A4D10 /* TodayViewController.swift */; };
+		EFF8D2A12880F4FE005A4D10 /* UITabBarItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2A02880F4FE005A4D10 /* UITabBarItem+.swift */; };
+		EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */; };
+		EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2BA28819D03005A4D10 /* UIViewController+.swift */; };
 		EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */; };
 		EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */; };
 		EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F2287BC77D00D9F267 /* ViewController.swift */; };
@@ -38,6 +43,11 @@
 
 /* Begin PBXFileReference section */
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		EFF8D29A2880F226005A4D10 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		EFF8D2A02880F4FE005A4D10 /* UITabBarItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+.swift"; sourceTree = "<group>"; };
+		EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		EFF8D2BA28819D03005A4D10 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		EFFD73EB287BC77D00D9F267 /* Alarmi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +88,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EFF8D2972880EF81005A4D10 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
+				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
+				EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EFF8D29E2880F4F1005A4D10 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D29F2880F4F5005A4D10 /* Extensions */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		EFF8D29F2880F4F5005A4D10 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2A02880F4FE005A4D10 /* UITabBarItem+.swift */,
+				EFF8D2BA28819D03005A4D10 /* UIViewController+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		EFFD73E2287BC77D00D9F267 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +165,8 @@
 		EFFD7420287BC9D800D9F267 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EFF8D29E2880F4F1005A4D10 /* Global */,
+				EFF8D2972880EF81005A4D10 /* ViewControllers */,
 				EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */,
 				EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */,
 				EFFD73F2287BC77D00D9F267 /* ViewController.swift */,
@@ -303,6 +342,11 @@
 			files = (
 				EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
+				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
+				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
+				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
+				EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */,
+				EFF8D2A12880F4FE005A4D10 /* UITabBarItem+.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
