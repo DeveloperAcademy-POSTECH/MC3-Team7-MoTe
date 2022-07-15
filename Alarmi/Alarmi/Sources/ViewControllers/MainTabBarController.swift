@@ -8,13 +8,6 @@
 
 import UIKit
 
-extension UIViewController {
-    func wrappedByNavigationController() -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: self)
-        navigationController.navigationBar.prefersLargeTitles = true
-        return navigationController
-    }
-}
 class MainTabBarController: UITabBarController {
 
     private let todayViewController: UINavigationController = {
