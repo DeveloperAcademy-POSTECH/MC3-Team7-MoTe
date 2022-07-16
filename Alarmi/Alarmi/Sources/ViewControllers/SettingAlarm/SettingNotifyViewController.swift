@@ -90,7 +90,7 @@ class SettingNotifyViewController: UIViewController {
         view.addSubview(button)
 
         NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             button.topAnchor.constraint(greaterThanOrEqualTo: alarmAgainSetDescriptionLabel.bottomAnchor, constant: 16),
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
