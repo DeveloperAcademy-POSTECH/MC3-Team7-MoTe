@@ -82,12 +82,11 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: .none)
+        cell.textLabel!.text = settingList[indexPath.row]
+        cell.textLabel!.numberOfLines = 0
         if indexPath.row < 4 {
-            cell.textLabel!.text = settingList[indexPath.row]
-            cell.textLabel!.numberOfLines = 0
             cell.accessoryType = .disclosureIndicator
         } else {
-            cell.textLabel!.text = settingList[indexPath.row]
             cell.textLabel!.textColor = .systemRed
         }
         return cell
