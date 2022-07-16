@@ -45,11 +45,16 @@ final class AlarmSetView: UIView {
         return $0
     }(UILabel())
 
-    private let alarmSwitch: UISwitch = {
+    private lazy var alarmSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isOn = true
+        $0.addTarget(self, action: #selector(alarmSwitchValueChanged), for: .valueChanged)
         return $0
     }(UISwitch())
+
+    // MARK: Property
+
+    var alarmSwitchChanged: ((Bool) -> Void)?
 
     // MARK: Life Cycle
 
@@ -85,6 +90,14 @@ final class AlarmSetView: UIView {
             hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
+    }
 
+}
+
+extension AlarmSetView {
+
+    @objc private func alarmSwitchValueChanged() {
+        let isOn = alarmSwitch.isOn
+        alarmSwitchChanged?(isOn)
     }
 }

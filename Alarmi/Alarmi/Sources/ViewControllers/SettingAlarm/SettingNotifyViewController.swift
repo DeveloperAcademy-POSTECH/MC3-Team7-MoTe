@@ -17,12 +17,16 @@ class SettingNotifyViewController: UIViewController {
         return $0
     }(UILabel())
 
-    private let alarmSetView: AlarmSetView = {
+    private lazy var alarmSetView: AlarmSetView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.alarmSwitchChanged = { [weak self] isOn in
+            let canBeEdit: Bool = isOn
+            self?.animateAlarmAgainSetView(canBeEdit)
+        }
         return $0
     }(AlarmSetView())
 
-    private let alarmAgainSetView: AlarmAgainSetView = {
+    private lazy var alarmAgainSetView: AlarmAgainSetView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(AlarmAgainSetView())
@@ -83,5 +87,16 @@ class SettingNotifyViewController: UIViewController {
     
     private func setupNavigationBar() {
         title = "알림"
+    }
+
+    private func animateAlarmAgainSetView(_ canBeEdit: Bool) {
+        UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
+            let opacity: Float = canBeEdit ? 1 : 0.5
+            let isUserInteractionEnabled: Bool = canBeEdit
+            
+            self.alarmAgainSetView.layer.opacity = opacity
+            self.alarmAgainSetDescriptionLabel.layer.opacity = opacity
+            self.alarmAgainSetView.isUserInteractionEnabled = isUserInteractionEnabled
+        }, completion: nil)
     }
 }

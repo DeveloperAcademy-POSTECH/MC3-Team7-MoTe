@@ -14,8 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = scene.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
-        let mainTabBarController = MainTabBarController()
-        window?.rootViewController = mainTabBarController
+//        let mainTabBarController = MainTabBarController()
+        let settingNotifyViewController = SettingNotifyViewController()
+        let navigationController = UINavigationController(rootViewController: settingNotifyViewController)
+        navigationController.navigationBar.prefersLargeTitles = true
+        window?.rootViewController = navigationController // mainTabBarController
         window?.makeKeyAndVisible()
 
     }

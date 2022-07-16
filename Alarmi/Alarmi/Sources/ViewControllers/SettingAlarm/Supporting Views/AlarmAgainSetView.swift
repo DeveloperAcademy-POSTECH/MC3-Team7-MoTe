@@ -45,9 +45,10 @@ final class AlarmAgainSetView: UIView {
         return $0
     }(UILabel())
 
-    private let alarmSwitch: UISwitch = {
+    private lazy var alarmSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isOn = true
+        $0.addTarget(self, action: #selector(alarmSwitchValueChanged), for: .valueChanged)
         return $0
     }(UISwitch())
 
@@ -161,6 +162,27 @@ final class AlarmAgainSetView: UIView {
             sliderLabel.leadingAnchor.constraint(equalTo: hStackView1.leadingAnchor),
             sliderLabel.trailingAnchor.constraint(equalTo: hStackView1.trailingAnchor)
         ])
+    }
+
+    private func animateSliderView(_ canBeEdit: Bool) {
+        UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
+            let opacity: Float = canBeEdit ? 1 : 0.5
+            let isUserInteractionEnabled: Bool = canBeEdit
+            
+            self.subTitleLabel.layer.opacity = opacity
+            self.slider.layer.opacity = opacity
+            self.sliderLabel.layer.opacity = opacity
+            self.slider.isUserInteractionEnabled = isUserInteractionEnabled
+        }, completion: nil)
+    }
+
+}
+
+extension AlarmAgainSetView {
+
+    @objc private func alarmSwitchValueChanged() {
+        let isOn: Bool = alarmSwitch.isOn
+        animateSliderView(isOn)
     }
 
     @objc private func sliderValueChanged() {
