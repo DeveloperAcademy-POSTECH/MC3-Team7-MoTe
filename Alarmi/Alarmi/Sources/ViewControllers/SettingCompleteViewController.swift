@@ -9,6 +9,9 @@
 import UIKit
 
 final class SettingCompleteViewController: UIViewController {
+    
+    // MARK: View
+    
     private let descriptionStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -50,6 +53,8 @@ final class SettingCompleteViewController: UIViewController {
         $0.configuration?.title = "시작"
         return $0
     }(UIButton(configuration: .filled()))
+    
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +63,8 @@ final class SettingCompleteViewController: UIViewController {
         attribute()
         layout()
     }
+    
+    // MARK: Method
     
     private func attribute() {
         let action = UIAction { _ in
@@ -93,6 +100,8 @@ final class SettingCompleteViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - Preview
 
 #if DEBUG
 import SwiftUI
