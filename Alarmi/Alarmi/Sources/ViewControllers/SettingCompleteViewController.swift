@@ -24,3 +24,15 @@ class SettingCompleteViewController: UIViewController {
         
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct SettingCompleteViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        SettingCompleteViewController()
+            .toPreview()
+            .ignoresSafeArea()
+    }
+}
+#endif
