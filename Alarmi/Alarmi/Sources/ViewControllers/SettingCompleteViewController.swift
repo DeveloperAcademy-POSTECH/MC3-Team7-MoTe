@@ -83,8 +83,11 @@ final class SettingCompleteViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            descriptionStack.widthAnchor.constraint(
-                lessThanOrEqualToConstant: UIScreen.main.bounds.width - 32
+            descriptionStack.leadingAnchor.constraint(
+                equalTo: view.layoutMarginsGuide.leadingAnchor
+            ),
+            descriptionStack.trailingAnchor.constraint(
+                equalTo: view.layoutMarginsGuide.trailingAnchor
             )
         ])
         NSLayoutConstraint.activate([
