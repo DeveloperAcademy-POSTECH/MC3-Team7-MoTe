@@ -166,7 +166,7 @@ final class AlarmAgainSetView: UIView {
 
     private func animateSliderView(_ canBeEdit: Bool) {
         UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
-            let opacity: Float = canBeEdit ? 1 : 0.5
+            let opacity: Float = canBeEdit ? 1 : 0.25
             let isUserInteractionEnabled: Bool = canBeEdit
             
             self.subTitleLabel.layer.opacity = opacity

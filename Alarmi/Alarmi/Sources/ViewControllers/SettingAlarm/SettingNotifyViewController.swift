@@ -77,6 +77,7 @@ class SettingNotifyViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             alarmAgainSetDescriptionLabel.topAnchor.constraint(equalTo: alarmAgainSetView.bottomAnchor, constant: 8),
+            alarmAgainSetDescriptionLabel.leadingAnchor.constraint(equalTo: alarmAgainSetView.leadingAnchor, constant: 16),
             alarmAgainSetDescriptionLabel.trailingAnchor.constraint(equalTo: alarmAgainSetView.trailingAnchor, constant: -16)
         ])
     }
@@ -91,7 +92,7 @@ class SettingNotifyViewController: UIViewController {
 
     private func animateAlarmAgainSetView(_ canBeEdit: Bool) {
         UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
-            let opacity: Float = canBeEdit ? 1 : 0.5
+            let opacity: Float = canBeEdit ? 1 : 0.25
             let isUserInteractionEnabled: Bool = canBeEdit
             
             self.alarmAgainSetView.layer.opacity = opacity
