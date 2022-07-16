@@ -32,7 +32,7 @@ final class AlarmSetView: UIView {
 
     private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setDynamicFont(.title2)
+        $0.setDynamicFont(for: .title2, weight: .bold)
         $0.text = "알림"
         return $0
     }(UILabel())
@@ -72,7 +72,7 @@ final class AlarmSetView: UIView {
     // MARK: Methods
 
     private func attribute() {
-        backgroundColor = .systemBackground
+        backgroundColor = .secondarySystemGroupedBackground
         layer.cornerRadius = 15
         layer.masksToBounds = true
     }

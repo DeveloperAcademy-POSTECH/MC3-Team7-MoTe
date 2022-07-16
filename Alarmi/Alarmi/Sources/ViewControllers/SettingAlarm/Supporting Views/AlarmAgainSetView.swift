@@ -16,7 +16,7 @@ final class AlarmAgainSetView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.spacing = 4
-        $0.distribution = .fillProportionally
+        $0.distribution = .fill
         $0.alignment = .leading
         return $0
     }(UIStackView())
@@ -32,7 +32,7 @@ final class AlarmAgainSetView: UIView {
 
     private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setDynamicFont(.title2)
+        $0.setDynamicFont(for: .title2, weight: .bold)
         $0.text = "다시 알림"
         return $0
     }(UILabel())
@@ -52,17 +52,10 @@ final class AlarmAgainSetView: UIView {
         return $0
     }(UISwitch())
 
-    private let subTitleLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "횟수"
-        $0.setDynamicFont(.headline)
-        return $0
-    }(UILabel())
-
     private let hStackView2: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
-        $0.spacing = 6
+        $0.spacing = 10
         $0.distribution = .fill
         $0.alignment = .center
         return $0
@@ -71,7 +64,7 @@ final class AlarmAgainSetView: UIView {
     private let minLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "2"
-        $0.setDynamicFont(.callout)
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
         $0.textColor = .secondaryLabel
         return $0
     }(UILabel())
@@ -79,7 +72,7 @@ final class AlarmAgainSetView: UIView {
     private let maxLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "10"
-        $0.setDynamicFont(.callout)
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
         $0.textColor = .secondaryLabel
         return $0
     }(UILabel())
@@ -124,13 +117,13 @@ final class AlarmAgainSetView: UIView {
     // MARK: Methods
 
     private func attribute() {
-        backgroundColor = .systemBackground
+        backgroundColor = .secondarySystemGroupedBackground
         layer.cornerRadius = 15
         layer.masksToBounds = true
     }
 
     private func layout() {
-        addSubviews(hStackView1, subTitleLabel, hStackView2, sliderLabel)
+        addSubviews(hStackView1, hStackView2, sliderLabel)
 
         vStackView.addArrangedSubviews(titleLabel, descriptionLabel)
 
@@ -145,31 +138,26 @@ final class AlarmAgainSetView: UIView {
         ])
 
         NSLayoutConstraint.activate([
-            subTitleLabel.topAnchor.constraint(equalTo: hStackView1.bottomAnchor, constant: 16),
-            subTitleLabel.leadingAnchor.constraint(equalTo: hStackView1.leadingAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            hStackView2.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 8),
-            hStackView2.leadingAnchor.constraint(equalTo: hStackView1.leadingAnchor),
-            hStackView2.trailingAnchor.constraint(equalTo: hStackView1.trailingAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            sliderLabel.topAnchor.constraint(equalTo: hStackView2.bottomAnchor, constant: 8),
-            sliderLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            sliderLabel.topAnchor.constraint(equalTo: hStackView1.bottomAnchor, constant: 16),
             sliderLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             sliderLabel.leadingAnchor.constraint(equalTo: hStackView1.leadingAnchor),
             sliderLabel.trailingAnchor.constraint(equalTo: hStackView1.trailingAnchor)
         ])
+
+        NSLayoutConstraint.activate([
+            hStackView2.topAnchor.constraint(equalTo: sliderLabel.bottomAnchor, constant: 8),
+            hStackView2.leadingAnchor.constraint(equalTo: hStackView1.leadingAnchor),
+            hStackView2.trailingAnchor.constraint(equalTo: hStackView1.trailingAnchor),
+            hStackView2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+        ])
+
     }
 
     private func animateSliderView(_ canBeEdit: Bool) {
         UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
-            let opacity: Float = canBeEdit ? 1 : 0.25
+            let opacity: Float = canBeEdit ? 1 : 0.4
             let isUserInteractionEnabled: Bool = canBeEdit
-            
-            self.subTitleLabel.layer.opacity = opacity
+
             self.slider.layer.opacity = opacity
             self.sliderLabel.layer.opacity = opacity
             self.slider.isUserInteractionEnabled = isUserInteractionEnabled

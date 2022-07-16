@@ -21,7 +21,6 @@ class SettingNotifyViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.alarmSwitchChanged = { [weak self] isOn in
             self?.animateAlarmAgainSetView(isOn)
-            self?.enableButton(isOn)
         }
         return $0
     }(AlarmSetView())
@@ -70,15 +69,13 @@ class SettingNotifyViewController: UIViewController {
         NSLayoutConstraint.activate([
             alarmSetView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             alarmSetView.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
-            alarmSetView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
-            alarmSetView.heightAnchor.constraint(greaterThanOrEqualToConstant: 80)
+            alarmSetView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([
             alarmAgainSetView.topAnchor.constraint(equalTo: alarmSetView.bottomAnchor, constant: 16),
             alarmAgainSetView.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
-            alarmAgainSetView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
-            alarmAgainSetView.heightAnchor.constraint(greaterThanOrEqualToConstant: 205)
+            alarmAgainSetView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([
@@ -91,7 +88,6 @@ class SettingNotifyViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            button.topAnchor.constraint(greaterThanOrEqualTo: alarmAgainSetDescriptionLabel.bottomAnchor, constant: 16),
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
@@ -99,7 +95,7 @@ class SettingNotifyViewController: UIViewController {
     }
 
     private func setup() {
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .systemGroupedBackground
     }
     
     private func setupNavigationBar() {
@@ -108,7 +104,7 @@ class SettingNotifyViewController: UIViewController {
 
     private func animateAlarmAgainSetView(_ canBeEdit: Bool) {
         UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
-            let opacity: Float = canBeEdit ? 1 : 0.25
+            let opacity: Float = canBeEdit ? 1 : 0.4
             let isUserInteractionEnabled: Bool = canBeEdit
             
             self.alarmAgainSetView.layer.opacity = opacity
@@ -117,7 +113,4 @@ class SettingNotifyViewController: UIViewController {
         }, completion: nil)
     }
 
-    private func enableButton(_ enable: Bool) {
-        button.isEnabled = enable
-    }
 }
