@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingCompleteViewController: UIViewController {
+final class SettingCompleteViewController: UIViewController {
     private let descriptionStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
