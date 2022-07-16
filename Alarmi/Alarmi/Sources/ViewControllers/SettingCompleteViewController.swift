@@ -75,11 +75,13 @@ final class SettingCompleteViewController: UIViewController {
     
     private func layout() {
         view.addSubviews(descriptionStack, startButton)
+
         descriptionStack.addArrangedSubviews(
             checkSymbol,
             primaryDescriptionLabel,
             secondaryDescriptionLabel
         )
+
         NSLayoutConstraint.activate([
             descriptionStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -90,6 +92,7 @@ final class SettingCompleteViewController: UIViewController {
                 equalTo: view.layoutMarginsGuide.trailingAnchor
             )
         ])
+
         NSLayoutConstraint.activate([
             startButton.bottomAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.bottomAnchor,
