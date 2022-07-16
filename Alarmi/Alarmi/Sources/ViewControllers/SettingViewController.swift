@@ -23,11 +23,11 @@ final class SettingViewController: UIViewController {
     
     // MARK: Method
     
-    func attribute() {
+    private func attribute() {
         
     }
     
-    func layout() {
+    private func layout() {
         
     }
 }
