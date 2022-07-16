@@ -61,17 +61,17 @@ final class AlarmAgainSetView: UIView {
         return $0
     }(UIStackView())
 
-    private let minLabel: UILabel = {
+    private lazy var minLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "2"
+        $0.text = "\(minAlarmCount)"
         $0.font = .systemFont(ofSize: 16, weight: .bold)
         $0.textColor = .secondaryLabel
         return $0
     }(UILabel())
 
-    private let maxLabel: UILabel = {
+    private lazy var maxLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "10"
+        $0.text = "\(maxAlarmCount)"
         $0.font = .systemFont(ofSize: 16, weight: .bold)
         $0.textColor = .secondaryLabel
         return $0
@@ -79,27 +79,31 @@ final class AlarmAgainSetView: UIView {
 
     private lazy var slider: UISlider = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.minimumValue = 2
-        $0.maximumValue = 10
+        $0.minimumValue = Float(minAlarmCount)
+        $0.maximumValue = Float(maxAlarmCount)
         $0.value = 6
         $0.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         return $0
     }(UISlider())
 
-    private let sliderLabel: UILabel = {
+    private lazy var sliderLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "최대 6번 알림을 다시 받을게요."
+        $0.text = "최대 \(alarmAgainCount)번 알림을 다시 받을게요."
         $0.textAlignment = .center
         return $0
     }(UILabel())
 
     // MARK: Parameters
 
-    private var alarmAgainCount: Int = 5 {
+    private var alarmAgainCount: Int = 6 {
         didSet {
             sliderLabel.text = "최대 \(alarmAgainCount)번 알림을 다시 받을게요."
         }
     }
+
+    private let minAlarmCount: Int = 2
+
+    private let maxAlarmCount: Int = 10
 
     // MARK: Life Cycle
 
