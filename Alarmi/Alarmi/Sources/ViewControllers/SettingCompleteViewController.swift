@@ -45,21 +45,25 @@ final class SettingCompleteViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private let startButton: UIButton = {
+    private lazy var startButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.configuration?.baseBackgroundColor = .systemBlue
         $0.configuration?.titleAlignment = .center
         $0.configuration?.cornerStyle = .medium
         $0.configuration?.title = "시작"
+        $0.addAction(startButtonAction, for: .touchUpInside)
         return $0
     }(UIButton(configuration: .filled()))
+    
+    private lazy var startButtonAction = UIAction { _ in
+        // TODO: MainTabBarController로 이동
+    }
     
     // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemGroupedBackground
         attribute()
         layout()
     }
@@ -67,10 +71,7 @@ final class SettingCompleteViewController: UIViewController {
     // MARK: Method
     
     private func attribute() {
-        let action = UIAction { _ in
-            // TODO: 메인 화면으로 이동
-        }
-        startButton.addAction(action, for: .touchUpInside)
+        view.backgroundColor = .systemGroupedBackground
     }
     
     private func layout() {
@@ -85,26 +86,15 @@ final class SettingCompleteViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            descriptionStack.leadingAnchor.constraint(
-                equalTo: view.layoutMarginsGuide.leadingAnchor
-            ),
-            descriptionStack.trailingAnchor.constraint(
-                equalTo: view.layoutMarginsGuide.trailingAnchor
-            )
+            descriptionStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            descriptionStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            startButton.bottomAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                constant: -16
-            ),
+            startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.leadingAnchor.constraint(
-                equalTo: view.layoutMarginsGuide.leadingAnchor
-            ),
-            startButton.trailingAnchor.constraint(
-                equalTo: view.layoutMarginsGuide.trailingAnchor
-            ),
+            startButton.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            startButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             startButton.heightAnchor.constraint(equalToConstant: 64)
         ])
     }
