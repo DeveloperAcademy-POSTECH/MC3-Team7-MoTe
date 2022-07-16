@@ -96,8 +96,11 @@ final class SettingCompleteViewController: UIViewController {
                 constant: -16
             ),
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.widthAnchor.constraint(
-                equalToConstant: UIScreen.main.bounds.width - 32
+            startButton.leadingAnchor.constraint(
+                equalTo: view.layoutMarginsGuide.leadingAnchor
+            ),
+            startButton.trailingAnchor.constraint(
+                equalTo: view.layoutMarginsGuide.trailingAnchor
             ),
             startButton.heightAnchor.constraint(equalToConstant: 64)
         ])
