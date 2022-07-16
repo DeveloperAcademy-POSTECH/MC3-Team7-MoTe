@@ -19,7 +19,7 @@ class CallDelayViewController: UIViewController {
 
     private let datePickerContainerView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = .systemBackground
+        $0.backgroundColor = .secondarySystemGroupedBackground
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         return $0
@@ -29,7 +29,7 @@ class CallDelayViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.preferredDatePickerStyle = .inline
         $0.datePickerMode = .date
-        $0.backgroundColor = .systemBackground
+        $0.backgroundColor = .secondarySystemGroupedBackground
         $0.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())
@@ -73,7 +73,7 @@ class CallDelayViewController: UIViewController {
     }
 
     private func setup() {
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .systemGroupedBackground
     }
 
     private func setupNavigationBar() {
