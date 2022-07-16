@@ -17,12 +17,18 @@ class CallDelayViewController: UIViewController {
         return $0
     }(UILabel())
 
+    private let datePickerContainerView: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .systemBackground
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
+        return $0
+    }(UIView())
+
     private lazy var datePicker: UIDatePicker = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.preferredDatePickerStyle = .inline
         $0.datePickerMode = .date
-        $0.layer.cornerRadius = 15
-        $0.layer.masksToBounds = true
         $0.backgroundColor = .systemBackground
         $0.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         return $0
@@ -41,7 +47,7 @@ class CallDelayViewController: UIViewController {
     }
 
     private func layout() {
-        view.addSubviews(descriptionLabel, datePicker)
+        view.addSubviews(descriptionLabel, datePickerContainerView)
 
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -50,9 +56,19 @@ class CallDelayViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            datePicker.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            datePickerContainerView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+            datePickerContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            datePickerContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            datePickerContainerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 340)
+        ])
+
+        datePickerContainerView.addSubview(datePicker)
+
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: datePickerContainerView.topAnchor, constant: 8),
+            datePicker.leadingAnchor.constraint(equalTo: datePickerContainerView.leadingAnchor, constant: 16),
+            datePicker.trailingAnchor.constraint(equalTo: datePickerContainerView.trailingAnchor, constant: -16),
+            datePicker.bottomAnchor.constraint(equalTo: datePickerContainerView.bottomAnchor, constant: 0)
         ])
     }
 
