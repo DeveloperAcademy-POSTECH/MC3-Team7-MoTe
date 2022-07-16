@@ -20,8 +20,8 @@ class SettingNotifyViewController: UIViewController {
     private lazy var alarmSetView: AlarmSetView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.alarmSwitchChanged = { [weak self] isOn in
-            let canBeEdit: Bool = isOn
-            self?.animateAlarmAgainSetView(canBeEdit)
+            self?.animateAlarmAgainSetView(isOn)
+            self?.enableButton(isOn)
         }
         return $0
     }(AlarmSetView())
@@ -115,5 +115,9 @@ class SettingNotifyViewController: UIViewController {
             self.alarmAgainSetDescriptionLabel.layer.opacity = opacity
             self.alarmAgainSetView.isUserInteractionEnabled = isUserInteractionEnabled
         }, completion: nil)
+    }
+
+    private func enableButton(_ enable: Bool) {
+        button.isEnabled = enable
     }
 }
