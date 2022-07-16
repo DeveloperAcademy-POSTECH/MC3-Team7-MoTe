@@ -21,7 +21,8 @@ class CallDelayViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.preferredDatePickerStyle = .inline
         $0.datePickerMode = .date
-        $0.locale = Locale(identifier: "ko")
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
         $0.backgroundColor = .systemBackground
         $0.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         return $0
