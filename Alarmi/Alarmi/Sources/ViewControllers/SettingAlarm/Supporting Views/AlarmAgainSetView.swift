@@ -16,7 +16,7 @@ final class AlarmAgainSetView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.spacing = 4
-        $0.distribution = .fill
+        $0.distribution = .fillProportionally
         $0.alignment = .leading
         return $0
     }(UIStackView())

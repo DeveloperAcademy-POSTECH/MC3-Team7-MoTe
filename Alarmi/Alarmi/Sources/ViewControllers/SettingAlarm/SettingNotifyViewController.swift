@@ -40,6 +40,12 @@ class SettingNotifyViewController: UIViewController {
         return $0
     }(UILabel())
 
+    private let button: AMButton = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.title = "완료"
+        return $0
+    }(AMButton())
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,6 +86,16 @@ class SettingNotifyViewController: UIViewController {
             alarmAgainSetDescriptionLabel.leadingAnchor.constraint(equalTo: alarmAgainSetView.leadingAnchor, constant: 16),
             alarmAgainSetDescriptionLabel.trailingAnchor.constraint(equalTo: alarmAgainSetView.trailingAnchor, constant: -16)
         ])
+
+        view.addSubview(button)
+
+        NSLayoutConstraint.activate([
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            button.topAnchor.constraint(greaterThanOrEqualTo: alarmAgainSetDescriptionLabel.bottomAnchor, constant: 16),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+
     }
 
     private func setup() {

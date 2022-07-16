@@ -19,6 +19,7 @@
 		EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2BE2881D219005A4D10 /* UILabel+.swift */; };
 		EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */; };
 		EFF8D2C428826931005A4D10 /* AlarmAgainSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */; };
+		EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2C72882AE3A005A4D10 /* AMButton.swift */; };
 		EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */; };
 		EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */; };
 		EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F2287BC77D00D9F267 /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		EFF8D2BE2881D219005A4D10 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetView.swift; sourceTree = "<group>"; };
 		EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAgainSetView.swift; sourceTree = "<group>"; };
+		EFF8D2C72882AE3A005A4D10 /* AMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMButton.swift; sourceTree = "<group>"; };
 		EFFD73EB287BC77D00D9F267 /* Alarmi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		EFF8D29E2880F4F1005A4D10 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				EFF8D2C62882AE20005A4D10 /* Components */,
 				EFF8D29F2880F4F5005A4D10 /* Extensions */,
 			);
 			path = Global;
@@ -147,6 +150,14 @@
 				EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */,
 			);
 			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		EFF8D2C62882AE20005A4D10 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2C72882AE3A005A4D10 /* AMButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		EFFD73E2287BC77D00D9F267 = {
@@ -379,6 +390,7 @@
 				EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
 				EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */,
+				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
