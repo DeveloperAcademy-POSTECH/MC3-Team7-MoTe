@@ -24,11 +24,17 @@ final class SettingViewController: UIViewController {
     // MARK: Method
     
     private func attribute() {
-        
+        view.backgroundColor = .systemGroupedBackground
+        setupNavigationBar()
     }
     
     private func layout() {
         
+    }
+    
+    private func setupNavigationBar() {
+        title = "설정"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
@@ -39,7 +45,7 @@ import SwiftUI
 
 struct SettingViewController_Preview: PreviewProvider {
     static var previews: some View {
-        SettingViewController()
+        UINavigationController(rootViewController: SettingViewController())
             .toPreview()
             .ignoresSafeArea()
     }
