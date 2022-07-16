@@ -9,6 +9,7 @@
 import UIKit
 
 extension UILabel {
+    
     func setDynamicFont(_ style: UIFont.TextStyle) {
         self.font = UIFont.preferredFont(forTextStyle: style)
         self.adjustsFontForContentSizeCategory = true
