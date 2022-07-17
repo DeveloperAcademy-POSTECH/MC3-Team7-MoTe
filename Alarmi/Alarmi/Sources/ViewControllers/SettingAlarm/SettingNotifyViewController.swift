@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingNotifyViewController: UIViewController {
+final class SettingNotifyViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
