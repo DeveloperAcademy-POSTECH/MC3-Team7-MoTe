@@ -44,5 +44,29 @@ class SettingLocationCollectionViewCell: UICollectionViewCell {
         $0.setDynamicFont(.footnote)
         return $0
     }(UILabel())
+
+    // MARK: property
+
+    // MARK: method
+
+    func setup() {
+        layout()
+    }
+
+    private func layout() {
+        contentView.addSubviews(countryNameStack)
+        countryNameStack.addArrangedSubviews(flagLabel, nameLabel, compareTimeLabel)
+
+        NSLayoutConstraint.activate([
+            countryNameStack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            countryNameStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            countryNameStack.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            countryNameStack.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
+        ])
+    }
+
+    private func setCountryData(with data: Country) {
+//                    titleLabel.text = data.title
+    }
 }
 }
