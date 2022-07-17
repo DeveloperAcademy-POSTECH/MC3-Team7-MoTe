@@ -27,9 +27,83 @@ class SettingLocationViewController: UIViewController {
         $0.backgroundColor = .systemGroupedBackground
         return $0
     }(UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()))
+
+    // MARK: property
+
+    let columns: CGFloat = 2
+
+    // MARK: cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        attribute()
+        layout()
+    }
+
+    // MARK: - method
+
+    private func attribute() {
+//        collectionView.collectionViewLayout = createCompositionalLayoutForFirst()
+        setupNavigationBar()
+        setup()
+    }
+
+    private func setup() {
+        view.backgroundColor = .systemGroupedBackground
+    }
+
+    private func layout() {
+        view.addSubviews(collectionView, descriptionLabel)
+
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
+            collectionView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+        ])
+    }
+
+}
+
+// MARK: protocols
+
+extension SettingLocationViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.size.width, height: 16)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.frame.size.width / columns) - 10
+        let height = 120.0
+        return CGSize(width: width, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
 }
+
+extension SettingLocationViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        7
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingLocationCollectionViewCell", for: indexPath) as? SettingLocationCollectionViewCell
+        cell?.setup()
+        cell?.layer.cornerRadius = 15.0
+        cell?.backgroundColor = .secondarySystemGroupedBackground
+        return cell ?? UICollectionViewCell()
+    }
+}
+
 }
