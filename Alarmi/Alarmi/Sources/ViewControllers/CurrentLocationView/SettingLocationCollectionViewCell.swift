@@ -69,4 +69,13 @@ class SettingLocationCollectionViewCell: UICollectionViewCell {
 //                    titleLabel.text = data.title
     }
 }
+
+enum Country {
+    case america
+    case china
+    case australia
+    case japan
+    case canada
+    case germany
+    case france
 }
