@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingLocationViewController: UIViewController {
+final class SettingLocationViewController: UIViewController {
 
     // MARK: View
 
@@ -87,8 +87,9 @@ extension SettingLocationViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.size.width / columns) - 10
-        let height = 120.0
+        let width = (collectionView.frame.size.width / columns) - 8.0
+        // TODO: dynamic cell height 적용
+        let height = 111.0
         return CGSize(width: width, height: height)
     }
 
