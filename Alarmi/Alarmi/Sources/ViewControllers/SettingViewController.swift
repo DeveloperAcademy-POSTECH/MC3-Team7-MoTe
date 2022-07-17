@@ -12,10 +12,12 @@ final class SettingViewController: UIViewController {
     
     // MARK: View
     
-    private let settingTableView: UITableView = {
+    private lazy var settingTableView: UITableView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentOffset = .init(x: 0, y: -16)
         $0.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0)
+        $0.dataSource = self
+        $0.delegate = self
         return $0
     }(UITableView(frame: .zero, style: .insetGrouped))
     
@@ -42,8 +44,6 @@ final class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        settingTableView.dataSource = self
-        settingTableView.delegate = self
         attribute()
         layout()
     }
@@ -62,17 +62,17 @@ final class SettingViewController: UIViewController {
             settingTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             settingTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             settingTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            settingTableView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+            settingTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
     private func setupNavigationBar() {
         title = "설정"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
-// MARK: - Protocol
+// MARK: - UITableViewDataSource
 
 extension SettingViewController: UITableViewDataSource {
     
@@ -82,16 +82,23 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: .none)
-        cell.textLabel!.text = settingList[indexPath.row]
-        cell.textLabel!.numberOfLines = 0
-        if indexPath.row < 4 {
-            cell.accessoryType = .disclosureIndicator
-        } else {
-            cell.textLabel!.textColor = .systemRed
-        }
+        let text = settingList[indexPath.row]
+        let textColor: UIColor = indexPath.row < 4 ? .label : .systemRed
+        let accessoryType: UITableViewCell.AccessoryType = indexPath.row < 4 ? .disclosureIndicator : .none
+        
+        var content = cell.defaultContentConfiguration()
+        content.text = text
+        content.textProperties.numberOfLines = 0
+        content.textProperties.color = textColor
+        
+        cell.contentConfiguration = content
+        cell.accessoryType = accessoryType
+        
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -99,7 +106,7 @@ extension SettingViewController: UITableViewDelegate {
         switch indexPath.row {
             // TODO: 각 설정 화면으로 내비게이션
         case 4:
-            self.present(eraseRecordAlert, animated: true)
+            present(eraseRecordAlert, animated: true)
         default:
             break
         }
