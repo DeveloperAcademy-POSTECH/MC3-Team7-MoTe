@@ -47,7 +47,6 @@ class SettingLocationViewController: UIViewController {
     // MARK: - method
 
     private func attribute() {
-//        collectionView.collectionViewLayout = createCompositionalLayoutForFirst()
         setupNavigationBar()
         setup()
     }

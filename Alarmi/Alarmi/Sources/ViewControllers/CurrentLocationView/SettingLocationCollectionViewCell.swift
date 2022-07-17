@@ -42,8 +42,6 @@ class SettingLocationCollectionViewCell: UICollectionViewCell {
         return $0
     }(UILabel())
 
-    // MARK: property
-
     // MARK: method
 
     func setup() {
