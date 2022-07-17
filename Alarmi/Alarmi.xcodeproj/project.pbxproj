@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1AAF4B28847FBF004E707A /* CallTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1AAF4A28847FBF004E707A /* CallTimeViewController.swift */; };
+		0E1AAF4D28848046004E707A /* CallTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E1AAF4C28848046004E707A /* CallTime.storyboard */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
 		EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */; };
 		EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D29A2880F226005A4D10 /* TodayViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E1AAF4A28847FBF004E707A /* CallTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeViewController.swift; sourceTree = "<group>"; };
+		0E1AAF4C28848046004E707A /* CallTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CallTime.storyboard; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EFF8D29A2880F226005A4D10 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -94,9 +98,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E1AAF4928847F98004E707A /* SettingCallTimeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0E1AAF4A28847FBF004E707A /* CallTimeViewController.swift */,
+				0E1AAF4C28848046004E707A /* CallTime.storyboard */,
+			);
+			path = SettingCallTimeViewController;
+			sourceTree = "<group>";
+		};
 		EFF8D2972880EF81005A4D10 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0E1AAF4928847F98004E707A /* SettingCallTimeViewController */,
 				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
 				EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */,
@@ -300,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E1AAF4D28848046004E707A /* CallTime.storyboard in Resources */,
 				EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */,
 				EFFD73FB287BC77E00D9F267 /* LaunchScreen.storyboard in Resources */,
 				EFFD73F8287BC77E00D9F267 /* Assets.xcassets in Resources */,
@@ -350,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */,
+				0E1AAF4B28847FBF004E707A /* CallTimeViewController.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
@@ -536,6 +552,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BQUJTNYMGY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alarmi/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -544,6 +561,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -564,6 +582,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BQUJTNYMGY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alarmi/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -572,6 +591,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
