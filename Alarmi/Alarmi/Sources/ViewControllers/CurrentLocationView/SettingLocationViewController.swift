@@ -31,6 +31,9 @@ class SettingLocationViewController: UIViewController {
     // MARK: property
 
     let columns: CGFloat = 2
+    let countryFlag = ["🇺🇸", "🇨🇳", "🇦🇺", "🇯🇵", "🇨🇦", "🇧🇪", "🇫🇷"]
+    let countryName = ["미국", "중국", "호주", "일본", "캐나다", "독일", "프랑스"]
+    let countryTime = ["도시마다 달라요", "한국보다 -1시간", "한국보다 +1시간", "한국보다 +0시간", "도시마다 달라요", "한국보다 -7시간", "한국보다 -7시간"]
 
     // MARK: cycle
 
@@ -98,7 +101,7 @@ extension SettingLocationViewController: UICollectionViewDelegateFlowLayout {
 extension SettingLocationViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        7
+        return countryFlag.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -106,6 +109,9 @@ extension SettingLocationViewController: UICollectionViewDataSource {
         cell?.setup()
         cell?.layer.cornerRadius = 15.0
         cell?.backgroundColor = .secondarySystemGroupedBackground
+        cell?.flagLabel.text = countryFlag[indexPath.row]
+        cell?.nameLabel.text = countryName[indexPath.row]
+        cell?.compareTimeLabel.text = countryTime[indexPath.row]
         return cell ?? UICollectionViewCell()
     }
 }

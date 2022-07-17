@@ -20,25 +20,22 @@ class SettingLocationCollectionViewCell: UICollectionViewCell {
         return $0
     }(UIStackView())
 
-    private lazy var flagLabel: UILabel = {
+    lazy var flagLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "🇺🇸"
         $0.textAlignment = .center
         $0.setDynamicFont(.largeTitle)
         return $0
     }(UILabel())
 
-    private lazy var nameLabel: UILabel = {
+    lazy var nameLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "미국"
         $0.textAlignment = .center
         $0.setDynamicFont(.body)
         return $0
     }(UILabel())
 
-    private lazy var compareTimeLabel: UILabel = {
+    lazy var compareTimeLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "도시마다 달라요"
         $0.textColor = .secondaryLabel
         $0.textAlignment = .center
         $0.setDynamicFont(.footnote)
@@ -68,14 +65,4 @@ class SettingLocationCollectionViewCell: UICollectionViewCell {
     private func setCountryData(with data: Country) {
 //                    titleLabel.text = data.title
     }
-}
-
-enum Country {
-    case america
-    case china
-    case australia
-    case japan
-    case canada
-    case germany
-    case france
 }
