@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38166B9D28840E1200DD3D41 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38166B9C28840E1200DD3D41 /* Model.swift */; };
 		385BB5562882BB270067AFF4 /* SettingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38166B9C28840E1200DD3D41 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */,
 				385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */,
+				38166B9C28840E1200DD3D41 /* Model.swift */,
 			);
 			path = CurrentLocationView;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
 				EFF8D2A628810A11005A4D10 /* UIView+.swift in Sources */,
+				38166B9D28840E1200DD3D41 /* Model.swift in Sources */,
 				EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */,
 				EFF8D2A12880F4FE005A4D10 /* UITabBarItem+.swift in Sources */,
 				EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */,
