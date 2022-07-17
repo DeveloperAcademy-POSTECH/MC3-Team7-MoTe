@@ -70,6 +70,10 @@ class SettingLocationViewController: UIViewController {
         ])
     }
 
+    private func setupNavigationBar() {
+        title = "현재 위치"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }
 
 // MARK: protocols
