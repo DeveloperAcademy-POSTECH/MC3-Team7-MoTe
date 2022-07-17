@@ -61,8 +61,4 @@ class SettingLocationCollectionViewCell: UICollectionViewCell {
             countryNameStack.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
         ])
     }
-
-    private func setCountryData(with data: Country) {
-//                    titleLabel.text = data.title
-    }
 }
