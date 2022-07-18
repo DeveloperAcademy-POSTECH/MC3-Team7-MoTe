@@ -55,8 +55,8 @@ final class SettingLocationCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             countryNameStack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             countryNameStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            countryNameStack.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            countryNameStack.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
+            countryNameStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            countryNameStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
 }

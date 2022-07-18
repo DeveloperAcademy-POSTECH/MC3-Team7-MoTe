@@ -118,14 +118,14 @@ extension SettingLocationViewController: UICollectionViewDataSource {
 
 // MARK: Preview
 
-#if DEBUG
-import SwiftUI
-
-struct SettingViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        UINavigationController(rootViewController: SettingLocationViewController())
-            .toPreview()
-            .ignoresSafeArea()
-    }
-}
-#endif
+//#if DEBUG
+//import SwiftUI
+//
+//struct SettingViewControllerPreview: PreviewProvider {
+//    static var previews: some View {
+//        UINavigationController(rootViewController: SettingLocationViewController())
+//            .toPreview()
+//            .ignoresSafeArea()
+//    }
+//}
+//#endif
