@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1537834C288480DE00E173D1 /* SettingPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537834B288480DE00E173D1 /* SettingPlanViewController.swift */; };
+		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
 		EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */; };
 		EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D29A2880F226005A4D10 /* TodayViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1537834B288480DE00E173D1 /* SettingPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPlanViewController.swift; sourceTree = "<group>"; };
+		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EFF8D29A2880F226005A4D10 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
 				EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */,
+				1537834B288480DE00E173D1 /* SettingPlanViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */,
 				EFFD73F2287BC77D00D9F267 /* ViewController.swift */,
 				EFFD73F4287BC77D00D9F267 /* Main.storyboard */,
+				1537834D2884826900E173D1 /* SettingPlan.storyboard */,
 				EFFD73F9287BC77E00D9F267 /* LaunchScreen.storyboard */,
 			);
 			path = Sources;
@@ -302,6 +308,7 @@
 			files = (
 				EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */,
 				EFFD73FB287BC77E00D9F267 /* LaunchScreen.storyboard in Resources */,
+				1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */,
 				EFFD73F8287BC77E00D9F267 /* Assets.xcassets in Resources */,
 				EFFD73F6287BC77D00D9F267 /* Main.storyboard in Resources */,
 			);
@@ -351,6 +358,7 @@
 			files = (
 				EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
+				1537834C288480DE00E173D1 /* SettingPlanViewController.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
