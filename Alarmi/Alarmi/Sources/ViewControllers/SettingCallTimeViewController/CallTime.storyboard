@@ -8,22 +8,52 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="vqZ-tw-Pxi">
+            <objects>
+                <viewController id="IiP-Ok-5BZ" customClass="ViewController" customModule="MC3_Test2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yga-EF-FdK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wY-B0-Snv">
+                                <rect key="frame" x="173.5" y="432.5" width="67" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="yZ7-ft-2hv" kind="show" id="UKI-we-JwO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="r0d-xh-sqY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4wY-B0-Snv" firstAttribute="centerY" secondItem="yga-EF-FdK" secondAttribute="centerY" id="JdY-7Q-KB2"/>
+                            <constraint firstItem="4wY-B0-Snv" firstAttribute="centerX" secondItem="yga-EF-FdK" secondAttribute="centerX" id="UBF-Wi-V1Z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ocJ-RN-6xy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xwA-Ll-hEb" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="533" y="98"/>
+        </scene>
         <!--Call Time View Controller-->
         <scene sceneID="OEb-x8-QT7">
             <objects>
-                <viewController storyboardIdentifier="CallTimeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yZ7-ft-2hv" customClass="CallTimeViewController" customModule="Alarmi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yZ7-ft-2hv" customClass="CallTimeViewController" customModule="MC3_Test2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XeI-YG-Wpf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화할 수 있는 시간대를 알려주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJm-7A-cNj">
-                                <rect key="frame" x="16" y="60" width="243" height="21"/>
+                                <rect key="frame" x="16" y="104" width="243" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-xc-u2w">
-                                <rect key="frame" x="16" y="97" width="382" height="167"/>
+                                <rect key="frame" x="16" y="141" width="382" height="167"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화 가능 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbY-wY-ZXI">
                                         <rect key="frame" x="16" y="16" width="124" height="26.5"/>
@@ -66,13 +96,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker verifyAmbiguity="off" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AOG-F6-Kcg">
-                                        <rect key="frame" x="224" y="73" width="88" height="31"/>
+                                        <rect key="frame" x="232.5" y="73" width="79.5" height="31"/>
                                         <connections>
                                             <action selector="endTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="ViC-a4-iad"/>
                                         </connections>
                                     </datePicker>
                                     <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한국은" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tag-bL-mDS">
-                                        <rect key="frame" x="224" y="58.5" width="88" height="14.5"/>
+                                        <rect key="frame" x="232.5" y="58.5" width="79.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -144,7 +174,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxZ-Tx-9MD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1497" y="102"/>
+            <point key="canvasLocation" x="1346.376811594203" y="97.767857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sFA-U9-IDh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="miR-g1-Ez1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hdn-Fu-2YO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IiP-Ok-5BZ" kind="relationship" relationship="rootViewController" id="tJ5-uz-dEg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4J-JH-z9Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-300" y="98"/>
         </scene>
     </scenes>
     <resources>

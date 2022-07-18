@@ -13,29 +13,27 @@ class CallTimeViewController: UIViewController {
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
     @IBOutlet weak var startTimeTransferredLabel: UILabel!
+    //위에 작게 보이는 변환된 시간
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
+    //위에 작게 보이는 변환된 시간
     @IBOutlet weak var myLocationTimezoneSegmentedControl: UISegmentedControl!
+    //segmented control
     
     let myTimeZone: TimeZone! = TimeZone(identifier: "America/Los_Angeles")
     let parentTimeZone: TimeZone! = TimeZone(identifier: "Asia/Seoul")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        attribute()
-    }
-    
-    private func attribute() {
         configureNavigationBar()
         configureBackground()
     }
     
-    private func configureNavigationBar() {
+    func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.title = "전화 시간"
     }
     
-    private func configureBackground() {
+    func configureBackground() {
         view.backgroundColor = .systemGray6
     }
     
@@ -49,6 +47,7 @@ class CallTimeViewController: UIViewController {
             dateFormatter.timeZone = parentTimeZone
             let timeString = dateFormatter.string(from: sender.date)
             startTimeTransferredLabel.text = "한국은 \(timeString)"
+            
         case 1:
             startTimePicker.timeZone = parentTimeZone
             dateFormatter.timeZone = myTimeZone
@@ -69,6 +68,7 @@ class CallTimeViewController: UIViewController {
             dateFormatter.timeZone = parentTimeZone
             let timeString = dateFormatter.string(from: sender.date)
             endTimeTransferredLabel.text = "한국은 \(timeString)"
+            
         case 1:
             endTimePicker.timeZone = parentTimeZone
             dateFormatter.timeZone = myTimeZone
