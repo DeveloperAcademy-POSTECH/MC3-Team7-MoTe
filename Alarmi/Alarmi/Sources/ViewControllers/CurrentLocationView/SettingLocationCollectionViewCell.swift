@@ -12,7 +12,7 @@ final class SettingLocationCollectionViewCell: UICollectionViewCell {
 
     // MARK: View
 
-    private lazy var countryNameStack: UIStackView = {
+    private let countryNameStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.distribution = .fill
@@ -20,21 +20,21 @@ final class SettingLocationCollectionViewCell: UICollectionViewCell {
         return $0
     }(UIStackView())
 
-    lazy var flagLabel: UILabel = {
+    let flagLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .center
         $0.setDynamicFont(.largeTitle)
         return $0
     }(UILabel())
 
-    lazy var nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .center
         $0.setDynamicFont(.body)
         return $0
     }(UILabel())
 
-    lazy var compareTimeLabel: UILabel = {
+    let compareTimeLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .secondaryLabel
         $0.textAlignment = .center
