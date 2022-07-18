@@ -36,7 +36,7 @@ class CallTimeViewController: UIViewController {
     }
     
     private func configureBackground() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .systemGroupedBackground
     }
     
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
@@ -54,7 +54,8 @@ class CallTimeViewController: UIViewController {
             dateFormatter.timeZone = myTimeZone
             let timeString = dateFormatter.string(from: sender.date)
             startTimeTransferredLabel.text = "쿠퍼티노는 \(timeString)"
-        default : break
+        default:
+            break
         }
     }
     
@@ -74,7 +75,8 @@ class CallTimeViewController: UIViewController {
             dateFormatter.timeZone = myTimeZone
             let timeString = dateFormatter.string(from: sender.date)
             endTimeTransferredLabel.text = "쿠퍼티노는 \(timeString)"
-        default : break
+        default:
+            break
         }
     }
     
@@ -86,7 +88,8 @@ class CallTimeViewController: UIViewController {
         case 1:
             startTimeTransferredLabel.text = "쿠퍼티노는"
             endTimeTransferredLabel.text = "쿠퍼티노는"
-        default : break
+        default :
+            break
         }
     }
 
