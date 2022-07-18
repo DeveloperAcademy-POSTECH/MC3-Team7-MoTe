@@ -15,4 +15,10 @@ extension UILabel {
         self.adjustsFontForContentSizeCategory = true
         self.numberOfLines = 0
     }
+
+    func setDynamicFont(for style: UIFont.TextStyle, weight: UIFont.Weight = .regular) {
+        self.font = UIFont.preferredFont(for: style, weight: weight)
+        self.adjustsFontForContentSizeCategory = true
+        self.numberOfLines = 0
+    }
 }
