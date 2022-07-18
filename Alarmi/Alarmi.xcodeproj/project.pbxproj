@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		385BB5562882BB270067AFF4 /* SettingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */; };
+		385BB5582882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */; };
 		507E6F3428826AD80086A4CE /* SettingCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* SettingCompleteViewController.swift */; };
 		507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F352882D8A70086A4CE /* SettingViewController.swift */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationViewController.swift; sourceTree = "<group>"; };
+		385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* SettingCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCompleteViewController.swift; sourceTree = "<group>"; };
 		507E6F352882D8A70086A4CE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -110,9 +114,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		385BB5542882BB0E0067AFF4 /* CurrentLocationView */ = {
+			isa = PBXGroup;
+			children = (
+				385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */,
+				385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */,
+			);
+			path = CurrentLocationView;
+			sourceTree = "<group>";
+		};
 		EFF8D2972880EF81005A4D10 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				385BB5542882BB0E0067AFF4 /* CurrentLocationView */,
 				EFF8D2C02881D3B5005A4D10 /* SettingAlarm */,
 				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
@@ -401,6 +415,7 @@
 				EFF8D2C428826931005A4D10 /* AlarmAgainSetView.swift in Sources */,
 				507E6F3428826AD80086A4CE /* SettingCompleteViewController.swift in Sources */,
 				EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */,
+				385BB5562882BB270067AFF4 /* SettingLocationViewController.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
 				EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */,
 				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
@@ -414,6 +429,7 @@
 				EFF8D2A12880F4FE005A4D10 /* UITabBarItem+.swift in Sources */,
 				EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
+				385BB5582882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift in Sources */,
 				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,
 			);
