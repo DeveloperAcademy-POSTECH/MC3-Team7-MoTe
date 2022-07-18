@@ -74,22 +74,22 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWN-FC-Xy9">
-                                <rect key="frame" x="16" y="276" width="382" height="82"/>
+                                <rect key="frame" x="16" y="276" width="382" height="77.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="STa-iL-Iqz">
-                                        <rect key="frame" x="16" y="16" width="350" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="STa-iL-Iqz">
+                                        <rect key="frame" x="16" y="16" width="350" height="45.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nNh-y3-6P1">
-                                                <rect key="frame" x="0.0" y="0.0" width="117" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nNh-y3-6P1">
+                                                <rect key="frame" x="0.0" y="0.0" width="117" height="45.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표시작일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpN-w2-sXu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="27.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="23"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="언제부터 시작할 건가요?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-dU-svI">
-                                                        <rect key="frame" x="0.0" y="35.5" width="117" height="14.5"/>
+                                                        <rect key="frame" x="0.0" y="31" width="117" height="14.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
@@ -97,7 +97,7 @@
                                                 </subviews>
                                             </stackView>
                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cGg-Ty-44o">
-                                                <rect key="frame" x="125" y="0.0" width="225" height="50"/>
+                                                <rect key="frame" x="125" y="0.0" width="225" height="45.5"/>
                                                 <locale key="locale" localeIdentifier="ko"/>
                                             </datePicker>
                                         </subviews>
