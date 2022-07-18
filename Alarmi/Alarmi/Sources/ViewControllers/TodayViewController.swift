@@ -36,7 +36,7 @@ final class TodayViewController: UIViewController {
         return $0
     }(UILabel())
 
-    private let delayButton: UIButton = {
+    private lazy var delayButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
 
         let config = UIImage.SymbolConfiguration(font: UIFont.preferredFont(forTextStyle: .caption2))
@@ -46,6 +46,7 @@ final class TodayViewController: UIViewController {
         $0.configuration?.baseBackgroundColor = .systemBlue
         $0.configuration?.titleAlignment = .leading
         $0.configuration?.contentInsets = .zero
+        $0.addTarget(self, action: #selector(delayButtonTapped), for: .touchUpInside)
 
         var container = AttributeContainer()
         container.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -114,5 +115,11 @@ extension TodayViewController {
 
     @objc private func settingButtonTapped() {
         // TODO: 설정 화면으로 이동
+    }
+
+    @objc private func delayButtonTapped() {
+        let callDelayViewController = CallDelayViewController()
+        let navigationController = callDelayViewController.wrappedByNavigationController()
+        present(navigationController, animated: true)
     }
 }
