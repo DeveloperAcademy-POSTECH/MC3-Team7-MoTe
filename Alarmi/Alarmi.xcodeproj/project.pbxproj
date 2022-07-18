@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		385BB5562882BB270067AFF4 /* SettingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */; };
+		507E6F3428826AD80086A4CE /* SettingCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* SettingCompleteViewController.swift */; };
+		507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F352882D8A70086A4CE /* SettingViewController.swift */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
 		EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */; };
 		EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D29A2880F226005A4D10 /* TodayViewController.swift */; };
@@ -17,7 +19,13 @@
 		EFF8D2A628810A11005A4D10 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2A528810A11005A4D10 /* UIView+.swift */; };
 		EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2A928811A7F005A4D10 /* UIStackView+.swift */; };
 		EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2BA28819D03005A4D10 /* UIViewController+.swift */; };
+		EFF8D2BD2881C9F1005A4D10 /* SettingNotifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2BC2881C9F1005A4D10 /* SettingNotifyViewController.swift */; };
 		EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2BE2881D219005A4D10 /* UILabel+.swift */; };
+		EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */; };
+		EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */; };
+		EFF8D2C428826931005A4D10 /* AlarmAgainSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */; };
+		EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2C72882AE3A005A4D10 /* AMButton.swift */; };
+		EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2D1288318CB005A4D10 /* UIFont+.swift */; };
 		EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */; };
 		EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */; };
 		EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F2287BC77D00D9F267 /* ViewController.swift */; };
@@ -49,6 +57,8 @@
 /* Begin PBXFileReference section */
 		385BB5552882BB270067AFF4 /* SettingLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		507E6F3328826AD80086A4CE /* SettingCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCompleteViewController.swift; sourceTree = "<group>"; };
+		507E6F352882D8A70086A4CE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EFF8D29A2880F226005A4D10 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +67,13 @@
 		EFF8D2A528810A11005A4D10 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		EFF8D2A928811A7F005A4D10 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		EFF8D2BA28819D03005A4D10 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		EFF8D2BC2881C9F1005A4D10 /* SettingNotifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotifyViewController.swift; sourceTree = "<group>"; };
 		EFF8D2BE2881D219005A4D10 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDelayViewController.swift; sourceTree = "<group>"; };
+		EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetView.swift; sourceTree = "<group>"; };
+		EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAgainSetView.swift; sourceTree = "<group>"; };
+		EFF8D2C72882AE3A005A4D10 /* AMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMButton.swift; sourceTree = "<group>"; };
+		EFF8D2D1288318CB005A4D10 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		EFFD73EB287BC77D00D9F267 /* Alarmi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,9 +127,13 @@
 			isa = PBXGroup;
 			children = (
 				385BB5542882BB0E0067AFF4 /* CurrentLocationView */,
+				EFF8D2C02881D3B5005A4D10 /* SettingAlarm */,
 				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
 				EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */,
+				EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */,
+				507E6F3328826AD80086A4CE /* SettingCompleteViewController.swift */,
+				507E6F352882D8A70086A4CE /* SettingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -121,6 +141,7 @@
 		EFF8D29E2880F4F1005A4D10 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				EFF8D2C62882AE20005A4D10 /* Components */,
 				EFF8D29F2880F4F5005A4D10 /* Extensions */,
 			);
 			path = Global;
@@ -134,8 +155,35 @@
 				EFF8D2A528810A11005A4D10 /* UIView+.swift */,
 				EFF8D2A928811A7F005A4D10 /* UIStackView+.swift */,
 				EFF8D2BE2881D219005A4D10 /* UILabel+.swift */,
+				EFF8D2D1288318CB005A4D10 /* UIFont+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EFF8D2C02881D3B5005A4D10 /* SettingAlarm */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2BC2881C9F1005A4D10 /* SettingNotifyViewController.swift */,
+				EFF8D2C528826936005A4D10 /* Supporting Views */,
+			);
+			path = SettingAlarm;
+			sourceTree = "<group>";
+		};
+		EFF8D2C528826936005A4D10 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */,
+				EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */,
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		EFF8D2C62882AE20005A4D10 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2C72882AE3A005A4D10 /* AMButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		EFFD73E2287BC77D00D9F267 = {
@@ -363,11 +411,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF8D2BD2881C9F1005A4D10 /* SettingNotifyViewController.swift in Sources */,
+				EFF8D2C428826931005A4D10 /* AlarmAgainSetView.swift in Sources */,
+				507E6F3428826AD80086A4CE /* SettingCompleteViewController.swift in Sources */,
 				EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */,
 				385BB5562882BB270067AFF4 /* SettingLocationViewController.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
+				EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */,
+				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
+				507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
+				EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
 				EFF8D2A628810A11005A4D10 /* UIView+.swift in Sources */,
 				EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */,
@@ -375,6 +430,7 @@
 				EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* SettingLocationCollectionViewCell.swift in Sources */,
+				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
