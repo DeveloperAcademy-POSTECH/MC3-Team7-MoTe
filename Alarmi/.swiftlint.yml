@@ -11,6 +11,9 @@ disabled_rules:
 
     # 강제 언래핑은 피해야합니다. https://realm.github.io/SwiftLint/force_unwrapping.html
     - force_unwrapping
+    
+    # 타입 이름에는 alphanumeric만 포함되어야 합니다. https://realm.github.io/SwiftLint/type_name.html
+    - type_name
 
 # Default가 비활성화인 규칙을 활성화시키기
 opt_in_rules:
