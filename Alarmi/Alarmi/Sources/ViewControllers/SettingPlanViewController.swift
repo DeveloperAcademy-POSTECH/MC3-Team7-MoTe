@@ -10,6 +10,8 @@ import UIKit
 
 class SettingPlanViewController: UIViewController {
     
+    // TODO: 1하고 31 라벨 바꾸기.
+    
     @IBOutlet var containerViews: [UIView]!
     @IBOutlet var settingDayLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
