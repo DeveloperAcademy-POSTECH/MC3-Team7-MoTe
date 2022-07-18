@@ -13,12 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingPlanViewController") as? SettingPlanViewController else {return}
-        window?.rootViewController = vc.wrappedByNavigationController()
-//        window = scene.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
-//        let mainTabBarController = MainTabBarController()
-//        window?.rootViewController = mainTabBarController
+        window = scene.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
+        let mainTabBarController = MainTabBarController()
+        window?.rootViewController = mainTabBarController
         window?.makeKeyAndVisible()
 
     }

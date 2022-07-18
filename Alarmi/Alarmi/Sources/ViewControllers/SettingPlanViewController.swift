@@ -6,7 +6,6 @@
 //  Copyright © 2022 MoTe. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class SettingPlanViewController: UIViewController {
@@ -26,7 +25,6 @@ class SettingPlanViewController: UIViewController {
             $0.layer.cornerRadius = 15
             $0.layer.masksToBounds = true
         }
-        
     }
     
     @IBAction func settingDaySlider(_ sender: UISlider) {
