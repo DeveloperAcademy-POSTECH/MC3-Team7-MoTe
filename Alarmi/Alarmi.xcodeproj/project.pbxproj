@@ -134,7 +134,6 @@
 		EF7785D928864A6200E60AD2 /* Set Setting */ = {
 			isa = PBXGroup;
 			children = (
-				EF7785DA28864CC700E60AD2 /* CallTime.storyboard */,
 				EF7785DB28864CC700E60AD2 /* CallTimeViewController.swift */,
 				385BB5542882BB0E0067AFF4 /* CurrentLocationView */,
 				1537834B288480DE00E173D1 /* SettingPlanViewController.swift */,
@@ -270,6 +269,7 @@
 				EFFD73F4287BC77D00D9F267 /* Main.storyboard */,
 				1537834D2884826900E173D1 /* SettingPlan.storyboard */,
 				EFFD73F9287BC77E00D9F267 /* LaunchScreen.storyboard */,
+				EF7785DA28864CC700E60AD2 /* CallTime.storyboard */,
 				EFFD73F7287BC77E00D9F267 /* Assets.xcassets */,
 				EFFD73FC287BC77E00D9F267 /* Info.plist */,
 			);
@@ -632,6 +632,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TZVHD77BLL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alarmi/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -660,6 +661,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TZVHD77BLL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alarmi/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
