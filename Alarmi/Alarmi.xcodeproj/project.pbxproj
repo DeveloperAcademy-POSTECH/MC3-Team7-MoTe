@@ -148,9 +148,9 @@
 		EF3630FB28867359007779C0 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
 				EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */,
 				507E6F352882D8A70086A4CE /* SettingViewController.swift */,
-				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
