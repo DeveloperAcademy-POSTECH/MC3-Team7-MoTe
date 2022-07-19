@@ -36,7 +36,7 @@ final class RegisterCoordinator: Coordinator,
         self.navigationController.viewControllers = [viewController]
     }
 
-    func nextButtonDidTap() {
+    func gotoRegisterPlanViewController() {
         let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
             return
@@ -45,19 +45,19 @@ final class RegisterCoordinator: Coordinator,
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func nextButton2DidTap() {
-        let settingNotifyViewController = RegisterNotifyViewController()
-        settingNotifyViewController.delegate = self
-        navigationController?.pushViewController(settingNotifyViewController, animated: true)
+    func gotoRegisterNotifyViewController() {
+        let registerNotifyViewController = RegisterNotifyViewController()
+        registerNotifyViewController.delegate = self
+        navigationController?.pushViewController(registerNotifyViewController, animated: true)
     }
 
-    func completButtonDidTap() {
+    func gotoRegisterCompleteViewController() {
         let settingCompletionViewController = RegisterCompleteViewController()
         settingCompletionViewController.delegate = self
         navigationController?.pushViewController(settingCompletionViewController, animated: true)
     }
     
-    func startButtonDidTap() {
+    func finishRegister() {
         delegate?.didRegister(self)
     }
 

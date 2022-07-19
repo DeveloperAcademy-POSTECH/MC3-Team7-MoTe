@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RegisterCallTimeViewControllerDelegate: AnyObject {
-    func nextButtonDidTap()
+    func gotoRegisterPlanViewController()
 }
 
 class RegisterCallTimeViewController: UIViewController {
@@ -118,6 +118,6 @@ class RegisterCallTimeViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        self.delegate?.nextButtonDidTap()
+        self.delegate?.gotoRegisterPlanViewController()
     }
 }

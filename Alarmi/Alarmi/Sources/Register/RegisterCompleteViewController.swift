@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RegisterCompleteViewControllerDelegate: AnyObject {
-    func startButtonDidTap()
+    func finishRegister()
 }
 
 final class RegisterCompleteViewController: UIViewController {
@@ -95,7 +95,7 @@ final class RegisterCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        delegate?.startButtonDidTap()
+        delegate?.finishRegister()
     }
 }
 

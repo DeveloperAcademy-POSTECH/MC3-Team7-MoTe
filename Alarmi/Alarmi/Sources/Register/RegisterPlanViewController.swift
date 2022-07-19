@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RegisterPlanViewControllerDelegate: AnyObject {
-    func nextButton2DidTap()
+    func gotoRegisterNotifyViewController()
 }
 
 class RegisterPlanViewController: UIViewController {
@@ -60,6 +60,6 @@ class RegisterPlanViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        delegate?.nextButton2DidTap()
+        delegate?.gotoRegisterNotifyViewController()
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RegisterNotifyViewControllerDelegate: AnyObject {
-    func completButtonDidTap()
+    func gotoRegisterCompleteViewController()
 }
 
 final class RegisterNotifyViewController: UIViewController {
@@ -120,6 +120,6 @@ final class RegisterNotifyViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        delegate?.completButtonDidTap()
+        delegate?.gotoRegisterCompleteViewController()
     }
 }
