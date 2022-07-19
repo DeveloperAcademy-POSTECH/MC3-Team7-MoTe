@@ -39,9 +39,10 @@ final class SettingNotifyViewController: UIViewController {
         return $0
     }(UILabel())
 
-    private let button: AMButton = {
+    private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.title = "완료"
+        $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
 
@@ -113,4 +114,8 @@ final class SettingNotifyViewController: UIViewController {
         }, completion: nil)
     }
 
+    @objc private func buttonDidTap() {
+        let settingCompletionViewController = SettingCompleteViewController()
+        navigationController?.pushViewController(settingCompletionViewController, animated: true)
+    }
 }

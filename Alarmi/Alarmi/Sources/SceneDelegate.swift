@@ -14,8 +14,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = scene.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
-        let mainTabBarController = MainTabBarController()
-        window?.rootViewController = mainTabBarController
+        let storyboard = UIStoryboard(name: "CallTime", bundle: nil)
+        guard let callTimeViewController = storyboard.instantiateViewController(withIdentifier: "CallTimeViewController") as? CallTimeViewController else { return }
+        window?.rootViewController = callTimeViewController.wrappedByNavigationController()
         window?.makeKeyAndVisible()
 
     }

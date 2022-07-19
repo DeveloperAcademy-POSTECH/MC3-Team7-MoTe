@@ -114,7 +114,8 @@ extension TodayViewController {
     // MARK: Button Action
 
     @objc private func settingButtonTapped() {
-        // TODO: 설정 화면으로 이동
+        let settingViewController = SettingViewController()
+        navigationController?.pushViewController(settingViewController, animated: true)
     }
 
     @objc private func delayButtonTapped() {
