@@ -45,21 +45,12 @@ final class SettingCompleteViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private lazy var startButton: UIButton = {
+    private lazy var startButton: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.configuration?.baseBackgroundColor = .systemBlue
-        $0.configuration?.titleAlignment = .center
-        $0.configuration?.cornerStyle = .medium
-        $0.configuration?.title = "시작"
-        $0.addAction(startButtonAction, for: .touchUpInside)
+        $0.title = "완료"
+        $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
-    }(UIButton(configuration: .filled()))
-    
-    private lazy var startButtonAction = UIAction { _ in
-        // TODO: MainTabBarController로 이동
-    }
-    
-    // MARK: Life Cycle
+    }(AMButton())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,11 +83,28 @@ final class SettingCompleteViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startButton.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            startButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            startButton.heightAnchor.constraint(equalToConstant: 64)
+            startButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
+    }
+
+    @objc private func buttonDidTap() {
+        guard let window = UIApplication.shared.keyWindow else {
+            return
+        }
+        let mainTabBarController = MainTabBarController()
+        window.rootViewController = mainTabBarController
+
+        let options: UIView.AnimationOptions = .transitionCrossDissolve
+        let duration: TimeInterval = 0.3
+
+        UIView.transition(with: window,
+                          duration: duration,
+                          options: options,
+                          animations: {},
+                          completion: { _ in
+
+        })
     }
 }
 
