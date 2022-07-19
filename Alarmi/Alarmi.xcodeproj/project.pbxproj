@@ -36,7 +36,6 @@
 		EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D2D1288318CB005A4D10 /* UIFont+.swift */; };
 		EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */; };
 		EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */; };
-		EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFD73F2287BC77D00D9F267 /* ViewController.swift */; };
 		EFFD73F6287BC77D00D9F267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFD73F4287BC77D00D9F267 /* Main.storyboard */; };
 		EFFD73F8287BC77E00D9F267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFD73F7287BC77E00D9F267 /* Assets.xcassets */; };
 		EFFD73FB287BC77E00D9F267 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFD73F9287BC77E00D9F267 /* LaunchScreen.storyboard */; };
@@ -93,7 +92,6 @@
 		EFFD73EB287BC77D00D9F267 /* Alarmi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EFFD73F2287BC77D00D9F267 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EFFD73F5287BC77D00D9F267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFFD73F7287BC77E00D9F267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFFD73FA287BC77E00D9F267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -147,15 +145,42 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		EF3630FB28867359007779C0 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */,
+				507E6F352882D8A70086A4CE /* SettingViewController.swift */,
+				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		EF3630FC2886735D007779C0 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		EF3630FD28867369007779C0 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				EF3630F528866968007779C0 /* MainTabCoordinator.swift */,
+				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		EF7785D928864A6200E60AD2 /* Register */ = {
 			isa = PBXGroup;
 			children = (
 				EF3630F328866304007779C0 /* RegisterCoordinator.swift */,
 				EF7785DB28864CC700E60AD2 /* RegisterCallTimeViewController.swift */,
-				385BB5542882BB0E0067AFF4 /* CurrentLocationView */,
 				1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */,
-				EFF8D2C02881D3B5005A4D10 /* RegisterAlarm */,
+				EFF8D2BC2881C9F1005A4D10 /* RegisterNotifyViewController.swift */,
 				507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */,
+				EFF8D2C528826936005A4D10 /* Supporting Views */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -163,12 +188,9 @@
 		EFF8D2972880EF81005A4D10 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
-				EF3630F528866968007779C0 /* MainTabCoordinator.swift */,
-				EFF8D2982880EFA0005A4D10 /* MainTabBarController.swift */,
-				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
-				EFF8D2A3288102B1005A4D10 /* RecordViewController.swift */,
-				EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */,
-				507E6F352882D8A70086A4CE /* SettingViewController.swift */,
+				EF3630FD28867369007779C0 /* Tab */,
+				EF3630FB28867359007779C0 /* Today */,
+				EF3630FC2886735D007779C0 /* Record */,
 			);
 			path = MainTab;
 			sourceTree = "<group>";
@@ -196,18 +218,10 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		EFF8D2C02881D3B5005A4D10 /* RegisterAlarm */ = {
-			isa = PBXGroup;
-			children = (
-				EFF8D2BC2881C9F1005A4D10 /* RegisterNotifyViewController.swift */,
-				EFF8D2C528826936005A4D10 /* Supporting Views */,
-			);
-			path = RegisterAlarm;
-			sourceTree = "<group>";
-		};
 		EFF8D2C528826936005A4D10 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
+				385BB5542882BB0E0067AFF4 /* CurrentLocationView */,
 				EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */,
 				EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */,
 			);
@@ -278,7 +292,6 @@
 				EF3630F2288662DA007779C0 /* App */,
 				EF7785D928864A6200E60AD2 /* Register */,
 				EFF8D2972880EF81005A4D10 /* MainTab */,
-				EFFD73F2287BC77D00D9F267 /* ViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -457,7 +470,6 @@
 				EFF8D2C428826931005A4D10 /* AlarmAgainSetView.swift in Sources */,
 				EF3630F128866115007779C0 /* AppCoordinator.swift in Sources */,
 				507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */,
-				EFFD73F3287BC77D00D9F267 /* ViewController.swift in Sources */,
 				385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
 				1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */,

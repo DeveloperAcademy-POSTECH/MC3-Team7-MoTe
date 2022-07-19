@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol TodayViewControllerDelegate: AnyObject {
+    func gotoSettingViewController()
+    func presentCallDelayViewController()
+}
+
 final class TodayViewController: UIViewController {
 
     // MARK: View
@@ -69,6 +74,8 @@ final class TodayViewController: UIViewController {
         return $0
     }(UIButton(configuration: .filled()))
 
+    weak var delegate: TodayViewControllerDelegate?
+
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,13 +122,10 @@ extension TodayViewController {
     // MARK: Button Action
 
     @objc private func settingButtonTapped() {
-        let settingViewController = SettingViewController()
-        navigationController?.pushViewController(settingViewController, animated: true)
+        delegate?.gotoSettingViewController()
     }
 
     @objc private func delayButtonTapped() {
-        let callDelayViewController = CallDelayViewController()
-        let navigationController = callDelayViewController.wrappedByNavigationController()
-        present(navigationController, animated: true)
+        delegate?.presentCallDelayViewController()
     }
 }

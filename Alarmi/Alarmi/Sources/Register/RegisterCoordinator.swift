@@ -27,10 +27,6 @@ final class RegisterCoordinator: Coordinator,
         self.navigationController = navigationController
     }
 
-    deinit {
-        print("☠️☠️☠️☠️☠️☠️☠️ \(String(describing: self)) ☠️☠️☠️☠️☠️☠️☠️")
-    }
-
     func start() {
         let storyboard = UIStoryboard(name: "CallTime", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterCallTimeViewController") as? RegisterCallTimeViewController else {

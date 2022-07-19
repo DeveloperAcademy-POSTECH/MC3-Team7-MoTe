@@ -37,10 +37,6 @@ class RegisterCallTimeViewController: UIViewController {
         attribute()
         layout()
     }
-
-    deinit {
-        print("☠️☠️☠️☠️☠️☠️☠️ \(String(describing: self)) ☠️☠️☠️☠️☠️☠️☠️")
-    }
     
     private func attribute() {
         configureNavigationBar()
