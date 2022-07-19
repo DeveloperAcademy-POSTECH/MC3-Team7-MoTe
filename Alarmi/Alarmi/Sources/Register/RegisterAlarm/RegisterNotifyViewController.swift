@@ -8,8 +8,11 @@
 
 import UIKit
 
-final class SettingNotifyViewController: UIViewController {
+protocol RegisterNotifyViewControllerDelegate: AnyObject {
+    func completButtonDidTap()
+}
 
+final class RegisterNotifyViewController: UIViewController {
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "마지막으로 전화한지 7일이 되면 알림을 보내드려요."
@@ -45,6 +48,8 @@ final class SettingNotifyViewController: UIViewController {
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
+
+    weak var delegate: RegisterNotifyViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +120,6 @@ final class SettingNotifyViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        let settingCompletionViewController = SettingCompleteViewController()
-        navigationController?.pushViewController(settingCompletionViewController, animated: true)
+        delegate?.completButtonDidTap()
     }
 }

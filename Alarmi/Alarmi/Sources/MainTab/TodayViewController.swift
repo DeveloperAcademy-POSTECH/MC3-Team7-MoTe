@@ -80,6 +80,7 @@ final class TodayViewController: UIViewController {
     // MARK: Method
 
     private func attribute() {
+        view.backgroundColor = .systemGroupedBackground
         setupNavigationBar()
     }
 

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SettingPlanViewController: UIViewController {
+protocol RegisterPlanViewControllerDelegate: AnyObject {
+    func nextButton2DidTap()
+}
+
+class RegisterPlanViewController: UIViewController {
     
     // TODO: 1하고 31 라벨 바꾸기.
     
@@ -22,6 +26,8 @@ class SettingPlanViewController: UIViewController {
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
+
+    weak var delegate: RegisterPlanViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +60,6 @@ class SettingPlanViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        let settingNotifyViewController = SettingNotifyViewController()
-        navigationController?.pushViewController(settingNotifyViewController, animated: true)
+        delegate?.nextButton2DidTap()
     }
 }

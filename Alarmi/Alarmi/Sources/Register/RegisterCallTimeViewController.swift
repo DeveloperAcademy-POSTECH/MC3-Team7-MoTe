@@ -8,14 +8,19 @@
 
 import UIKit
 
-class CallTimeViewController: UIViewController {
+protocol RegisterCallTimeViewControllerDelegate: AnyObject {
+    func nextButtonDidTap()
+}
 
+class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
     @IBOutlet weak var startTimeTransferredLabel: UILabel!
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
     @IBOutlet weak var myLocationTimezoneSegmentedControl: UISegmentedControl!
-    
+
+    weak var delegate: RegisterCallTimeViewControllerDelegate?
+
     let myTimeZone: TimeZone! = TimeZone(identifier: "America/Los_Angeles")
     let parentTimeZone: TimeZone! = TimeZone(identifier: "Asia/Seoul")
 
@@ -31,6 +36,10 @@ class CallTimeViewController: UIViewController {
         
         attribute()
         layout()
+    }
+
+    deinit {
+        print("☠️☠️☠️☠️☠️☠️☠️ \(String(describing: self)) ☠️☠️☠️☠️☠️☠️☠️")
     }
     
     private func attribute() {
@@ -113,8 +122,6 @@ class CallTimeViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
-        guard let settingPlanViewController = storyboard.instantiateViewController(withIdentifier: "SettingPlanViewController") as? SettingPlanViewController else { return }
-        navigationController?.pushViewController(settingPlanViewController, animated: true)
+        self.delegate?.nextButtonDidTap()
     }
 }

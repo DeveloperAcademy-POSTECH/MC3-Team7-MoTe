@@ -8,7 +8,11 @@
 
 import UIKit
 
-final class SettingCompleteViewController: UIViewController {
+protocol RegisterCompleteViewControllerDelegate: AnyObject {
+    func startButtonDidTap()
+}
+
+final class RegisterCompleteViewController: UIViewController {
     
     // MARK: View
     
@@ -52,6 +56,8 @@ final class SettingCompleteViewController: UIViewController {
         return $0
     }(AMButton())
 
+    weak var delegate: RegisterCompleteViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,22 +95,7 @@ final class SettingCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        guard let window = UIApplication.shared.keyWindow else {
-            return
-        }
-        let mainTabBarController = MainTabBarController()
-        window.rootViewController = mainTabBarController
-
-        let options: UIView.AnimationOptions = .transitionCrossDissolve
-        let duration: TimeInterval = 0.3
-
-        UIView.transition(with: window,
-                          duration: duration,
-                          options: options,
-                          animations: {},
-                          completion: { _ in
-
-        })
+        delegate?.startButtonDidTap()
     }
 }
 
@@ -115,7 +106,7 @@ import SwiftUI
 
 struct SettingCompleteViewController_Preview: PreviewProvider {
     static var previews: some View {
-        SettingCompleteViewController()
+        RegisterCompleteViewController()
             .toPreview()
             .ignoresSafeArea()
     }

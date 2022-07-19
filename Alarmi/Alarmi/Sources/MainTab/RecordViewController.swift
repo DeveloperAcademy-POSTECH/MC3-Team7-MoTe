@@ -17,6 +17,7 @@ final class RecordViewController: UIViewController {
     }
 
     private func attribute() {
+        view.backgroundColor = .systemGroupedBackground
         title = "기록"
     }
 }
