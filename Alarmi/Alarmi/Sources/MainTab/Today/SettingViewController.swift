@@ -83,8 +83,9 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: .none)
+        let destructiveIndex = indexPath.row - defaultSettingList.count
         let isDestructive = indexPath.row < defaultSettingList.count
-        let text = isDestructive ? defaultSettingList[indexPath.row] : destructiveSettingList[indexPath.row - defaultSettingList.count]
+        let text = isDestructive ? defaultSettingList[indexPath.row] : destructiveSettingList[destructiveIndex]
         let textColor: UIColor = isDestructive ? .label : .systemRed
         let accessoryType: UITableViewCell.AccessoryType = isDestructive ? .disclosureIndicator : .none
         
