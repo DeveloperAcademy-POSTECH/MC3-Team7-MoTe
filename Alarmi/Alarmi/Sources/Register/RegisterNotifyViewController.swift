@@ -129,13 +129,19 @@ final class RegisterNotifyViewController: UIViewController {
                 print(error)
             } else {
                 if granted {
+                    // TODO: 상황에 따른 content 변화 필요
                     let content = UNMutableNotificationContent()
                     content.title = "아직 전화하지 않았어요"
                     content.subtitle = "아들아 보고싶다!!!"
                     content.body = "전화한지 3일이 지났어요 ㅠㅠ 🥹"
                     content.badge = 1
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                    let request = UNNotificationRequest(identifier: "Sample Notification", content: content, trigger: trigger)
+                    // TODO: startdate 목표시작일 받아와야 함
+                    let startDate = Date()
+                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: startDate)
+                    // TODO: repeat -> 알림 반복횟수
+                    // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+                    let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
                     self.notificationCenter.add(request, withCompletionHandler: nil)
                 } else {
                     print("Not Granted")
