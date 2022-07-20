@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SettingLocationCollectionViewCell: UICollectionViewCell {
+final class RegisterLocationCollectionViewCell: UICollectionViewCell {
 
     // MARK: View
 

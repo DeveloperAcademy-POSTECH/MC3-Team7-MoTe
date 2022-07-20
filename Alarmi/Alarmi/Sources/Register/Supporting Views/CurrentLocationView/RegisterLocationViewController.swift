@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SettingLocationViewController: UIViewController {
+final class RegisterLocationViewController: UIViewController {
 
     // MARK: View
 
@@ -23,7 +23,7 @@ final class SettingLocationViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
-        $0.register(SettingLocationCollectionViewCell.self, forCellWithReuseIdentifier: "SettingLocationCollectionViewCell")
+        $0.register(RegisterLocationCollectionViewCell.self, forCellWithReuseIdentifier: "SettingLocationCollectionViewCell")
         $0.backgroundColor = .systemGroupedBackground
         return $0
     }(UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()))
@@ -80,7 +80,7 @@ final class SettingLocationViewController: UIViewController {
 
 // MARK: protocols
 
-extension SettingLocationViewController: UICollectionViewDelegateFlowLayout {
+extension RegisterLocationViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.size.width, height: 16)
@@ -98,14 +98,14 @@ extension SettingLocationViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension SettingLocationViewController: UICollectionViewDataSource {
+extension RegisterLocationViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return countryFlag.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingLocationCollectionViewCell", for: indexPath) as? SettingLocationCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingLocationCollectionViewCell", for: indexPath) as? RegisterLocationCollectionViewCell
         cell?.setup()
         cell?.layer.cornerRadius = 15.0
         cell?.backgroundColor = .secondarySystemGroupedBackground
@@ -123,7 +123,7 @@ import SwiftUI
 
 struct SettingViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        UINavigationController(rootViewController: SettingLocationViewController())
+        UINavigationController(rootViewController: RegisterLocationViewController())
             .toPreview()
             .ignoresSafeArea()
     }
