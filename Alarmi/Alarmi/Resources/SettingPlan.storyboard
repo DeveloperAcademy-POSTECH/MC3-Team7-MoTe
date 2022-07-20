@@ -99,6 +99,9 @@
                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cGg-Ty-44o">
                                                 <rect key="frame" x="125" y="0.0" width="225" height="45.5"/>
                                                 <locale key="locale" localeIdentifier="ko"/>
+                                                <connections>
+                                                    <action selector="settingStartDatePicker:" destination="Y6W-OH-hqX" eventType="valueChanged" id="SBB-8f-0Ni"/>
+                                                </connections>
                                             </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

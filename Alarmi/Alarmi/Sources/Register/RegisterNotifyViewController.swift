@@ -10,6 +10,7 @@ import UIKit
 
 protocol RegisterNotifyViewControllerDelegate: AnyObject {
     func gotoRegisterCompleteViewController()
+    func gotoRegisterCompleteViewController(_ isCall: Bool, _ isReCall: Bool, _ numAlertCall: Int)
 }
 
 final class RegisterNotifyViewController: UIViewController {
@@ -51,6 +52,8 @@ final class RegisterNotifyViewController: UIViewController {
 
     weak var delegate: RegisterNotifyViewControllerDelegate?
 
+    var viewModel: RegisterViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -120,6 +123,10 @@ final class RegisterNotifyViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
+//        viewModel?.alarmData?.isCall = isCall
+//        viewModel?.alarmData?.isReCall = isReCall
+//        viewModel?.alarmData?.numAlertCall = numAlertCall
         delegate?.gotoRegisterCompleteViewController()
+        print(viewModel?.alarmData)
     }
 }

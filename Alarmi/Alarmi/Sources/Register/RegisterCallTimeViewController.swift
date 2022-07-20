@@ -10,6 +10,7 @@ import UIKit
 
 protocol RegisterCallTimeViewControllerDelegate: AnyObject {
     func gotoRegisterPlanViewController()
+    func gotoRegisterPlanViewController(_ callTimeStart: String, _ callTimeEnd: String)
 }
 
 class RegisterCallTimeViewController: UIViewController {
@@ -21,9 +22,23 @@ class RegisterCallTimeViewController: UIViewController {
 
     weak var delegate: RegisterCallTimeViewControllerDelegate?
 
+    var viewModel: RegisterViewModel?
+    
     let myTimeZone: TimeZone! = TimeZone(identifier: "America/Los_Angeles")
     let parentTimeZone: TimeZone! = TimeZone(identifier: "Asia/Seoul")
-
+    
+    lazy var startTime: String = "" {
+        didSet {
+            endTimeTransferredLabel.text = "한국은 \(startTime)"
+        }
+    }
+    
+    lazy var endTime: String = "" {
+        didSet {
+            endTimeTransferredLabel.text = "쿠퍼티노는 \(endTime)"
+        }
+    }
+    
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.title = "다음"
@@ -93,12 +108,12 @@ class RegisterCallTimeViewController: UIViewController {
             endTimePicker.timeZone = myTimeZone
             dateFormatter.timeZone = parentTimeZone
             let timeString = dateFormatter.string(from: sender.date)
-            endTimeTransferredLabel.text = "한국은 \(timeString)"
+            startTime = timeString
         case 1:
             endTimePicker.timeZone = parentTimeZone
             dateFormatter.timeZone = myTimeZone
             let timeString = dateFormatter.string(from: sender.date)
-            endTimeTransferredLabel.text = "쿠퍼티노는 \(timeString)"
+            startTime = timeString
         default:
             break
         }
@@ -118,6 +133,8 @@ class RegisterCallTimeViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        self.delegate?.gotoRegisterPlanViewController()
+        viewModel?.alarmData?.callTimeStart = startTime
+        viewModel?.alarmData?.callTimeEnd = endTime
+        delegate?.gotoRegisterPlanViewController()
     }
 }
