@@ -19,25 +19,19 @@ class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var startTimeTransferredLabel: UILabel!
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
     @IBOutlet weak var myLocationTimezoneSegmentedControl: UISegmentedControl!
-
+    
     weak var delegate: RegisterCallTimeViewControllerDelegate?
-
+    
+    let current = Date()
+    let parentFormatter = DateFormatter()
+    let myFormatter = DateFormatter()
+    var startTime: String = ""
+    var endTime: String = ""
+    
     var viewModel: RegisterViewModel?
     
-    let myTimeZone: TimeZone! = TimeZone(identifier: "America/Los_Angeles")
+    let myTimeZone: TimeZone! = TimeZone.autoupdatingCurrent
     let parentTimeZone: TimeZone! = TimeZone(identifier: "Asia/Seoul")
-    
-    lazy var startTime: String = "" {
-        didSet {
-            endTimeTransferredLabel.text = "한국은 \(startTime)"
-        }
-    }
-    
-    lazy var endTime: String = "" {
-        didSet {
-            endTimeTransferredLabel.text = "쿠퍼티노는 \(endTime)"
-        }
-    }
     
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -45,9 +39,15 @@ class RegisterCallTimeViewController: UIViewController {
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        parentFormatter.dateFormat = "a hh:mm"
+        parentFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        myFormatter.dateFormat = "a hh:mm"
+        myFormatter.timeZone = TimeZone.autoupdatingCurrent
+        startTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
+        endTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
         
         attribute()
         layout()
@@ -57,18 +57,18 @@ class RegisterCallTimeViewController: UIViewController {
         configureNavigationBar()
         configureBackground()
     }
-
+    
     private func layout() {
-
+        
         view.addSubview(button)
-
+        
         NSLayoutConstraint.activate([
             button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
-
+    
     private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.title = "전화 시간"
@@ -79,41 +79,34 @@ class RegisterCallTimeViewController: UIViewController {
     }
     
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "a hh:mm"
-        
         switch myLocationTimezoneSegmentedControl.selectedSegmentIndex {
         case 0:
-            startTimePicker.timeZone = myTimeZone
-            dateFormatter.timeZone = parentTimeZone
-            let timeString = dateFormatter.string(from: sender.date)
+            let myTimeString = myFormatter.string(from: sender.date)
+            self.startTime = myTimeString
+            
+            let timeString = parentFormatter.string(from: sender.date)
             startTimeTransferredLabel.text = "한국은 \(timeString)"
         case 1:
-            startTimePicker.timeZone = parentTimeZone
-            dateFormatter.timeZone = myTimeZone
-            let timeString = dateFormatter.string(from: sender.date)
-            startTimeTransferredLabel.text = "쿠퍼티노는 \(timeString)"
+            let myTimeString = myFormatter.string(from: sender.date)
+            self.startTime = myTimeString
+            startTimeTransferredLabel.text = "여기는 \(myTimeString)"
         default:
             break
         }
     }
     
     @IBAction func endTimePickerAction(_ sender: UIDatePicker) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "a hh:mm"
-        
         switch myLocationTimezoneSegmentedControl.selectedSegmentIndex {
         case 0:
-            endTimePicker.timeZone = myTimeZone
-            dateFormatter.timeZone = parentTimeZone
-            let timeString = dateFormatter.string(from: sender.date)
-            startTime = timeString
+            let myTimeString = myFormatter.string(from: sender.date)
+            self.endTime = myTimeString
+            
+            let timeString = parentFormatter.string(from: sender.date)
+            endTimeTransferredLabel.text = "한국은 \(timeString)"
         case 1:
-            endTimePicker.timeZone = parentTimeZone
-            dateFormatter.timeZone = myTimeZone
-            let timeString = dateFormatter.string(from: sender.date)
-            startTime = timeString
+            let myTimeString = myFormatter.string(from: sender.date)
+            self.endTime = myTimeString
+            endTimeTransferredLabel.text = "여기는 \(myTimeString)"
         default:
             break
         }
@@ -122,16 +115,21 @@ class RegisterCallTimeViewController: UIViewController {
     @IBAction func myLocationTimezoneSegmentedControlAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            startTimeTransferredLabel.text = "한국은"
-            endTimeTransferredLabel.text = "한국은"
+            startTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
+            endTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
+            startTimePicker.timeZone = TimeZone.autoupdatingCurrent
+            endTimePicker.timeZone = TimeZone.autoupdatingCurrent
+            
         case 1:
-            startTimeTransferredLabel.text = "쿠퍼티노는"
-            endTimeTransferredLabel.text = "쿠퍼티노는"
+            startTimeTransferredLabel.text = "여기는 \(myFormatter.string(from: current))"
+            endTimeTransferredLabel.text = "여기는 \(myFormatter.string(from: current))"
+            startTimePicker.timeZone = TimeZone(identifier: "Asia/Seoul")
+            endTimePicker.timeZone = TimeZone(identifier: "Asia/Seoul")
         default :
             break
         }
     }
-
+    
     @objc private func buttonDidTap() {
         viewModel?.alarmData?.callTimeStart = startTime
         viewModel?.alarmData?.callTimeEnd = endTime

@@ -40,7 +40,7 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="azR-P9-8RU">
                                         <rect key="frame" x="16" y="107.5" width="350" height="32"/>
                                         <segments>
-                                            <segment title="쿠퍼티노 기준"/>
+                                            <segment title="현재 위치 기준"/>
                                             <segment title="한국 기준"/>
                                         </segments>
                                         <connections>
