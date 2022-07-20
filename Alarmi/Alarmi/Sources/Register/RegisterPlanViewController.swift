@@ -10,15 +10,22 @@ import UIKit
 
 protocol RegisterPlanViewControllerDelegate: AnyObject {
     func gotoRegisterNotifyViewController()
+    func gotoRegisterNotifyViewController(_ callTimePeriod: Int, _ callTimeStartDate: String)
 }
 
 class RegisterPlanViewController: UIViewController {
     
-    // TODO: 1하고 31 라벨 바꾸기.
-    
     @IBOutlet var containerViews: [UIView]!
     @IBOutlet var settingDayLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
+    
+    lazy var callTimePeriod = 15 {
+        didSet {
+            settingDayLabel.text = String(callTimePeriod) + "일에 한 번 전화할게요."
+        }
+    }
+    
+    lazy var callTimeStartDate: String = calcDate()
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -29,11 +36,20 @@ class RegisterPlanViewController: UIViewController {
 
     weak var delegate: RegisterPlanViewControllerDelegate?
 
+    var viewModel: RegisterViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         attribute()
         layout()
+    }
+    
+    private func calcDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDateString = dateFormatter.string(from: Date())
+        return currentDateString
     }
     
     private func attribute() {
@@ -56,10 +72,19 @@ class RegisterPlanViewController: UIViewController {
     
     @IBAction func settingDaySlider(_ sender: UISlider) {
         let value = sender.value
-        settingDayLabel.text = String(Int(value)) + "일에 한 번 전화할게요."
+        callTimePeriod = Int(value)
     }
-
+    
+    @IBAction func settingStartDatePicker(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let timeString = dateFormatter.string(from: sender.date)
+        callTimeStartDate = timeString
+    }
+    
     @objc private func buttonDidTap() {
+        viewModel?.alarmData?.startDate = callTimeStartDate
+        viewModel?.alarmData?.callPeriod = callTimePeriod
         delegate?.gotoRegisterNotifyViewController()
     }
 }
