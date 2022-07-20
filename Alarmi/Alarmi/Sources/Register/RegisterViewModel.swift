@@ -9,7 +9,17 @@
 import Foundation
 
 final class RegisterViewModel {
-    var alarmData: Alarm? = Alarm()
+    var alarmData: Alarm?
+
+    init() {
+        alarmData = Alarm(callTimeStart: "",
+                          callTimeEnd: "",
+                          startDate: "",
+                          callPeriod: 15,
+                          isCall: true,
+                          isReCall: true,
+                          numAlertCall: 6)
+    }
     
     deinit {
         print("RegisterViewModel deinit")

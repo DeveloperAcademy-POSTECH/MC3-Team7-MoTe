@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol AlarmAgainSetViewProtocol: AnyObject {
+    func reAlarmSwitchDidValueChanged(_ isOn: Bool)
+    func sliderDidValueChanged(_ value: Int)
+}
+
 final class AlarmAgainSetView: UIView {
 
     // MARK: Views
@@ -95,6 +100,8 @@ final class AlarmAgainSetView: UIView {
 
     // MARK: Parameters
 
+    weak var delegate: AlarmAgainSetViewProtocol?
+
     private var alarmAgainCount: Int = 6 {
         didSet {
             sliderLabel.text = "최대 \(alarmAgainCount)번 알림을 다시 받을게요."
@@ -175,9 +182,12 @@ extension AlarmAgainSetView {
     @objc private func alarmSwitchValueChanged() {
         let isOn: Bool = alarmSwitch.isOn
         animateSliderView(isOn)
+        delegate?.reAlarmSwitchDidValueChanged(isOn)
     }
 
     @objc private func sliderValueChanged() {
-        alarmAgainCount = Int(slider.value)
+        let value: Int = Int(slider.value)
+        alarmAgainCount = Int(value)
+        delegate?.sliderDidValueChanged(value)
     }
 }

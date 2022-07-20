@@ -48,30 +48,12 @@ final class RegisterCoordinator: Coordinator,
         viewController.delegate = self
         navigationController.pushViewController(viewController, animated: true)
     }
-    
-    func gotoRegisterPlanViewController(_ callTimeStart: String, _ callTimeEnd: String) {
-        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
-            return
-        }
-        viewController.viewModel = registerViewModel
-        viewController.delegate = self
-        navigationController.pushViewController(viewController, animated: true)
-        
-    }
 
     func gotoRegisterNotifyViewController() {
         let viewController = RegisterNotifyViewController()
         viewController.viewModel = registerViewModel
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func gotoRegisterNotifyViewController(_ callTimePeriod: Int, _ callTimeStartDate: String) {
-        let registerNotifyViewController = RegisterNotifyViewController()
-        registerNotifyViewController.viewModel = registerViewModel
-        registerNotifyViewController.delegate = self
-        navigationController?.pushViewController(registerNotifyViewController, animated: true)
     }
 
     func gotoRegisterCompleteViewController() {

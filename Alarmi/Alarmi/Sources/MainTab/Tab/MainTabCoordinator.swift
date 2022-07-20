@@ -9,7 +9,11 @@
 import UIKit
 
 final class MainTabCoordinator: Coordinator,
-                                TodayViewControllerDelegate {
+                                SettingViewControllerDelegate,
+                                TodayViewControllerDelegate,
+                                MainTabRegisterCallTimeViewControllerDelegate,
+                                MainTabRegisterPlanViewControllerDelegate,
+                                MainTabRegisterNotifyViewControllerDelegate {
 
     var childCoordinators: [Coordinator] = []
     private var tabBarController: MainTabBarController!
@@ -36,6 +40,7 @@ final class MainTabCoordinator: Coordinator,
 
     func gotoSettingViewController() {
         let settingViewController = SettingViewController()
+        settingViewController.delegate = self
         todayNavigationController.pushViewController(settingViewController, animated: true)
     }
 
@@ -45,6 +50,38 @@ final class MainTabCoordinator: Coordinator,
         guard let today = todayNavigationController.viewControllers.first else { return }
         today.present(navigationController, animated: true)
     }
+
+    func gotoRegisterCallTimeViewController() {
+        let storyboard = UIStoryboard(name: "CallTime", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterCallTimeViewController") as? RegisterCallTimeViewController else {
+            return
+        }
+        viewController.type = .edit
+        viewController.tabDelegate = self
+        todayNavigationController.pushViewController(viewController, animated: true)
+    }
+
+    func gotoRegisterPlanViewController() {
+        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
+            return
+        }
+        viewController.type = .edit
+        viewController.tabDelegate = self
+        todayNavigationController.pushViewController(viewController, animated: true)
+    }
+
+    func gotoRegisterNotifyViewController() {
+        let viewController = RegisterNotifyViewController()
+        viewController.type = .edit
+        viewController.tabDelegate = self
+        todayNavigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func gotoBack() {
+        todayNavigationController.popViewController(animated: true)
+    }
+
 }
 
 extension MainTabCoordinator {

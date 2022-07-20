@@ -11,10 +11,13 @@ import UserNotifications
 
 protocol RegisterNotifyViewControllerDelegate: AnyObject {
     func gotoRegisterCompleteViewController()
-    func gotoRegisterCompleteViewController(_ isCall: Bool, _ isReCall: Bool, _ numAlertCall: Int)
 }
 
-final class RegisterNotifyViewController: UIViewController {
+protocol MainTabRegisterNotifyViewControllerDelegate: AnyObject {
+    func gotoBack()
+}
+
+final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol, AlarmAgainSetViewProtocol {
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "마지막으로 전화한지 7일이 되면 알림을 보내드려요."
@@ -27,11 +30,13 @@ final class RegisterNotifyViewController: UIViewController {
         $0.alarmSwitchChanged = { [weak self] isOn in
             self?.animateAlarmAgainSetView(isOn)
         }
+        $0.delegate = self
         return $0
     }(AlarmSetView())
 
     private lazy var alarmAgainSetView: AlarmAgainSetView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.delegate = self
         return $0
     }(AlarmAgainSetView())
 
@@ -52,11 +57,19 @@ final class RegisterNotifyViewController: UIViewController {
     }(AMButton())
 
     weak var delegate: RegisterNotifyViewControllerDelegate?
+    weak var tabDelegate: MainTabRegisterNotifyViewControllerDelegate?
 
     private let notificationCenter = UNUserNotificationCenter.current()
 
+    enum ButtonTpye {
+        case next
+        case edit
+    }
+
+    var type: ButtonTpye = .next
+
     var viewModel: RegisterViewModel?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -148,10 +161,25 @@ final class RegisterNotifyViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-//        viewModel?.alarmData?.isCall = isCall
-//        viewModel?.alarmData?.isReCall = isReCall
-//        viewModel?.alarmData?.numAlertCall = numAlertCall
-        delegate?.gotoRegisterCompleteViewController()
-        print(viewModel?.alarmData)
+        switch type {
+        case .next:
+            delegate?.gotoRegisterCompleteViewController()
+            print(viewModel?.alarmData)
+        case .edit:
+            tabDelegate?.gotoBack()
+        }
+
+    }
+
+    func alarmSwitchDidValueChanged(_ isOn: Bool) {
+        viewModel?.alarmData?.isCall = isOn
+    }
+
+    func reAlarmSwitchDidValueChanged(_ isOn: Bool) {
+        viewModel?.alarmData?.isReCall = isOn
+    }
+
+    func sliderDidValueChanged(_ value: Int) {
+        viewModel?.alarmData?.numAlertCall = value
     }
 }

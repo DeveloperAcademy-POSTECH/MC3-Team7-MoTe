@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol SettingViewControllerDelegate: AnyObject {
+    func gotoRegisterCallTimeViewController()
+    func gotoRegisterPlanViewController()
+    func gotoRegisterNotifyViewController()
+}
 final class SettingViewController: UIViewController {
     
     // MARK: View
@@ -53,7 +58,8 @@ final class SettingViewController: UIViewController {
     
     private let defaultSettingList = ["전화 시간 변경", "목표 변경", "알림 설정"]
     private let destructiveSettingList = ["기록 초기화", "앱 초기화"]
-    
+
+    weak var delegate: SettingViewControllerDelegate?
     // MARK: Life Cycle
 
     override func viewDidLoad() {
@@ -122,6 +128,12 @@ extension SettingViewController: UITableViewDelegate {
         settingTableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
             // TODO: 각 설정 화면으로 내비게이션
+        case 0:
+            delegate?.gotoRegisterCallTimeViewController()
+        case 1:
+            delegate?.gotoRegisterPlanViewController()
+        case 2:
+            delegate?.gotoRegisterNotifyViewController()
         case 3:
             present(eraseRecordAlert, animated: true)
         case 4:

@@ -10,7 +10,10 @@ import UIKit
 
 protocol RegisterPlanViewControllerDelegate: AnyObject {
     func gotoRegisterNotifyViewController()
-    func gotoRegisterNotifyViewController(_ callTimePeriod: Int, _ callTimeStartDate: String)
+}
+
+protocol MainTabRegisterPlanViewControllerDelegate: AnyObject {
+    func gotoBack()
 }
 
 class RegisterPlanViewController: UIViewController {
@@ -35,7 +38,27 @@ class RegisterPlanViewController: UIViewController {
     }(AMButton())
 
     weak var delegate: RegisterPlanViewControllerDelegate?
+    weak var tabDelegate: MainTabRegisterPlanViewControllerDelegate?
 
+    enum ButtonType {
+        case next
+        case edit
+
+        var title: String {
+            switch self {
+            case .next:
+                return "다음"
+            case .edit:
+                return "완료"
+            }
+        }
+    }
+
+    var type: ButtonType = .next {
+        didSet {
+
+        }
+    }
     var viewModel: RegisterViewModel?
     
     override func viewDidLoad() {
@@ -83,8 +106,14 @@ class RegisterPlanViewController: UIViewController {
     }
     
     @objc private func buttonDidTap() {
-        viewModel?.alarmData?.startDate = callTimeStartDate
-        viewModel?.alarmData?.callPeriod = callTimePeriod
-        delegate?.gotoRegisterNotifyViewController()
+        switch type {
+        case .next:
+            viewModel?.alarmData?.startDate = callTimeStartDate
+            viewModel?.alarmData?.callPeriod = callTimePeriod
+            delegate?.gotoRegisterNotifyViewController()
+        case .edit:
+            tabDelegate?.gotoBack()
+        }
+
     }
 }
