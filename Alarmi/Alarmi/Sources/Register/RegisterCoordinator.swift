@@ -22,9 +22,11 @@ final class RegisterCoordinator: Coordinator,
     weak var delegate: ReigsterCoordinatorDelegate?
 
     private var navigationController: UINavigationController!
-
+    private var registerViewModel: RegisterViewwModel!
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.registerViewModel = RegisterViewwModel()
     }
 
     func start() {
@@ -32,6 +34,7 @@ final class RegisterCoordinator: Coordinator,
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterCallTimeViewController") as? RegisterCallTimeViewController else {
             return
         }
+        viewController.viewModel = registerViewModel
         viewController.delegate = self
         self.navigationController.viewControllers = [viewController]
     }
@@ -41,17 +44,43 @@ final class RegisterCoordinator: Coordinator,
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
             return
         }
+        viewController.viewModel = registerViewModel
         viewController.delegate = self
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func gotoRegisterPlanViewController(_ callTimeStart: String, _ callTimeEnd: String) {
+        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
+            return
+        }
+        viewController.viewModel = registerViewModel
+        viewController.delegate = self
+        navigationController.pushViewController(viewController, animated: true)
+        
+    }
 
     func gotoRegisterNotifyViewController() {
+        let viewController = RegisterNotifyViewController()
+        viewController.viewModel = registerViewModel
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func gotoRegisterNotifyViewController(_ callTimePeriod: Int, _ callTimeStartDate: String) {
         let registerNotifyViewController = RegisterNotifyViewController()
+        registerNotifyViewController.viewModel = registerViewModel
         registerNotifyViewController.delegate = self
         navigationController?.pushViewController(registerNotifyViewController, animated: true)
     }
 
     func gotoRegisterCompleteViewController() {
+        let settingCompletionViewController = RegisterCompleteViewController()
+        settingCompletionViewController.delegate = self
+        navigationController?.pushViewController(settingCompletionViewController, animated: true)
+    }
+    
+    func gotoRegisterCompleteViewController(_ isCall: Bool, _ isReCall: Bool, _ numAlertCall: Int) {
         let settingCompletionViewController = RegisterCompleteViewController()
         settingCompletionViewController.delegate = self
         navigationController?.pushViewController(settingCompletionViewController, animated: true)

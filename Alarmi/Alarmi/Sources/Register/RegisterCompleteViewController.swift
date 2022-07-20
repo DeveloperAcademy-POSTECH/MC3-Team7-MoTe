@@ -16,6 +16,10 @@ final class RegisterCompleteViewController: UIViewController {
     
     // MARK: View
     
+    var viewModel: RegisterViewwModel?
+    
+    let encoder = JSONEncoder()
+    
     private let descriptionStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -96,6 +100,7 @@ final class RegisterCompleteViewController: UIViewController {
 
     @objc private func buttonDidTap() {
         delegate?.finishRegister()
+        UserDefaults.standard.setValue(viewModel?.alarmData, forKey: "AlarmUser")
     }
 }
 
