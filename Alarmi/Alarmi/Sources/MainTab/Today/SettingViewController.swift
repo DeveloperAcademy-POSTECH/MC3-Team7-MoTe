@@ -35,6 +35,20 @@ final class SettingViewController: UIViewController {
         preferredStyle: .alert
     ))
     
+    private let initializeAppAlert: UIAlertController = {
+        let eraseAction = UIAlertAction(title: "초기화", style: .destructive) { _ in
+            // TODO: 앱 초기화
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        $0.addAction(eraseAction)
+        $0.addAction(cancelAction)
+        return $0
+    }(UIAlertController(
+        title: "앱을 정말 초기화하시겠어요?",
+        message: "모든 설정과 기록이 삭제되며, 되돌릴 수 없습니다.",
+        preferredStyle: .alert
+    ))
+    
     // MARK: Property
     
     private let defaultSettingList = ["전화 시간 변경", "목표 변경", "알림 설정"]
@@ -108,8 +122,10 @@ extension SettingViewController: UITableViewDelegate {
         settingTableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
             // TODO: 각 설정 화면으로 내비게이션
-        case 4:
+        case 3:
             present(eraseRecordAlert, animated: true)
+        case 4:
+            present(initializeAppAlert, animated: true)
         default:
             break
         }
