@@ -16,7 +16,7 @@ final class RegisterCompleteViewController: UIViewController {
     
     // MARK: View
     
-    var viewModel: RegisterViewwModel?
+    var viewModel: RegisterViewModel?
     
     let encoder = JSONEncoder()
     

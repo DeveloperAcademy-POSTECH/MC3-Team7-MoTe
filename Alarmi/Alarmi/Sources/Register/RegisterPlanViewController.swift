@@ -36,7 +36,7 @@ class RegisterPlanViewController: UIViewController {
 
     weak var delegate: RegisterPlanViewControllerDelegate?
 
-    var viewModel: RegisterViewwModel?
+    var viewModel: RegisterViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

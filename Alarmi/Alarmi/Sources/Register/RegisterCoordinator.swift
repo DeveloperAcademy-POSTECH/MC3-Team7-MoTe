@@ -22,11 +22,11 @@ final class RegisterCoordinator: Coordinator,
     weak var delegate: ReigsterCoordinatorDelegate?
 
     private var navigationController: UINavigationController!
-    private var registerViewModel: RegisterViewwModel!
+    private var registerViewModel: RegisterViewModel!
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.registerViewModel = RegisterViewwModel()
+        self.registerViewModel = RegisterViewModel()
     }
 
     func start() {

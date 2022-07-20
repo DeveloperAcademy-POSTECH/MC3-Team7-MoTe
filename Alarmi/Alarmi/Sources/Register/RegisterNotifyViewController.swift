@@ -52,7 +52,7 @@ final class RegisterNotifyViewController: UIViewController {
 
     weak var delegate: RegisterNotifyViewControllerDelegate?
 
-    var viewModel: RegisterViewwModel?
+    var viewModel: RegisterViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

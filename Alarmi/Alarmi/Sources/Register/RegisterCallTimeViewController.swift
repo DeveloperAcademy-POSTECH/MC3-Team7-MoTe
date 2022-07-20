@@ -22,7 +22,7 @@ class RegisterCallTimeViewController: UIViewController {
 
     weak var delegate: RegisterCallTimeViewControllerDelegate?
 
-    var viewModel: RegisterViewwModel?
+    var viewModel: RegisterViewModel?
     
     let myTimeZone: TimeZone! = TimeZone(identifier: "America/Los_Angeles")
     let parentTimeZone: TimeZone! = TimeZone(identifier: "Asia/Seoul")

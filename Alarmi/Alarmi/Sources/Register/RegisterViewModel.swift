@@ -8,10 +8,10 @@
 
 import Foundation
 
-final class RegisterViewwModel {
+final class RegisterViewModel {
     var alarmData: Alarm? = Alarm()
     
     deinit {
-        print("RegisterViewwModel deinit")
+        print("RegisterViewModel deinit")
     }
 }
