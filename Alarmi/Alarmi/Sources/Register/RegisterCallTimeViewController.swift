@@ -8,17 +8,37 @@
 
 import UIKit
 
-class CallTimeViewController: UIViewController {
+protocol RegisterCallTimeViewControllerDelegate: AnyObject {
+    func gotoRegisterPlanViewController()
+    func gotoRegisterPlanViewController(_ callTimeStart: String, _ callTimeEnd: String)
+}
 
+class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
     @IBOutlet weak var startTimeTransferredLabel: UILabel!
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
     @IBOutlet weak var myLocationTimezoneSegmentedControl: UISegmentedControl!
+
+    weak var delegate: RegisterCallTimeViewControllerDelegate?
+
+    var viewModel: RegisterViewwModel?
     
     let myTimeZone: TimeZone! = TimeZone(identifier: "America/Los_Angeles")
     let parentTimeZone: TimeZone! = TimeZone(identifier: "Asia/Seoul")
-
+    
+    lazy var startTime: String = "" {
+        didSet {
+            endTimeTransferredLabel.text = "한국은 \(startTime)"
+        }
+    }
+    
+    lazy var endTime: String = "" {
+        didSet {
+            endTimeTransferredLabel.text = "쿠퍼티노는 \(endTime)"
+        }
+    }
+    
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.title = "다음"
@@ -88,12 +108,12 @@ class CallTimeViewController: UIViewController {
             endTimePicker.timeZone = myTimeZone
             dateFormatter.timeZone = parentTimeZone
             let timeString = dateFormatter.string(from: sender.date)
-            endTimeTransferredLabel.text = "한국은 \(timeString)"
+            startTime = timeString
         case 1:
             endTimePicker.timeZone = parentTimeZone
             dateFormatter.timeZone = myTimeZone
             let timeString = dateFormatter.string(from: sender.date)
-            endTimeTransferredLabel.text = "쿠퍼티노는 \(timeString)"
+            startTime = timeString
         default:
             break
         }
@@ -113,8 +133,8 @@ class CallTimeViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
-        guard let settingPlanViewController = storyboard.instantiateViewController(withIdentifier: "SettingPlanViewController") as? SettingPlanViewController else { return }
-        navigationController?.pushViewController(settingPlanViewController, animated: true)
+        viewModel?.alarmData?.callTimeStart = startTime
+        viewModel?.alarmData?.callTimeEnd = endTime
+        delegate?.gotoRegisterPlanViewController()
     }
 }

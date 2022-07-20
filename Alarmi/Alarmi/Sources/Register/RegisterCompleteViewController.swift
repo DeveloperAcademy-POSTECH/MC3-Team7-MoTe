@@ -8,9 +8,17 @@
 
 import UIKit
 
-final class SettingCompleteViewController: UIViewController {
+protocol RegisterCompleteViewControllerDelegate: AnyObject {
+    func finishRegister()
+}
+
+final class RegisterCompleteViewController: UIViewController {
     
     // MARK: View
+    
+    var viewModel: RegisterViewwModel?
+    
+    let encoder = JSONEncoder()
     
     private let descriptionStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +60,8 @@ final class SettingCompleteViewController: UIViewController {
         return $0
     }(AMButton())
 
+    weak var delegate: RegisterCompleteViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,22 +99,8 @@ final class SettingCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        guard let window = UIApplication.shared.keyWindow else {
-            return
-        }
-        let mainTabBarController = MainTabBarController()
-        window.rootViewController = mainTabBarController
-
-        let options: UIView.AnimationOptions = .transitionCrossDissolve
-        let duration: TimeInterval = 0.3
-
-        UIView.transition(with: window,
-                          duration: duration,
-                          options: options,
-                          animations: {},
-                          completion: { _ in
-
-        })
+        delegate?.finishRegister()
+        UserDefaults.standard.setValue(viewModel?.alarmData, forKey: "AlarmUser")
     }
 }
 
@@ -115,7 +111,7 @@ import SwiftUI
 
 struct SettingCompleteViewController_Preview: PreviewProvider {
     static var previews: some View {
-        SettingCompleteViewController()
+        RegisterCompleteViewController()
             .toPreview()
             .ignoresSafeArea()
     }

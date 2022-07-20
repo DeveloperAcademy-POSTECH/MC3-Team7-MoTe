@@ -33,23 +33,20 @@ final class MainTabBarController: UITabBarController {
         }
     }
 
-    private let todayViewController: UINavigationController = {
-        let todayViewController = TodayViewController()
-        todayViewController.view.backgroundColor = .systemGroupedBackground
-        return todayViewController.wrappedByNavigationController()
-    }()
+    private let todayViewController: UINavigationController!
+    private let recordViewController: UINavigationController!
 
-    private let recordViewController: UINavigationController = {
-        let recordViewController = RecordViewController()
-        recordViewController.view.backgroundColor = .systemGroupedBackground
-        return recordViewController.wrappedByNavigationController()
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    init(todayNavigationController: UINavigationController,
+         recordNavigationController: UINavigationController) {
+        self.todayViewController = todayNavigationController
+        self.recordViewController = recordNavigationController
+        super.init(nibName: nil, bundle: nil)
         setup()
         attribute()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func setup() {
