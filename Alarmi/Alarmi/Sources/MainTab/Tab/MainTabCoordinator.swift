@@ -12,24 +12,25 @@ final class MainTabCoordinator: Coordinator,
                                 TodayViewControllerDelegate {
 
     var childCoordinators: [Coordinator] = []
+    private var tabBarController: MainTabBarController!
     private var navigationController: UINavigationController!
     private var todayNavigationController: UINavigationController!
-    private var recordNavgigationController: UINavigationController!
+    private var recordNavigationController: UINavigationController!
 
     init(navigationController: UINavigationController) {
         navigationController.navigationBar.isHidden = true
         self.navigationController = navigationController
         self.todayNavigationController = UINavigationController()
-        self.recordNavgigationController = UINavigationController()
+        self.recordNavigationController = UINavigationController()
         todayNavigationController.navigationBar.prefersLargeTitles = true
-        recordNavgigationController.navigationBar.prefersLargeTitles = true
+        recordNavigationController.navigationBar.prefersLargeTitles = true
     }
 
     func start() {
         setupTodayNavigationController()
         setupRecordNavgigationController()
         let viewController = MainTabBarController(todayNavigationController: todayNavigationController,
-                                                  recordNavigationController: recordNavgigationController)
+                                                  recordNavigationController: recordNavigationController)
         navigationController.viewControllers = [viewController]
     }
 
@@ -41,7 +42,8 @@ final class MainTabCoordinator: Coordinator,
     func presentCallDelayViewController() {
         let callDelayViewController = CallDelayViewController()
         let navigationController = callDelayViewController.wrappedByNavigationController()
-        todayNavigationController.viewControllers[0].present(navigationController, animated: true)
+        guard let today = todayNavigationController.viewControllers.first else { return }
+        today.present(navigationController, animated: true)
     }
 }
 
@@ -54,6 +56,6 @@ extension MainTabCoordinator {
 
     private func setupRecordNavgigationController() {
         let recordViewController = RecordViewController()
-        recordNavgigationController.viewControllers = [recordViewController]
+        recordNavigationController.viewControllers = [recordViewController]
     }
 }
