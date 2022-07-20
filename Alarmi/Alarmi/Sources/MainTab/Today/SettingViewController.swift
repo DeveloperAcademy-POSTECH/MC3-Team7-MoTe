@@ -37,8 +37,8 @@ final class SettingViewController: UIViewController {
     
     // MARK: Property
     
-    private let defaultSettingList = ["나라 변경", "전화 시간 변경", "목표 변경", "알림 설정"]
-    private let destructiveSettingList = ["기록 초기화"]
+    private let defaultSettingList = ["전화 시간 변경", "목표 변경", "알림 설정"]
+    private let destructiveSettingList = ["기록 초기화", "앱 초기화"]
     
     // MARK: Life Cycle
 
