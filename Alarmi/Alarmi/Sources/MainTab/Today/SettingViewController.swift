@@ -37,7 +37,8 @@ final class SettingViewController: UIViewController {
     
     // MARK: Property
     
-    private let settingList = ["나라 변경", "전화 시간 변경", "목표 변경", "알림 설정", "기록 초기화"]
+    private let defaultSettingList = ["나라 변경", "전화 시간 변경", "목표 변경", "알림 설정"]
+    private let destructiveSettingList = ["기록 초기화"]
     
     // MARK: Life Cycle
 
@@ -77,14 +78,15 @@ final class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingList.count
+        return defaultSettingList.count + destructiveSettingList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: .none)
-        let text = settingList[indexPath.row]
-        let textColor: UIColor = indexPath.row < 4 ? .label : .systemRed
-        let accessoryType: UITableViewCell.AccessoryType = indexPath.row < 4 ? .disclosureIndicator : .none
+        let isDestructive = indexPath.row < defaultSettingList.count
+        let text = isDestructive ? defaultSettingList[indexPath.row] : destructiveSettingList[indexPath.row - defaultSettingList.count]
+        let textColor: UIColor = isDestructive ? .label : .systemRed
+        let accessoryType: UITableViewCell.AccessoryType = isDestructive ? .disclosureIndicator : .none
         
         var content = cell.defaultContentConfiguration()
         content.text = text
