@@ -35,9 +35,24 @@ final class SettingViewController: UIViewController {
         preferredStyle: .alert
     ))
     
+    private let initializeAppAlert: UIAlertController = {
+        let eraseAction = UIAlertAction(title: "초기화", style: .destructive) { _ in
+            // TODO: 앱 초기화
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        $0.addAction(eraseAction)
+        $0.addAction(cancelAction)
+        return $0
+    }(UIAlertController(
+        title: "앱을 정말 초기화하시겠어요?",
+        message: "모든 설정과 기록이 삭제되며, 되돌릴 수 없습니다.",
+        preferredStyle: .alert
+    ))
+    
     // MARK: Property
     
-    private let settingList = ["나라 변경", "전화 시간 변경", "목표 변경", "알림 설정", "기록 초기화"]
+    private let defaultSettingList = ["전화 시간 변경", "목표 변경", "알림 설정"]
+    private let destructiveSettingList = ["기록 초기화", "앱 초기화"]
     
     // MARK: Life Cycle
 
@@ -77,14 +92,16 @@ final class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingList.count
+        return defaultSettingList.count + destructiveSettingList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: .none)
-        let text = settingList[indexPath.row]
-        let textColor: UIColor = indexPath.row < 4 ? .label : .systemRed
-        let accessoryType: UITableViewCell.AccessoryType = indexPath.row < 4 ? .disclosureIndicator : .none
+        let destructiveIndex = indexPath.row - defaultSettingList.count
+        let isDestructive = indexPath.row < defaultSettingList.count
+        let text = isDestructive ? defaultSettingList[indexPath.row] : destructiveSettingList[destructiveIndex]
+        let textColor: UIColor = isDestructive ? .label : .systemRed
+        let accessoryType: UITableViewCell.AccessoryType = isDestructive ? .disclosureIndicator : .none
         
         var content = cell.defaultContentConfiguration()
         content.text = text
@@ -105,8 +122,10 @@ extension SettingViewController: UITableViewDelegate {
         settingTableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
             // TODO: 각 설정 화면으로 내비게이션
-        case 4:
+        case 3:
             present(eraseRecordAlert, animated: true)
+        case 4:
+            present(initializeAppAlert, animated: true)
         default:
             break
         }
