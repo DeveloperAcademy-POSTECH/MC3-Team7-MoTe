@@ -9,7 +9,6 @@
 import Foundation
 
 struct CallTime {
-    var isAlarm: Bool
-    var isAlarmAgain: Bool
-    var alarmRepeatCount: Int
+    var start: Date
+    var end: Date
 }

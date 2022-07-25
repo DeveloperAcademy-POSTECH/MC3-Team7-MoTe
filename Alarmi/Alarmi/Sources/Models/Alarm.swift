@@ -9,7 +9,7 @@
 import Foundation
 
 struct Alarm {
-  var isAlarm: Bool
-  var isAlarmAgain: Bool
-  var alarmRepeatCount: Int
+    var isAlarm: Bool
+    var isAlarmAgain: Bool
+    var alarmRepeatCount: Int
 }
