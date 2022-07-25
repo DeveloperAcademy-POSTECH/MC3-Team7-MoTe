@@ -1,5 +1,5 @@
 //
-//  Alarm.swift
+//  PushAlarm.swift
 //  Alarmi
 //
 //  Created by Woody on 2022/07/25.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct Alarm {
-  var isAlarm: Bool
-  var isAlarmAgain: Bool
-  var alarmRepeatCount: Int
+struct PushAlarm {
+    var index: Int
+    var text: String
 }
