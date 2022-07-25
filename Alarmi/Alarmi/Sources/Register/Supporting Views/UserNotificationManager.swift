@@ -9,6 +9,17 @@
 import UserNotifications
 
 final class UserNotificationManager {
+    private let notificationCenter = UNUserNotificationCenter.current()
+    private let contactStartDay = "20220701"
+    private let notificationPeriod = 7 // 7일에 한번씩 연락한다고 했을 때
+    private let lastContactDay = "20220710"
+
+    // 유저가 연락커밋을 했을때, remove 해주고, 그다음에 다시 make해주면 될듯?
+    // remove 하고 contactStartDay가 그날짜로 갱신되어야함
+    func removeAllPendingRequest() {
+        notificationCenter.removeAllPendingNotificationRequests()
+        print("request 전부 삭제")
+    }
 
     func makeNotificationContent() -> UNMutableNotificationContent {
         let notificationContent = UNMutableNotificationContent()
