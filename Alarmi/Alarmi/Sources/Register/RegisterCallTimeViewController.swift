@@ -33,16 +33,13 @@ class RegisterCallTimeViewController: UIViewController {
     lazy var startTime: String = myFormatter.string(from: current)
     lazy var endTime: String = myFormatter.string(from: current)
     
-    
-    private let parentFormatter: DateFormatter = {
-        formatter in
+    private let parentFormatter: DateFormatter = { formatter in
         formatter.dateFormat = "a hh:mm"
         formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         return formatter
     }(DateFormatter())
     
-    private let myFormatter: DateFormatter = {
-        formatter in
+    private let myFormatter: DateFormatter = { formatter in
         formatter.dateFormat = "a hh:mm"
         formatter.timeZone = TimeZone.autoupdatingCurrent
         return formatter
@@ -116,7 +113,6 @@ class RegisterCallTimeViewController: UIViewController {
     }
     
     @IBAction func myLocationTimezoneSegmentedControlAction(_ sender: UISegmentedControl) {
-        
             switch sender.selectedSegmentIndex {
             case 0:
                 startTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
