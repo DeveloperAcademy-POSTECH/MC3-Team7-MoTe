@@ -9,6 +9,6 @@
 import Foundation
 
 struct Goal {
-    var start: String
-    var end: String
+    var startDate: Date
+    var period: Int
 }
