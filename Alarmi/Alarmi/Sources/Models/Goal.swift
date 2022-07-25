@@ -1,5 +1,5 @@
 //
-//  Alarm.swift
+//  Goal.swift
 //  Alarmi
 //
 //  Created by Woody on 2022/07/25.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct Alarm {
-  var isAlarm: Bool
-  var isAlarmAgain: Bool
-  var alarmRepeatCount: Int
+struct Goal {
+    var start: String
+    var end: String
 }
