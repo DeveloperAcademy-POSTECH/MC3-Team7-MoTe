@@ -23,20 +23,12 @@ class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
     @IBOutlet weak var myLocationTimezoneSegmentedControl: UISegmentedControl!
 
-    private lazy var button: AMButton = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.title = "다음"
-        $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
-        return $0
-    }(AMButton())
-    
     weak var delegate: RegisterCallTimeViewControllerDelegate?
     weak var tabDelegate: MainTabRegisterCallTimeViewControllerDelegate?
-    
-    var viewModel: RegisterViewModel?
-    let current = Date()
-    lazy var startTime: String = myFormatter.string(from: current)
-    lazy var endTime: String = myFormatter.string(from: current)
+
+    private let current = Date()
+    private lazy var startTime: String = myFormatter.string(from: current)
+    private lazy var endTime: String = myFormatter.string(from: current)
     
     private let parentFormatter: DateFormatter = { formatter in
         formatter.dateFormat = "a hh:mm"
@@ -57,23 +49,14 @@ class RegisterCallTimeViewController: UIViewController {
         return $0
     }(AMButton())
 
-    enum ButtonType {
-        case next
-        case edit
-
-        var title: String {
-            switch self {
-            case .next:
-                return "다음"
-            case .edit:
-                return "완료"
-            }
-        }
+    enum ButtonType: String {
+        case register = "다음"
+        case setting = "수정하기"
     }
 
-    var type: ButtonType = .next {
+    var type: ButtonType = .register {
         didSet {
-            button.title = type.title
+            button.setTitle(type.rawValue, for: .normal)
         }
     }
 
@@ -105,14 +88,6 @@ class RegisterCallTimeViewController: UIViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
-
-    private func configureNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        title = "전화 시간"
-    }
-
-    private func configureBackground() {
-        view.backgroundColor = .systemGroupedBackground
 
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
         switch myLocationTimezoneSegmentedControl.selectedSegmentIndex {
@@ -165,16 +140,16 @@ class RegisterCallTimeViewController: UIViewController {
                 break
             }
     }
+}
+
+extension RegisterCallTimeViewController {
 
     @objc private func buttonDidTap() {
         switch type {
-        case .next:
-            viewModel?.alarmData?.callTimeStart = startTime
-            viewModel?.alarmData?.callTimeEnd = endTime
+        case .register:
             delegate?.gotoRegisterPlanViewController()
-        case .edit:
+        case .setting:
             tabDelegate?.gotoBack()
         }
-
     }
 }

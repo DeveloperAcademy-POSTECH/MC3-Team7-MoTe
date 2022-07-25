@@ -9,7 +9,8 @@
 import UIKit
 
 class AppCoordinator: Coordinator,
-                      ReigsterCoordinatorDelegate {
+                      ReigsterCoordinatorDelegate,
+                      MainTabCoordinatorDelegate {
     var childCoordinators: [Coordinator] = []
     private var navigationController: UINavigationController!
 
@@ -30,6 +31,7 @@ class AppCoordinator: Coordinator,
 
     private func showMainTabController() {
         let coordinator = MainTabCoordinator(navigationController: navigationController)
+        coordinator.delegate = self
         coordinator.start()
         childCoordinators.append(coordinator)
     }
@@ -44,6 +46,11 @@ class AppCoordinator: Coordinator,
     func didRegister(_ coordinator: RegisterCoordinator) {
         childCoordinators = childCoordinators.filter { $0 !== coordinator }
         showMainTabController()
+    }
+
+    func reset(_ coordinator: RegisterCoordinator) {
+        childCoordinators = childCoordinators.filter { $0 !== coordinator }
+        showRegisterControllers()
     }
 
 }

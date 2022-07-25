@@ -61,14 +61,16 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
 
     private let notificationCenter = UNUserNotificationCenter.current()
 
-    enum ButtonTpye {
-        case next
-        case edit
+    enum ButtonType: String {
+        case register = "다음"
+        case setting = "수정하기"
     }
 
-    var type: ButtonTpye = .next
-
-    var viewModel: RegisterViewModel?
+    var type: ButtonType = .register {
+        didSet {
+            button.setTitle(type.rawValue, for: .normal)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,24 +164,23 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
 
     @objc private func buttonDidTap() {
         switch type {
-        case .next:
+        case .register:
             delegate?.gotoRegisterCompleteViewController()
-            print(viewModel?.alarmData)
-        case .edit:
+        case .setting:
             tabDelegate?.gotoBack()
         }
 
     }
 
     func alarmSwitchDidValueChanged(_ isOn: Bool) {
-        viewModel?.alarmData?.isCall = isOn
+
     }
 
     func reAlarmSwitchDidValueChanged(_ isOn: Bool) {
-        viewModel?.alarmData?.isReCall = isOn
+        
     }
 
     func sliderDidValueChanged(_ value: Int) {
-        viewModel?.alarmData?.numAlertCall = value
+
     }
 }

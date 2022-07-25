@@ -28,7 +28,7 @@ class RegisterPlanViewController: UIViewController {
         }
     }
     
-    lazy var callTimeStartDate: String = calcDate()
+    private lazy var callTimeStartDate: String = calcDate()
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -40,27 +40,17 @@ class RegisterPlanViewController: UIViewController {
     weak var delegate: RegisterPlanViewControllerDelegate?
     weak var tabDelegate: MainTabRegisterPlanViewControllerDelegate?
 
-    enum ButtonType {
-        case next
-        case edit
-
-        var title: String {
-            switch self {
-            case .next:
-                return "다음"
-            case .edit:
-                return "완료"
-            }
-        }
+    enum ButtonType: String {
+        case register = "다음"
+        case setting = "수정하기"
     }
 
-    var type: ButtonType = .next {
+    var type: ButtonType = .register {
         didSet {
-
+            button.setTitle(type.rawValue, for: .normal)
         }
     }
-    var viewModel: RegisterViewModel?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,16 +94,15 @@ class RegisterPlanViewController: UIViewController {
         let timeString = dateFormatter.string(from: sender.date)
         callTimeStartDate = timeString
     }
-    
+}
+
+extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
         switch type {
-        case .next:
-            viewModel?.alarmData?.startDate = callTimeStartDate
-            viewModel?.alarmData?.callPeriod = callTimePeriod
+        case .register:
             delegate?.gotoRegisterNotifyViewController()
-        case .edit:
+        case .setting:
             tabDelegate?.gotoBack()
         }
-
     }
 }

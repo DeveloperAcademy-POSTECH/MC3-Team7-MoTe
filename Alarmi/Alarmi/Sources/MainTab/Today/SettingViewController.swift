@@ -12,6 +12,7 @@ protocol SettingViewControllerDelegate: AnyObject {
     func gotoRegisterCallTimeViewController()
     func gotoRegisterPlanViewController()
     func gotoRegisterNotifyViewController()
+    func backtoTodayViewController()
 }
 final class SettingViewController: UIViewController {
     
