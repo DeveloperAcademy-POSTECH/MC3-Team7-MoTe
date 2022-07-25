@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AlarmSetViewProtocol: AnyObject {
+    func alarmSwitchDidValueChanged(_ isOn: Bool)
+}
+
 final class AlarmSetView: UIView {
 
     // MARK: Views
@@ -54,6 +58,8 @@ final class AlarmSetView: UIView {
 
     // MARK: Property
 
+    weak var delegate: AlarmSetViewProtocol?
+
     var alarmSwitchChanged: ((Bool) -> Void)?
 
     // MARK: Life Cycle
@@ -95,9 +101,9 @@ final class AlarmSetView: UIView {
 }
 
 extension AlarmSetView {
-
     @objc private func alarmSwitchValueChanged() {
         let isOn = alarmSwitch.isOn
         alarmSwitchChanged?(isOn)
+        delegate?.alarmSwitchDidValueChanged(isOn)
     }
 }

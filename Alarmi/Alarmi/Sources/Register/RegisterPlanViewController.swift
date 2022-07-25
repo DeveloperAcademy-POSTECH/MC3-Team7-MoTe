@@ -10,7 +10,10 @@ import UIKit
 
 protocol RegisterPlanViewControllerDelegate: AnyObject {
     func gotoRegisterNotifyViewController()
-    func gotoRegisterNotifyViewController(_ callTimePeriod: Int, _ callTimeStartDate: String)
+}
+
+protocol MainTabRegisterPlanViewControllerDelegate: AnyObject {
+    func gotoBack()
 }
 
 class RegisterPlanViewController: UIViewController {
@@ -25,7 +28,7 @@ class RegisterPlanViewController: UIViewController {
         }
     }
     
-    lazy var callTimeStartDate: String = calcDate()
+    private lazy var callTimeStartDate: String = calcDate()
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -35,9 +38,19 @@ class RegisterPlanViewController: UIViewController {
     }(AMButton())
 
     weak var delegate: RegisterPlanViewControllerDelegate?
+    weak var tabDelegate: MainTabRegisterPlanViewControllerDelegate?
 
-    var viewModel: RegisterViewModel?
-    
+    enum ButtonType: String {
+        case register = "다음"
+        case setting = "수정하기"
+    }
+
+    var type: ButtonType = .register {
+        didSet {
+            button.setTitle(type.rawValue, for: .normal)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,10 +94,15 @@ class RegisterPlanViewController: UIViewController {
         let timeString = dateFormatter.string(from: sender.date)
         callTimeStartDate = timeString
     }
-    
+}
+
+extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
-        viewModel?.alarmData?.startDate = callTimeStartDate
-        viewModel?.alarmData?.callPeriod = callTimePeriod
-        delegate?.gotoRegisterNotifyViewController()
+        switch type {
+        case .register:
+            delegate?.gotoRegisterNotifyViewController()
+        case .setting:
+            tabDelegate?.gotoBack()
+        }
     }
 }

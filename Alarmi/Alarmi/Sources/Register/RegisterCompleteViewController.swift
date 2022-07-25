@@ -15,9 +15,7 @@ protocol RegisterCompleteViewControllerDelegate: AnyObject {
 final class RegisterCompleteViewController: UIViewController {
     
     // MARK: View
-    
-    var viewModel: RegisterViewModel?
-    
+
     let encoder = JSONEncoder()
     
     private let descriptionStack: UIStackView = {
@@ -100,7 +98,6 @@ final class RegisterCompleteViewController: UIViewController {
 
     @objc private func buttonDidTap() {
         delegate?.finishRegister()
-        UserDefaults.standard.setValue(viewModel?.alarmData, forKey: "AlarmUser")
     }
 }
 

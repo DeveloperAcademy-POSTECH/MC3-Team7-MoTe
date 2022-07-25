@@ -10,7 +10,10 @@ import UIKit
 
 protocol RegisterCallTimeViewControllerDelegate: AnyObject {
     func gotoRegisterPlanViewController()
-    func gotoRegisterPlanViewController(_ callTimeStart: String, _ callTimeEnd: String)
+}
+
+protocol MainTabRegisterCallTimeViewControllerDelegate: AnyObject {
+    func gotoBack()
 }
 
 class RegisterCallTimeViewController: UIViewController {
@@ -20,18 +23,12 @@ class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
     @IBOutlet weak var myLocationTimezoneSegmentedControl: UISegmentedControl!
 
-    private lazy var button: AMButton = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.title = "다음"
-        $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
-        return $0
-    }(AMButton())
-    
     weak var delegate: RegisterCallTimeViewControllerDelegate?
-    var viewModel: RegisterViewModel?
-    
-    lazy var startTime: String = myFormatter.string(from: current)
-    lazy var endTime: String = myFormatter.string(from: current)
+    weak var tabDelegate: MainTabRegisterCallTimeViewControllerDelegate?
+
+    private let current = Date()
+    private lazy var startTime: String = myFormatter.string(from: current)
+    private lazy var endTime: String = myFormatter.string(from: current)
     
     private let parentFormatter: DateFormatter = { formatter in
         formatter.dateFormat = "a hh:mm"
@@ -45,9 +42,31 @@ class RegisterCallTimeViewController: UIViewController {
         return formatter
     }(DateFormatter())
     
-    let current = Date()
-    let myTimeZone: TimeZone! = TimeZone.autoupdatingCurrent
-    let parentTimeZone: TimeZone! = TimeZone(identifier: "Asia/Seoul")
+    private lazy var button: AMButton = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.title = "다음"
+        $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+        return $0
+    }(AMButton())
+
+    enum ButtonType: String {
+        case register = "다음"
+        case setting = "수정하기"
+    }
+
+    var type: ButtonType = .register {
+        didSet {
+            button.setTitle(type.rawValue, for: .normal)
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        startTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
+        endTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
+        attribute()
+        layout()
+    }
     
     private func attribute() {
         configureNavigationBar()
@@ -69,15 +88,7 @@ class RegisterCallTimeViewController: UIViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        startTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
-        endTimeTransferredLabel.text = "한국은 \(parentFormatter.string(from: current))"
-        attribute()
-        layout()
-    }
-    
+
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
         switch myLocationTimezoneSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -94,7 +105,7 @@ class RegisterCallTimeViewController: UIViewController {
             break
         }
     }
-    
+
     @IBAction func endTimePickerAction(_ sender: UIDatePicker) {
         switch myLocationTimezoneSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -129,10 +140,16 @@ class RegisterCallTimeViewController: UIViewController {
                 break
             }
     }
+}
+
+extension RegisterCallTimeViewController {
 
     @objc private func buttonDidTap() {
-        viewModel?.alarmData?.callTimeStart = startTime
-        viewModel?.alarmData?.callTimeEnd = endTime
-        delegate?.gotoRegisterPlanViewController()
+        switch type {
+        case .register:
+            delegate?.gotoRegisterPlanViewController()
+        case .setting:
+            tabDelegate?.gotoBack()
+        }
     }
 }

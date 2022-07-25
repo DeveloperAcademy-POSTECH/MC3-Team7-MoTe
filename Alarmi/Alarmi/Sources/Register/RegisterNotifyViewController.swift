@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol RegisterNotifyViewControllerDelegate: AnyObject {
     func gotoRegisterCompleteViewController()
-    func gotoRegisterCompleteViewController(_ isCall: Bool, _ isReCall: Bool, _ numAlertCall: Int)
 }
 
-final class RegisterNotifyViewController: UIViewController {
+protocol MainTabRegisterNotifyViewControllerDelegate: AnyObject {
+    func gotoBack()
+}
+
+final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol, AlarmAgainSetViewProtocol {
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "마지막으로 전화한지 7일이 되면 알림을 보내드려요."
@@ -26,11 +30,13 @@ final class RegisterNotifyViewController: UIViewController {
         $0.alarmSwitchChanged = { [weak self] isOn in
             self?.animateAlarmAgainSetView(isOn)
         }
+        $0.delegate = self
         return $0
     }(AlarmSetView())
 
     private lazy var alarmAgainSetView: AlarmAgainSetView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.delegate = self
         return $0
     }(AlarmAgainSetView())
 
@@ -51,9 +57,21 @@ final class RegisterNotifyViewController: UIViewController {
     }(AMButton())
 
     weak var delegate: RegisterNotifyViewControllerDelegate?
+    weak var tabDelegate: MainTabRegisterNotifyViewControllerDelegate?
 
-    var viewModel: RegisterViewModel?
-    
+    private let notificationCenter = UNUserNotificationCenter.current()
+
+    enum ButtonType: String {
+        case register = "다음"
+        case setting = "수정하기"
+    }
+
+    var type: ButtonType = .register {
+        didSet {
+            button.setTitle(type.rawValue, for: .normal)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,6 +82,7 @@ final class RegisterNotifyViewController: UIViewController {
     private func attribute() {
         setup()
         setupNavigationBar()
+        generateUserNotification()
     }
 
     private func layout() {
@@ -122,11 +141,46 @@ final class RegisterNotifyViewController: UIViewController {
         }, completion: nil)
     }
 
+    private func generateUserNotification() {
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if granted {
+                    let content = UNMutableNotificationContent()
+                    content.title = "아직 전화하지 않았어요"
+                    content.subtitle = "아들아 보고싶다!!!"
+                    content.body = "전화한지 3일이 지났어요 ㅠㅠ 🥹"
+                    content.badge = 1
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    let request = UNNotificationRequest(identifier: "Sample Notification", content: content, trigger: trigger)
+                    self.notificationCenter.add(request, withCompletionHandler: nil)
+                } else {
+                    print("Not Granted")
+                }
+            }
+        }
+    }
+
     @objc private func buttonDidTap() {
-//        viewModel?.alarmData?.isCall = isCall
-//        viewModel?.alarmData?.isReCall = isReCall
-//        viewModel?.alarmData?.numAlertCall = numAlertCall
-        delegate?.gotoRegisterCompleteViewController()
-        print(viewModel?.alarmData)
+        switch type {
+        case .register:
+            delegate?.gotoRegisterCompleteViewController()
+        case .setting:
+            tabDelegate?.gotoBack()
+        }
+
+    }
+
+    func alarmSwitchDidValueChanged(_ isOn: Bool) {
+
+    }
+
+    func reAlarmSwitchDidValueChanged(_ isOn: Bool) {
+        
+    }
+
+    func sliderDidValueChanged(_ value: Int) {
+
     }
 }
