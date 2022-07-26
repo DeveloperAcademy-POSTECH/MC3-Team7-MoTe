@@ -92,6 +92,7 @@ final class RegisterPlanViewController: UIViewController {
     @IBAction func settingDayStepper(_ sender: UIStepper) {
         let value = sender.value
         callTimePeriod = Int(value)
+        saveGoal.period = callTimePeriod
     }
     
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
@@ -100,9 +101,10 @@ final class RegisterPlanViewController: UIViewController {
         let timeString: Date = sender.date
         callTimeStartDate = timeString
         saveGoal.startDate = callTimeStartDate
-        
     }
 }
+
+let encoder = JSONEncoder()
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
@@ -111,6 +113,9 @@ extension RegisterPlanViewController {
             delegate?.gotoRegisterNotifyViewController()
         case .setting:
             tabDelegate?.gotoBack()
+        }
+        if let encoded = try? encoder.encode(saveGoal) {
+            UserDefaults.standard.setValue(encoded, forKey: "saveGoal")
         }
     }
 }
