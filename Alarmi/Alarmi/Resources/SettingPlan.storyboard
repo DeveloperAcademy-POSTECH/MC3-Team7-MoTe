@@ -79,7 +79,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="STa-iL-Iqz" firstAttribute="leading" secondItem="vWN-FC-Xy9" secondAttribute="leading" constant="16" id="0W2-3X-xb4"/>
                                     <constraint firstAttribute="trailing" secondItem="STa-iL-Iqz" secondAttribute="trailing" constant="16" id="4Em-lb-M3c"/>
@@ -142,9 +142,6 @@
     <resources>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

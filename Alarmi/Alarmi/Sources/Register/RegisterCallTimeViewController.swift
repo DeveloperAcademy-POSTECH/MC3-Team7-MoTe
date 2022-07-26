@@ -142,6 +142,10 @@ class RegisterCallTimeViewController: UIViewController {
     }
 }
 
+private let encoder = JSONEncoder()
+
+private var registerCallTime = CallTime(start: Date(), end: Date())
+
 extension RegisterCallTimeViewController {
 
     @objc private func buttonDidTap() {
@@ -150,6 +154,9 @@ extension RegisterCallTimeViewController {
             delegate?.gotoRegisterPlanViewController()
         case .setting:
             tabDelegate?.gotoBack()
+        }
+        if let encoded = try? encoder.encode(registerCallTime) {
+            UserDefaults.standard.setValue(encoded, forKey: "CallTime")
         }
     }
 }

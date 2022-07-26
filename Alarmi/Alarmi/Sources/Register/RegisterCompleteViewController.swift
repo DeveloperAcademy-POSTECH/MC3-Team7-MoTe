@@ -97,6 +97,12 @@ final class RegisterCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
+        if let savedData = UserDefaults.standard.object(forKey: "Alarm") as? Data {
+            let decoder = JSONDecoder()
+            if let savedObject = try? decoder.decode(Alarm.self, from: savedData) {
+                print(savedObject)
+            }
+        }
         delegate?.finishRegister()
     }
 }

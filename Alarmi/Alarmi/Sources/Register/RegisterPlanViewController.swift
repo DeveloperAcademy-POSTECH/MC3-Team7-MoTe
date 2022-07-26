@@ -111,7 +111,7 @@ final class RegisterPlanViewController: UIViewController {
     }
 }
 
-let encoder = JSONEncoder()
+private let encoder = JSONEncoder()
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
@@ -122,7 +122,7 @@ extension RegisterPlanViewController {
             tabDelegate?.gotoBack()
         }
         if let encoded = try? encoder.encode(saveGoal) {
-            UserDefaults.standard.setValue(encoded, forKey: "saveGoal")
+            UserDefaults.standard.setValue(encoded, forKey: "Goal")
         }
     }
 }

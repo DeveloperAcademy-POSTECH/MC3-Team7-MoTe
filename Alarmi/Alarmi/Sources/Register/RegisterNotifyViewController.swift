@@ -161,7 +161,11 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
             }
         }
     }
+    
+    private let encoder = JSONEncoder()
 
+    private var registerAlarm = Alarm(isAlarm: true, isAlarmAgain: true, alarmRepeatCount: 5)
+    
     @objc private func buttonDidTap() {
         switch type {
         case .register:
@@ -169,7 +173,9 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
         case .setting:
             tabDelegate?.gotoBack()
         }
-
+        if let encoded = try? encoder.encode(registerAlarm) {
+            UserDefaults.standard.setValue(encoded, forKey: "Alarm")
+        }
     }
 
     func alarmSwitchDidValueChanged(_ isOn: Bool) {
