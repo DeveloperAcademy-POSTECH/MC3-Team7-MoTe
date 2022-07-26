@@ -82,7 +82,6 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
     private func attribute() {
         setup()
         setupNavigationBar()
-        generateUserNotification()
     }
 
     private func layout() {
@@ -139,27 +138,6 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
             self.alarmAgainSetDescriptionLabel.layer.opacity = opacity
             self.alarmAgainSetView.isUserInteractionEnabled = isUserInteractionEnabled
         }, completion: nil)
-    }
-
-    private func generateUserNotification() {
-        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if let error = error {
-                print(error)
-            } else {
-                if granted {
-                    let content = UNMutableNotificationContent()
-                    content.title = "아직 전화하지 않았어요"
-                    content.subtitle = "아들아 보고싶다!!!"
-                    content.body = "전화한지 3일이 지났어요 ㅠㅠ 🥹"
-                    content.badge = 1
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                    let request = UNNotificationRequest(identifier: "Sample Notification", content: content, trigger: trigger)
-                    self.notificationCenter.add(request, withCompletionHandler: nil)
-                } else {
-                    print("Not Granted")
-                }
-            }
-        }
     }
 
     @objc private func buttonDidTap() {
