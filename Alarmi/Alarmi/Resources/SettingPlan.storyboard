@@ -106,7 +106,8 @@
                     <navigationItem key="navigationItem" title="목표" largeTitleDisplayMode="always" id="nre-KA-2FK"/>
                     <connections>
                         <outlet property="settingDayLabel" destination="1Ej-24-XeL" id="o6P-GG-siU"/>
-                        <outlet property="settingDayStepper" destination="tb8-aC-X8G" id="fWy-QS-IFe"/>
+                        <outlet property="settingDayStepper" destination="tb8-aC-X8G" id="fRS-UC-w5m"/>
+                        <outlet property="startDatePicker" destination="cGg-Ty-44o" id="mOR-8J-1NG"/>
                         <outlet property="titleLabel" destination="KpN-w2-sXu" id="f3U-Sa-4zT"/>
                         <outletCollection property="containerViews" destination="vWN-FC-Xy9" collectionClass="NSMutableArray" id="ytz-Af-pOr"/>
                         <outletCollection property="containerViews" destination="hI4-03-WPT" collectionClass="NSMutableArray" id="7Cq-1V-jKV"/>

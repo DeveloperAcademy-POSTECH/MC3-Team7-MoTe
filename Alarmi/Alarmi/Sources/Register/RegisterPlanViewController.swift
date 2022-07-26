@@ -18,6 +18,7 @@ protocol MainTabRegisterPlanViewControllerDelegate: AnyObject {
 
 final class RegisterPlanViewController: UIViewController {
     
+    @IBOutlet var startDatePicker: UIDatePicker!
     @IBOutlet private var containerViews: [UIView]!
     @IBOutlet private var settingDayLabel: UILabel!
     @IBOutlet private var titleLabel: UILabel!
@@ -57,9 +58,14 @@ final class RegisterPlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setMinimumDate()
         settingDayStepper.value = 7
         attribute()
         layout()
+    }
+    
+    private func setMinimumDate() {
+        startDatePicker.minimumDate = Date()
     }
     
     private func calcDate() -> Date {
@@ -94,10 +100,11 @@ final class RegisterPlanViewController: UIViewController {
         callTimePeriod = Int(value)
         saveGoal.period = callTimePeriod
     }
-    
+
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         let timeString: Date = sender.date
         callTimeStartDate = timeString
         saveGoal.startDate = callTimeStartDate
