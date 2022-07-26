@@ -23,91 +23,73 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-xc-u2w">
-                                <rect key="frame" x="16" y="77" width="382" height="154.5"/>
+                                <rect key="frame" x="28" y="77" width="358" height="96"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화 가능 시간" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbY-wY-ZXI">
-                                        <rect key="frame" x="16" y="16" width="108.5" height="23"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="kXk-Fg-wcj">
-                                        <rect key="frame" x="32" y="60.5" width="137" height="31"/>
+                                    <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="kXk-Fg-wcj">
+                                        <rect key="frame" x="211" y="8" width="137" height="31"/>
                                         <connections>
                                             <action selector="startTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="tWt-Fk-J5r"/>
                                         </connections>
                                     </datePicker>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="azR-P9-8RU">
-                                        <rect key="frame" x="16" y="107.5" width="350" height="32"/>
-                                        <segments>
-                                            <segment title="현재 위치 기준"/>
-                                            <segment title="한국 기준"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="myLocationTimezoneSegmentedControlAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="CKp-uY-Yqa"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="부터" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd0-Qn-Q6U">
-                                        <rect key="frame" x="177" y="67.5" width="30" height="17"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="까지" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oov-Rx-grB">
-                                        <rect key="frame" x="325.5" y="67.5" width="24.5" height="17"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AOG-F6-Kcg">
-                                        <rect key="frame" x="223" y="60.5" width="100" height="31"/>
+                                    <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AOG-F6-Kcg">
+                                        <rect key="frame" x="242" y="55" width="100" height="33"/>
                                         <connections>
                                             <action selector="endTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="ViC-a4-iad"/>
                                         </connections>
                                     </datePicker>
-                                    <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="한국은" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tag-bL-mDS">
-                                        <rect key="frame" x="223" y="47" width="89" height="13.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaO-Cw-bnp">
+                                        <rect key="frame" x="8" y="13" width="64" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="한국은" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvb-TR-st9">
-                                        <rect key="frame" x="85" y="47" width="31.5" height="13.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kz-Wa-Gsv">
+                                        <rect key="frame" x="8" y="61" width="64" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="659-Te-BpZ">
+                                        <rect key="frame" x="8" y="47" width="342" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="uZT-yE-2cz"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="centerY" secondItem="kXk-Fg-wcj" secondAttribute="centerY" id="27z-Au-bY5"/>
-                                    <constraint firstAttribute="trailing" secondItem="azR-P9-8RU" secondAttribute="trailing" constant="16" id="4zk-nY-lIq"/>
-                                    <constraint firstItem="tag-bL-mDS" firstAttribute="centerX" secondItem="AOG-F6-Kcg" secondAttribute="centerX" id="7xB-Qd-2Ch"/>
-                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="top" secondItem="tag-bL-mDS" secondAttribute="bottom" id="BAB-4K-ocq"/>
-                                    <constraint firstItem="kXk-Fg-wcj" firstAttribute="top" secondItem="bvb-TR-st9" secondAttribute="bottom" id="CY5-vj-qRa"/>
-                                    <constraint firstItem="oov-Rx-grB" firstAttribute="centerY" secondItem="AOG-F6-Kcg" secondAttribute="centerY" id="DIb-3c-be8"/>
-                                    <constraint firstItem="kXk-Fg-wcj" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="32" id="JUR-lZ-zuB"/>
-                                    <constraint firstItem="oov-Rx-grB" firstAttribute="leading" secondItem="AOG-F6-Kcg" secondAttribute="trailing" constant="8" symbolic="YES" id="Jh5-IS-N0C"/>
-                                    <constraint firstAttribute="trailing" secondItem="oov-Rx-grB" secondAttribute="trailing" constant="32" id="KAD-8H-OUJ"/>
-                                    <constraint firstItem="Sd0-Qn-Q6U" firstAttribute="centerY" secondItem="kXk-Fg-wcj" secondAttribute="centerY" id="NKI-4v-Jyh"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SbY-wY-ZXI" secondAttribute="trailing" constant="16" id="Pfm-44-oRr"/>
-                                    <constraint firstItem="azR-P9-8RU" firstAttribute="top" secondItem="kXk-Fg-wcj" secondAttribute="bottom" constant="16" id="UG7-D8-Mq7"/>
-                                    <constraint firstItem="SbY-wY-ZXI" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="top" constant="16" id="V2u-CT-tGW"/>
-                                    <constraint firstAttribute="bottom" secondItem="azR-P9-8RU" secondAttribute="bottom" constant="16" id="WW3-Oy-d2a"/>
-                                    <constraint firstItem="Sd0-Qn-Q6U" firstAttribute="leading" secondItem="kXk-Fg-wcj" secondAttribute="trailing" constant="8" symbolic="YES" id="aYC-0H-F9P"/>
-                                    <constraint firstItem="bvb-TR-st9" firstAttribute="centerX" secondItem="kXk-Fg-wcj" secondAttribute="centerX" id="heY-aB-7h4"/>
-                                    <constraint firstItem="azR-P9-8RU" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="jCI-Ky-f5f"/>
-                                    <constraint firstItem="SbY-wY-ZXI" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="rSB-Z4-b0I"/>
-                                    <constraint firstItem="tag-bL-mDS" firstAttribute="top" secondItem="SbY-wY-ZXI" secondAttribute="bottom" constant="8" id="sUy-N6-b4m"/>
-                                    <constraint firstItem="bvb-TR-st9" firstAttribute="top" secondItem="SbY-wY-ZXI" secondAttribute="bottom" constant="8" id="t0v-bI-gKx"/>
+                                    <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="12.9" id="42q-zf-g3T"/>
+                                    <constraint firstItem="kXk-Fg-wcj" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="top" constant="8" id="4Sc-DV-6Wz"/>
+                                    <constraint firstAttribute="trailing" secondItem="kXk-Fg-wcj" secondAttribute="trailing" constant="8" id="56a-EX-b2V"/>
+                                    <constraint firstAttribute="trailing" secondItem="AOG-F6-Kcg" secondAttribute="trailing" constant="8" id="61D-xK-7Xl"/>
+                                    <constraint firstItem="PaO-Cw-bnp" firstAttribute="centerY" secondItem="kXk-Fg-wcj" secondAttribute="centerY" id="9nN-Vo-xjx"/>
+                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="top" secondItem="kXk-Fg-wcj" secondAttribute="bottom" constant="16" id="EaE-No-MQc"/>
+                                    <constraint firstAttribute="trailing" secondItem="659-Te-BpZ" secondAttribute="trailing" constant="8" id="IOX-dx-aMX"/>
+                                    <constraint firstItem="PaO-Cw-bnp" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="8" id="KN2-Qj-d0M"/>
+                                    <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="8" id="LMc-ho-oCJ"/>
+                                    <constraint firstItem="659-Te-BpZ" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="8" id="Lcn-vm-meC"/>
+                                    <constraint firstAttribute="bottom" secondItem="AOG-F6-Kcg" secondAttribute="bottom" constant="8" id="Mg9-eZ-N6H"/>
+                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="7" id="VQP-V1-zNf"/>
+                                    <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="centerY" secondItem="AOG-F6-Kcg" secondAttribute="centerY" id="hqj-6P-UMc"/>
+                                    <constraint firstItem="659-Te-BpZ" firstAttribute="top" secondItem="PaO-Cw-bnp" secondAttribute="bottom" constant="13" id="qLG-rG-lzE"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-74-lwU">
+                                <rect key="frame" x="116" y="181" width="270" height="15"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QWX-nT-ug7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -115,18 +97,17 @@
                             <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jJm-7A-cNj" secondAttribute="trailing" constant="16" id="3Un-qd-NG2"/>
                             <constraint firstItem="jJm-7A-cNj" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="16" id="4Do-0U-tnD"/>
                             <constraint firstItem="jJm-7A-cNj" firstAttribute="top" secondItem="QWX-nT-ug7" secondAttribute="top" id="55c-fx-Zpr"/>
+                            <constraint firstItem="ZPr-74-lwU" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="bottom" constant="8" id="CYd-Dl-Ozm"/>
                             <constraint firstItem="wTm-xc-u2w" firstAttribute="top" secondItem="jJm-7A-cNj" secondAttribute="bottom" constant="16" id="EIE-LJ-hCH"/>
-                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="16" id="OIX-DI-eZP"/>
-                            <constraint firstItem="wTm-xc-u2w" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="16" id="fZR-7C-FoT"/>
+                            <constraint firstItem="ZPr-74-lwU" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" id="MMH-Fg-ttR"/>
+                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="28" id="NLw-fT-zyl"/>
+                            <constraint firstItem="wTm-xc-u2w" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="28" id="dCY-nE-nSS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8tf-xe-LTG"/>
                     <connections>
                         <outlet property="endTimePicker" destination="AOG-F6-Kcg" id="JZR-Kh-YKF"/>
-                        <outlet property="endTimeTransferredLabel" destination="tag-bL-mDS" id="Oou-9p-nmI"/>
-                        <outlet property="myLocationTimezoneSegmentedControl" destination="azR-P9-8RU" id="PUh-Si-TGC"/>
                         <outlet property="startTimePicker" destination="kXk-Fg-wcj" id="dET-uq-4MO"/>
-                        <outlet property="startTimeTransferredLabel" destination="bvb-TR-st9" id="9xW-eJ-yXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxZ-Tx-9MD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -135,14 +116,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
