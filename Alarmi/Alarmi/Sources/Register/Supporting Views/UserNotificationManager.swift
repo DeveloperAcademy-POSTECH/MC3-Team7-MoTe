@@ -14,9 +14,9 @@ final class UserNotificationManager {
     private let contactStartDate = Date() // Model - Goal - startDate
     private var notificationPeriod = 7.0 // Model - Goal - peroid
     private let notificationCycle = 100
-    private let startTime = Date() // date형태이기 때문에 임시로 이렇게 생성
+    private let startTime = Date() // Model - CallTime - start
+    private lazy var endTime = Calendar.current.date(byAdding: .minute, value: 60, to: startTime) // Model - CallTime - end
     private var identifier = ""
-    private lazy var endTime = Calendar.current.date(byAdding: .minute, value: 60, to: startTime)
 
     private var identifierFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -25,7 +25,20 @@ final class UserNotificationManager {
         return dateFormatter
     }
 
-    // 권한요청 확인
+    private var hourFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h"
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        return dateFormatter
+    }
+
+    private var minuteFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "m"
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        return dateFormatter
+    }
+
     func generateUserNotification() {
         notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if let error = error {
@@ -42,16 +55,22 @@ final class UserNotificationManager {
         UNUserNotificationCenter.current().getNotificationSettings { [self] (settings) in
             guard settings.authorizationStatus == UNAuthorizationStatus.authorized else { return }
             for type in 0..<2 {
+                var time = Date()
                 if type == 0 {
                     self.identifier = self.identifierFormatter.string(from: self.contactStartDate)
+                    time = contactStartDate
                 } else {
                     self.identifier = self.identifierFormatter.string(from: self.endTime ?? Date())
+                    time = endTime ?? Date()
                 }
+                var requestDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: time)
+                requestDateComponents.hour = Int(hourFormatter.string(from: time))
+                requestDateComponents.minute = Int(minuteFormatter.string(from: time))
                 let content = self.makeNotificationContent(type)
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.notificationPeriod, repeats: false)
-                let request = UNNotificationRequest(identifier: self.identifier, content: content, trigger: trigger)
+//                let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
+                let tempTrigger = UNTimeIntervalNotificationTrigger(timeInterval: self.notificationPeriod, repeats: false)
+                let request = UNNotificationRequest(identifier: self.identifier, content: content, trigger: tempTrigger)
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                self.notificationPeriod += 10.0
             }
         }
     }
@@ -78,7 +97,6 @@ final class UserNotificationManager {
         return notificationContent
     }
 
-    // 현재 대기중인 noti 보여줌 (고반의 코드)
     func checkPendingNotificationRequest() {
         notificationCenter.getPendingNotificationRequests { (notificationRequests) in
             if notificationRequests.isEmpty {
