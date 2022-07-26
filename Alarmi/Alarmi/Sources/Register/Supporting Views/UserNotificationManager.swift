@@ -32,10 +32,6 @@ final class UserNotificationManager {
     }
 
     func makeNotificationRequest() {
-        // startdate + 7 되는날짜 계싼
-        // +7 될때부터 100일동안 매일 알림 시작 (for)
-        // 하루 2번 알림  (for)
-        // start , end time-30min 기준으로 trigger 만들면 됨.
         var notificationRequestDate = Calendar.current.date(byAdding: .day, value: notificationPeriod, to: contactStartDate)
         for _ in 0..<notificationCycle {
             for _ in 0..<2 {
@@ -44,7 +40,6 @@ final class UserNotificationManager {
                 requestStartDateComponents.minute = 0 // startTime의 min 추출해야함
                 let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: requestStartDateComponents, repeats: false)
                 let notificationContent = makeNotificationContent()
-                // identifier 생성해서 넣어야함 -> 해당 날짜 + 시간으로 넣자
                 let identifierDate = identifierDateFormatter.string(from: notificationRequestDate ?? Date())
                 let request = UNNotificationRequest(identifier: identifierDate, content: notificationContent, trigger: notificationTrigger)
                 self.notificationCenter.add(request) { error in
@@ -57,8 +52,6 @@ final class UserNotificationManager {
         }
     }
 
-    // 유저가 연락커밋을 했을때, remove 해주고, 그다음에 다시 make해주면 될듯?
-    // remove 하고 contactStartDay가 그날짜로 갱신되어야함
     func removeAllPendingRequest() {
         notificationCenter.removeAllPendingNotificationRequests()
         print("request 전부 삭제")
