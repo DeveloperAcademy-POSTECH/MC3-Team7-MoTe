@@ -16,19 +16,22 @@ protocol MainTabRegisterPlanViewControllerDelegate: AnyObject {
     func gotoBack()
 }
 
-class RegisterPlanViewController: UIViewController {
+final class RegisterPlanViewController: UIViewController {
     
-    @IBOutlet var containerViews: [UIView]!
-    @IBOutlet var settingDayLabel: UILabel!
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet private var containerViews: [UIView]!
+    @IBOutlet private var settingDayLabel: UILabel!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet var settingDayStepper: UIStepper!
     
-    lazy var callTimePeriod = 15 {
+    private lazy var callTimePeriod = 7 {
         didSet {
             settingDayLabel.text = String(callTimePeriod) + "일에 한 번 전화할게요."
         }
     }
     
-    private lazy var callTimeStartDate: String = calcDate()
+    private lazy var callTimeStartDate: Date = calcDate()
+    
+    private var saveGoal = Goal(startDate: Date(), period: 7)
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -54,20 +57,23 @@ class RegisterPlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settingDayStepper.value = 7
         attribute()
         layout()
     }
     
-    private func calcDate() -> String {
+    private func calcDate() -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let currentDateString = dateFormatter.string(from: Date())
+        let currentDateString = Date()
+//        dateFormatter.date(from: dateFormatter.dateFormat)
+//        let currentDateString = dateFormatter.string(from: Date())
         return currentDateString
     }
     
     private func attribute() {
         containerViews.forEach {
-            $0.layer.cornerRadius = 15
+            $0.layer.cornerRadius = 10
             $0.layer.masksToBounds = true
         }
     }
@@ -83,16 +89,18 @@ class RegisterPlanViewController: UIViewController {
         ])
     }
     
-    @IBAction func settingDaySlider(_ sender: UISlider) {
+    @IBAction func settingDayStepper(_ sender: UIStepper) {
         let value = sender.value
         callTimePeriod = Int(value)
     }
     
-    @IBAction func settingStartDatePicker(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let timeString = dateFormatter.string(from: sender.date)
+    @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let timeString: Date = sender.date
         callTimeStartDate = timeString
+        saveGoal.startDate = callTimeStartDate
+        
     }
 }
 
