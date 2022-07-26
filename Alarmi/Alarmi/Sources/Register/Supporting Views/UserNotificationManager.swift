@@ -69,7 +69,7 @@ final class UserNotificationManager {
         notificationCenter.getPendingNotificationRequests { (notificationRequests) in
             if notificationRequests.isEmpty {
                 print("Pending request 없음")
-            } else{
+            } else {
                 for notification: UNNotificationRequest in notificationRequests {
                     print("----------requests info------------")
                     print(notification.identifier)
