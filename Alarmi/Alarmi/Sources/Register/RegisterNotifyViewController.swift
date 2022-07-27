@@ -60,6 +60,9 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
     weak var tabDelegate: MainTabRegisterNotifyViewControllerDelegate?
 
     private let notificationCenter = UNUserNotificationCenter.current()
+    
+    private let encoder = JSONEncoder()
+    private var alarm = Alarm(isAlarm: true, isAlarmAgain: true, alarmRepeatCount: 6)
 
     enum ButtonType: String {
         case register = "다음"
@@ -161,7 +164,7 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
             }
         }
     }
-
+    
     @objc private func buttonDidTap() {
         switch type {
         case .register:
@@ -169,7 +172,9 @@ final class RegisterNotifyViewController: UIViewController, AlarmSetViewProtocol
         case .setting:
             tabDelegate?.gotoBack()
         }
-
+        if let encoded = try? encoder.encode(alarm) {
+            UserDefaults.standard.setValue(encoded, forKey: "Alarm")
+        }
     }
 
     func alarmSwitchDidValueChanged(_ isOn: Bool) {

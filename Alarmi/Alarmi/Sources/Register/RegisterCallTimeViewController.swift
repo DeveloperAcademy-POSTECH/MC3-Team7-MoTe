@@ -21,11 +21,15 @@ class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var endTimePicker: UIDatePicker!
     @IBOutlet weak var startTimeTransferredLabel: UILabel!
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
+
 //    @IBOutlet weak var myLocationTimezoneSegmentedControl: UISegmentedControl!
 
     weak var delegate: RegisterCallTimeViewControllerDelegate?
     weak var tabDelegate: MainTabRegisterCallTimeViewControllerDelegate?
-
+    
+    private let encoder = JSONEncoder()
+    private var callTime = CallTime(start: Date(), end: Date())
+    
     private let current = Date()
     private lazy var startTime: String = myFormatter.string(from: current)
     private lazy var endTime: String = myFormatter.string(from: current)
@@ -107,6 +111,7 @@ class RegisterCallTimeViewController: UIViewController {
 //    }
     
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
+        callTime.start = sender.date
         let myTimeString = myFormatter.string(from: sender.date)
         self.startTime = myTimeString
     }
@@ -114,6 +119,7 @@ class RegisterCallTimeViewController: UIViewController {
     @IBAction func endTimePickerAction(_ sender: UIDatePicker) {
         let myTimeString = myFormatter.string(from: sender.date)
         self.endTime = myTimeString
+        callTime.end = sender.date
     }
     
 //    @IBAction func endTimePickerAction(_ sender: UIDatePicker) {
@@ -160,6 +166,9 @@ extension RegisterCallTimeViewController {
             delegate?.gotoRegisterPlanViewController()
         case .setting:
             tabDelegate?.gotoBack()
+        }
+        if let encoded = try? encoder.encode(callTime) {
+            UserDefaults.standard.setValue(encoded, forKey: "CallTime")
         }
     }
 }
