@@ -101,30 +101,14 @@ final class UserNotificationManager {
         print("request 전부 삭제")
     }
 
-    // MARK: 알고리즘
-
-    private func calculateTimeInterval(_ startTime: Date, _ endTime: Date, _ goalPeriod: Int) {
-//        let timeGap: Double = endTime.timeIntervalSince(endTime) / 60
-        let interval = Calendar.current.dateComponents([.minute], from: startTime, to: endTime) / 6  // 전화가능시간 /6 해서 interval 설정
-8
+    // TODO: 연락 문구 정해야함
+    func makeNotificationContent(_ index: Int) -> UNMutableNotificationContent {
+        let notificationContent = UNMutableNotificationContent()
+        let indexName = Content(rawValue: index)
+        notificationContent.title = indexName?.title ?? ""
+        notificationContent.body = indexName?.body ?? ""
+        return notificationContent
     }
-
-
-//    // TODO: 연락 문구 정해야함 -> 일단 두개
-//    func makeNotificationContent(_ type: Int) -> UNMutableNotificationContent {
-//        let notificationContent = UNMutableNotificationContent()
-//        notificationContent.title = ""
-//        notificationContent.body = ""
-//        switch type {
-//        case 0:
-//            notificationContent.title = "연락할시간이다!"
-//            notificationContent.body = "연락할 시간이다!"
-//        default:
-//            notificationContent.title = "연락할 시간이 끝나가요!"
-//            notificationContent.body = "연락할 시간이 끝나가요!"
-//        }
-//        return notificationContent
-//    }
 
     func checkPendingNotificationRequest() {
         notificationCenter.getPendingNotificationRequests { (notificationRequests) in
