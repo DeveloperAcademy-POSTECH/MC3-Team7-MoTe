@@ -6,53 +6,100 @@
 //  Copyright © 2022 MoTe. All rights reserved.
 //
 
+import Foundation
 import UserNotifications
+import UniformTypeIdentifiers
 
 final class UserNotificationManager {
     private let notificationCenter = UNUserNotificationCenter.current()
-    // TODO: 그리즐리 유저디폴트
-    private let contactStartDate = Date() // Model - Goal - startDate
-    private var notificationPeriod = 7.0 // Model - Goal - peroid
-    private let notificationCycle = 100
-    private let startTime = Date() // Model - CallTime - start
-    private lazy var endTime = Calendar.current.date(byAdding: .minute, value: 60, to: startTime) // Model - CallTime - end
-    private var identifier = ""
+//    private let contactStartDate = Date() // Model - Goal - startDate
+//    private var notificationPeriod = 7.0 // Model - Goal - peroid
+//    private let notificationCycle = 100
+//    private let startTime = Date() // Model - CallTime - start
+//    private lazy var endTime = Calendar.current.date(byAdding: .minute, value: 60, to: startTime) // Model - CallTime - end
+//    private var identifier = ""
+
+    enum Content {
+        case one
+        case two
+        case three
+        case four
+        case five
+        case six
+
+        var title: String {
+            switch self {
+            case .one:
+                <#code#>
+            case .two:
+                <#code#>
+            case .three:
+                <#code#>
+            case .four:
+                <#code#>
+            case .five:
+                <#code#>
+            case .six:
+                <#code#>
+            }
+        }
+        var title: String {
+            switch self {
+            case .one:
+                <#code#>
+            case .two:
+                <#code#>
+            case .three:
+                <#code#>
+            case .four:
+                <#code#>
+            case .five:
+                <#code#>
+            case .six:
+                <#code#>
+            }
+        }
+    }
+
+    init() {
+        requestAuthorization()
+    }
+
+    func requestAuthorization() {
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            guard let _ = error, !granted else {
+                // TODO: 에러처리
+                return
+            }
+            // TODO: 아무것도 하지 않는다.
+        }
+    }
 
     private var identifierFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd a hh:mm"
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.timeZone = .init(identifier: "Asia/Seoul")
         return dateFormatter
     }
 
     private var hourFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h"
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.timeZone = .init(identifier: "Asia/Seoul")
         return dateFormatter
     }
 
     private var minuteFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "m"
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.timeZone = .init(identifier: "Asia/Seoul")
         return dateFormatter
     }
 
-    func generateUserNotification() {
-        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if let error = error {
-                print(error)
-            } else {
-                if granted {
-                    self.sendUserNotification()
-                }
-            }
-        }
-    }
+    func sendUserNotification(startTime: Date, endTime: Date, startDate: Date, goalPeriod: Int) {
+        // 시간설정하는거 여기다가 다 적기 (trigger에 넣을 시간)
 
-    func sendUserNotification() {
-        UNUserNotificationCenter.current().getNotificationSettings { [self] (settings) in
+        notificationCenter.getNotificationSettings { [weak self] (settings) in
             guard settings.authorizationStatus == UNAuthorizationStatus.authorized else { return }
             for type in 0..<2 {
                 var time = Date()
@@ -75,27 +122,36 @@ final class UserNotificationManager {
         }
     }
 
-    // TODO: 연락 커밋을 눌렀을대 해당 메서드를 불러서 request 모두 삭제
+    // TODO: 연락 커밋을 눌렀을때 해당 메서드를 불러서 request 모두 삭제
     func removeAllPendingRequest() {
         notificationCenter.removeAllPendingNotificationRequests()
         print("request 전부 삭제")
     }
 
-    // TODO: 연락 문구 정해야함 -> 일단 두개
-    func makeNotificationContent(_ type: Int) -> UNMutableNotificationContent {
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = ""
-        notificationContent.body = ""
-        switch type {
-        case 0:
-            notificationContent.title = "연락할시간이다!"
-            notificationContent.body = "연락할 시간이다!"
-        default:
-            notificationContent.title = "연락할 시간이 끝나가요!"
-            notificationContent.body = "연락할 시간이 끝나가요!"
-        }
-        return notificationContent
+    // MARK: 알고리즘
+
+    private func calculateTimeInterval(_ startTime: Date, _ endTime: Date, _ goalPeriod: Int) {
+//        let timeGap: Double = endTime.timeIntervalSince(endTime) / 60
+        let interval = Calendar.current.dateComponents([.minute], from: startTime, to: endTime) / 6  // 전화가능시간 /6 해서 interval 설정
+8
     }
+
+
+//    // TODO: 연락 문구 정해야함 -> 일단 두개
+//    func makeNotificationContent(_ type: Int) -> UNMutableNotificationContent {
+//        let notificationContent = UNMutableNotificationContent()
+//        notificationContent.title = ""
+//        notificationContent.body = ""
+//        switch type {
+//        case 0:
+//            notificationContent.title = "연락할시간이다!"
+//            notificationContent.body = "연락할 시간이다!"
+//        default:
+//            notificationContent.title = "연락할 시간이 끝나가요!"
+//            notificationContent.body = "연락할 시간이 끝나가요!"
+//        }
+//        return notificationContent
+//    }
 
     func checkPendingNotificationRequest() {
         notificationCenter.getPendingNotificationRequests { (notificationRequests) in
