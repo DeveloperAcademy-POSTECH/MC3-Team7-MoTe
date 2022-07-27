@@ -11,6 +11,7 @@
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
 		385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */; };
+		5075907A28915CC50033C09B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075907928915CC50033C09B /* UIColor+.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
 		507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F352882D8A70086A4CE /* SettingViewController.swift */; };
 		EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */; };
@@ -71,6 +72,7 @@
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
 		385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		5075907928915CC50033C09B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
 		507E6F352882D8A70086A4CE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoTeDate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				EFF8D2A928811A7F005A4D10 /* UIStackView+.swift */,
 				EFF8D2BE2881D219005A4D10 /* UILabel+.swift */,
 				EFF8D2D1288318CB005A4D10 /* UIFont+.swift */,
+				5075907928915CC50033C09B /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
 				EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */,
+				5075907A28915CC50033C09B /* UIColor+.swift in Sources */,
 				EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */,
 				EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
