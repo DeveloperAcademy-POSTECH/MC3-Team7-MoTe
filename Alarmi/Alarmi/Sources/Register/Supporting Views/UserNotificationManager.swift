@@ -12,51 +12,45 @@ import UniformTypeIdentifiers
 
 final class UserNotificationManager {
     private let notificationCenter = UNUserNotificationCenter.current()
-//    private let contactStartDate = Date() // Model - Goal - startDate
-//    private var notificationPeriod = 7.0 // Model - Goal - peroid
-//    private let notificationCycle = 100
-//    private let startTime = Date() // Model - CallTime - start
-//    private lazy var endTime = Calendar.current.date(byAdding: .minute, value: 60, to: startTime) // Model - CallTime - end
-//    private var identifier = ""
 
-    enum Content {
-        case one
-        case two
-        case three
-        case four
-        case five
-        case six
+    enum Content: Int {
+        case one = 1
+        case two = 2
+        case three = 3
+        case four = 4
+        case five = 5
+        case six = 6
 
         var title: String {
             switch self {
             case .one:
-                <#code#>
+                return "원"
             case .two:
-                <#code#>
+                return "투"
             case .three:
-                <#code#>
+                return "쓰리"
             case .four:
-                <#code#>
+                return "포"
             case .five:
-                <#code#>
+                return "파이브"
             case .six:
-                <#code#>
+                return "식스"
             }
         }
-        var title: String {
+        var body: String {
             switch self {
             case .one:
-                <#code#>
+                return "바디원"
             case .two:
-                <#code#>
+                return "바디투"
             case .three:
-                <#code#>
+                return "바디쓰리"
             case .four:
-                <#code#>
+                return "바디포"
             case .five:
-                <#code#>
+                return "바디파이브"
             case .six:
-                <#code#>
+                return "바디식스"
             }
         }
     }
