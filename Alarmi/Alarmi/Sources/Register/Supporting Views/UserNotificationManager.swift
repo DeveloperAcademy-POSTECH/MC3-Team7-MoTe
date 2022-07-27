@@ -156,4 +156,11 @@ final class UserNotificationManager {
         let identifier = dateFormatter.string(from: dateComponentsToDate)
         return identifier
     }
+
+    // interval을 구해주는 함수
+    private func calculateTimeInterval(_ startTime: Date, _ endTime: Date) -> Int {
+        let timeGap = Calendar.current.dateComponents([.minute], from: startTime, to: endTime)
+        let interval = Int(timeGap.minute ?? 0) / 6 // 전화가능시간 /6 해서 interval 설정
+        return interval
+    }
 }
