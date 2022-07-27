@@ -30,7 +30,6 @@ final class RegisterPlanViewController: UIViewController {
         }
     }
     
-    private lazy var callTimeStartDate = Date()
     let encoder = JSONEncoder()
     private var goal = Goal(startDate: Date(), period: 7)
 
@@ -93,9 +92,7 @@ final class RegisterPlanViewController: UIViewController {
     }
 
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
-        let timeString: Date = sender.date
-        callTimeStartDate = timeString
-        goal.startDate = callTimeStartDate
+        goal.startDate = sender.date
     }
 }
 
