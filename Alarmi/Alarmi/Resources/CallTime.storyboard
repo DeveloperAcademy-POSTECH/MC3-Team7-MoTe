@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21191"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,40 +18,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화할 수 있는 시간대를 알려주세요." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJm-7A-cNj">
-                                <rect key="frame" x="16" y="44" width="201" height="17"/>
+                                <rect key="frame" x="16" y="44" width="243" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-xc-u2w">
-                                <rect key="frame" x="28" y="77" width="358" height="96"/>
+                                <rect key="frame" x="16" y="80.5" width="382" height="100"/>
                                 <subviews>
                                     <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="kXk-Fg-wcj">
-                                        <rect key="frame" x="211" y="8" width="137" height="31"/>
+                                        <rect key="frame" x="211" y="8" width="163" height="34.5"/>
                                         <connections>
                                             <action selector="startTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="tWt-Fk-J5r"/>
                                         </connections>
                                     </datePicker>
                                     <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AOG-F6-Kcg">
-                                        <rect key="frame" x="242" y="55" width="100" height="33"/>
+                                        <rect key="frame" x="242" y="57.5" width="132" height="34.5"/>
                                         <connections>
                                             <action selector="endTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="ViC-a4-iad"/>
                                         </connections>
                                     </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaO-Cw-bnp">
-                                        <rect key="frame" x="8" y="13" width="64" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 시간" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaO-Cw-bnp">
+                                        <rect key="frame" x="16" y="15" width="63.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kz-Wa-Gsv">
-                                        <rect key="frame" x="8" y="61" width="64" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 시간" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kz-Wa-Gsv">
+                                        <rect key="frame" x="16" y="62.5" width="63.5" height="24.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="659-Te-BpZ">
-                                        <rect key="frame" x="8" y="47" width="342" height="1"/>
+                                        <rect key="frame" x="16" y="48.5" width="366" height="1"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <color key="tintColor" systemColor="systemGrayColor"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
@@ -59,22 +60,24 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="12.9" id="42q-zf-g3T"/>
                                     <constraint firstItem="kXk-Fg-wcj" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="top" constant="8" id="4Sc-DV-6Wz"/>
                                     <constraint firstAttribute="trailing" secondItem="kXk-Fg-wcj" secondAttribute="trailing" constant="8" id="56a-EX-b2V"/>
                                     <constraint firstAttribute="trailing" secondItem="AOG-F6-Kcg" secondAttribute="trailing" constant="8" id="61D-xK-7Xl"/>
                                     <constraint firstItem="PaO-Cw-bnp" firstAttribute="centerY" secondItem="kXk-Fg-wcj" secondAttribute="centerY" id="9nN-Vo-xjx"/>
-                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="top" secondItem="kXk-Fg-wcj" secondAttribute="bottom" constant="16" id="EaE-No-MQc"/>
-                                    <constraint firstAttribute="trailing" secondItem="659-Te-BpZ" secondAttribute="trailing" constant="8" id="IOX-dx-aMX"/>
-                                    <constraint firstItem="PaO-Cw-bnp" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="8" id="KN2-Qj-d0M"/>
-                                    <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="8" id="LMc-ho-oCJ"/>
-                                    <constraint firstItem="659-Te-BpZ" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="8" id="Lcn-vm-meC"/>
+                                    <constraint firstAttribute="trailing" secondItem="659-Te-BpZ" secondAttribute="trailing" id="IOX-dx-aMX"/>
+                                    <constraint firstItem="PaO-Cw-bnp" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="KN2-Qj-d0M"/>
+                                    <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="LMc-ho-oCJ"/>
+                                    <constraint firstItem="659-Te-BpZ" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="Lcn-vm-meC"/>
                                     <constraint firstAttribute="bottom" secondItem="AOG-F6-Kcg" secondAttribute="bottom" constant="8" id="Mg9-eZ-N6H"/>
-                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="7" id="VQP-V1-zNf"/>
+                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="8" id="VQP-V1-zNf"/>
+                                    <constraint firstItem="659-Te-BpZ" firstAttribute="top" secondItem="kXk-Fg-wcj" secondAttribute="bottom" constant="6" id="aqg-fx-8nR"/>
                                     <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="centerY" secondItem="AOG-F6-Kcg" secondAttribute="centerY" id="hqj-6P-UMc"/>
                                     <constraint firstItem="659-Te-BpZ" firstAttribute="top" secondItem="PaO-Cw-bnp" secondAttribute="bottom" constant="13" id="qLG-rG-lzE"/>
+                                    <constraint firstItem="AOG-F6-Kcg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2Kz-Wa-Gsv" secondAttribute="trailing" constant="16" id="yg4-Qx-6B5"/>
+                                    <constraint firstItem="kXk-Fg-wcj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PaO-Cw-bnp" secondAttribute="trailing" constant="16" id="zHA-0G-AXD"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -83,25 +86,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-74-lwU">
-                                <rect key="frame" x="116" y="181" width="270" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-74-lwU">
+                                <rect key="frame" x="117" y="188.5" width="273" height="14.5"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QWX-nT-ug7"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jJm-7A-cNj" secondAttribute="trailing" constant="16" id="3Un-qd-NG2"/>
                             <constraint firstItem="jJm-7A-cNj" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="16" id="4Do-0U-tnD"/>
                             <constraint firstItem="jJm-7A-cNj" firstAttribute="top" secondItem="QWX-nT-ug7" secondAttribute="top" id="55c-fx-Zpr"/>
                             <constraint firstItem="ZPr-74-lwU" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="bottom" constant="8" id="CYd-Dl-Ozm"/>
                             <constraint firstItem="wTm-xc-u2w" firstAttribute="top" secondItem="jJm-7A-cNj" secondAttribute="bottom" constant="16" id="EIE-LJ-hCH"/>
-                            <constraint firstItem="ZPr-74-lwU" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" id="MMH-Fg-ttR"/>
-                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="28" id="NLw-fT-zyl"/>
-                            <constraint firstItem="wTm-xc-u2w" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="28" id="dCY-nE-nSS"/>
+                            <constraint firstItem="ZPr-74-lwU" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="-8" id="MMH-Fg-ttR"/>
+                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="16" id="NLw-fT-zyl"/>
+                            <constraint firstItem="wTm-xc-u2w" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="16" id="dCY-nE-nSS"/>
+                            <constraint firstItem="ZPr-74-lwU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="gOH-ct-dW2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8tf-xe-LTG"/>
@@ -116,11 +120,17 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
