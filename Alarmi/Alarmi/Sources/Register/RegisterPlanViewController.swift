@@ -26,11 +26,11 @@ final class RegisterPlanViewController: UIViewController {
     
     private lazy var callTimePeriod = 7 {
         didSet {
-            settingDayLabel.text = String(callTimePeriod) + "일에 한 번 전화할게요."
+            settingDayLabel.text = String(callTimePeriod) + "일에 한 번"
         }
     }
     
-    let encoder = JSONEncoder()
+    private let encoder = JSONEncoder()
     private var goal = Goal(startDate: Date(), period: 7)
 
     private lazy var button: AMButton = {
@@ -71,7 +71,7 @@ final class RegisterPlanViewController: UIViewController {
             $0.layer.masksToBounds = true
         }
         setMinimumDate()
-        settingDayStepper.value = 7
+        settingDayStepper.value = Double(callTimePeriod)
     }
 
     private func layout() {
