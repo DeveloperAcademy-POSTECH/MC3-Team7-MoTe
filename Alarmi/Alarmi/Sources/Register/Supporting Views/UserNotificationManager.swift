@@ -69,27 +69,6 @@ final class UserNotificationManager {
         }
     }
 
-    private var identifierFormatter: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd a hh:mm"
-        dateFormatter.timeZone = .init(identifier: "Asia/Seoul")
-        return dateFormatter
-    }
-
-    private var hourFormatter: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h"
-        dateFormatter.timeZone = .init(identifier: "Asia/Seoul")
-        return dateFormatter
-    }
-
-    private var minuteFormatter: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "m"
-        dateFormatter.timeZone = .init(identifier: "Asia/Seoul")
-        return dateFormatter
-    }
-
     func sendUserNotification(startTime: Date, endTime: Date, startDate: Date, goalPeriod: Int) {
         // 시간설정하는거 여기다가 다 적기 (trigger에 넣을 시간)
 
@@ -162,5 +141,19 @@ final class UserNotificationManager {
                 }
             }
         }
+    }
+
+    // MARK: 알고리즘
+
+    private func identifierFormatter(_ dateComponents: DateComponents) -> String {
+        let dateComponentsToDate = Calendar.current.date(from: dateComponents) ?? Date()
+        var dateFormatter: DateFormatter {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMdd a hh:mm"
+            dateFormatter.timeZone = .init(identifier: "Asia/Seoul")
+            return dateFormatter
+        }
+        let identifier = dateFormatter.string(from: dateComponentsToDate)
+        return identifier
     }
 }
