@@ -74,7 +74,6 @@ final class UserNotificationManager {
         var requestDateComponents = calculateDate(startDate, goalPeriod) // 일단 이걸 7일뒤로 설정해줌
         notificationCenter.getNotificationSettings { [weak self] (settings) in
             guard settings.authorizationStatus == UNAuthorizationStatus.authorized else { return }
-            // 6번 반복
             for cycle in 0..<100 {
                 if cycle == 0 {
                     var notificationTimeComponents = Calendar.current.dateComponents([.hour, .minute], from: startTime)
@@ -90,15 +89,12 @@ final class UserNotificationManager {
                         notificationTimeComponents = self!.calculateTime(startTime, notificationInterval, index)
                     }
                 } else {
-                    // 시간; 두번째 사이클 부터는 day+1씩되고 알림은 한번씩만, start time에!
-                    // 날짜; requestdatecomponents쓰면돼
                     let content = self?.makeNotificationContent(1)
                     let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
                     let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
                     let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 }
-                // requestDateComponents +1day 해줘야함
                 let temp = Calendar.current.date(from: requestDateComponents)
                 requestDateComponents = self?.calculateDate(temp ?? Date(), 1) ?? DateComponents()
             }
@@ -151,21 +147,18 @@ final class UserNotificationManager {
         return identifier
     }
 
-    // interval을 구해주는 함수
     private func calculateTimeInterval(_ startTime: Date, _ endTime: Date) -> Int {
         let timeGap = Calendar.current.dateComponents([.minute], from: startTime, to: endTime)
         let interval = Int(timeGap.minute ?? 0) / 6 // 전화가능시간 /6 해서 interval 설정
         return interval
     }
 
-    // interval을 더해주는 함수
     private func calculateTime(_ startTime: Date, _ interval: Int, _ index: Int) -> DateComponents {
         let notificationTime = Date(timeInterval: Double(interval * index), since: startTime)
         let dateToDatecomponent = Calendar.current.dateComponents([.hour, .minute], from: notificationTime)
         return dateToDatecomponent
     }
 
-    // 7일뒤를 계산해주는 함수
     private func calculateDate(_ startDate: Date, _ goalperiod: Int) -> DateComponents {
         let dateInterval = goalperiod * 24 * 60 * 60
         let notificationDate = Date(timeInterval: Double(dateInterval), since: startDate)
