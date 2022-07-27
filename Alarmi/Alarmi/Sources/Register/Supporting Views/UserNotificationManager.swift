@@ -70,27 +70,37 @@ final class UserNotificationManager {
     }
 
     func sendUserNotification(startTime: Date, endTime: Date, startDate: Date, goalPeriod: Int) {
-        // 시간설정하는거 여기다가 다 적기 (trigger에 넣을 시간)
-
+        let notificationInterval = calculateTimeInterval(startTime, endTime) // int 7
+        var requestDateComponents = calculateDate(startDate, goalPeriod) // 일단 이걸 7일뒤로 설정해줌
         notificationCenter.getNotificationSettings { [weak self] (settings) in
             guard settings.authorizationStatus == UNAuthorizationStatus.authorized else { return }
-            for type in 0..<2 {
-                var time = Date()
-                if type == 0 {
-                    self.identifier = self.identifierFormatter.string(from: self.contactStartDate)
-                    time = contactStartDate
+            // 6번 반복
+            for cycle in 0..<100 {
+                if cycle == 0 {
+                    var notificationTimeComponents = Calendar.current.dateComponents([.hour, .minute], from: startTime)
+                    for index in 1..<7 {
+                        requestDateComponents.hour = notificationTimeComponents.hour
+                        requestDateComponents.minute = notificationTimeComponents.minute
+                        let content = self?.makeNotificationContent(index) // enum에 있는거 등록
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
+                        let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
+                        let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
+                        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                        // request date component 에서 interval(분) 더해줘야함
+                        notificationTimeComponents = self!.calculateTime(startTime, notificationInterval, index)
+                    }
                 } else {
-                    self.identifier = self.identifierFormatter.string(from: self.endTime ?? Date())
-                    time = endTime ?? Date()
+                    // 시간; 두번째 사이클 부터는 day+1씩되고 알림은 한번씩만, start time에!
+                    // 날짜; requestdatecomponents쓰면돼
+                    let content = self?.makeNotificationContent(1)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
+                    let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
+                    let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 }
-                var requestDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: time)
-                requestDateComponents.hour = Int(hourFormatter.string(from: time))
-                requestDateComponents.minute = Int(minuteFormatter.string(from: time))
-                let content = self.makeNotificationContent(type)
-//                let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
-                let tempTrigger = UNTimeIntervalNotificationTrigger(timeInterval: self.notificationPeriod, repeats: false)
-                let request = UNNotificationRequest(identifier: self.identifier, content: content, trigger: tempTrigger)
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                // requestDateComponents +1day 해줘야함
+                let temp = Calendar.current.date(from: requestDateComponents)
+                requestDateComponents = self?.calculateDate(temp ?? Date(), 1) ?? DateComponents()
             }
         }
     }
