@@ -163,4 +163,12 @@ final class UserNotificationManager {
         let interval = Int(timeGap.minute ?? 0) / 6 // 전화가능시간 /6 해서 interval 설정
         return interval
     }
+
+    // interval을 더해주는 함수
+    private func calculateTime(_ startTime: Date, _ interval: Int, _ index: Int) -> DateComponents {
+        let notificationTime = Date(timeInterval: Double(interval * index), since: startTime)
+        let dateToDatecomponent = Calendar.current.dateComponents([.hour, .minute], from: notificationTime)
+        return dateToDatecomponent
+    }
+
 }
