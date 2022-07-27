@@ -31,8 +31,7 @@ final class RegisterPlanViewController: UIViewController {
     }
     
     private lazy var callTimeStartDate: Date = calcDate()
-    
-    private var saveGoal = Goal(startDate: Date(), period: 7)
+    private var goal = Goal(startDate: Date(), period: 7)
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +97,7 @@ final class RegisterPlanViewController: UIViewController {
     @IBAction func settingDayStepper(_ sender: UIStepper) {
         let value = sender.value
         callTimePeriod = Int(value)
-        saveGoal.period = callTimePeriod
+        goal.period = callTimePeriod
     }
 
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
@@ -107,7 +106,7 @@ final class RegisterPlanViewController: UIViewController {
         
         let timeString: Date = sender.date
         callTimeStartDate = timeString
-        saveGoal.startDate = callTimeStartDate
+        goal.startDate = callTimeStartDate
     }
 }
 
@@ -121,7 +120,7 @@ extension RegisterPlanViewController {
         case .setting:
             tabDelegate?.gotoBack()
         }
-        if let encoded = try? encoder.encode(saveGoal) {
+        if let encoded = try? encoder.encode(goal) {
             UserDefaults.standard.setValue(encoded, forKey: "Goal")
         }
     }
