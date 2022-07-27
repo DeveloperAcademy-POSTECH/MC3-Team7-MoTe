@@ -27,9 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidDisconnect(_ scene: UIScene) {}
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-    }
+    func sceneDidBecomeActive(_ scene: UIScene) {}
 
     func sceneWillResignActive(_ scene: UIScene) {}
 
