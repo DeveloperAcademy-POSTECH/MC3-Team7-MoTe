@@ -171,4 +171,11 @@ final class UserNotificationManager {
         return dateToDatecomponent
     }
 
+    // 7일뒤를 계산해주는 함수
+    private func calculateDate(_ startDate: Date, _ goalperiod: Int) -> DateComponents {
+        let dateInterval = goalperiod * 24 * 60 * 60
+        let notificationDate = Date(timeInterval: Double(dateInterval), since: startDate)
+        let requestDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificationDate)
+        return requestDateComponents
+    }
 }
