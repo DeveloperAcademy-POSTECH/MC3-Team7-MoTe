@@ -18,11 +18,11 @@ protocol MainTabRegisterPlanViewControllerDelegate: AnyObject {
 
 final class RegisterPlanViewController: UIViewController {
     
-    @IBOutlet var startDatePicker: UIDatePicker!
+    @IBOutlet private var startDatePicker: UIDatePicker!
     @IBOutlet private var containerViews: [UIView]!
     @IBOutlet private var settingDayLabel: UILabel!
     @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet var settingDayStepper: UIStepper!
+    @IBOutlet private var settingDayStepper: UIStepper!
     
     private lazy var callTimePeriod = 7 {
         didSet {
@@ -30,7 +30,8 @@ final class RegisterPlanViewController: UIViewController {
         }
     }
     
-    private lazy var callTimeStartDate: Date = calcDate()
+    private lazy var callTimeStartDate = Date()
+    let encoder = JSONEncoder()
     private var goal = Goal(startDate: Date(), period: 7)
 
     private lazy var button: AMButton = {
@@ -57,8 +58,6 @@ final class RegisterPlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setMinimumDate()
-        settingDayStepper.value = 7
         attribute()
         layout()
     }
@@ -67,20 +66,13 @@ final class RegisterPlanViewController: UIViewController {
         startDatePicker.minimumDate = Date()
     }
     
-    private func calcDate() -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let currentDateString = Date()
-//        dateFormatter.date(from: dateFormatter.dateFormat)
-//        let currentDateString = dateFormatter.string(from: Date())
-        return currentDateString
-    }
-    
     private func attribute() {
         containerViews.forEach {
             $0.layer.cornerRadius = 10
             $0.layer.masksToBounds = true
         }
+        setMinimumDate()
+        settingDayStepper.value = 7
     }
 
     private func layout() {
@@ -94,23 +86,18 @@ final class RegisterPlanViewController: UIViewController {
         ])
     }
     
-    @IBAction func settingDayStepper(_ sender: UIStepper) {
+    @IBAction private func settingDayStepper(_ sender: UIStepper) {
         let value = sender.value
         callTimePeriod = Int(value)
         goal.period = callTimePeriod
     }
 
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
         let timeString: Date = sender.date
         callTimeStartDate = timeString
         goal.startDate = callTimeStartDate
     }
 }
-
-private let encoder = JSONEncoder()
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
@@ -120,6 +107,7 @@ extension RegisterPlanViewController {
         case .setting:
             tabDelegate?.gotoBack()
         }
+        
         if let encoded = try? encoder.encode(goal) {
             UserDefaults.standard.setValue(encoded, forKey: "Goal")
         }
