@@ -134,7 +134,6 @@ final class TodayViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = "오늘"
         let image = UIImage(systemName: "gearshape")
         let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem = barButton
