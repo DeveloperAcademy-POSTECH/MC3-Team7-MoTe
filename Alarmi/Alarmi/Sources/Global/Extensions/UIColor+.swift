@@ -10,6 +10,7 @@ import UIKit
 
 extension UIColor {
     static let backgroundColor = UIColor(named: "Background")
+    static let cellBackgroundColor = UIColor(named: "CellBackground")
     static let goalDateRed = UIColor(named: "GoalDateRed")
     static let toggleOrange = UIColor(named: "ToggleOrange")
 }
