@@ -41,3 +41,17 @@ final class SettingViewController: UIViewController {
 
     }
 }
+
+// MARK: - Preview
+
+#if DEBUG
+import SwiftUI
+
+struct SettingViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        SettingViewController()
+            .toPreview()
+            .ignoresSafeArea()
+    }
+}
+#endif
