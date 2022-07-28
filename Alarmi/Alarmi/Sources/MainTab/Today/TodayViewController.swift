@@ -14,6 +14,8 @@ protocol TodayViewControllerDelegate: AnyObject {
 }
 
 final class TodayViewController: UIViewController {
+    
+    let renewal = Renewal()
 
     // MARK: View
     
