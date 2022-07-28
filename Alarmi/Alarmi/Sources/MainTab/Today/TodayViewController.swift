@@ -56,6 +56,7 @@ final class TodayViewController: UIViewController {
         return $0
     }(UIImageView())
 
+    // TODO: 내가 만들어야 하는 딜레이 버튼으로 만들어야함.
     private lazy var delayButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
 
@@ -75,6 +76,7 @@ final class TodayViewController: UIViewController {
         return $0
     }(UIButton(configuration: .plain()))
 
+    // TODO: 버튼수정해야함
     private let callButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.configuration?.baseBackgroundColor = .systemBlue
@@ -92,6 +94,7 @@ final class TodayViewController: UIViewController {
     weak var delegate: TodayViewControllerDelegate?
 
     // MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
