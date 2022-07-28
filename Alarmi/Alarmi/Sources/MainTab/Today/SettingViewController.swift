@@ -9,9 +9,6 @@
 import UIKit
 
 protocol SettingViewControllerDelegate: AnyObject {
-    func gotoRegisterCallTimeViewController()
-    func gotoRegisterPlanViewController()
-    func gotoRegisterNotifyViewController()
     func backtoTodayViewController()
 }
 final class SettingViewController: UIViewController {
@@ -129,12 +126,6 @@ extension SettingViewController: UITableViewDelegate {
         settingTableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
             // TODO: 각 설정 화면으로 내비게이션
-        case 0:
-            delegate?.gotoRegisterCallTimeViewController()
-        case 1:
-            delegate?.gotoRegisterPlanViewController()
-        case 2:
-            delegate?.gotoRegisterNotifyViewController()
         case 3:
             present(eraseRecordAlert, animated: true)
         case 4:
