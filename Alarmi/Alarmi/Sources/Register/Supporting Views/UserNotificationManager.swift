@@ -80,10 +80,12 @@ final class UserNotificationManager {
                     for index in 1..<7 {
                         requestDateComponents.hour = notificationTimeComponents.hour
                         requestDateComponents.minute = notificationTimeComponents.minute
+
                         let content = self?.makeNotificationContent(index)
                         let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
                         let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
                         let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
+
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                         // request date component 에서 interval(분) 더해줘야함
                         notificationTimeComponents = self!.calculateTime(startTime, notificationInterval, index)
@@ -93,6 +95,7 @@ final class UserNotificationManager {
                     let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
                     let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
                     let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
+
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 }
                 requestDateComponents = self?.calculateDate(startDate, 1) ?? DateComponents()
