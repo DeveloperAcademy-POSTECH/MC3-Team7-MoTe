@@ -12,6 +12,36 @@ import UIKit
 final class SettingViewController: UIViewController {
 
     // MARK: View
+    
+    private let alarmSettingVStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.spacing = 8
+        $0.distribution = .fill
+        $0.alignment = .leading
+        return $0
+    }(UIStackView())
+    
+    private let alarmSettingTitleLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(for: .title3, weight: .bold)
+        $0.text = "알림 설정"
+        return $0
+    }(UILabel())
+    
+    private lazy var alarmSettingView: AlarmSettingView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(AlarmSettingView())
+    
+    private let alarmSettingDescriptionLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(.caption1)
+        $0.textAlignment = .right
+        $0.textColor = .secondaryLabel
+        $0.text = "알림이 온 이후에 전화를 기록하지 않으면,\n전화 시간 종료 전에 알림을 다시 보내드려요."
+        return $0
+    }(UILabel())
 
     // MARK: Store Property
 
