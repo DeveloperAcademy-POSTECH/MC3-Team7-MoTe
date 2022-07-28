@@ -95,8 +95,7 @@ final class UserNotificationManager {
                     let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 }
-                let temp = Calendar.current.date(from: requestDateComponents)
-                requestDateComponents = self?.calculateDate(temp ?? Date(), 1) ?? DateComponents()
+                requestDateComponents = self?.calculateDate(startDate, 1) ?? DateComponents()
             }
         }
     }
