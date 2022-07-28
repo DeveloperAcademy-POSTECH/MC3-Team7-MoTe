@@ -8,11 +8,6 @@
 
 import UIKit
 
-struct RecentAchieveModel {
-    var purpose: [Bool]
-
-    static let dummy = RecentAchieveModel(purpose: [true, true, true, false, true, true])
-}
 final class RecentAchieveContainerView: UIView {
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -76,19 +71,19 @@ final class RecentAchieveContainerView: UIView {
         return $0
     }(UILabel())
 
-    var viewModel: RecentAchieveModel? {
+    var achievements: [Bool]? {
         didSet {
-            guard let viewModel = viewModel else { return }
+            guard let achievements = achievements else { return }
             circleViews.enumerated().forEach {
-                guard viewModel.purpose.count > $0.offset else {
+                guard achievements.count > $0.offset else {
                     $0.element.backgroundColor = .systemGray
                     return
                 }
-                let didCall = viewModel.purpose[$0.offset]
+                let didCall = achievements[$0.offset]
                 $0.element.backgroundColor = didCall ? .systemGreen : .systemRed
             }
-            let success: Double = Double(viewModel.purpose.filter { $0 == true }.count)
-            percentLabel.text = "\(Int((success / Double(viewModel.purpose.count) * 100)))%"
+            let success: Double = Double(achievements.filter { $0 == true }.count)
+            percentLabel.text = "\(Int((success / Double(achievements.count) * 100)))%"
         }
     }
 

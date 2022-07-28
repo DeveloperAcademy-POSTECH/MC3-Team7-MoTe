@@ -64,17 +64,24 @@ final class RecordViewController: UIViewController {
     // MARK: Method
 
     func bind() {
-        viewModel.$purpose
+        viewModel.$goalCombo
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] viewModel in
-                self?.purposeContainerView.viewModel = viewModel
+            .sink { [weak self] in
+                self?.purposeContainerView.goalCombo = $0
+            }
+            .store(in: &cancelBag)
+
+        viewModel.$goalCount
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.purposeContainerView.goalCount = $0
             }
             .store(in: &cancelBag)
 
         viewModel.$achievement
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] viewModel in
-                self?.recentAchieveContainerView.viewModel = viewModel
+            .sink { [weak self] in
+                self?.recentAchieveContainerView.achievements = $0
             }
             .store(in: &cancelBag)
 

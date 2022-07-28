@@ -12,14 +12,16 @@ import UIKit
 
 final class RecordViewModel: ObservableObject {
     @Published var frequencyDateList: [[Frequency]] = RecordViewModel.dummyFrequencyDataList
-    @Published var purpose: PurposeContainerModel = .dummy // = PurposeContainerModel(
-    @Published var achievement: RecentAchieveModel = .dummy
+    @Published var goalCount: Int = 0
+    @Published var goalCombo: Int = 0
+    @Published var achievement: [Bool] = [false, true, false]
 
     func viewDidLoad() {
         fetchMoTeDate()
     }
 
     // MARK: Business Logic
+
     private func fetchMoTeDate() {
         let dates = TimeCalculationManager.shared.testDummyDates()
         let todayIndex = (Constant.Record.numberOfColumns - 1) * 7 + TimeCalculationManager.shared.todayWeekend().weekday! - 2 // 1 = 일요일
@@ -73,7 +75,4 @@ extension RecordViewModel {
             ]
         })
     }
-
-//    static var dummyPurposeData: 
-
 }

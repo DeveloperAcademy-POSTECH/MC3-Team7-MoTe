@@ -8,13 +8,6 @@
 
 import UIKit
 
-struct PurposeContainerModel {
-    var purposeGoalCount: Int
-    var isContinuous: Int
-
-    static let dummy = PurposeContainerModel(purposeGoalCount: 0, isContinuous: 0)
-}
-
 final class PurposeContainerView: UIView {
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -76,17 +69,22 @@ final class PurposeContainerView: UIView {
         return $0
     }(UILabel())
 
-    var viewModel: PurposeContainerModel? {
+    var goalCount: Int? {
         didSet {
-            let number1 = viewModel?.purposeGoalCount ?? 0
-            let number2 = viewModel?.isContinuous ?? 0
-            numberLabel1.text = "\(number1)"
-            numberLabel2.text = "\(number2)"
-            descriptionLabel1.text = "지금까지 목표를 \n\(number1)회 지켰어요."
-            descriptionLabel2.text = "목표를 최대 \(number2)번 \n 연속으로 지켰어요."
+            guard let goalCount = goalCount else { return }
+            numberLabel1.text = "\(goalCount)"
+            descriptionLabel1.text = "지금까지 목표를 \n\(goalCount)회 지켰어요."
         }
     }
 
+    var goalCombo: Int? {
+        didSet {
+            guard let goalCombo = goalCombo else { return }
+            numberLabel2.text = "\(goalCombo)"
+            descriptionLabel2.text = "목표를 최대 \(goalCombo)번 \n 연속으로 지켰어요."
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
