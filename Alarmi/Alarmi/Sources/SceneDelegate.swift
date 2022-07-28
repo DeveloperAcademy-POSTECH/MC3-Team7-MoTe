@@ -44,20 +44,23 @@ private extension SceneDelegate {
     func setLightOrDarkMode() {
         let calendar = Calendar.current
         let now = Date()
-
-        guard let midnight = calendar.date(
-            bySettingHour: 0,
+        
+        let deviceMidnightHour = getConvertedHour(koreaHour: 0)
+        let deviceAwakeHour = getConvertedHour(koreaHour: 7)
+        
+        let midnight = calendar.date(
+            bySettingHour: deviceMidnightHour,
             minute: 0,
             second: 0,
             of: now
-        ) else { return }
+        )!
 
-        guard let awakeTime = calendar.date(
-            bySettingHour: 7,
+        let awakeTime = calendar.date(
+            bySettingHour: deviceAwakeHour,
             minute: 0,
             second: 0,
             of: now
-        ) else { return }
+        )!
 
         let midnightCheckingTimer = Timer(
             fireAt: midnight,
@@ -79,6 +82,35 @@ private extension SceneDelegate {
 
         RunLoop.main.add(midnightCheckingTimer, forMode: .common)
         RunLoop.main.add(awakeTimeCheckingTimer, forMode: .common)
+    }
+    
+    func getConvertedHour(koreaHour hour: Int) -> Int {
+        let calendar = Calendar.current
+        let now = Date()
+        let currentYear = calendar.component(.year, from: now)
+        let currentMonth = calendar.component(.month, from: now)
+        let currentDay = calendar.component(.day, from: now)
+
+        let myTimeFormatter: DateFormatter = { formatter in
+            formatter.timeZone = TimeZone.autoupdatingCurrent
+            formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+            return formatter
+        }(DateFormatter())
+
+        let koreaTimeZone = TimeZone(identifier: "Asia/Seoul")
+        let koreaMidnightComponents = DateComponents(
+            timeZone: koreaTimeZone,
+            year: currentYear,
+            month: currentMonth,
+            day: currentDay,
+            hour: hour,
+            minute: 0,
+            second: 0
+        )
+        let koreaMidnightDate = calendar.date(from: koreaMidnightComponents)!
+        let convertedDateString = myTimeFormatter.string(from: koreaMidnightDate)
+        let convertedDate = myTimeFormatter.date(from: convertedDateString)!
+        return calendar.component(.hour, from: convertedDate)
     }
     
     @objc func switchToDarkMode() {
