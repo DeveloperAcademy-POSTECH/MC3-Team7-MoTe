@@ -41,6 +41,12 @@ final class TodayViewController: UIViewController {
         return $0
     }(UILabel())
 
+    private let realTimeClockLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = .red
+        $0.setDynamicFont(for: .largeTitle, weight: .black)
+        return $0
+    }(UILabel())
 
     private let imageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -93,6 +99,12 @@ final class TodayViewController: UIViewController {
         layout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        setTimer()
+    }
+
     // MARK: Method
 
     private func attribute() {
@@ -124,6 +136,10 @@ final class TodayViewController: UIViewController {
         let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem = barButton
     }
+
+    private func setTimer() {
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.currentTimeToKoreaTime(_:)), userInfo: nil, repeats: true)
+    }
 }
 
 extension TodayViewController {
@@ -136,5 +152,15 @@ extension TodayViewController {
 
     @objc private func delayButtonTapped() {
         delegate?.presentCallDelayViewController()
+    }
+
+    @objc private func currentTimeToKoreaTime(_ sender: Timer) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "Asia/Seoul")
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        dateFormatter.dateFormat = "HH:mm"
+        let currentLocationDate = Date()
+        let koreaTime = dateFormatter.string(from: currentLocationDate)
+        realTimeClockLabel.text = koreaTime
     }
 }
