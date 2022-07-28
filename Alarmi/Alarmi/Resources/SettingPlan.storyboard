@@ -26,10 +26,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI4-03-WPT">
                                 <rect key="frame" x="16" y="176.5" width="382" height="64"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="일에 한 번" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbM-OW-z4l">
+                                        <rect key="frame" x="42" y="22" width="68" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-0S-ywc">
                                         <rect key="frame" x="16" y="16" width="350" height="32"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일에 한 번" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-24-XeL">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-24-XeL">
                                                 <rect key="frame" x="0.0" y="6" width="248" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
@@ -46,9 +52,14 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fbM-OW-z4l" secondAttribute="bottom" constant="16" id="F85-Gf-u9g"/>
+                                    <constraint firstItem="fbM-OW-z4l" firstAttribute="centerY" secondItem="PF7-0S-ywc" secondAttribute="centerY" id="Lo5-hx-jS6"/>
+                                    <constraint firstItem="tb8-aC-X8G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fbM-OW-z4l" secondAttribute="trailing" constant="8" id="QOw-8l-aYx"/>
                                     <constraint firstAttribute="bottom" secondItem="PF7-0S-ywc" secondAttribute="bottom" constant="16" id="TGh-AC-lI9"/>
                                     <constraint firstItem="PF7-0S-ywc" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="top" constant="16" id="ZgB-jb-yIz"/>
                                     <constraint firstAttribute="trailing" secondItem="PF7-0S-ywc" secondAttribute="trailing" constant="16" id="gCr-Ia-Wly"/>
+                                    <constraint firstItem="fbM-OW-z4l" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="42" id="l1U-F4-p4y"/>
+                                    <constraint firstItem="fbM-OW-z4l" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hI4-03-WPT" secondAttribute="top" constant="16" id="mrB-nc-94T"/>
                                     <constraint firstItem="PF7-0S-ywc" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="16" id="qGd-ST-MY2"/>
                                 </constraints>
                             </view>
