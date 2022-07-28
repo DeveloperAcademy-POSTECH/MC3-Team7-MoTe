@@ -12,6 +12,65 @@ final class AlarmSettingView: UIView {
     
     // MARK: Views
     
+    private let alarmRowHStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.distribution = .fill
+        $0.alignment = .center
+        return $0
+    }(UIStackView())
+    
+    private let alarmAgainRowHStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.distribution = .fill
+        $0.alignment = .center
+        return $0
+    }(UIStackView())
+    
+    private let alarmSettingVStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.spacing = 8
+        $0.distribution = .fill
+        $0.alignment = .leading
+        return $0
+    }(UIStackView())
+    
+    private let alarmRowLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(.body)
+        $0.text = "알림"
+        return $0
+    }(UILabel())
+    
+    private let alarmAgainRowLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(.body)
+        $0.text = "다시 알림"
+        return $0
+    }(UILabel())
+    
+    private lazy var alarmSwitch: UISwitch = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isOn = true
+//        $0.addTarget(self, action: #selector(alarmSwitchValueChanged), for: .valueChanged)
+        return $0
+    }(UISwitch())
+    
+    private lazy var alarmAgainSwitch: UISwitch = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isOn = true
+//        $0.addTarget(self, action: #selector(alarmSwitchValueChanged), for: .valueChanged)
+        return $0
+    }(UISwitch())
+    
+    private let divider: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .separator
+        return $0
+    }(UIView())
+    
     // MARK: Property
     
     // MARK: Life Cycle
