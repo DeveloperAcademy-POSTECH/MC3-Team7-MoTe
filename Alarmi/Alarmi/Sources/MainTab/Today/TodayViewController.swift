@@ -28,16 +28,16 @@ final class TodayViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "마지막으로 전화한지 5일이 지났어요."
-        $0.setDynamicFont(.title2)
+        $0.text = "지금 한국은"
+        $0.setDynamicFont(for: .body, weight: .semibold)
         return $0
     }(UILabel())
 
-    private let subDescriptionLabel: UILabel = {
+    private let statusDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "2일 후면 전화하기로 한 날이에요."
-        $0.textColor = .secondaryLabel
-        $0.setDynamicFont(.body)
+        $0.text = "전화 가능 시간이 아니에요."
+        $0.textColor = .red
+        $0.setDynamicFont(for: .body, weight: .bold)
         return $0
     }(UILabel())
 
