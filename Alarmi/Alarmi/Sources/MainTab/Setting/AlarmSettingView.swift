@@ -37,3 +37,35 @@ final class AlarmSettingView: UIView {
         
     }
 }
+
+// MARK: - Preview
+
+#if DEBUG
+import SwiftUI
+
+struct UIViewPreview<View: UIView>: UIViewRepresentable {
+    let view: View
+
+    init(_ builder: @escaping () -> View) {
+        view = builder()
+    }
+
+    func makeUIView(context: Context) -> UIView {
+        return view
+    }
+
+    func updateUIView(_ view: UIView, context: Context) {
+        view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    }
+}
+
+struct AlarmSettingView_Preview: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            AlarmSettingView()
+        }
+        .ignoresSafeArea()
+    }
+}
+#endif
