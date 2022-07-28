@@ -65,7 +65,28 @@ final class SettingViewController: UIViewController {
     }
 
     func layout() {
-
+        alarmSettingVStack.addArrangedSubviews(
+            alarmSettingTitleLabel,
+            alarmSettingView,
+            alarmSettingDescriptionLabel
+        )
+        
+        view.addSubviews(alarmSettingVStack)
+        
+        NSLayoutConstraint.activate([
+            alarmSettingVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            alarmSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            alarmSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            alarmSettingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            alarmSettingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingView.trailingAnchor, constant: -16)
+        ])
     }
     
     func setNavigationBar() {
