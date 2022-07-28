@@ -70,8 +70,8 @@ final class UserNotificationManager {
     }
 
     func sendUserNotification(startTime: Date, endTime: Date, startDate: Date, goalPeriod: Int) {
-        let notificationInterval = calculateTimeInterval(startTime, endTime) // int 7
-        var requestDateComponents = calculateDate(startDate, goalPeriod) // 일단 이걸 7일뒤로 설정해줌
+        let notificationInterval = calculateTimeInterval(startTime, endTime)
+        var requestDateComponents = calculateDate(startDate, goalPeriod)
         notificationCenter.getNotificationSettings { [weak self] (settings) in
             guard settings.authorizationStatus == UNAuthorizationStatus.authorized else { return }
             for cycle in 0..<100 {
@@ -80,7 +80,7 @@ final class UserNotificationManager {
                     for index in 1..<7 {
                         requestDateComponents.hour = notificationTimeComponents.hour
                         requestDateComponents.minute = notificationTimeComponents.minute
-                        let content = self?.makeNotificationContent(index) // enum에 있는거 등록
+                        let content = self?.makeNotificationContent(index)
                         let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
                         let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
                         let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
@@ -108,7 +108,7 @@ final class UserNotificationManager {
     }
 
     // TODO: 연락 문구 정해야함
-    func makeNotificationContent(_ index: Int) -> UNMutableNotificationContent {
+    private func makeNotificationContent(_ index: Int) -> UNMutableNotificationContent {
         let notificationContent = UNMutableNotificationContent()
         let indexName = Content(rawValue: index)
         notificationContent.title = indexName?.title ?? ""
@@ -116,7 +116,7 @@ final class UserNotificationManager {
         return notificationContent
     }
 
-    func checkPendingNotificationRequest() {
+    private func checkPendingNotificationRequest() {
         notificationCenter.getPendingNotificationRequests { (notificationRequests) in
             if notificationRequests.isEmpty {
                 print("Pending request 없음")
