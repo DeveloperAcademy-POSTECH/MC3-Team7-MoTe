@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CallTime {
+struct CallTime: Codable {
     var start: Date
     var end: Date
 }
