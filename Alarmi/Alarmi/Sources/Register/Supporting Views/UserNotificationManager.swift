@@ -87,11 +87,7 @@ final class UserNotificationManager {
                         notificationTimeComponents = self?.calculateTime(startTime, notificationInterval, index) ?? DateComponents()
                     }
                 } else {
-                    let content = self?.makeNotificationContent(1)
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
-                    let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
-                    let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
-
+                    guard let request = self? .makeNotificationRequest(1, requestDateComponents) else { return }
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 }
                 requestDateComponents = self?.calculateDate(startDate, 1) ?? DateComponents()
