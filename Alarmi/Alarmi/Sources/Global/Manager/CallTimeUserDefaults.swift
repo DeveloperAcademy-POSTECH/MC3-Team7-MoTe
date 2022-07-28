@@ -13,7 +13,7 @@ struct CallTimeUserDefaults: UserDefaultsManager {
 
     private var key: String
 
-    init(_ key: UserDefaultsKey) {
+    init(key: UserDefaultsKey) {
         self.key = key.rawValue
     }
     
