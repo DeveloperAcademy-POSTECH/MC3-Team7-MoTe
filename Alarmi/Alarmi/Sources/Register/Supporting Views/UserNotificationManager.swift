@@ -81,14 +81,10 @@ final class UserNotificationManager {
                         requestDateComponents.hour = notificationTimeComponents.hour
                         requestDateComponents.minute = notificationTimeComponents.minute
 
-                        let content = self?.makeNotificationContent(index)
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: requestDateComponents, repeats: false)
-                        let identifier = self?.identifierFormatter(requestDateComponents) ?? ""
-                        let request = UNNotificationRequest(identifier: identifier, content: content ?? UNMutableNotificationContent(), trigger: trigger)
+                        guard let request = self?.makeNotificationRequest(index, requestDateComponents) else { return }
 
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                        // request date component 에서 interval(분) 더해줘야함
-                        notificationTimeComponents = self!.calculateTime(startTime, notificationInterval, index)
+                        notificationTimeComponents = self?.calculateTime(startTime, notificationInterval, index) ?? DateComponents()
                     }
                 } else {
                     let content = self?.makeNotificationContent(1)
@@ -116,6 +112,14 @@ final class UserNotificationManager {
         notificationContent.title = indexName?.title ?? ""
         notificationContent.body = indexName?.body ?? ""
         return notificationContent
+    }
+
+    private func makeNotificationRequest(_ index: Int, _ requestDate: DateComponents) -> UNNotificationRequest {
+        let content = self.makeNotificationContent(index)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: requestDate, repeats: false)
+        let identifier = self.identifierFormatter(requestDate)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        return request
     }
 
     private func checkPendingNotificationRequest() {
