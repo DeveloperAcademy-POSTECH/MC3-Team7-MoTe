@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator?.start()
 
         window?.makeKeyAndVisible()
+        
+        setLightOrDarkMode()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
@@ -35,4 +37,55 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {}
 
+}
+
+private extension SceneDelegate {
+
+    func setLightOrDarkMode() {
+        let calendar = Calendar.current
+        let now = Date()
+
+        guard let midnight = calendar.date(
+            bySettingHour: 0,
+            minute: 0,
+            second: 0,
+            of: now
+        ) else { return }
+
+        guard let awakeTime = calendar.date(
+            bySettingHour: 7,
+            minute: 0,
+            second: 0,
+            of: now
+        ) else { return }
+
+        let midnightCheckingTimer = Timer(
+            fireAt: midnight,
+            interval: 0,
+            target: self,
+            selector: #selector(switchToDarkMode),
+            userInfo: nil,
+            repeats: false
+        )
+        
+        let awakeTimeCheckingTimer = Timer(
+            fireAt: awakeTime,
+            interval: 0,
+            target: self,
+            selector: #selector(switchToLightMode),
+            userInfo: nil,
+            repeats: false
+        )
+
+        RunLoop.main.add(midnightCheckingTimer, forMode: .common)
+        RunLoop.main.add(awakeTimeCheckingTimer, forMode: .common)
+    }
+    
+    @objc func switchToDarkMode() {
+        window?.overrideUserInterfaceStyle = .dark
+    }
+    
+    @objc func switchToLightMode() {
+        window?.overrideUserInterfaceStyle = .light
+    }
 }
