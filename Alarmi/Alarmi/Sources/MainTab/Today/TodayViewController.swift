@@ -41,6 +41,15 @@ final class TodayViewController: UIViewController {
         return $0
     }(UILabel())
 
+
+    private let imageView: UIImageView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        // TODO: 시간에따라 사진바꿔줘야gka
+        $0.image = UIImage(named: "callTime")
+        $0.contentMode = .scaleAspectFit
+        return $0
+    }(UIImageView())
+
     private lazy var delayButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
 
