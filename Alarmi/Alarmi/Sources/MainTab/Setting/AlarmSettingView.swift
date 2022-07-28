@@ -15,6 +15,7 @@ final class AlarmSettingView: UIView {
     private let alarmRowHStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
+        $0.spacing = 8
         $0.distribution = .fill
         $0.alignment = .center
         return $0
@@ -23,6 +24,7 @@ final class AlarmSettingView: UIView {
     private let alarmAgainRowHStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
+        $0.spacing = 8
         $0.distribution = .fill
         $0.alignment = .center
         return $0
@@ -53,6 +55,7 @@ final class AlarmSettingView: UIView {
     
     private lazy var alarmSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.onTintColor = .systemOrange
         $0.isOn = true
 //        $0.addTarget(self, action: #selector(alarmSwitchValueChanged), for: .valueChanged)
         return $0
@@ -60,6 +63,7 @@ final class AlarmSettingView: UIView {
     
     private lazy var alarmAgainSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.onTintColor = .systemOrange
         $0.isOn = true
 //        $0.addTarget(self, action: #selector(alarmSwitchValueChanged), for: .valueChanged)
         return $0
@@ -89,11 +93,40 @@ final class AlarmSettingView: UIView {
     // MARK: Methods
     
     private func attribute() {
-        
+        backgroundColor = .secondarySystemGroupedBackground
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
     }
     
     private func layout() {
+        addSubviews(alarmSettingVStack)
         
+        alarmSettingVStack.addArrangedSubviews(alarmRowHStack, divider, alarmAgainRowHStack)
+        alarmRowHStack.addArrangedSubviews(alarmRowLabel, alarmSwitch)
+        alarmAgainRowHStack.addArrangedSubviews(alarmAgainRowLabel, alarmAgainSwitch)
+        
+        NSLayoutConstraint.activate([
+            alarmRowHStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            alarmRowHStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            alarmAgainRowHStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            alarmAgainRowHStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            divider.heightAnchor.constraint(equalToConstant: 1),
+            divider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            divider.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            alarmSettingVStack.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            alarmSettingVStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            alarmSettingVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            alarmSettingVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
     }
 }
 
@@ -102,29 +135,22 @@ final class AlarmSettingView: UIView {
 #if DEBUG
 import SwiftUI
 
-struct UIViewPreview<View: UIView>: UIViewRepresentable {
-    let view: View
-
-    init(_ builder: @escaping () -> View) {
-        view = builder()
+struct PreviewCellRepresentable: UIViewRepresentable {
+    typealias UIViewType = AlarmSettingView
+    
+    func makeUIView(context: Context) -> AlarmSettingView {
+        AlarmSettingView()
     }
-
-    func makeUIView(context: Context) -> UIView {
-        return view
-    }
-
-    func updateUIView(_ view: UIView, context: Context) {
-        view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    
+    func updateUIView(_ uiView: AlarmSettingView, context: Context) {
+        
     }
 }
 
 struct AlarmSettingView_Preview: PreviewProvider {
     static var previews: some View {
-        UIViewPreview {
-            AlarmSettingView()
-        }
-        .ignoresSafeArea()
+        PreviewCellRepresentable()
+            .frame(width: 358, height: 94)
     }
 }
 #endif
