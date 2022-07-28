@@ -13,7 +13,6 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 }
 
 final class MainTabCoordinator: Coordinator,
-                                SettingViewControllerDelegate,
                                 TodayViewControllerDelegate,
                                 MainTabRegisterCallTimeViewControllerDelegate,
                                 MainTabRegisterPlanViewControllerDelegate,
@@ -46,7 +45,6 @@ final class MainTabCoordinator: Coordinator,
 
     func gotoSettingViewController() {
         let settingViewController = SettingViewController()
-        settingViewController.delegate = self
         todayNavigationController.pushViewController(settingViewController, animated: true)
     }
 
