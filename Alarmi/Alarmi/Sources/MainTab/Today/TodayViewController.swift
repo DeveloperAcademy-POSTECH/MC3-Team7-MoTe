@@ -116,20 +116,20 @@ final class TodayViewController: UIViewController {
     }
 
     private func layout() {
-        view.addSubviews(stackView, callButton)
+        view.addSubviews(stackView, imageView)
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
         ])
 
-        stackView.addArrangedSubviews(descriptionLabel, subDescriptionLabel, delayButton)
-        
+        stackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
+
         NSLayoutConstraint.activate([
-            callButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            callButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            callButton.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width - 32)
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2)
         ])
     }
     
