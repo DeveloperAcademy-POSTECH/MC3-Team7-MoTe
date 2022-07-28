@@ -8,4 +8,4 @@
 
 import Foundation
 
-typealias MoTeDate = Date
+typealias CallDate = Date

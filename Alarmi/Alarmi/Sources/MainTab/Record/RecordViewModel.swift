@@ -11,7 +11,11 @@ import Foundation
 import UIKit
 
 final class RecordViewModel: ObservableObject {
-    @Published var frequencyDateList: [[Frequency]] = RecordViewModel.dummyFrequencyDataList
+    typealias Weekdend = [Frequency]
+    typealias WeekendList = [Weekdend]
+    typealias FrequencyDataList = [Frequency]
+
+    @Published var frequencyDateList: WeekendList = RecordViewModel.dummyFrequencyDataList
     @Published var goalCount: Int = 0
     @Published var goalCombo: Int = 0
     @Published var achievement: [Bool] = [false, true, false]
@@ -23,13 +27,19 @@ final class RecordViewModel: ObservableObject {
     // MARK: Business Logic
 
     private func fetchMoTeDate() {
-        let dates = TimeCalculationManager.shared.testDummyDates()
-        let todayIndex = (Constant.Record.numberOfColumns - 1) * 7 + TimeCalculationManager.shared.todayWeekend().weekday! - 2 // 1 = 일요일
+        // TODO: 대체해야하는 부분 모델을 통해 데이터 받아오기
+        let dates = DateManager.shared.testDummyDates()
+        let ddipDates = createFrequencyDataList(with: dates)
+        frequencyDateList = convertModel(ddipDates)
+    }
+
+    private func createFrequencyDataList(with dates: [CallDate]) -> FrequencyDataList {
+        let todayIndex = (Constant.Record.numberOfColumns - 1) * 7 + DateManager.shared.todayWeekend().weekday! - 2 // 1 = 일요일
         var index: Int = 0
 
-        let ddipDates = (0..<Constant.Record.numberOfColumns * 7).map { (ind) -> Frequency in
+        return (0..<Constant.Record.numberOfColumns * 7).map { (ind) -> Frequency in
             let currentday: Int = todayIndex - ind
-            let currentDate = TimeCalculationManager.shared.todayBefore(currentday)!
+            let currentDate = DateManager.shared.todayBefore(currentday)!
 
             if ind > todayIndex {
                 return Frequency(type: .future, date: currentDate)
@@ -43,25 +53,23 @@ final class RecordViewModel: ObservableObject {
                 }
             }
         }
-
-        frequencyDateList = convertModel(ddipDates)
     }
 
-    private func convertModel(_ ddipDates: [Frequency]) -> [[Frequency]] {
-        var models: [[Frequency]] = []
+    private func convertModel(_ ddipDates: Weekdend) -> WeekendList {
+        var dataList: WeekendList = []
         ddipDates.enumerated().forEach {
             if ($0.offset) % 7 == 0 {
-                let array: [Frequency] = Array(ddipDates[$0.offset..<$0.offset+7])
-                print(array.count)
-                if !array.isEmpty { models.append(array) }
+                let weekend: Weekdend = Array(ddipDates[$0.offset..<$0.offset+7])
+                if !weekend.isEmpty { dataList.append(weekend) }
             }
         }
-        return models
+        return dataList
     }
 }
 
 extension RecordViewModel {
 
+    // MARK: 애니메이션이 이상하게 구동되기 때문에 주는 초기값
     static var dummyFrequencyDataList: [[Frequency]] {
         .init((0..<Constant.Record.numberOfColumns).map { _ in
             [

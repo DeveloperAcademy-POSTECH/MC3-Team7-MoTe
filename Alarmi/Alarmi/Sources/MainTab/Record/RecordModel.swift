@@ -7,13 +7,3 @@
 //
 
 import Foundation
-
-enum CallType {
-    case none
-    case did
-    case future
-}
-
-struct RecordModel {
-
-}

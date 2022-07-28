@@ -13,7 +13,6 @@
 		385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
 		507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F352882D8A70086A4CE /* SettingViewController.swift */; };
-		EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */; };
 		EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D3288E234100FF5A86 /* Alarm.swift */; };
 		EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D5288E234B00FF5A86 /* CallTime.swift */; };
 		EF0C23D8288E236400FF5A86 /* GoalTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D7288E236400FF5A86 /* GoalTime.swift */; };
@@ -22,8 +21,12 @@
 		EF13EFA62891788500BC8D49 /* RecentAchieveContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFA52891788500BC8D49 /* RecentAchieveContainerView.swift */; };
 		EF13EFA8289226A000BC8D49 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFA7289226A000BC8D49 /* Frequency.swift */; };
 		EF13EFAA28922EBB00BC8D49 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFA928922EBB00BC8D49 /* Goal.swift */; };
+		EF13EFD12892B68000BC8D49 /* CallTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFCF2892B68000BC8D49 /* CallTimeManager.swift */; };
+		EF13EFD22892B68000BC8D49 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD02892B68000BC8D49 /* DateManager.swift */; };
+		EF13EFD62892B6A000BC8D49 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD42892B6A000BC8D49 /* UserDefaultsManager.swift */; };
+		EF13EFD72892B6A000BC8D49 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD52892B6A000BC8D49 /* Coordinator.swift */; };
+		EF13EFD92892B6BA00BC8D49 /* CallDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD82892B6BA00BC8D49 /* CallDate.swift */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
-		EF3630EF28865FA4007779C0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630EE28865FA4007779C0 /* Coordinator.swift */; };
 		EF3630F128866115007779C0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630F028866115007779C0 /* AppCoordinator.swift */; };
 		EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630F328866304007779C0 /* RegisterCoordinator.swift */; };
 		EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630F528866968007779C0 /* MainTabCoordinator.swift */; };
@@ -32,7 +35,6 @@
 		EF79622A2891042C009A176E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7962282891042C009A176E /* RecordViewController.swift */; };
 		EF79622B2891042C009A176E /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7962292891042C009A176E /* RecordViewModel.swift */; };
 		EF79622F2891048C009A176E /* FrequencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79622E2891048C009A176E /* FrequencyView.swift */; };
-		EF7962342891062F009A176E /* KoreaTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7962332891062F009A176E /* KoreaTimeManager.swift */; };
 		EF796236289110C7009A176E /* FrequencyContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF796235289110C7009A176E /* FrequencyContainerView.swift */; };
 		EF79623828911D06009A176E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79623728911D06009A176E /* Constant.swift */; };
 		EF79623A289122C3009A176E /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF796239289122C3009A176E /* RecordModel.swift */; };
@@ -83,7 +85,6 @@
 		385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
 		507E6F352882D8A70086A4CE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoTeDate.swift; sourceTree = "<group>"; };
 		EF0C23D3288E234100FF5A86 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		EF0C23D5288E234B00FF5A86 /* CallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTime.swift; sourceTree = "<group>"; };
 		EF0C23D7288E236400FF5A86 /* GoalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTime.swift; sourceTree = "<group>"; };
@@ -92,8 +93,12 @@
 		EF13EFA52891788500BC8D49 /* RecentAchieveContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchieveContainerView.swift; sourceTree = "<group>"; };
 		EF13EFA7289226A000BC8D49 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		EF13EFA928922EBB00BC8D49 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		EF13EFCF2892B68000BC8D49 /* CallTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallTimeManager.swift; sourceTree = "<group>"; };
+		EF13EFD02892B68000BC8D49 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		EF13EFD42892B6A000BC8D49 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		EF13EFD52892B6A000BC8D49 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		EF13EFD82892B6BA00BC8D49 /* CallDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallDate.swift; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		EF3630EE28865FA4007779C0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		EF3630F028866115007779C0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		EF3630F328866304007779C0 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
 		EF3630F528866968007779C0 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
@@ -102,7 +107,6 @@
 		EF7962282891042C009A176E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		EF7962292891042C009A176E /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		EF79622E2891048C009A176E /* FrequencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyView.swift; sourceTree = "<group>"; };
-		EF7962332891062F009A176E /* KoreaTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoreaTimeManager.swift; sourceTree = "<group>"; };
 		EF796235289110C7009A176E /* FrequencyContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyContainerView.swift; sourceTree = "<group>"; };
 		EF79623728911D06009A176E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		EF796239289122C3009A176E /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
@@ -161,7 +165,7 @@
 		158BE5F22887983A00BDAFA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */,
+				EF13EFD82892B6BA00BC8D49 /* CallDate.swift */,
 				EF0C23D3288E234100FF5A86 /* Alarm.swift */,
 				EF0C23D5288E234B00FF5A86 /* CallTime.swift */,
 				EF0C23D7288E236400FF5A86 /* GoalTime.swift */,
@@ -190,6 +194,24 @@
 				EF13EFA52891788500BC8D49 /* RecentAchieveContainerView.swift */,
 			);
 			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		EF13EFCE2892B68000BC8D49 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EF13EFCF2892B68000BC8D49 /* CallTimeManager.swift */,
+				EF13EFD02892B68000BC8D49 /* DateManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EF13EFD32892B6A000BC8D49 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EF13EFD42892B6A000BC8D49 /* UserDefaultsManager.swift */,
+				EF13EFD52892B6A000BC8D49 /* Coordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		EF3630F2288662DA007779C0 /* App */ = {
@@ -243,14 +265,6 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		EF7962322891062F009A176E /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				EF7962332891062F009A176E /* KoreaTimeManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		EFF8D2972880EF81005A4D10 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,11 +278,11 @@
 		EFF8D29E2880F4F1005A4D10 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				EF7962322891062F009A176E /* Manager */,
+				EF79623728911D06009A176E /* Constant.swift */,
+				EF13EFD32892B6A000BC8D49 /* Protocols */,
+				EF13EFCE2892B68000BC8D49 /* Manager */,
 				EFF8D2C62882AE20005A4D10 /* Components */,
 				EFF8D29F2880F4F5005A4D10 /* Extensions */,
-				EF3630EE28865FA4007779C0 /* Coordinator.swift */,
-				EF79623728911D06009A176E /* Constant.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -354,9 +368,9 @@
 		EFFD7420287BC9D800D9F267 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				158BE5F22887983A00BDAFA4 /* Models */,
 				EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */,
 				EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */,
+				158BE5F22887983A00BDAFA4 /* Models */,
 				EFF8D29E2880F4F1005A4D10 /* Global */,
 				EF3630F2288662DA007779C0 /* App */,
 				EF7785D928864A6200E60AD2 /* Register */,
@@ -543,22 +557,23 @@
 				EF13EFA328916D1300BC8D49 /* PurposeContainerView.swift in Sources */,
 				385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */,
 				EF0C23D8288E236400FF5A86 /* GoalTime.swift in Sources */,
+				EF13EFD22892B68000BC8D49 /* DateManager.swift in Sources */,
 				EF79623A289122C3009A176E /* RecordModel.swift in Sources */,
-				EF7962342891062F009A176E /* KoreaTimeManager.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
 				1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */,
 				EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */,
 				EF79623828911D06009A176E /* Constant.swift in Sources */,
-				EF3630EF28865FA4007779C0 /* Coordinator.swift in Sources */,
 				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
+				EF13EFD62892B6A000BC8D49 /* UserDefaultsManager.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
 				EF13EFAA28922EBB00BC8D49 /* Goal.swift in Sources */,
 				507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */,
+				EF13EFD92892B6BA00BC8D49 /* CallDate.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
+				EF13EFD72892B6A000BC8D49 /* Coordinator.swift in Sources */,
 				EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
 				EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */,
-				EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */,
 				EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */,
 				EFF8D2A628810A11005A4D10 /* UIView+.swift in Sources */,
 				EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */,
@@ -567,6 +582,7 @@
 				EF0C23DA288E237A00FF5A86 /* PushAlarm.swift in Sources */,
 				EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */,
 				EF7785DD28864CC700E60AD2 /* RegisterCallTimeViewController.swift in Sources */,
+				EF13EFD12892B68000BC8D49 /* CallTimeManager.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */,
 				EF79622B2891042C009A176E /* RecordViewModel.swift in Sources */,

@@ -8,15 +8,15 @@
 
 import Foundation
 
-class TimeCalculationManager {
+class DateManager {
     private init() {}
-    static let shared = TimeCalculationManager()
+    static let shared = DateManager()
 
     func getNowDate() -> Date? {
         let string = dateFormatter.string(from: Date())
         return dateFormatter.date(from: string)
     }
-    
+
     private let dateFormatter: DateFormatter = {
         $0.dateFormat = "a hh:mm"
         $0.timeZone = TimeZone(identifier: "Asia/Seoul")
@@ -29,8 +29,8 @@ class TimeCalculationManager {
         return $0
     }(DateFormatter())
 
-    func testDummyDates() -> [MoTeDate] {
-        return self.dummy
+    func testDummyDates() -> [CallDate] {
+        self.dummy
     }
 
     func todayBefore(_ day: Int) -> Date? {
@@ -40,14 +40,14 @@ class TimeCalculationManager {
     }
 
     func todayWeekend() -> DateComponents {
-        let vvv = Calendar.current.dateComponents([.weekday], from: Date())
-        return vvv
+        Calendar.current.dateComponents([.weekday], from: Date())
     }
 }
 
-extension TimeCalculationManager {
+extension DateManager {
 
-    private var dummy: [MoTeDate] {
+    // MARK: 코어데이터로 대체될 정보입니다. 
+    private var dummy: [CallDate] {
         [
             Calendar.current.date(byAdding: .day, value: -25, to: noon)!,
             Calendar.current.date(byAdding: .day, value: -20, to: noon)!,

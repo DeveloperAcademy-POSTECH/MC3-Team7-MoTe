@@ -11,5 +11,11 @@ import Foundation
 struct Frequency: Hashable {
     var id = UUID()
     var type: CallType
-    var date: MoTeDate
+    var date: CallDate
+}
+
+enum CallType {
+    case none
+    case did
+    case future
 }
