@@ -11,8 +11,6 @@ import UIKit
 
 final class SettingViewController: UIViewController {
 
-    // MARK: IBoutlet
-
     // MARK: View
 
     // MARK: Store Property
@@ -29,8 +27,6 @@ final class SettingViewController: UIViewController {
         layout()
     }
     
-    // MARK: IBAction
-
     // MARK: Method
 
     func attribute() {
