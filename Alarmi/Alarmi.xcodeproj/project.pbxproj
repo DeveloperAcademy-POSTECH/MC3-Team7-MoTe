@@ -11,6 +11,8 @@
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
 		385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */; };
+		3861D14D289229FD0001C187 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D14C289229FD0001C187 /* TodayViewModel.swift */; };
+		3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D15B2892EA170001C187 /* TodayDdayView.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
 		507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F352882D8A70086A4CE /* SettingViewController.swift */; };
 		EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */; };
@@ -71,6 +73,8 @@
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
 		385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		3861D14C289229FD0001C187 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		3861D15B2892EA170001C187 /* TodayDdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDdayView.swift; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
 		507E6F352882D8A70086A4CE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoTeDate.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
+				3861D14C289229FD0001C187 /* TodayViewModel.swift */,
 				EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */,
 				507E6F352882D8A70086A4CE /* SettingViewController.swift */,
 			);
@@ -246,6 +251,7 @@
 				385BB5542882BB0E0067AFF4 /* CurrentLocationView */,
 				EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */,
 				EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */,
+				3861D15B2892EA170001C187 /* TodayDdayView.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				EF3630EF28865FA4007779C0 /* Coordinator.swift in Sources */,
 				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
+				3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */,
 				507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */,
@@ -517,6 +524,7 @@
 				EF7785DD28864CC700E60AD2 /* RegisterCallTimeViewController.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */,
+				3861D14D289229FD0001C187 /* TodayViewModel.swift in Sources */,
 				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
 				EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,
