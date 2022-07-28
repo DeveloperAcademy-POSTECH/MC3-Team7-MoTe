@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ufT-ub-kW3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ufT-ub-kW3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21191"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,49 +18,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부모님께 며칠에 한 번 전화할 건가요?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZO-ex-iOy">
-                                <rect key="frame" x="16" y="140" width="382" height="17"/>
+                                <rect key="frame" x="16" y="140" width="382" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI4-03-WPT">
-                                <rect key="frame" x="16" y="173" width="382" height="89"/>
+                                <rect key="frame" x="16" y="176.5" width="382" height="64"/>
                                 <subviews>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minimumValue="1" maximumValue="31" translatesAutoresizingMaskIntoConstraints="NO" id="tb8-aC-X8G">
-                                        <rect key="frame" x="272" y="28.5" width="94" height="32"/>
-                                        <connections>
-                                            <action selector="settingDayStepper:" destination="Y6W-OH-hqX" eventType="valueChanged" id="6Ps-an-mRj"/>
-                                        </connections>
-                                    </stepper>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일에 한 번" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-24-XeL">
-                                        <rect key="frame" x="16" y="36" width="64" height="17"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-0S-ywc">
+                                        <rect key="frame" x="16" y="16" width="350" height="32"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일에 한 번" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-24-XeL">
+                                                <rect key="frame" x="0.0" y="6" width="248" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minimumValue="1" maximumValue="31" translatesAutoresizingMaskIntoConstraints="NO" id="tb8-aC-X8G">
+                                                <rect key="frame" x="256" y="0.0" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="settingDayStepper:" destination="Y6W-OH-hqX" eventType="valueChanged" id="6Ps-an-mRj"/>
+                                                </connections>
+                                            </stepper>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="1Ej-24-XeL" firstAttribute="centerY" secondItem="hI4-03-WPT" secondAttribute="centerY" id="VAn-Np-jiM"/>
-                                    <constraint firstAttribute="trailing" secondItem="tb8-aC-X8G" secondAttribute="trailing" constant="16" id="neA-72-u2d"/>
-                                    <constraint firstItem="tb8-aC-X8G" firstAttribute="centerY" secondItem="hI4-03-WPT" secondAttribute="centerY" id="tp3-EC-iPM"/>
-                                    <constraint firstItem="1Ej-24-XeL" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="16" id="wa2-me-4k8"/>
+                                    <constraint firstAttribute="bottom" secondItem="PF7-0S-ywc" secondAttribute="bottom" constant="16" id="TGh-AC-lI9"/>
+                                    <constraint firstItem="PF7-0S-ywc" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="top" constant="16" id="ZgB-jb-yIz"/>
+                                    <constraint firstAttribute="trailing" secondItem="PF7-0S-ywc" secondAttribute="trailing" constant="16" id="gCr-Ia-Wly"/>
+                                    <constraint firstItem="PF7-0S-ywc" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="16" id="qGd-ST-MY2"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWN-FC-Xy9">
-                                <rect key="frame" x="16" y="278" width="382" height="82"/>
+                                <rect key="frame" x="16" y="256.5" width="382" height="82"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="STa-iL-Iqz">
                                         <rect key="frame" x="16" y="16" width="350" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표 시작일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpN-w2-sXu">
-                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="78" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cGg-Ty-44o">
-                                                <rect key="frame" x="72.5" y="0.0" width="277.5" height="50"/>
+                                                <rect key="frame" x="86" y="0.0" width="264" height="50"/>
                                                 <locale key="locale" localeIdentifier="ko"/>
                                                 <connections>
                                                     <action selector="settingStartDatePicker:" destination="Y6W-OH-hqX" eventType="valueChanged" id="SBB-8f-0Ni"/>
@@ -78,7 +84,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 설정하면 시작일부터 목표일마다 알림을 보내드려요." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XV-Bb-8CV">
-                                <rect key="frame" x="102" y="368" width="280" height="14.5"/>
+                                <rect key="frame" x="102" y="346.5" width="280" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,18 +93,17 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hI4-03-WPT" firstAttribute="top" secondItem="LZO-ex-iOy" secondAttribute="bottom" constant="16" id="93E-A9-cNd"/>
                             <constraint firstItem="LZO-ex-iOy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AKz-uA-qq2"/>
-                            <constraint firstItem="vWN-FC-Xy9" firstAttribute="trailing" secondItem="hI4-03-WPT" secondAttribute="trailing" id="JN4-9Q-aYd"/>
-                            <constraint firstItem="vWN-FC-Xy9" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="278" id="NOa-Bc-tdb"/>
+                            <constraint firstItem="vWN-FC-Xy9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Lqc-HZ-rqn"/>
+                            <constraint firstItem="hI4-03-WPT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="QHp-E2-WSs"/>
+                            <constraint firstItem="5XV-Bb-8CV" firstAttribute="trailing" secondItem="vWN-FC-Xy9" secondAttribute="trailing" constant="-16" id="Udx-Rm-4yL"/>
                             <constraint firstItem="LZO-ex-iOy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Y9l-cS-ALc"/>
-                            <constraint firstItem="hI4-03-WPT" firstAttribute="top" secondItem="LZO-ex-iOy" secondAttribute="bottom" constant="16" id="ZU4-Ua-mrM"/>
-                            <constraint firstItem="hI4-03-WPT" firstAttribute="trailing" secondItem="LZO-ex-iOy" secondAttribute="trailing" id="bDk-Yj-Kvf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hI4-03-WPT" secondAttribute="trailing" constant="16" id="ZgU-wR-R5J"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vWN-FC-Xy9" secondAttribute="trailing" constant="16" id="dMR-Ha-URk"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LZO-ex-iOy" secondAttribute="trailing" constant="16" id="gso-Lu-50e"/>
                             <constraint firstItem="vWN-FC-Xy9" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="bottom" constant="16" id="m0V-8Q-RZW"/>
-                            <constraint firstItem="vWN-FC-Xy9" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" id="oOc-EW-00u"/>
                             <constraint firstItem="5XV-Bb-8CV" firstAttribute="top" secondItem="vWN-FC-Xy9" secondAttribute="bottom" constant="8" id="sLc-M7-wuq"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5XV-Bb-8CV" secondAttribute="trailing" constant="32" id="so4-BD-vd1"/>
-                            <constraint firstItem="hI4-03-WPT" firstAttribute="leading" secondItem="LZO-ex-iOy" secondAttribute="leading" id="zq7-pJ-fSj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="목표" largeTitleDisplayMode="always" id="nre-KA-2FK"/>
