@@ -44,6 +44,7 @@ final class TodayViewController: UIViewController {
     private let realTimeClockLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.adjustsFontSizeToFitWidth = true
+        $0.textAlignment = .center
         $0.font = UIFont.systemFont(ofSize: 108, weight: .black)
         return $0
     }(UILabel())
@@ -93,6 +94,11 @@ final class TodayViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
+        ])
+
+        NSLayoutConstraint.activate([
+            realTimeClockLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            realTimeClockLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([
