@@ -73,26 +73,28 @@ final class GoalSettingCellView: UIView {
         )
         
         NSLayoutConstraint.activate([
-            goalSettingRowView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            goalSettingRowView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            goalSettingRowView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            goalSettingRowView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
-        ])
-        
-        NSLayoutConstraint.activate([
-            goalPeriodLabel.topAnchor.constraint(equalTo: goalSettingRowView.topAnchor),
+            goalPeriodLabel.centerYAnchor.constraint(equalTo: goalSettingRowView.centerYAnchor),
             goalPeriodLabel.leadingAnchor.constraint(equalTo: goalSettingRowView.leadingAnchor)
         ])
         
         NSLayoutConstraint.activate([
             goalPeriodDescriptionLabel.centerYAnchor.constraint(equalTo: goalPeriodLabel.centerYAnchor),
-            goalPeriodDescriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: goalSettingRowView.leadingAnchor, constant: 34),
+            goalPeriodDescriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 42),
             goalPeriodDescriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: goalPeriodLabel.trailingAnchor, constant: 8)
         ])
         
         NSLayoutConstraint.activate([
             goalPeriodStepper.centerYAnchor.constraint(equalTo: goalPeriodLabel.centerYAnchor),
             goalPeriodStepper.trailingAnchor.constraint(equalTo: goalSettingRowView.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            goalSettingRowView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            goalSettingRowView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            goalSettingRowView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            goalSettingRowView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            goalSettingRowView.heightAnchor.constraint(greaterThanOrEqualTo: goalPeriodLabel.heightAnchor),
+            goalSettingRowView.heightAnchor.constraint(greaterThanOrEqualTo: goalPeriodStepper.heightAnchor)
         ])
     }
 }
