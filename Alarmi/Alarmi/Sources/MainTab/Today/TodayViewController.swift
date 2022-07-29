@@ -22,7 +22,7 @@ final class TodayViewController: UIViewController {
         $0.axis = .vertical
         $0.distribution = .fill
         $0.alignment = .leading
-        $0.spacing = 8
+        $0.spacing = -10
         return $0
     }(UIStackView())
 
@@ -36,60 +36,29 @@ final class TodayViewController: UIViewController {
     private let statusDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "전화 가능 시간이 아니에요."
-        $0.textColor = .red
         $0.setDynamicFont(for: .body, weight: .bold)
         return $0
     }(UILabel())
 
     private let realTimeClockLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.textColor = .red
-        $0.setDynamicFont(for: .largeTitle, weight: .black)
+        $0.adjustsFontSizeToFitWidth = true
+        $0.font = UIFont.systemFont(ofSize: 108, weight: .black)
         return $0
     }(UILabel())
 
     private let imageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        // TODO: 시간에따라 사진바꿔줘야gka
-        $0.image = UIImage(named: "callTime")
+        // TODO: 시간에따라 사진바꿔줘야함
+        $0.image = UIImage(named: "call")
         $0.contentMode = .scaleAspectFit
         return $0
     }(UIImageView())
 
-    // TODO: 내가 만들어야 하는 딜레이 버튼으로 만들어야함.
-    private lazy var delayButton: UIButton = {
+    private lazy var dDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-
-        let config = UIImage.SymbolConfiguration(font: UIFont.preferredFont(forTextStyle: .caption2))
-        let image = UIImage(systemName: "chevron.right", withConfiguration: config)
-        $0.configuration?.image = image
-        $0.configuration?.imagePlacement = .trailing
-        $0.configuration?.baseBackgroundColor = .systemBlue
-        $0.configuration?.titleAlignment = .leading
-        $0.configuration?.contentInsets = .zero
-        $0.addTarget(self, action: #selector(delayButtonTapped), for: .touchUpInside)
-
-        var container = AttributeContainer()
-        container.font = UIFont.preferredFont(forTextStyle: .footnote)
-        $0.configuration?.attributedTitle = AttributedString("이번 연락 미루기 ", attributes: container)
-
         return $0
-    }(UIButton(configuration: .plain()))
-
-    // TODO: 버튼수정해야함
-    private let callButton: UIButton = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.configuration?.baseBackgroundColor = .systemBlue
-        $0.configuration?.titleAlignment = .center
-        $0.configuration?.cornerStyle = .medium
-        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-
-        var container = AttributeContainer()
-        container.font = UIFont.preferredFont(forTextStyle: .body)
-        $0.configuration?.attributedTitle = AttributedString("오늘 전화 기록하기", attributes: container)
-
-        return $0
-    }(UIButton(configuration: .filled()))
+    }(TodayDdayView())
 
     weak var delegate: TodayViewControllerDelegate?
 
@@ -116,7 +85,8 @@ final class TodayViewController: UIViewController {
     }
 
     private func layout() {
-        view.addSubviews(stackView, imageView)
+        view.addSubviews(stackView, imageView, dDayView)
+        stackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -124,12 +94,26 @@ final class TodayViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
         ])
 
-        stackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
+        NSLayoutConstraint.activate([
+            statusDescriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -42)
+        ])
+
+//        NSLayoutConstraint.activate([
+//            statusDescriptionLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor),
+//            statusDescriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+//            statusDescriptionLabel.trailingAnchor.
+//        ])
 
         NSLayoutConstraint.activate([
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2)
+        ])
+
+        NSLayoutConstraint.activate([
+            dDayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            dDayView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//            dDayView.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width -32)
         ])
     }
     
@@ -150,10 +134,6 @@ extension TodayViewController {
 
     @objc private func settingButtonTapped() {
         delegate?.gotoSettingViewController()
-    }
-
-    @objc private func delayButtonTapped() {
-        delegate?.presentCallDelayViewController()
     }
 
     @objc private func currentTimeToKoreaTime(_ sender: Timer) {
