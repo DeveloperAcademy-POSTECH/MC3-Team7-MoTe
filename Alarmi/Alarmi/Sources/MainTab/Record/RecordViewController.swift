@@ -8,7 +8,6 @@
 
 import Combine
 import UIKit
-import SwiftUI
 
 final class RecordViewController: UIViewController {
 
@@ -58,7 +57,6 @@ final class RecordViewController: UIViewController {
         bind()
         attribute()
         layout()
-        viewModel.viewDidLoad()
     }
 
     // MARK: Method
@@ -91,6 +89,9 @@ final class RecordViewController: UIViewController {
                 self?.frequencyContainerView.frequencyDataList = dataList
             }
             .store(in: &cancelBag)
+
+        viewModel.viewDidLoad
+            .send()
     }
 
     func attribute() {

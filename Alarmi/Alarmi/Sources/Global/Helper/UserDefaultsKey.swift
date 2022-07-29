@@ -8,8 +8,10 @@
 
 import Foundation
 
+// TODO: 코어 데이터로 대체
 enum UserDefaultsKey: String {
     case callTime
     case alarm
     case goalTime
+    case callDate
 }

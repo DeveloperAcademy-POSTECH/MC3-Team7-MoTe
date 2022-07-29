@@ -29,7 +29,7 @@ class RegisterCallTimeViewController: UIViewController {
     
     private let encoder = JSONEncoder()
     private var callTime = CallTime(start: Date(), end: Date())
-    
+
     private let current = Date()
     private lazy var startTime: String = myFormatter.string(from: current)
     private lazy var endTime: String = myFormatter.string(from: current)

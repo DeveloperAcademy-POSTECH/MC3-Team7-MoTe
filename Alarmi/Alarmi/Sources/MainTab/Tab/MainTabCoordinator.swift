@@ -75,7 +75,8 @@ extension MainTabCoordinator {
 
     private func setupRecordNavgigationController() {
         let recordViewController = RecordViewController()
-        recordViewController.viewModel = RecordViewModel()
+        let viewModel = RecordViewModel(RecordModel())
+        recordViewController.viewModel = viewModel
         recordNavigationController.viewControllers = [recordViewController]
     }
 }
