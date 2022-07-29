@@ -152,4 +152,3 @@ struct CallTimeCellView_Preview: PreviewProvider {
     }
 }
 #endif
-
