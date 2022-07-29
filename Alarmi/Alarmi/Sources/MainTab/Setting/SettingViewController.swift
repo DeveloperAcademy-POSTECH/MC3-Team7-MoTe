@@ -98,6 +98,12 @@ final class SettingViewController: UIViewController {
         view.addSubviews(alarmSettingVStack, callTimeSettingVStack)
         
         alarmSettingLayout()
+        callTimeSettingLayout()
+    }
+    
+    private func setNavigationBar() {
+        title = "설정"
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func alarmSettingLayout() {
@@ -108,7 +114,7 @@ final class SettingViewController: UIViewController {
         )
         
         NSLayoutConstraint.activate([
-            alarmSettingVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            alarmSettingVStack.topAnchor.constraint(equalTo: callTimeSettingVStack.bottomAnchor, constant: 32),
             alarmSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             alarmSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
@@ -123,11 +129,27 @@ final class SettingViewController: UIViewController {
         ])
     }
     
-    
-    
-    private func setNavigationBar() {
-        title = "설정"
-        navigationController?.navigationBar.prefersLargeTitles = false
+    private func callTimeSettingLayout() {
+        callTimeSettingVStack.addArrangedSubviews(
+            callTimeSettingTitleLabel,
+            callTimeCellView,
+            callTimeSettingDescriptionLabel
+        )
+        
+        NSLayoutConstraint.activate([
+            callTimeSettingVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            callTimeSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            callTimeSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            callTimeCellView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            callTimeCellView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            callTimeSettingDescriptionLabel.trailingAnchor.constraint(equalTo: callTimeCellView.trailingAnchor, constant: -16)
+        ])
     }
 }
 
