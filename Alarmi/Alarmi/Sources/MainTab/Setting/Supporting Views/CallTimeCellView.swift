@@ -34,7 +34,7 @@ final class CallTimeCellView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.spacing = 8
-        $0.distribution = .fill
+        $0.distribution = .equalSpacing
         $0.alignment = .leading
         return $0
     }(UIStackView())
@@ -67,6 +67,12 @@ final class CallTimeCellView: UIView {
         return $0
     }(UIDatePicker())
     
+    private let divider: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .separator
+        return $0
+    }(UIView())
+    
     // MARK: Property
     
     // MARK: Life Cycle
@@ -91,7 +97,34 @@ final class CallTimeCellView: UIView {
     }
     
     private func layout() {
+        addSubviews(cellVStack)
         
+        startTimeRowHStack.addArrangedSubviews(startTimeLabel, startTimePicker)
+        endTimeRowHStack.addArrangedSubviews(endTimeLabel, endTimePicker)
+        cellVStack.addArrangedSubviews(startTimeRowHStack, divider, endTimeRowHStack)
+        
+        NSLayoutConstraint.activate([
+            startTimeRowHStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            startTimeRowHStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            endTimeRowHStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            endTimeRowHStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            divider.heightAnchor.constraint(equalToConstant: 1),
+            divider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            divider.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            cellVStack.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            cellVStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            cellVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            cellVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        ])
     }
 }
 
@@ -115,6 +148,7 @@ struct CallTimeCellViewRepresentable: UIViewRepresentable {
 struct CallTimeCellView_Preview: PreviewProvider {
     static var previews: some View {
         CallTimeCellViewRepresentable()
+            .frame(width: 358, height: 120)
     }
 }
 #endif
