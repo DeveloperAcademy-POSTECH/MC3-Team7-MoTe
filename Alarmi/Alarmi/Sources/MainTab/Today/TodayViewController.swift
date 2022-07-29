@@ -84,6 +84,7 @@ final class TodayViewController: UIViewController {
     private func attribute() {
         view.backgroundColor = .systemGroupedBackground
         setupNavigationBar()
+        dDayView.set(state: .init(buttonName: "하이하이", descriptionLabelName: "하이하이", dDayLabel: "항하이"))
     }
 
     private func layout() {

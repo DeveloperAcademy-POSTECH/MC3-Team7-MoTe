@@ -14,15 +14,19 @@ protocol TodayDdayViewDelegate: AnyObject {
 
 final class TodayDdayView: UIView {
 
-    // MARK: View
+    struct State {
+        var buttonName: String
+        var descriptionLabelName: String
+        var dDayLabel: String
+    }
 
-//    private let horizontalStackView: UIStackView = {
-//        $0.translatesAutoresizingMaskIntoConstraints = false
-//        $0.axis = .horizontal
-//        $0.spacing = 32
-//        $0.distribution = .fill
-//        return $0
-//    }(UIStackView())
+    func set(state: State) {
+        callButton.configuration?.attributedTitle = AttributedString(state.buttonName, attributes: AttributeContainer())
+        descriptionLabel.text = state.descriptionLabelName
+        dDayLabel.text = state.dDayLabel
+    }
+
+    // MARK: View
 
     private let dDayStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -35,13 +39,11 @@ final class TodayDdayView: UIView {
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "전화했어요"
         return $0
     }(UILabel())
 
     private let dDayLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "D+5"
         $0.setDynamicFont(for: .largeTitle, weight: .bold)
         $0.textAlignment = .center
         return $0
@@ -56,20 +58,6 @@ final class TodayDdayView: UIView {
         $0.addTarget(TodayDdayView.self, action: #selector(contactButtonTapped), for: .touchUpInside)
         var container = AttributeContainer()
         container.font = UIFont.preferredFont(forTextStyle: .body)
-        $0.configuration?.attributedTitle = AttributedString("전화했어요", attributes: container)
-        return $0
-    }(UIButton(configuration: .filled()))
-
-    private let delayButton: UIButton = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.configuration?.baseBackgroundColor = .systemBlue
-        $0.configuration?.titleAlignment = .center
-        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 11, leading: 15, bottom: 15, trailing: 11)
-        $0.layer.cornerRadius = 10
-        $0.addTarget(TodayDdayView.self, action: #selector(delayButtonTapped), for: .touchUpInside)
-        var container = AttributeContainer()
-        container.font = UIFont.preferredFont(forTextStyle: .body)
-        $0.configuration?.attributedTitle = AttributedString("미룰거에요", attributes: container)
         return $0
     }(UIButton(configuration: .filled()))
 
@@ -85,14 +73,13 @@ final class TodayDdayView: UIView {
     }
 
     required init?(coder: NSCoder) {
+        super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: Methods
 
-    private func attribute() {
-
-    }
+    private func attribute() {}
 
     private func layout() {
         addSubview(dDayStackView)
@@ -118,6 +105,7 @@ extension TodayDdayView {
     }
 
     @objc private func contactButtonTapped() {
-        delegate?.presentCallDelayViewController() //바꿔야함
+        // TODO: 바꿔야함
+        delegate?.presentCallDelayViewController()
     }
 }
