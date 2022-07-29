@@ -23,81 +23,43 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI4-03-WPT">
-                                <rect key="frame" x="16" y="173" width="382" height="87"/>
+                                <rect key="frame" x="16" y="173" width="382" height="89"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15일에 한 번 전화할게요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-24-XeL">
-                                        <rect key="frame" x="16" y="16" width="350" height="17"/>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minimumValue="1" maximumValue="31" translatesAutoresizingMaskIntoConstraints="NO" id="tb8-aC-X8G">
+                                        <rect key="frame" x="272" y="28.5" width="94" height="32"/>
+                                        <connections>
+                                            <action selector="settingDayStepper:" destination="Y6W-OH-hqX" eventType="valueChanged" id="6Ps-an-mRj"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일에 한 번" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-24-XeL">
+                                        <rect key="frame" x="16" y="36" width="64" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fsA-rC-Cw9">
-                                        <rect key="frame" x="16" y="41" width="350" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5L-t3-imZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="xUw-On-L4z"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="1" maxValue="31" translatesAutoresizingMaskIntoConstraints="NO" id="MVM-rS-vPk">
-                                                <rect key="frame" x="31" y="0.0" width="288" height="31"/>
-                                                <connections>
-                                                    <action selector="settingDaySlider:" destination="Y6W-OH-hqX" eventType="valueChanged" id="V5M-9F-4XN"/>
-                                                </connections>
-                                            </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3G-iV-MaN">
-                                                <rect key="frame" x="325" y="0.0" width="25" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="qgj-WY-eLU"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="fsA-rC-Cw9" firstAttribute="top" secondItem="1Ej-24-XeL" secondAttribute="bottom" constant="8" id="8su-7r-jgv"/>
-                                    <constraint firstAttribute="trailing" secondItem="1Ej-24-XeL" secondAttribute="trailing" constant="16" id="9Ll-kb-nkg"/>
-                                    <constraint firstItem="1Ej-24-XeL" firstAttribute="centerX" secondItem="hI4-03-WPT" secondAttribute="centerX" id="La0-E4-siJ"/>
-                                    <constraint firstItem="fsA-rC-Cw9" firstAttribute="leading" secondItem="1Ej-24-XeL" secondAttribute="leading" id="SXf-VS-Fal"/>
-                                    <constraint firstItem="fsA-rC-Cw9" firstAttribute="trailing" secondItem="1Ej-24-XeL" secondAttribute="trailing" id="aGQ-Gq-1U0"/>
-                                    <constraint firstAttribute="bottom" secondItem="fsA-rC-Cw9" secondAttribute="bottom" constant="16" id="j3H-6y-Hee"/>
-                                    <constraint firstItem="1Ej-24-XeL" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="16" id="nKn-1O-BdI"/>
-                                    <constraint firstItem="1Ej-24-XeL" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="top" constant="16" id="wys-H1-7Bw"/>
+                                    <constraint firstItem="1Ej-24-XeL" firstAttribute="centerY" secondItem="hI4-03-WPT" secondAttribute="centerY" id="VAn-Np-jiM"/>
+                                    <constraint firstAttribute="trailing" secondItem="tb8-aC-X8G" secondAttribute="trailing" constant="16" id="neA-72-u2d"/>
+                                    <constraint firstItem="tb8-aC-X8G" firstAttribute="centerY" secondItem="hI4-03-WPT" secondAttribute="centerY" id="tp3-EC-iPM"/>
+                                    <constraint firstItem="1Ej-24-XeL" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="16" id="wa2-me-4k8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWN-FC-Xy9">
-                                <rect key="frame" x="16" y="276" width="382" height="77.5"/>
+                                <rect key="frame" x="16" y="278" width="382" height="82"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="STa-iL-Iqz">
-                                        <rect key="frame" x="16" y="16" width="350" height="45.5"/>
+                                        <rect key="frame" x="16" y="16" width="350" height="50"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nNh-y3-6P1">
-                                                <rect key="frame" x="0.0" y="0.0" width="117" height="45.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표시작일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpN-w2-sXu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="23"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="언제부터 시작할 건가요?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-dU-svI">
-                                                        <rect key="frame" x="0.0" y="31" width="117" height="14.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표 시작일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpN-w2-sXu">
+                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="50"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cGg-Ty-44o">
-                                                <rect key="frame" x="125" y="0.0" width="225" height="45.5"/>
+                                                <rect key="frame" x="72.5" y="0.0" width="277.5" height="50"/>
                                                 <locale key="locale" localeIdentifier="ko"/>
                                                 <connections>
                                                     <action selector="settingStartDatePicker:" destination="Y6W-OH-hqX" eventType="valueChanged" id="SBB-8f-0Ni"/>
@@ -107,7 +69,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="STa-iL-Iqz" firstAttribute="leading" secondItem="vWN-FC-Xy9" secondAttribute="leading" constant="16" id="0W2-3X-xb4"/>
                                     <constraint firstAttribute="trailing" secondItem="STa-iL-Iqz" secondAttribute="trailing" constant="16" id="4Em-lb-M3c"/>
@@ -115,24 +77,35 @@
                                     <constraint firstItem="STa-iL-Iqz" firstAttribute="top" secondItem="vWN-FC-Xy9" secondAttribute="top" constant="16" id="tIS-eO-16h"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 설정하면 시작일부터 목표일마다 알림을 보내드려요." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XV-Bb-8CV">
+                                <rect key="frame" x="102" y="368" width="280" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="LZO-ex-iOy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AKz-uA-qq2"/>
                             <constraint firstItem="vWN-FC-Xy9" firstAttribute="trailing" secondItem="hI4-03-WPT" secondAttribute="trailing" id="JN4-9Q-aYd"/>
+                            <constraint firstItem="vWN-FC-Xy9" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="278" id="NOa-Bc-tdb"/>
                             <constraint firstItem="LZO-ex-iOy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Y9l-cS-ALc"/>
                             <constraint firstItem="hI4-03-WPT" firstAttribute="top" secondItem="LZO-ex-iOy" secondAttribute="bottom" constant="16" id="ZU4-Ua-mrM"/>
                             <constraint firstItem="hI4-03-WPT" firstAttribute="trailing" secondItem="LZO-ex-iOy" secondAttribute="trailing" id="bDk-Yj-Kvf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LZO-ex-iOy" secondAttribute="trailing" constant="16" id="gso-Lu-50e"/>
                             <constraint firstItem="vWN-FC-Xy9" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="bottom" constant="16" id="m0V-8Q-RZW"/>
                             <constraint firstItem="vWN-FC-Xy9" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" id="oOc-EW-00u"/>
+                            <constraint firstItem="5XV-Bb-8CV" firstAttribute="top" secondItem="vWN-FC-Xy9" secondAttribute="bottom" constant="8" id="sLc-M7-wuq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5XV-Bb-8CV" secondAttribute="trailing" constant="32" id="so4-BD-vd1"/>
                             <constraint firstItem="hI4-03-WPT" firstAttribute="leading" secondItem="LZO-ex-iOy" secondAttribute="leading" id="zq7-pJ-fSj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="목표" largeTitleDisplayMode="always" id="nre-KA-2FK"/>
                     <connections>
                         <outlet property="settingDayLabel" destination="1Ej-24-XeL" id="o6P-GG-siU"/>
+                        <outlet property="settingDayStepper" destination="tb8-aC-X8G" id="fRS-UC-w5m"/>
+                        <outlet property="startDatePicker" destination="cGg-Ty-44o" id="mOR-8J-1NG"/>
                         <outlet property="titleLabel" destination="KpN-w2-sXu" id="f3U-Sa-4zT"/>
                         <outletCollection property="containerViews" destination="vWN-FC-Xy9" collectionClass="NSMutableArray" id="ytz-Af-pOr"/>
                         <outletCollection property="containerViews" destination="hI4-03-WPT" collectionClass="NSMutableArray" id="7Cq-1V-jKV"/>
@@ -168,11 +141,14 @@
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

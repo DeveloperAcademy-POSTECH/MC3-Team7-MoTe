@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Goal {
+struct Goal: Codable {
     var startDate: Date
     var period: Int
 }
