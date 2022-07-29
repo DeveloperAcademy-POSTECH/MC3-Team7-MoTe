@@ -36,6 +36,11 @@ final class GoalSettingCellView: UIView {
         return $0
     }(UIStepper())
     
+    private let goalSettingRowView: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIView())
+    
     // MARK: Property
     
     // MARK: Life Cycle
@@ -60,7 +65,35 @@ final class GoalSettingCellView: UIView {
     }
     
     private func layout() {
+        addSubviews(goalSettingRowView)
+        goalSettingRowView.addSubviews(
+            goalPeriodLabel,
+            goalPeriodDescriptionLabel,
+            goalPeriodStepper
+        )
         
+        NSLayoutConstraint.activate([
+            goalSettingRowView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            goalSettingRowView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            goalSettingRowView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            goalSettingRowView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            goalPeriodLabel.topAnchor.constraint(equalTo: goalSettingRowView.topAnchor),
+            goalPeriodLabel.leadingAnchor.constraint(equalTo: goalSettingRowView.leadingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            goalPeriodDescriptionLabel.centerYAnchor.constraint(equalTo: goalPeriodLabel.centerYAnchor),
+            goalPeriodDescriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: goalSettingRowView.leadingAnchor, constant: 34),
+            goalPeriodDescriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: goalPeriodLabel.trailingAnchor, constant: 8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            goalPeriodStepper.centerYAnchor.constraint(equalTo: goalPeriodLabel.centerYAnchor),
+            goalPeriodStepper.trailingAnchor.constraint(equalTo: goalSettingRowView.trailingAnchor)
+        ])
     }
 }
 
