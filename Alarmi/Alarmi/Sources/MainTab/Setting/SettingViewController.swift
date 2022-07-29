@@ -29,10 +29,10 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private lazy var alarmSettingView: AlarmSettingView = {
+    private lazy var alarmSettingView: AlarmSettingCellView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(AlarmSettingView())
+    }(AlarmSettingCellView())
     
     private let alarmSettingDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false

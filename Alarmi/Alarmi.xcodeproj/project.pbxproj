@@ -11,10 +11,11 @@
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
 		385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */; };
+		50793FF92893CEB700DA49F7 /* CallTimeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50793FF82893CEB700DA49F7 /* CallTimeCellView.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
 		50BC4AEA28928CCF00A2CDB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */; };
 		50BC4AEB28928CCF00A2CDB5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AE928928CCF00A2CDB5 /* SettingViewModel.swift */; };
-		50BC4AED28928F3100A2CDB5 /* AlarmSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AEC28928F3100A2CDB5 /* AlarmSettingView.swift */; };
+		50BC4AED28928F3100A2CDB5 /* AlarmSettingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AEC28928F3100A2CDB5 /* AlarmSettingCellView.swift */; };
 		EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */; };
 		EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D3288E234100FF5A86 /* Alarm.swift */; };
 		EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D5288E234B00FF5A86 /* CallTime.swift */; };
@@ -73,10 +74,11 @@
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
 		385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		50793FF82893CEB700DA49F7 /* CallTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeCellView.swift; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
 		50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		50BC4AE928928CCF00A2CDB5 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		50BC4AEC28928F3100A2CDB5 /* AlarmSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingView.swift; sourceTree = "<group>"; };
+		50BC4AEC28928F3100A2CDB5 /* AlarmSettingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingCellView.swift; sourceTree = "<group>"; };
 		EF0C23D1288E232D00FF5A86 /* MoTeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoTeDate.swift; sourceTree = "<group>"; };
 		EF0C23D3288E234100FF5A86 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		EF0C23D5288E234B00FF5A86 /* CallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTime.swift; sourceTree = "<group>"; };
@@ -163,12 +165,21 @@
 			path = CurrentLocationView;
 			sourceTree = "<group>";
 		};
+		50793FF72893CE7200DA49F7 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				50BC4AEC28928F3100A2CDB5 /* AlarmSettingCellView.swift */,
+				50793FF82893CEB700DA49F7 /* CallTimeCellView.swift */,
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
 		50BC4AE728928C9300A2CDB5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				50793FF72893CE7200DA49F7 /* Supporting Views */,
 				50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */,
 				50BC4AE928928CCF00A2CDB5 /* SettingViewModel.swift */,
-				50BC4AEC28928F3100A2CDB5 /* AlarmSettingView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -514,7 +525,7 @@
 				EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */,
 				EF3630EF28865FA4007779C0 /* Coordinator.swift in Sources */,
 				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
-				50BC4AED28928F3100A2CDB5 /* AlarmSettingView.swift in Sources */,
+				50BC4AED28928F3100A2CDB5 /* AlarmSettingCellView.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */,
@@ -524,6 +535,7 @@
 				EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
 				EFF8D2A628810A11005A4D10 /* UIView+.swift in Sources */,
+				50793FF92893CEB700DA49F7 /* CallTimeCellView.swift in Sources */,
 				EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */,
 				EFF8D2A12880F4FE005A4D10 /* UITabBarItem+.swift in Sources */,
 				EF0C23DA288E237A00FF5A86 /* PushAlarm.swift in Sources */,
