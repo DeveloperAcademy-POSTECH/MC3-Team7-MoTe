@@ -135,7 +135,7 @@ final class AlarmSettingCellView: UIView {
 #if DEBUG
 import SwiftUI
 
-struct PreviewCellRepresentable: UIViewRepresentable {
+struct AlarmSettingCellViewRepresentable: UIViewRepresentable {
     typealias UIViewType = AlarmSettingCellView
     
     func makeUIView(context: Context) -> AlarmSettingCellView {
@@ -147,9 +147,9 @@ struct PreviewCellRepresentable: UIViewRepresentable {
     }
 }
 
-struct AlarmSettingView_Preview: PreviewProvider {
+struct AlarmSettingCellView_Preview: PreviewProvider {
     static var previews: some View {
-        PreviewCellRepresentable()
+        AlarmSettingCellViewRepresentable()
             .frame(width: 358, height: 94)
     }
 }
