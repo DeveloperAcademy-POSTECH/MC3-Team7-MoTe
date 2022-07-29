@@ -82,7 +82,8 @@ final class TodayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setupNavigationBar()
         attribute()
         layout()
     }
@@ -97,7 +98,6 @@ final class TodayViewController: UIViewController {
 
     private func attribute() {
         view.backgroundColor = .systemGroupedBackground
-        setupNavigationBar()
         lastCallDDayView.set(state: .init(buttonName: "전화했어요", descriptionLabelName: "마지막 전화", dDayLabel: "D+9"))
         fromPurposeDDayView.set(state: .init(buttonName: "미룰거예요", descriptionLabelName: "목표일로부터", dDayLabel: "D+2"))
     }
