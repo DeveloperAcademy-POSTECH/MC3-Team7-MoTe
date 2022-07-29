@@ -32,7 +32,6 @@ final class RegisterCoordinator: Coordinator,
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterCallTimeViewController") as? RegisterCallTimeViewController else {
             return
         }
-        viewController.type = .register
         viewController.delegate = self
         self.navigationController.viewControllers = [viewController]
     }
