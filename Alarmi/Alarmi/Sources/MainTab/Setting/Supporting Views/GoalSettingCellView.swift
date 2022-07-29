@@ -117,27 +117,3 @@ final class GoalSettingCellView: UIView {
         viewModel.goalPeriodStepperDidChanged(Int(sender.value))
     }
 }
-
-// MARK: - Preview
-
-#if DEBUG
-import SwiftUI
-
-struct GoalSettingCellViewRepresentable: UIViewRepresentable {
-    typealias UIViewType = GoalSettingCellView
-    
-    func makeUIView(context: Context) -> GoalSettingCellView {
-        GoalSettingCellView()
-    }
-    
-    func updateUIView(_ uiView: GoalSettingCellView, context: Context) {
-        
-    }
-}
-
-struct GoalSettingCellView_Preview: PreviewProvider {
-    static var previews: some View {
-        GoalSettingCellViewRepresentable()
-    }
-}
-#endif
