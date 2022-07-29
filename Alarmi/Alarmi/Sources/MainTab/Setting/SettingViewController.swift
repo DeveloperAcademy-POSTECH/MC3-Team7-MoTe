@@ -16,6 +16,7 @@ final class SettingViewController: UIViewController {
     private let settingListScrollView: UIScrollView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentInsetAdjustmentBehavior = .never
+        $0.contentInset = .init(top: 16, left: 0, bottom: 32, right: 0)
         return $0
     }(UIScrollView())
     
@@ -123,7 +124,7 @@ private extension SettingViewController {
         view.addSubviews(settingListScrollView)
         
         settingListScrollLayout()
-        settingListLayout()
+        settingListVStackLayout()
         alarmSettingLayout()
         callTimeSettingLayout()
     }
@@ -139,16 +140,18 @@ private extension SettingViewController {
         ])
     }
     
-    func settingListLayout() {
+    func settingListVStackLayout() {
         settingListVStack.addArrangedSubviews(
             callTimeSettingVStack,
             alarmSettingVStack
         )
         
         NSLayoutConstraint.activate([
-            settingListVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            settingListVStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            settingListVStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            settingListVStack.topAnchor.constraint(equalTo: settingListScrollView.topAnchor),
+            settingListVStack.leadingAnchor.constraint(equalTo: settingListScrollView.leadingAnchor),
+            settingListVStack.trailingAnchor.constraint(equalTo: settingListScrollView.trailingAnchor),
+            settingListVStack.bottomAnchor.constraint(equalTo: settingListScrollView.bottomAnchor),
+            settingListVStack.widthAnchor.constraint(equalTo: settingListScrollView.widthAnchor)
         ])
     }
     
@@ -160,7 +163,6 @@ private extension SettingViewController {
         )
         
         NSLayoutConstraint.activate([
-            alarmSettingVStack.topAnchor.constraint(equalTo: callTimeSettingVStack.bottomAnchor, constant: 32),
             alarmSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             alarmSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
@@ -183,7 +185,6 @@ private extension SettingViewController {
         )
         
         NSLayoutConstraint.activate([
-            callTimeSettingVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             callTimeSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             callTimeSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
