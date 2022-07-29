@@ -36,6 +36,7 @@ final class TodayViewController: UIViewController {
     private let statusDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "전화 가능 시간이 아니에요."
+        $0.textAlignment = .right
         $0.setDynamicFont(for: .body, weight: .bold)
         return $0
     }(UILabel())
@@ -95,14 +96,8 @@ final class TodayViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            statusDescriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -42)
+            statusDescriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         ])
-
-//        NSLayoutConstraint.activate([
-//            statusDescriptionLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor),
-//            statusDescriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
-//            statusDescriptionLabel.trailingAnchor.
-//        ])
 
         NSLayoutConstraint.activate([
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -113,7 +108,6 @@ final class TodayViewController: UIViewController {
         NSLayoutConstraint.activate([
             dDayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             dDayView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-//            dDayView.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width -32)
         ])
     }
     
