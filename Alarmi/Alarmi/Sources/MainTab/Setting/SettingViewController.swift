@@ -162,8 +162,8 @@ private extension SettingViewController {
         settingListScrollLayout()
         settingListVStackLayout()
         goalSettingLayout()
-        alarmSettingLayout()
         callTimeSettingLayout()
+        alarmSettingLayout()
     }
     
     func settingListScrollLayout() {
@@ -215,28 +215,6 @@ private extension SettingViewController {
         ])
     }
     
-    func alarmSettingLayout() {
-        alarmSettingVStack.addArrangedSubviews(
-            alarmSettingTitleLabel,
-            alarmSettingView,
-            alarmSettingDescriptionLabel
-        )
-        
-        NSLayoutConstraint.activate([
-            alarmSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            alarmSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            alarmSettingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            alarmSettingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingView.trailingAnchor, constant: -16)
-        ])
-    }
-    
     func callTimeSettingLayout() {
         callTimeSettingVStack.addArrangedSubviews(
             callTimeSettingTitleLabel,
@@ -256,6 +234,28 @@ private extension SettingViewController {
         
         NSLayoutConstraint.activate([
             callTimeSettingDescriptionLabel.trailingAnchor.constraint(equalTo: callTimeCellView.trailingAnchor, constant: -16)
+        ])
+    }
+    
+    func alarmSettingLayout() {
+        alarmSettingVStack.addArrangedSubviews(
+            alarmSettingTitleLabel,
+            alarmSettingView,
+            alarmSettingDescriptionLabel
+        )
+        
+        NSLayoutConstraint.activate([
+            alarmSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            alarmSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            alarmSettingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            alarmSettingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingView.trailingAnchor, constant: -16)
         ])
     }
 }
