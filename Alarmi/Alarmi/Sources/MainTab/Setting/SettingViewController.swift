@@ -89,19 +89,23 @@ final class SettingViewController: UIViewController {
     
     // MARK: Method
 
-    func attribute() {
+    private func attribute() {
         view.backgroundColor = .systemGroupedBackground
         setNavigationBar()
     }
 
-    func layout() {
+    private func layout() {
+        view.addSubviews(alarmSettingVStack, callTimeSettingVStack)
+        
+        alarmSettingLayout()
+    }
+    
+    private func alarmSettingLayout() {
         alarmSettingVStack.addArrangedSubviews(
             alarmSettingTitleLabel,
             alarmSettingView,
             alarmSettingDescriptionLabel
         )
-        
-        view.addSubviews(alarmSettingVStack)
         
         NSLayoutConstraint.activate([
             alarmSettingVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -119,7 +123,9 @@ final class SettingViewController: UIViewController {
         ])
     }
     
-    func setNavigationBar() {
+    
+    
+    private func setNavigationBar() {
         title = "설정"
         navigationController?.navigationBar.prefersLargeTitles = false
     }
