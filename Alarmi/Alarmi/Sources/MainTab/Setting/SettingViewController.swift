@@ -14,6 +14,8 @@ final class SettingViewController: UIViewController {
     // MARK: View
     
     private let settingListScrollView: UIScrollView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.contentInsetAdjustmentBehavior = .never
         return $0
     }(UIScrollView())
     
@@ -108,8 +110,9 @@ final class SettingViewController: UIViewController {
     }
 
     private func layout() {
-        view.addSubviews(settingListVStack)
+        view.addSubviews(settingListScrollView)
         
+        settingListScrollLayout()
         settingListLayout()
         alarmSettingLayout()
         callTimeSettingLayout()
@@ -118,6 +121,17 @@ final class SettingViewController: UIViewController {
     private func setNavigationBar() {
         title = "설정"
         navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func settingListScrollLayout() {
+        settingListScrollView.addSubviews(settingListVStack)
+        
+        NSLayoutConstraint.activate([
+            settingListScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            settingListScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            settingListScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            settingListScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     private func settingListLayout() {
