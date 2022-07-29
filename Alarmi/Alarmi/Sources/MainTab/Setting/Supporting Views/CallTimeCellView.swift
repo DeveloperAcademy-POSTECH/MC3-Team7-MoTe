@@ -12,6 +12,61 @@ final class CallTimeCellView: UIView {
     
     // MARK: Views
     
+    private let startTimeRowHStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.spacing = 8
+        $0.distribution = .fill
+        $0.alignment = .center
+        return $0
+    }(UIStackView())
+    
+    private let endTimeRowHStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.spacing = 8
+        $0.distribution = .fill
+        $0.alignment = .center
+        return $0
+    }(UIStackView())
+    
+    private let cellVStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.spacing = 8
+        $0.distribution = .fill
+        $0.alignment = .leading
+        return $0
+    }(UIStackView())
+    
+    private let startTimeLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(.body)
+        $0.text = "시작 시간"
+        return $0
+    }(UILabel())
+    
+    private let endTimeLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(.body)
+        $0.text = "종료 시간"
+        return $0
+    }(UILabel())
+    
+    private let startTimePicker: UIDatePicker = {
+        $0.preferredDatePickerStyle = .compact
+        $0.datePickerMode = .time
+        $0.minuteInterval = 10
+        return $0
+    }(UIDatePicker())
+    
+    private let endTimePicker: UIDatePicker = {
+        $0.preferredDatePickerStyle = .compact
+        $0.datePickerMode = .time
+        $0.minuteInterval = 10
+        return $0
+    }(UIDatePicker())
+    
     // MARK: Property
     
     // MARK: Life Cycle
@@ -30,7 +85,9 @@ final class CallTimeCellView: UIView {
     // MARK: Methods
     
     private func attribute() {
-        
+        backgroundColor = .secondarySystemGroupedBackground
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
     }
     
     private func layout() {
