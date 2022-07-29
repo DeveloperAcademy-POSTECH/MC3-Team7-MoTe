@@ -17,7 +17,7 @@ final class TodayViewController: UIViewController {
 
     // MARK: View
     
-    private let stackView: UIStackView = {
+    private let clockStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.distribution = .fill
@@ -57,7 +57,21 @@ final class TodayViewController: UIViewController {
         return $0
     }(UIImageView())
 
-    private lazy var dDayView: TodayDdayView = {
+    private let dDayStackView: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.distribution = .fill
+        $0.alignment = .leading
+        $0.spacing = 32
+        return $0
+    }(UIStackView())
+
+    private lazy var lastCallDDayView: TodayDdayView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(TodayDdayView())
+
+    private lazy var fromPurposeDDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(TodayDdayView())
@@ -84,28 +98,31 @@ final class TodayViewController: UIViewController {
     private func attribute() {
         view.backgroundColor = .systemGroupedBackground
         setupNavigationBar()
-        dDayView.set(state: .init(buttonName: "하이하이", descriptionLabelName: "하이하이", dDayLabel: "항하이"))
+        lastCallDDayView.set(state: .init(buttonName: "전화했어요", descriptionLabelName: "마지막 전화", dDayLabel: "D+9"))
+        fromPurposeDDayView.set(state: .init(buttonName: "미룰거예요", descriptionLabelName: "목표일로부터", dDayLabel: "D+2"))
     }
 
     private func layout() {
-        view.addSubviews(stackView, imageView, dDayView)
-        stackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
+        view.addSubviews(clockStackView, imageView, dDayStackView)
+        clockStackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
+        dDayStackView.addArrangedSubviews(lastCallDDayView, fromPurposeDDayView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
+            clockStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            clockStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
+            clockStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
         ])
 
         NSLayoutConstraint.activate([
-            realTimeClockLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            realTimeClockLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+            realTimeClockLabel.leadingAnchor.constraint(equalTo: clockStackView.leadingAnchor),
+            realTimeClockLabel.trailingAnchor.constraint(equalTo: clockStackView.trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            statusDescriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+            statusDescriptionLabel.trailingAnchor.constraint(equalTo: clockStackView.trailingAnchor)
         ])
 
+        // TODO: 이미지 크기 수정해야함. 이게맞음?
         NSLayoutConstraint.activate([
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -113,8 +130,8 @@ final class TodayViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            dDayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            dDayView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            dDayStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            dDayStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     

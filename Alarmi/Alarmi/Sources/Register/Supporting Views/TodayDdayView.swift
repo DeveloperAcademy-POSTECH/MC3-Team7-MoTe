@@ -91,9 +91,7 @@ final class TodayDdayView: UIView {
             dDayStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             dDayStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
-        
     }
-
 }
 
 extension TodayDdayView {
