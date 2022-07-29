@@ -109,7 +109,17 @@ final class SettingViewController: UIViewController {
         setNavigationBar()
     }
 
-    private func layout() {
+    private func setNavigationBar() {
+        title = "설정"
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+}
+
+// MARK: Layout Method
+
+private extension SettingViewController {
+    
+    func layout() {
         view.addSubviews(settingListScrollView)
         
         settingListScrollLayout()
@@ -118,12 +128,7 @@ final class SettingViewController: UIViewController {
         callTimeSettingLayout()
     }
     
-    private func setNavigationBar() {
-        title = "설정"
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
-    
-    private func settingListScrollLayout() {
+    func settingListScrollLayout() {
         settingListScrollView.addSubviews(settingListVStack)
         
         NSLayoutConstraint.activate([
@@ -134,7 +139,7 @@ final class SettingViewController: UIViewController {
         ])
     }
     
-    private func settingListLayout() {
+    func settingListLayout() {
         settingListVStack.addArrangedSubviews(
             callTimeSettingVStack,
             alarmSettingVStack
@@ -147,7 +152,7 @@ final class SettingViewController: UIViewController {
         ])
     }
     
-    private func alarmSettingLayout() {
+    func alarmSettingLayout() {
         alarmSettingVStack.addArrangedSubviews(
             alarmSettingTitleLabel,
             alarmSettingView,
@@ -170,7 +175,7 @@ final class SettingViewController: UIViewController {
         ])
     }
     
-    private func callTimeSettingLayout() {
+    func callTimeSettingLayout() {
         callTimeSettingVStack.addArrangedSubviews(
             callTimeSettingTitleLabel,
             callTimeCellView,
