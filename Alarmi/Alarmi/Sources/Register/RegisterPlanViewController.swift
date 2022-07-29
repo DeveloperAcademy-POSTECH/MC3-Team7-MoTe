@@ -6,14 +6,11 @@
 //  Copyright © 2022 MoTe. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 protocol RegisterPlanViewControllerDelegate: AnyObject {
-    func gotoRegisterNotifyViewController()
-}
-
-protocol MainTabRegisterPlanViewControllerDelegate: AnyObject {
-    func gotoBack()
+    func gotoRegisterCompleteViewController()
 }
 
 final class RegisterPlanViewController: UIViewController {
@@ -23,15 +20,11 @@ final class RegisterPlanViewController: UIViewController {
     @IBOutlet private var settingDayLabel: UILabel!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var settingDayStepper: UIStepper!
-    
-    private lazy var callTimePeriod = 7 {
+
+    private lazy var callTimePeriod: Int = 7 {
         didSet {
-            settingDayLabel.text = String(callTimePeriod) + "일에 한 번"
         }
     }
-    
-    private let encoder = JSONEncoder()
-    private var goal = GoalTime(startDate: Date(), period: 7)
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -41,24 +34,25 @@ final class RegisterPlanViewController: UIViewController {
     }(AMButton())
 
     weak var delegate: RegisterPlanViewControllerDelegate?
-    weak var tabDelegate: MainTabRegisterPlanViewControllerDelegate?
 
-    enum ButtonType: String {
-        case register = "다음"
-        case setting = "수정하기"
-    }
-
-    var type: ButtonType = .register {
-        didSet {
-            button.setTitle(type.rawValue, for: .normal)
-        }
-    }
+    var viewModel = RegisterPlanViewModel()
+    private var cancelBag = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        bind()
         attribute()
         layout()
+    }
+
+    private func bind() {
+        viewModel.$callTimePeriod
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.settingDayLabel.text = String($0) + "일에 한 번"
+            }
+            .store(in: &cancelBag)
     }
     
     private func attribute() {
@@ -82,27 +76,17 @@ final class RegisterPlanViewController: UIViewController {
     }
     
     @IBAction private func settingDayStepper(_ sender: UIStepper) {
-        let value = sender.value
-        callTimePeriod = Int(value)
-        goal.period = callTimePeriod
+        viewModel.settingDayStepper(Int(sender.value))
     }
 
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
-        goal.startDate = sender.date
+        viewModel.settingStartDatePicker(sender.date)
     }
 }
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
-        switch type {
-        case .register:
-            delegate?.gotoRegisterNotifyViewController()
-        case .setting:
-            tabDelegate?.gotoBack()
-        }
-        
-        if let encoded = try? encoder.encode(goal) {
-            UserDefaults.standard.setValue(encoded, forKey: "Goal")
-        }
+        delegate?.gotoRegisterCompleteViewController()
+        viewModel.buttonDidTap()
     }
 }

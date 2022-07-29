@@ -14,10 +14,7 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 
 final class MainTabCoordinator: Coordinator,
                                 SettingViewControllerDelegate,
-                                TodayViewControllerDelegate,
-                                MainTabRegisterCallTimeViewControllerDelegate,
-                                MainTabRegisterPlanViewControllerDelegate,
-                                MainTabRegisterNotifyViewControllerDelegate {
+                                TodayViewControllerDelegate {
     var childCoordinators: [Coordinator] = []
     weak var delegate: MainTabCoordinatorDelegate?
 
