@@ -11,7 +11,7 @@ import UIKit
 
 final class SettingViewController: UIViewController {
 
-    // MARK: View
+    // MARK: View - 설정 목록
     
     private let settingListScrollView: UIScrollView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +28,8 @@ final class SettingViewController: UIViewController {
         $0.alignment = .leading
         return $0
     }(UIStackView())
+    
+    // MARK: View - 목표 설정
     
     private let goalSettingVStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +61,8 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
+    // MARK: View - 전화 시간 설정
+    
     private let callTimeSettingVStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -88,6 +92,8 @@ final class SettingViewController: UIViewController {
         $0.text = "알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요."
         return $0
     }(UILabel())
+    
+    // MARK: View - 알림 설정
     
     private let alarmSettingVStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
