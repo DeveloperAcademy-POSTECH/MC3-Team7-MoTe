@@ -45,10 +45,10 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private lazy var callTimeCellView: CallTimeCellView = {
+    private lazy var callTimeCellView: CallTimeSettingCellView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(CallTimeCellView())
+    }(CallTimeSettingCellView())
     
     private let callTimeSettingDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false

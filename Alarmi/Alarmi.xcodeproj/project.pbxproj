@@ -11,7 +11,7 @@
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
 		385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */; };
-		50793FF92893CEB700DA49F7 /* CallTimeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50793FF82893CEB700DA49F7 /* CallTimeCellView.swift */; };
+		50793FF92893CEB700DA49F7 /* CallTimeSettingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50793FF82893CEB700DA49F7 /* CallTimeSettingCellView.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
 		50BC4AEA28928CCF00A2CDB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */; };
 		50BC4AEB28928CCF00A2CDB5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AE928928CCF00A2CDB5 /* SettingViewModel.swift */; };
@@ -74,7 +74,7 @@
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
 		385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationCollectionViewCell.swift; sourceTree = "<group>"; };
-		50793FF82893CEB700DA49F7 /* CallTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeCellView.swift; sourceTree = "<group>"; };
+		50793FF82893CEB700DA49F7 /* CallTimeSettingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeSettingCellView.swift; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
 		50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		50BC4AE928928CCF00A2CDB5 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				50BC4AEC28928F3100A2CDB5 /* AlarmSettingCellView.swift */,
-				50793FF82893CEB700DA49F7 /* CallTimeCellView.swift */,
+				50793FF82893CEB700DA49F7 /* CallTimeSettingCellView.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -535,7 +535,7 @@
 				EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
 				EFF8D2A628810A11005A4D10 /* UIView+.swift in Sources */,
-				50793FF92893CEB700DA49F7 /* CallTimeCellView.swift in Sources */,
+				50793FF92893CEB700DA49F7 /* CallTimeSettingCellView.swift in Sources */,
 				EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */,
 				EFF8D2A12880F4FE005A4D10 /* UITabBarItem+.swift in Sources */,
 				EF0C23DA288E237A00FF5A86 /* PushAlarm.swift in Sources */,
