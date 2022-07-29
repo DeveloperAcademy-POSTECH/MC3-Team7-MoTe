@@ -29,6 +29,36 @@ final class SettingViewController: UIViewController {
         return $0
     }(UIStackView())
     
+    private let goalSettingVStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.spacing = 8
+        $0.distribution = .fill
+        $0.alignment = .leading
+        return $0
+    }(UIStackView())
+    
+    private let goalSettingTitleLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(for: .title3, weight: .bold)
+        $0.text = "목표 설정"
+        return $0
+    }(UILabel())
+    
+    private let goalSettingCellView: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIView())
+    
+    private let goalSettingDescriptionLabel: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(.caption1)
+        $0.textAlignment = .right
+        $0.textColor = .secondaryLabel
+        $0.text = "알림을 설정하면 목표일마다 알림을 보내드려요."
+        return $0
+    }(UILabel())
+    
     private let callTimeSettingVStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
