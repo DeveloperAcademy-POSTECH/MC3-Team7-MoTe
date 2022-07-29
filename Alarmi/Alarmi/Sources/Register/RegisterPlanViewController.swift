@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol RegisterPlanViewControllerDelegate: AnyObject {
     func gotoRegisterNotifyViewController()
@@ -32,28 +33,28 @@ final class RegisterPlanViewController: UIViewController {
     
     private let encoder = JSONEncoder()
     private var goal = Goal(startDate: Date(), period: 7)
-
+    
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.title = "다음"
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
-
+    
     weak var delegate: RegisterPlanViewControllerDelegate?
     weak var tabDelegate: MainTabRegisterPlanViewControllerDelegate?
-
+    
     enum ButtonType: String {
         case register = "다음"
         case setting = "수정하기"
     }
-
+    
     var type: ButtonType = .register {
         didSet {
             button.setTitle(type.rawValue, for: .normal)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,11 +70,11 @@ final class RegisterPlanViewController: UIViewController {
         startDatePicker.minimumDate = Date()
         settingDayStepper.value = Double(callTimePeriod)
     }
-
+    
     private func layout() {
-
+        
         view.addSubview(button)
-
+        
         NSLayoutConstraint.activate([
             button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -86,11 +87,26 @@ final class RegisterPlanViewController: UIViewController {
         callTimePeriod = Int(value)
         goal.period = callTimePeriod
     }
-
+    
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
         goal.startDate = sender.date
     }
+    
+    @IBAction func saveAction(_ sender: Any) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataDate")
+        let entity = NSEntityDescription.entity(forEntityName: "CoreDataDate", in: context)
+        
+        print("saving core data")
+        print(context)
+        print(request)
+        print(entity)
+    }
 }
+
+
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
