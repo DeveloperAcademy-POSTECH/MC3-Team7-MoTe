@@ -93,7 +93,7 @@ private extension SceneDelegate {
 
         let myTimeFormatter: DateFormatter = { formatter in
             formatter.timeZone = TimeZone.autoupdatingCurrent
-            formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+            formatter.dateFormat = "HH"
             return formatter
         }(DateFormatter())
 
@@ -109,8 +109,8 @@ private extension SceneDelegate {
         )
         let koreaMidnightDate = calendar.date(from: koreaMidnightComponents)!
         let convertedDateString = myTimeFormatter.string(from: koreaMidnightDate)
-        let convertedDate = myTimeFormatter.date(from: convertedDateString)!
-        return calendar.component(.hour, from: convertedDate)
+        let convertedHourInt = Int(convertedDateString)!
+        return convertedHourInt
     }
     
     @objc func switchToDarkMode() {
