@@ -108,7 +108,7 @@ final class TodayViewController: UIViewController {
         dDayStackView.addArrangedSubviews(lastCallDDayView, fromPurposeDDayView)
 
         NSLayoutConstraint.activate([
-            clockStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            clockStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             clockStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
             clockStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
         ])
@@ -139,6 +139,7 @@ final class TodayViewController: UIViewController {
         let image = UIImage(systemName: "gearshape")
         let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem = barButton
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     private func setTimer() {
