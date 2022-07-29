@@ -13,6 +13,19 @@ final class SettingViewController: UIViewController {
 
     // MARK: View
     
+    private let settingListScrollView: UIScrollView = {
+        return $0
+    }(UIScrollView())
+    
+    private let settingListVStack: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.spacing = 32
+        $0.distribution = .fill
+        $0.alignment = .leading
+        return $0
+    }(UIStackView())
+    
     private let callTimeSettingVStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -95,8 +108,9 @@ final class SettingViewController: UIViewController {
     }
 
     private func layout() {
-        view.addSubviews(alarmSettingVStack, callTimeSettingVStack)
+        view.addSubviews(settingListVStack)
         
+        settingListLayout()
         alarmSettingLayout()
         callTimeSettingLayout()
     }
@@ -104,6 +118,19 @@ final class SettingViewController: UIViewController {
     private func setNavigationBar() {
         title = "설정"
         navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func settingListLayout() {
+        settingListVStack.addArrangedSubviews(
+            callTimeSettingVStack,
+            alarmSettingVStack
+        )
+        
+        NSLayoutConstraint.activate([
+            settingListVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            settingListVStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            settingListVStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
     }
     
     private func alarmSettingLayout() {
