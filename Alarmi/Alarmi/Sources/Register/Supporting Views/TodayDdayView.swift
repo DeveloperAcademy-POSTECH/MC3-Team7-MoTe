@@ -20,12 +20,6 @@ final class TodayDdayView: UIView {
         var dDayLabel: String
     }
 
-    func set(state: State) {
-        callButton.configuration?.attributedTitle = AttributedString(state.buttonName, attributes: AttributeContainer())
-        descriptionLabel.text = state.descriptionLabelName
-        dDayLabel.text = state.dDayLabel
-    }
-
     // MARK: View
 
     private let dDayStackView: UIStackView = {
@@ -80,6 +74,12 @@ final class TodayDdayView: UIView {
     // MARK: Methods
 
     private func attribute() {}
+
+    func set(state: State) {
+        callButton.configuration?.attributedTitle = AttributedString(state.buttonName, attributes: AttributeContainer())
+        descriptionLabel.text = state.descriptionLabelName
+        dDayLabel.text = state.dDayLabel
+    }
 
     private func layout() {
         addSubview(dDayStackView)
