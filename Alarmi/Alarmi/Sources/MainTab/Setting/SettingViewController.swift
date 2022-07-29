@@ -47,10 +47,10 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private let goalSettingCellView: UIView = {
+    private let goalSettingCellView: GoalSettingCellView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(UIView())
+    }(GoalSettingCellView())
     
     private let goalSettingDescriptionLabel: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -161,6 +161,7 @@ private extension SettingViewController {
         
         settingListScrollLayout()
         settingListVStackLayout()
+        goalSettingLayout()
         alarmSettingLayout()
         callTimeSettingLayout()
     }
@@ -178,6 +179,7 @@ private extension SettingViewController {
     
     func settingListVStackLayout() {
         settingListVStack.addArrangedSubviews(
+            goalSettingVStack,
             callTimeSettingVStack,
             alarmSettingVStack
         )
@@ -188,6 +190,28 @@ private extension SettingViewController {
             settingListVStack.trailingAnchor.constraint(equalTo: settingListScrollView.trailingAnchor),
             settingListVStack.bottomAnchor.constraint(equalTo: settingListScrollView.bottomAnchor),
             settingListVStack.widthAnchor.constraint(equalTo: settingListScrollView.widthAnchor)
+        ])
+    }
+    
+    func goalSettingLayout() {
+        goalSettingVStack.addArrangedSubviews(
+            goalSettingTitleLabel,
+            goalSettingCellView,
+            goalSettingDescriptionLabel
+        )
+        
+        NSLayoutConstraint.activate([
+            goalSettingVStack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            goalSettingVStack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            goalSettingCellView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            goalSettingCellView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            goalSettingDescriptionLabel.trailingAnchor.constraint(equalTo: goalSettingCellView.trailingAnchor, constant: -16)
         ])
     }
     
