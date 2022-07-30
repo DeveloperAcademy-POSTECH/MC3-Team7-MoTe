@@ -55,7 +55,7 @@ final class AlarmSettingCellView: UIView {
     
     private lazy var alarmSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.onTintColor = .systemOrange
+        $0.onTintColor = .toggleOrange
         $0.isOn = true
         // TODO: Add Target
         return $0
@@ -63,7 +63,7 @@ final class AlarmSettingCellView: UIView {
     
     private lazy var alarmAgainSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.onTintColor = .systemOrange
+        $0.onTintColor = .toggleOrange
         $0.isOn = true
         // TODO: Add Target
         return $0
@@ -93,7 +93,7 @@ final class AlarmSettingCellView: UIView {
     // MARK: Methods
     
     private func attribute() {
-        backgroundColor = .secondarySystemGroupedBackground
+        backgroundColor = .cellBackgroundColor
         layer.cornerRadius = 10
         layer.masksToBounds = true
     }

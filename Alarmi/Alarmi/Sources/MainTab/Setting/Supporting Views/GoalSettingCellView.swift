@@ -60,7 +60,7 @@ final class GoalSettingCellView: UIView {
     // MARK: Methods
     
     private func attribute() {
-        backgroundColor = .secondarySystemGroupedBackground
+        backgroundColor = .cellBackgroundColor
         layer.cornerRadius = 10
         layer.masksToBounds = true
     }

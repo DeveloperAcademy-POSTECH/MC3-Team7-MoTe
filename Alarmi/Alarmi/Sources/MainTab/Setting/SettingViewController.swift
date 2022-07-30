@@ -157,7 +157,7 @@ final class SettingViewController: UIViewController {
     }
 
     private func attribute() {
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .backgroundColor
         setNavigationBar()
     }
 
