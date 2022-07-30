@@ -13,10 +13,6 @@ protocol RegisterCallTimeViewControllerDelegate: AnyObject {
     func gotoRegisterPlanViewController()
 }
 
-protocol MainTabRegisterCallTimeViewControllerDelegate: AnyObject {
-    func gotoBack()
-}
-
 class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
@@ -26,7 +22,7 @@ class RegisterCallTimeViewController: UIViewController {
     weak var delegate: RegisterCallTimeViewControllerDelegate?
 
     var viewModel = RegisterCallTimeViewModel()
-//    var cancelBag = Set<Cancellable>()
+    private var cancelBag = Set<AnyCancellable>()
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false

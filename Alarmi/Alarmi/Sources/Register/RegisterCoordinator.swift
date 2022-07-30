@@ -14,7 +14,6 @@ protocol ReigsterCoordinatorDelegate: AnyObject {
 
 final class RegisterCoordinator: Coordinator,
                                  RegisterCallTimeViewControllerDelegate,
-                                 RegisterNotifyViewControllerDelegate,
                                  RegisterPlanViewControllerDelegate,
                                  RegisterCompleteViewControllerDelegate {
 
@@ -41,16 +40,8 @@ final class RegisterCoordinator: Coordinator,
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
             return
         }
-        viewController.type = .register
         viewController.delegate = self
         navigationController.pushViewController(viewController, animated: true)
-    }
-
-    func gotoRegisterNotifyViewController() {
-        let viewController = RegisterNotifyViewController()
-        viewController.type = .register
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
     }
 
     func gotoRegisterCompleteViewController() {
