@@ -21,11 +21,6 @@ final class RegisterPlanViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var settingDayStepper: UIStepper!
 
-    private lazy var callTimePeriod: Int = 7 {
-        didSet {
-        }
-    }
-
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.title = "다음"
@@ -50,7 +45,7 @@ final class RegisterPlanViewController: UIViewController {
         viewModel.$callTimePeriod
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.settingDayLabel.text = String($0) + "일에 한 번"
+                self?.settingDayLabel.text = String($0)
             }
             .store(in: &cancelBag)
     }
@@ -61,7 +56,6 @@ final class RegisterPlanViewController: UIViewController {
             $0.layer.masksToBounds = true
         }
         startDatePicker.minimumDate = Date()
-        settingDayStepper.value = Double(callTimePeriod)
     }
 
     private func layout() {

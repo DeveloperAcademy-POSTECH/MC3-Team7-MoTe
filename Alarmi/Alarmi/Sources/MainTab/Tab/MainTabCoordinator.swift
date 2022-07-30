@@ -13,7 +13,6 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 }
 
 final class MainTabCoordinator: Coordinator,
-                                SettingViewControllerDelegate,
                                 TodayViewControllerDelegate {
     var childCoordinators: [Coordinator] = []
     weak var delegate: MainTabCoordinatorDelegate?
@@ -42,7 +41,6 @@ final class MainTabCoordinator: Coordinator,
 
     func gotoSettingViewController() {
         let settingViewController = SettingViewController()
-        settingViewController.delegate = self
         todayNavigationController.pushViewController(settingViewController, animated: true)
     }
 
