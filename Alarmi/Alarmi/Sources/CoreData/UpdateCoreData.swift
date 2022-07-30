@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 import UIKit
 
-//업데이트
 func updateCoreData(day: Date, keyName: String) -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     let managedContext = appDelegate.persistentContainer.viewContext
