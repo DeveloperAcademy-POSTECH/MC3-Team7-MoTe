@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension CoreDataDate {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CoreDataDate> {
@@ -28,6 +27,5 @@ extension CoreDataDate {
 
 }
 
-extension CoreDataDate : Identifiable {
-
+extension CoreDataDate: Identifiable {
 }

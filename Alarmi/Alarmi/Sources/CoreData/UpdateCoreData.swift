@@ -15,10 +15,8 @@ func updateCoreData(day: Date, keyName: String) -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
-//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
     
     do {
-        print("update")
         let result = try managedContext.fetch(fetchRequest)
         let object = result.last as! NSManagedObject
         
@@ -37,10 +35,8 @@ func updateCoreData(period: Int16, keyName: String) -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
-//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
     
     do {
-        print("update")
         let result = try managedContext.fetch(fetchRequest)
         let object = result.last as! NSManagedObject
         
@@ -54,18 +50,16 @@ func updateCoreData(period: Int16, keyName: String) -> Bool {
     }
 }
 
-func updateCoreData(day: [Date], keyName: String) -> Bool {
+func updateCoreData(isCall: Bool, keyName: String) -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
-//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
     
     do {
-        print("update")
         let result = try managedContext.fetch(fetchRequest)
         let object = result.last as! NSManagedObject
         
-        object.setValue(day, forKey: keyName)
+        object.setValue(isCall, forKey: keyName)
         
         try managedContext.save()
         return true
@@ -84,10 +78,8 @@ func updateToday() -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
-//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
     
     do {
-        print("moteDate")
         let result = try managedContext.fetch(fetchRequest)
         guard let object = result.last as? CoreDataDate else { return false }
 
@@ -108,34 +100,6 @@ func updateToday() -> Bool {
                 object.setValue(curDate, forKey: keyName)
             }
         }
-        try managedContext.save()
-        return true
-    } catch let error as NSError {
-        print("Could not update. \(error), \(error.userInfo)")
-        return false
-    }
-}
-
-func updateMoteDate(day: Date, keyName: String) -> Bool {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
-    let managedContext = appDelegate.persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
-//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
-    
-    do {
-        print("moteDate")
-        let result = try managedContext.fetch(fetchRequest)
-//        let object = result.last as
-        guard let object = result.last as? CoreDataDate else { return false }
-
-        if object.moteDate == nil {
-            object.setValue([day], forKey: keyName)
-        } else {
-            guard var curDate = object.moteDate else { return false }
-            curDate.append(day)
-            object.setValue(curDate, forKey: keyName)
-        }
-        
         try managedContext.save()
         return true
     } catch let error as NSError {

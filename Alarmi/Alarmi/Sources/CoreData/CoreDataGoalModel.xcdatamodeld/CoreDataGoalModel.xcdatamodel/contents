@@ -10,9 +10,7 @@
         <attribute name="moteDate" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName=".[Date]"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="MoteDate" representedClassName="MoteDate" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="CoreDataDate" positionX="-63" positionY="-18" width="128" height="149"/>
-        <element name="MoteDate" positionX="-63" positionY="45" width="128" height="29"/>
     </elements>
 </model>

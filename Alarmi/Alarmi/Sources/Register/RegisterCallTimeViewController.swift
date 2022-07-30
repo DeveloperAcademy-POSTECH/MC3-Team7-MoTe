@@ -109,9 +109,7 @@ class RegisterCallTimeViewController: UIViewController {
 extension RegisterCallTimeViewController {
 
     @objc private func buttonDidTap() {
-//        resetAllRecords(in: "CoreDataDate")
         saveCoreData(start: Date(), end: Date())
-        updateMoteDate(day: Date(), keyName: "moteDate")
         
         switch type {
         case .register:

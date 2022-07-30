@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 import UIKit
 
-//삭제
 func deleteCoreData(id: UUID) -> Bool {
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
@@ -31,8 +30,9 @@ func deleteCoreData(id: UUID) -> Bool {
         return false
     }
 }
+
 // 코어 데이터 전부 삭제
-func resetAllRecords(in entity : String) // entity = Your_Entity_Name
+func resetAllRecords(in entity: String) // entity = Your_Entity_Name
 {
     let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
     let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)

@@ -13,7 +13,6 @@
 		153598A72894CDE4004F62D4 /* UpdateCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A62894CDE4004F62D4 /* UpdateCoreData.swift */; };
 		1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */; };
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
-		15736CBC2892DC2F00004C56 /* CoreDataDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15736CBB2892DC2F00004C56 /* CoreDataDate.swift */; };
 		15A70C7D2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */; };
 		15A70C8028956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */; };
 		15A70C8128956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */; };
@@ -81,7 +80,6 @@
 		153598A62894CDE4004F62D4 /* UpdateCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCoreData.swift; sourceTree = "<group>"; };
 		1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlanViewController.swift; sourceTree = "<group>"; };
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
-		15736CBB2892DC2F00004C56 /* CoreDataDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDate.swift; sourceTree = "<group>"; };
 		15A70C7C2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataGoalModel.xcdatamodel; sourceTree = "<group>"; };
 		15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataDate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -162,10 +160,22 @@
 				EF0C23D5288E234B00FF5A86 /* CallTime.swift */,
 				EF0C23D7288E236400FF5A86 /* Goal.swift */,
 				EF0C23D9288E237A00FF5A86 /* PushAlarm.swift */,
-				15736CBB2892DC2F00004C56 /* CoreDataDate.swift */,
-				15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		15A524BC289577AF0034D3C7 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */,
+				15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */,
+				153598A028941931004F62D4 /* SaveCoreData.swift */,
+				153598A22894CDB4004F62D4 /* ReadCoreDate.swift */,
+				153598A42894CDCA004F62D4 /* DeleteCoreData.swift */,
+				153598A62894CDE4004F62D4 /* UpdateCoreData.swift */,
+				15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		385BB5542882BB0E0067AFF4 /* CurrentLocationView */ = {
@@ -220,10 +230,6 @@
 				1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */,
 				EFF8D2BC2881C9F1005A4D10 /* RegisterNotifyViewController.swift */,
 				507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */,
-				153598A028941931004F62D4 /* SaveCoreData.swift */,
-				153598A22894CDB4004F62D4 /* ReadCoreDate.swift */,
-				153598A42894CDCA004F62D4 /* DeleteCoreData.swift */,
-				153598A62894CDE4004F62D4 /* UpdateCoreData.swift */,
 				EFF8D2C528826936005A4D10 /* Supporting Views */,
 			);
 			path = Register;
@@ -283,8 +289,6 @@
 		EFFD73E2287BC77D00D9F267 = {
 			isa = PBXGroup;
 			children = (
-				15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */,
-				15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */,
 				EF25AD1F287BD05E0014B41B /* .swiftlint.yml */,
 				EFFD73ED287BC77D00D9F267 /* Alarmi */,
 				EFFD7404287BC77F00D9F267 /* AlarmiTests */,
@@ -332,6 +336,7 @@
 		EFFD7420287BC9D800D9F267 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				15A524BC289577AF0034D3C7 /* CoreData */,
 				158BE5F22887983A00BDAFA4 /* Models */,
 				EFFD73EE287BC77D00D9F267 /* AppDelegate.swift */,
 				EFFD73F0287BC77D00D9F267 /* SceneDelegate.swift */,
@@ -546,7 +551,6 @@
 				EF7785DD28864CC700E60AD2 /* RegisterCallTimeViewController.swift in Sources */,
 				153598A32894CDB4004F62D4 /* ReadCoreDate.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
-				15736CBC2892DC2F00004C56 /* CoreDataDate.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */,
 				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
 				15A70C8128956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift in Sources */,

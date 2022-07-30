@@ -100,13 +100,6 @@ final class RegisterCompleteViewController: UIViewController {
     @objc private func buttonDidTap() {
         updateToday()
         readCoreData()
-//        print(" ")
-//        print(readCoreData(returnData: "callDate"))
-//        do {
-//            try readCoreData()
-//        } catch {
-//            print("Could not save.")
-//        }
         delegate?.finishRegister()
     }
 }

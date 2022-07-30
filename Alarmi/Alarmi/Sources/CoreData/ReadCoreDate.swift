@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 import UIKit
 
-//읽어오기
 func readCoreData() -> [CoreDataDate] {
 
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
@@ -26,19 +25,8 @@ func readCoreData() -> [CoreDataDate] {
         print(error)
     }
     
-//    print("items[0]." + "\(returnData)")
-//    var answer: String = "items[0]." + "\(returnData)"
-    
-
     for item in items {
-        print(item.start ,terminator: " ")
-        print(item.end ,terminator: " ")
-        print(item.callTimePeriod, terminator: " ")
-        print(item.callDate ,terminator: " ")
-        print("moteDate : ",terminator: "")
-        print(item.moteDate, terminator: " ")
-        print()
+        print(item)
     }
-    
     return items
 }
