@@ -36,7 +36,7 @@ final class TodayViewController: UIViewController {
     private let statusDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .right
-        $0.setDynamicFont(for: .body, weight: .bold)
+        $0.setDynamicFont(for: .body, weight: .semibold)
         return $0
     }(UILabel())
 
