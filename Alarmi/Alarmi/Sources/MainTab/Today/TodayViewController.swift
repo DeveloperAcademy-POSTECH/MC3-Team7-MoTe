@@ -83,13 +83,8 @@ final class TodayViewController: UIViewController {
         setupNavigationBar()
         attribute()
         layout()
-        changeImage()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
         setTimer()
+        changeImage()
     }
 
     // MARK: Method
