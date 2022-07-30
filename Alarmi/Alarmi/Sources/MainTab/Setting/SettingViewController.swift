@@ -47,8 +47,13 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private let goalSettingCellView: GoalSettingCellView = {
+    private lazy var goalSettingCellView: GoalSettingCellView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.goalPeriodStepper.addTarget(
+            self,
+            action: #selector(goalPeriodStepperDidChanged(_:)),
+            for: .valueChanged
+        )
         return $0
     }(GoalSettingCellView())
     
@@ -128,18 +133,28 @@ final class SettingViewController: UIViewController {
     // MARK: Store Property
 
     private let viewModel = SettingViewModel()
-    private let cancelBag = Set<AnyCancellable>()
+    private var cancelBag = Set<AnyCancellable>()
 
     // MARK: LifeCycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        bind()
         attribute()
         layout()
     }
     
     // MARK: Method
+    
+    private func bind() {
+        viewModel.$goalPeriod
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.goalSettingCellView.goalPeriodLabel.text = String($0)
+            }
+            .store(in: &cancelBag)
+    }
 
     private func attribute() {
         view.backgroundColor = .systemGroupedBackground
@@ -257,6 +272,12 @@ private extension SettingViewController {
         NSLayoutConstraint.activate([
             alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingView.trailingAnchor, constant: -16)
         ])
+    }
+}
+
+private extension SettingViewController {
+    @objc func goalPeriodStepperDidChanged(_ sender: UIStepper!) {
+        viewModel.goalPeriodStepperDidChanged(Int(sender.value))
     }
 }
 

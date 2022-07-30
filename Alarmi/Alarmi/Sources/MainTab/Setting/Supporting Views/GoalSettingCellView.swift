@@ -13,7 +13,7 @@ final class GoalSettingCellView: UIView {
     
     // MARK: Views
     
-    private let goalPeriodLabel: UILabel = {
+    let goalPeriodLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
         $0.text = "7"
@@ -28,13 +28,12 @@ final class GoalSettingCellView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var goalPeriodStepper: UIStepper = {
+    lazy var goalPeriodStepper: UIStepper = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.value = 7
         $0.minimumValue = 1
         $0.maximumValue = 31
         $0.stepValue = 1
-        $0.addTarget(self, action: #selector(goalPeriodStepperDidChanged(_:)), for: .valueChanged)
         return $0
     }(UIStepper())
     
@@ -45,15 +44,11 @@ final class GoalSettingCellView: UIView {
     
     // MARK: Property
     
-    private let viewModel = SettingViewModel()
-    private var cancelBag = Set<AnyCancellable>()
-    
     // MARK: Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        bind()
         attribute()
         layout()
     }
@@ -63,15 +58,6 @@ final class GoalSettingCellView: UIView {
     }
     
     // MARK: Methods
-    
-    private func bind() {
-        viewModel.$goalPeriod
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                self?.goalPeriodLabel.text = String($0)
-            }
-            .store(in: &cancelBag)
-    }
     
     private func attribute() {
         backgroundColor = .secondarySystemGroupedBackground
@@ -111,9 +97,5 @@ final class GoalSettingCellView: UIView {
             goalSettingRowView.heightAnchor.constraint(greaterThanOrEqualTo: goalPeriodLabel.heightAnchor),
             goalSettingRowView.heightAnchor.constraint(greaterThanOrEqualTo: goalPeriodStepper.heightAnchor)
         ])
-    }
-    
-    @objc private func goalPeriodStepperDidChanged(_ sender: UIStepper!) {
-        viewModel.goalPeriodStepperDidChanged(Int(sender.value))
     }
 }

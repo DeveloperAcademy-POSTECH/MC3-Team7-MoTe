@@ -170,9 +170,9 @@
 		50793FF72893CE7200DA49F7 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
-				50BC4AEC28928F3100A2CDB5 /* AlarmSettingCellView.swift */,
-				50793FF82893CEB700DA49F7 /* CallTimeSettingCellView.swift */,
 				50929D1B2893FCC700E68DA3 /* GoalSettingCellView.swift */,
+				50793FF82893CEB700DA49F7 /* CallTimeSettingCellView.swift */,
+				50BC4AEC28928F3100A2CDB5 /* AlarmSettingCellView.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
