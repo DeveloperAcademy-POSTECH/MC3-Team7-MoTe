@@ -50,7 +50,6 @@ final class TodayViewController: UIViewController {
 
     private let imageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        // TODO: 시간에따라 사진바꿔줘야함
         $0.contentMode = .scaleAspectFit
         return $0
     }(UIImageView())
