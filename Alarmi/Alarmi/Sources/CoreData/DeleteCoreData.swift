@@ -37,11 +37,10 @@ func resetAllRecords(in entity: String) // entity = Your_Entity_Name
     let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
     let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-    do{
+    do {
         try context.execute(deleteRequest)
         try context.save()
-    }
-    catch{
+    } catch {
         print("There was an error")
     }
 }
