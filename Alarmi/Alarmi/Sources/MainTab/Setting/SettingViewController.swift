@@ -275,6 +275,8 @@ private extension SettingViewController {
     }
 }
 
+// MARK: Business Logic Method
+
 private extension SettingViewController {
     @objc func goalPeriodStepperDidChanged(_ sender: UIStepper!) {
         viewModel.goalPeriodStepperDidChanged(Int(sender.value))
