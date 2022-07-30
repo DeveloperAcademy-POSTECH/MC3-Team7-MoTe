@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153598A128941931004F62D4 /* SaveCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A028941931004F62D4 /* SaveCoreData.swift */; };
+		153598A32894CDB4004F62D4 /* ReadCoreDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A22894CDB4004F62D4 /* ReadCoreDate.swift */; };
+		153598A52894CDCA004F62D4 /* DeleteCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A42894CDCA004F62D4 /* DeleteCoreData.swift */; };
+		153598A72894CDE4004F62D4 /* UpdateCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A62894CDE4004F62D4 /* UpdateCoreData.swift */; };
 		1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */; };
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
-		156A0B882891997B00E88FA8 /* CoreDataDate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 156A0B862891997B00E88FA8 /* CoreDataDate.xcdatamodeld */; };
 		15736CBC2892DC2F00004C56 /* CoreDataDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15736CBB2892DC2F00004C56 /* CoreDataDate.swift */; };
+		15A70C7D2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */; };
 		385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
@@ -69,10 +73,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		153598A028941931004F62D4 /* SaveCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoreData.swift; sourceTree = "<group>"; };
+		153598A22894CDB4004F62D4 /* ReadCoreDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCoreDate.swift; sourceTree = "<group>"; };
+		153598A42894CDCA004F62D4 /* DeleteCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCoreData.swift; sourceTree = "<group>"; };
+		153598A62894CDE4004F62D4 /* UpdateCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCoreData.swift; sourceTree = "<group>"; };
 		1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlanViewController.swift; sourceTree = "<group>"; };
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
-		156A0B872891997B00E88FA8 /* Renewal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Renewal.xcdatamodel; sourceTree = "<group>"; };
 		15736CBB2892DC2F00004C56 /* CoreDataDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDate.swift; sourceTree = "<group>"; };
+		15A70C7C2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataGoalModel.xcdatamodel; sourceTree = "<group>"; };
 		385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
@@ -150,8 +158,8 @@
 				EF0C23D5288E234B00FF5A86 /* CallTime.swift */,
 				EF0C23D7288E236400FF5A86 /* Goal.swift */,
 				EF0C23D9288E237A00FF5A86 /* PushAlarm.swift */,
-				156A0B862891997B00E88FA8 /* CoreDataDate.xcdatamodeld */,
 				15736CBB2892DC2F00004C56 /* CoreDataDate.swift */,
+				15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +216,10 @@
 				1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */,
 				EFF8D2BC2881C9F1005A4D10 /* RegisterNotifyViewController.swift */,
 				507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */,
+				153598A028941931004F62D4 /* SaveCoreData.swift */,
+				153598A22894CDB4004F62D4 /* ReadCoreDate.swift */,
+				153598A42894CDCA004F62D4 /* DeleteCoreData.swift */,
+				153598A62894CDE4004F62D4 /* UpdateCoreData.swift */,
 				EFF8D2C528826936005A4D10 /* Supporting Views */,
 			);
 			path = Register;
@@ -495,7 +507,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153598A72894CDE4004F62D4 /* UpdateCoreData.swift in Sources */,
 				EFF8D2BD2881C9F1005A4D10 /* RegisterNotifyViewController.swift in Sources */,
+				153598A128941931004F62D4 /* SaveCoreData.swift in Sources */,
 				EFF8D2C428826931005A4D10 /* AlarmAgainSetView.swift in Sources */,
 				EF3630F128866115007779C0 /* AppCoordinator.swift in Sources */,
 				507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */,
@@ -511,17 +525,19 @@
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
+				153598A52894CDCA004F62D4 /* DeleteCoreData.swift in Sources */,
 				EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */,
 				EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */,
 				EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
+				15A70C7D2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld in Sources */,
 				EFF8D2A628810A11005A4D10 /* UIView+.swift in Sources */,
 				EFF8D2992880EFA0005A4D10 /* MainTabBarController.swift in Sources */,
 				EFF8D2A12880F4FE005A4D10 /* UITabBarItem+.swift in Sources */,
 				EF0C23DA288E237A00FF5A86 /* PushAlarm.swift in Sources */,
 				EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */,
 				EF7785DD28864CC700E60AD2 /* RegisterCallTimeViewController.swift in Sources */,
-				156A0B882891997B00E88FA8 /* CoreDataDate.xcdatamodeld in Sources */,
+				153598A32894CDB4004F62D4 /* ReadCoreDate.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
 				15736CBC2892DC2F00004C56 /* CoreDataDate.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */,
@@ -869,13 +885,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		156A0B862891997B00E88FA8 /* CoreDataDate.xcdatamodeld */ = {
+		15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				156A0B872891997B00E88FA8 /* Renewal.xcdatamodel */,
+				15A70C7C2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodel */,
 			);
-			currentVersion = 156A0B872891997B00E88FA8 /* Renewal.xcdatamodel */;
-			path = CoreDataDate.xcdatamodeld;
+			currentVersion = 15A70C7C2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodel */;
+			path = CoreDataGoalModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -8,11 +8,14 @@
 
 import Foundation
 import CoreData
+import UIKit
 
-
-@objc(CoreDataDate)
-class CoreDataDate: NSManagedObject
-{
-    @NSManaged var id: NSNumber!
+@objc(CoreDataGoalModel)
+class CoreDataGoalModel: NSManagedObject {
+    @NSManaged var id: UUID?
     @NSManaged var callDate: Date?
+    @NSManaged var callTimePeriod: NSNumber!
+    @NSManaged var moTeDate: [Date]
+    @NSManaged var start: Date?
+    @NSManaged var end: Date?
 }

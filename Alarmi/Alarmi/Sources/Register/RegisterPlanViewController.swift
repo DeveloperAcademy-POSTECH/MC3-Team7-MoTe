@@ -91,79 +91,25 @@ final class RegisterPlanViewController: UIViewController {
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
         goal.startDate = sender.date
     }
-    
-    var coreDataList = [CoreDataDate]()
-    
-    func fetch() -> [NSManagedObject] {
-            // 앱 델리게이트 객체 참조
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            // 관리 객체 컨텍스트 참조
-            let context = appDelegate.persistentContainer.viewContext
-            // 요청 객체 생성
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CoreDataDate")
-            // 데이터 가져오기
-            let result = try? context.fetch(fetchRequest)
-        return result!
-        }
-    
-    lazy var list: [NSManagedObject] = {
-            return self.fetch()
-        }()
-    
-    @IBAction func saveAction(_ sender: Any) {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataDate")
-        let object = NSEntityDescription.insertNewObject(forEntityName: "CoreDataDate", into: context)
-        object.setValue(Date(), forKey: "callDate")
-//        let entity = NSEntityDescription.entity(forEntityName: "CoreDataDate", in: context)
-        
-        print(context)
-        print(request)
-        print(object)
-        
-        do {
-            try context.save()
-            self.list.append(object)
-//            self.coreDataList.append(contentsOf: object)
-            return
-        } catch {
-            context.rollback()
-            return
-        }
-        
-//        print(entity)
-    }
-    
-    func delete(object: NSManagedObject) -> Bool {
-            // 앱 델리게이트 객체 참조
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            // 관리 객체 컨텍스트 참조
-            let context = appDelegate.persistentContainer.viewContext
-            // 컨텍스트로부터 해당 객체 삭제
-            context.delete(object)
-            
-            // 영구 저장소에 커밋
-            do {
-                try context.save()
-                return true
-            } catch {
-                context.rollback()
-                return false
-            }
-        }
 }
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
+        
+        planCoreDataSave(callTimePeriod: callTimePeriod, callDate: goal.startDate)
+        
+//        do {
+//            let array: [NSManagedObject] = try readCoreData()!
+//            print(array)
+//        } catch {
+//            print(error)
+//        }
         switch type {
         case .register:
             delegate?.gotoRegisterNotifyViewController()
         case .setting:
             tabDelegate?.gotoBack()
         }
-        
         if let encoded = try? encoder.encode(goal) {
             UserDefaults.standard.setValue(encoded, forKey: "Goal")
         }

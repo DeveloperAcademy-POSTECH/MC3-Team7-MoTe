@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol RegisterCompleteViewControllerDelegate: AnyObject {
     func finishRegister()
@@ -97,6 +98,12 @@ final class RegisterCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
+        do {
+            // fetchRequest를 통해 managedContext로부터 결과 배열을 가져오기
+            try readCoreData()
+        } catch {
+            print("Could not save.")
+        }
         delegate?.finishRegister()
     }
 }
