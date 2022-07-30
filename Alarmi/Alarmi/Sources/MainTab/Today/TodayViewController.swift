@@ -69,11 +69,13 @@ final class TodayViewController: UIViewController {
 
     private lazy var lastCallDDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.set(state: .init(buttonName: "전화했어요", descriptionLabelName: "마지막 전화", dDayLabel: "D+9"))
         return $0
     }(TodayDdayView())
 
     private lazy var fromPurposeDDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.set(state: .init(buttonName: "미룰거예요", descriptionLabelName: "목표일로부터", dDayLabel: "D+2"))
         return $0
     }(TodayDdayView())
 
@@ -105,8 +107,6 @@ final class TodayViewController: UIViewController {
 
     private func attribute() {
         view.backgroundColor = .systemGroupedBackground
-        lastCallDDayView.set(state: .init(buttonName: "전화했어요", descriptionLabelName: "마지막 전화", dDayLabel: "D+9"))
-        fromPurposeDDayView.set(state: .init(buttonName: "미룰거예요", descriptionLabelName: "목표일로부터", dDayLabel: "D+2"))
     }
 
     private func layout() {
