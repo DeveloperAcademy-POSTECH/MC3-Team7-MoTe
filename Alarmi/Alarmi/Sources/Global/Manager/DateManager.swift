@@ -29,8 +29,11 @@ class DateManager {
         return $0
     }(DateFormatter())
 
+    func convertDate2String(_ date: Date) -> String {
+        return dateFormatter.string(from: date)
+    }
     func testDummyDates() -> [CallDate] {
-        self.dummy
+        return self.dummy
     }
 
     func todayBefore(_ day: Int) -> Date? {

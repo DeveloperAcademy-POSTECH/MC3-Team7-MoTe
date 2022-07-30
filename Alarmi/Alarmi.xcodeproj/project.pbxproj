@@ -25,11 +25,17 @@
 		EF13EFA62891788500BC8D49 /* RecentAchieveContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFA52891788500BC8D49 /* RecentAchieveContainerView.swift */; };
 		EF13EFA8289226A000BC8D49 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFA7289226A000BC8D49 /* Frequency.swift */; };
 		EF13EFAA28922EBB00BC8D49 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFA928922EBB00BC8D49 /* Goal.swift */; };
-		EF13EFD12892B68000BC8D49 /* CallTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFCF2892B68000BC8D49 /* CallTimeManager.swift */; };
+		EF13EFD12892B68000BC8D49 /* CallTimeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFCF2892B68000BC8D49 /* CallTimeUserDefaults.swift */; };
 		EF13EFD22892B68000BC8D49 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD02892B68000BC8D49 /* DateManager.swift */; };
 		EF13EFD62892B6A000BC8D49 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD42892B6A000BC8D49 /* UserDefaultsManager.swift */; };
 		EF13EFD72892B6A000BC8D49 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD52892B6A000BC8D49 /* Coordinator.swift */; };
 		EF13EFD92892B6BA00BC8D49 /* CallDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFD82892B6BA00BC8D49 /* CallDate.swift */; };
+		EF13EFDB2892CEF700BC8D49 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFDA2892CEF700BC8D49 /* UserDefaults+Codable.swift */; };
+		EF13EFDD2892D0F300BC8D49 /* GoalTimeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFDC2892D0F300BC8D49 /* GoalTimeUserDefaults.swift */; };
+		EF13EFDF2892D16900BC8D49 /* AlarmUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFDE2892D16900BC8D49 /* AlarmUserDefaults.swift */; };
+		EF13EFE22892EBFB00BC8D49 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFE12892EBFB00BC8D49 /* UserDefaultsKey.swift */; };
+		EF13EFE42892F85A00BC8D49 /* CallDateUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFE32892F85A00BC8D49 /* CallDateUserDefaults.swift */; };
+		EF13EFE62893685A00BC8D49 /* RegisterCallTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFE52893685A00BC8D49 /* RegisterCallTimeViewModel.swift */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
 		EF3630F128866115007779C0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630F028866115007779C0 /* AppCoordinator.swift */; };
 		EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630F328866304007779C0 /* RegisterCoordinator.swift */; };
@@ -101,11 +107,17 @@
 		EF13EFA52891788500BC8D49 /* RecentAchieveContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchieveContainerView.swift; sourceTree = "<group>"; };
 		EF13EFA7289226A000BC8D49 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		EF13EFA928922EBB00BC8D49 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
-		EF13EFCF2892B68000BC8D49 /* CallTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallTimeManager.swift; sourceTree = "<group>"; };
+		EF13EFCF2892B68000BC8D49 /* CallTimeUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallTimeUserDefaults.swift; sourceTree = "<group>"; };
 		EF13EFD02892B68000BC8D49 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		EF13EFD42892B6A000BC8D49 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		EF13EFD52892B6A000BC8D49 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		EF13EFD82892B6BA00BC8D49 /* CallDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallDate.swift; sourceTree = "<group>"; };
+		EF13EFDA2892CEF700BC8D49 /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
+		EF13EFDC2892D0F300BC8D49 /* GoalTimeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimeUserDefaults.swift; sourceTree = "<group>"; };
+		EF13EFDE2892D16900BC8D49 /* AlarmUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUserDefaults.swift; sourceTree = "<group>"; };
+		EF13EFE12892EBFB00BC8D49 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		EF13EFE32892F85A00BC8D49 /* CallDateUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDateUserDefaults.swift; sourceTree = "<group>"; };
+		EF13EFE52893685A00BC8D49 /* RegisterCallTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCallTimeViewModel.swift; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EF3630F028866115007779C0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		EF3630F328866304007779C0 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
@@ -217,7 +229,10 @@
 		EF13EFCE2892B68000BC8D49 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				EF13EFCF2892B68000BC8D49 /* CallTimeManager.swift */,
+				EF13EFCF2892B68000BC8D49 /* CallTimeUserDefaults.swift */,
+				EF13EFDC2892D0F300BC8D49 /* GoalTimeUserDefaults.swift */,
+				EF13EFDE2892D16900BC8D49 /* AlarmUserDefaults.swift */,
+				EF13EFE32892F85A00BC8D49 /* CallDateUserDefaults.swift */,
 				EF13EFD02892B68000BC8D49 /* DateManager.swift */,
 			);
 			path = Manager;
@@ -230,6 +245,15 @@
 				EF13EFD52892B6A000BC8D49 /* Coordinator.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		EF13EFE02892EBEB00BC8D49 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EF79623728911D06009A176E /* Constant.swift */,
+				EF13EFE12892EBFB00BC8D49 /* UserDefaultsKey.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		EF3630F2288662DA007779C0 /* App */ = {
@@ -274,6 +298,7 @@
 			children = (
 				EF3630F328866304007779C0 /* RegisterCoordinator.swift */,
 				EF7785DB28864CC700E60AD2 /* RegisterCallTimeViewController.swift */,
+				EF13EFE52893685A00BC8D49 /* RegisterCallTimeViewModel.swift */,
 				1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */,
 				EFF8D2BC2881C9F1005A4D10 /* RegisterNotifyViewController.swift */,
 				507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */,
@@ -296,7 +321,7 @@
 		EFF8D29E2880F4F1005A4D10 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				EF79623728911D06009A176E /* Constant.swift */,
+				EF13EFE02892EBEB00BC8D49 /* Helper */,
 				EF13EFD32892B6A000BC8D49 /* Protocols */,
 				EF13EFCE2892B68000BC8D49 /* Manager */,
 				EFF8D2C62882AE20005A4D10 /* Components */,
@@ -314,6 +339,7 @@
 				EFF8D2A928811A7F005A4D10 /* UIStackView+.swift */,
 				EFF8D2BE2881D219005A4D10 /* UILabel+.swift */,
 				EFF8D2D1288318CB005A4D10 /* UIFont+.swift */,
+				EF13EFDA2892CEF700BC8D49 /* UserDefaults+Codable.swift */,
 				5075907928915CC50033C09B /* UIColor+.swift */,
 			);
 			path = Extensions;
@@ -577,6 +603,7 @@
 				EF13EFA328916D1300BC8D49 /* PurposeContainerView.swift in Sources */,
 				385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */,
 				EF0C23D8288E236400FF5A86 /* GoalTime.swift in Sources */,
+				EF13EFE22892EBFB00BC8D49 /* UserDefaultsKey.swift in Sources */,
 				EF13EFD22892B68000BC8D49 /* DateManager.swift in Sources */,
 				EF79623A289122C3009A176E /* RecordModel.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
@@ -591,9 +618,12 @@
 				EF13EFAA28922EBB00BC8D49 /* Goal.swift in Sources */,
 				EF13EFD92892B6BA00BC8D49 /* CallDate.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
+				EF13EFE62893685A00BC8D49 /* RegisterCallTimeViewModel.swift in Sources */,
+				EF13EFE42892F85A00BC8D49 /* CallDateUserDefaults.swift in Sources */,
 				EF13EFD72892B6A000BC8D49 /* Coordinator.swift in Sources */,
 				EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
+				EF13EFDD2892D0F300BC8D49 /* GoalTimeUserDefaults.swift in Sources */,
 				EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */,
 				5075907A28915CC50033C09B /* UIColor+.swift in Sources */,
 				EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */,
@@ -605,8 +635,9 @@
 				EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */,
 				38166BB4288EC0E300DD3D41 /* UserNotificationManager.swift in Sources */,
 				EF7785DD28864CC700E60AD2 /* RegisterCallTimeViewController.swift in Sources */,
-				EF13EFD12892B68000BC8D49 /* CallTimeManager.swift in Sources */,
+				EF13EFD12892B68000BC8D49 /* CallTimeUserDefaults.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
+				EF13EFDF2892D16900BC8D49 /* AlarmUserDefaults.swift in Sources */,
 				50BC4AEA28928CCF00A2CDB5 /* SettingViewController.swift in Sources */,
 				50BC4AEB28928CCF00A2CDB5 /* SettingViewModel.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */,
@@ -614,6 +645,7 @@
 				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
 				EF13EFA62891788500BC8D49 /* RecentAchieveContainerView.swift in Sources */,
 				EF13EFA8289226A000BC8D49 /* Frequency.swift in Sources */,
+				EF13EFDB2892CEF700BC8D49 /* UserDefaults+Codable.swift in Sources */,
 				EF79622A2891042C009A176E /* RecordViewController.swift in Sources */,
 				EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,

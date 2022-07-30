@@ -8,27 +8,39 @@
 
 import Combine
 import Foundation
-import UIKit
 
 final class RecordViewModel: ObservableObject {
     typealias Weekdend = [Frequency]
     typealias WeekendList = [Weekdend]
     typealias FrequencyDataList = [Frequency]
 
+    var cancelBag = Set<AnyCancellable>()
+
+    // MARK: Input
+
+    var viewDidLoad = PassthroughSubject<Void, Never>()
+
+    // MARK: Output
+
     @Published var frequencyDateList: WeekendList = RecordViewModel.dummyFrequencyDataList
     @Published var goalCount: Int = 0
     @Published var goalCombo: Int = 0
     @Published var achievement: [Bool] = [false, true, false]
 
-    func viewDidLoad() {
-        fetchMoTeDate()
+    init(_ model: RecordModel) {
+        viewDidLoad.sink { [weak self] in
+            let storedDateList = model.fetchCallDataList()
+            self?.prepareFrequencyDataList(storedDateList)
+        }
+        .store(in: &cancelBag)
     }
+}
+
+extension RecordViewModel {
 
     // MARK: Business Logic
 
-    private func fetchMoTeDate() {
-        // TODO: 대체해야하는 부분 모델을 통해 데이터 받아오기
-        let dates = DateManager.shared.testDummyDates()
+    private func prepareFrequencyDataList(_ dates: [CallDate]) {
         let ddipDates = createFrequencyDataList(with: dates)
         frequencyDateList = convertModel(ddipDates)
     }
