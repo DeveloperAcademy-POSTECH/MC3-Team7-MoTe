@@ -41,10 +41,11 @@ final class TodayViewController: UIViewController {
         return $0
     }(UILabel())
 
-    private let realTimeClockLabel: UILabel = {
+    private lazy var realTimeClockLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.adjustsFontSizeToFitWidth = true
         $0.textAlignment = .center
+        $0.text = dateFormatter.string(from: Date())
         $0.font = UIFont.systemFont(ofSize: 108, weight: .black)
         return $0
     }(UILabel())
@@ -75,6 +76,12 @@ final class TodayViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(TodayDdayView())
+
+    private let dateFormatter: DateFormatter = {
+        $0.timeZone = TimeZone(identifier: "Asia/Seoul")
+        $0.dateFormat = "HH:mm"
+        return $0
+    }(DateFormatter())
 
     weak var delegate: TodayViewControllerDelegate?
 
@@ -156,8 +163,6 @@ extension TodayViewController {
     }
 
     @objc private func currentTimeToKoreaTime(_ sender: Timer) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "Asia/Seoul")
         dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         dateFormatter.dateFormat = "HH:mm"
         let currentLocationDate = Date()
