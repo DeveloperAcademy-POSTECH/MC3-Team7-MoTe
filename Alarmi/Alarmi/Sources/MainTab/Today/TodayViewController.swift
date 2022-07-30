@@ -163,8 +163,6 @@ extension TodayViewController {
     }
 
     @objc private func currentTimeToKoreaTime(_ sender: Timer) {
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-        dateFormatter.dateFormat = "HH:mm"
         let currentLocationDate = Date()
         let koreaTime = dateFormatter.string(from: currentLocationDate)
         realTimeClockLabel.text = koreaTime
