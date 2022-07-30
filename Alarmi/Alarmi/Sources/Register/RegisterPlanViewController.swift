@@ -26,12 +26,12 @@ final class RegisterPlanViewController: UIViewController {
     
     private lazy var callTimePeriod = 7 {
         didSet {
-            settingDayLabel.text = String(callTimePeriod) + "일에 한 번"
+            settingDayLabel.text = String(callTimePeriod)
         }
     }
     
     private let encoder = JSONEncoder()
-    private var goal = Goal(startDate: Date(), period: 7)
+    private var goal = GoalTime(startDate: Date(), period: 7)
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
