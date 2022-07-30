@@ -73,7 +73,7 @@ final class PurposeContainerView: UIView {
         didSet {
             guard let goalCount = goalCount else { return }
             numberLabel1.text = "\(goalCount)"
-            descriptionLabel1.text = "지금까지 목표를 \n\(goalCount)회 지켰어요."
+            descriptionLabel1.text = "지금까지 목표를\n\(goalCount)회 지켰어요."
         }
     }
 
@@ -81,7 +81,7 @@ final class PurposeContainerView: UIView {
         didSet {
             guard let goalCombo = goalCombo else { return }
             numberLabel2.text = "\(goalCombo)"
-            descriptionLabel2.text = "목표를 최대 \(goalCombo)번 \n 연속으로 지켰어요."
+            descriptionLabel2.text = "목표를 최대 \(goalCombo)번\n연속으로 지켰어요."
         }
     }
     

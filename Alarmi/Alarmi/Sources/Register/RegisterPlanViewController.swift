@@ -26,7 +26,7 @@ final class RegisterPlanViewController: UIViewController {
     
     private lazy var callTimePeriod = 7 {
         didSet {
-            settingDayLabel.text = String(callTimePeriod) + "일에 한 번"
+            settingDayLabel.text = String(callTimePeriod)
         }
     }
     
