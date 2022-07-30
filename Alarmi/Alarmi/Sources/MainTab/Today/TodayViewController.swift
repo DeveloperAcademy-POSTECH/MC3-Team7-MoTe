@@ -28,7 +28,7 @@ final class TodayViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "마지막으로 전화한지 5일이 지났어요."
+        $0.text = "마지막으로 전화한지 5일이 지났어요"
         $0.setDynamicFont(.title2)
         return $0
     }(UILabel())
