@@ -31,7 +31,7 @@ final class RegisterPlanViewController: UIViewController {
     }
     
     private let encoder = JSONEncoder()
-    private var goal = Goal(startDate: Date(), period: 7)
+    private var goal = GoalTime(startDate: Date(), period: 7)
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
