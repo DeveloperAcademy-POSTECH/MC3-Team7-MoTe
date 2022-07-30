@@ -35,7 +35,6 @@ final class TodayViewController: UIViewController {
 
     private let statusDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "전화 가능 시간이 아니에요."
         $0.textAlignment = .right
         $0.setDynamicFont(for: .body, weight: .bold)
         return $0
@@ -52,7 +51,6 @@ final class TodayViewController: UIViewController {
     private let imageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         // TODO: 시간에따라 사진바꿔줘야함
-//        $0.image = UIImage(named: "call")
         $0.contentMode = .scaleAspectFit
         return $0
     }(UIImageView())
@@ -263,14 +261,16 @@ extension TodayViewController {
 
     @objc func switchToSleepingImage() {
         imageView.image = UIImage(named: "sleeping")
-        print("sleepsleep")
+        statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
     }
 
     @objc func switchToWorkingImage() {
         imageView.image = UIImage(named: "working")
+        statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
     }
 
     @objc func switchToWaitingImage() {
         imageView.image = UIImage(named: "waiting")
+        statusDescriptionLabel.text = "전화 가능 시간이에요."
     }
 }
