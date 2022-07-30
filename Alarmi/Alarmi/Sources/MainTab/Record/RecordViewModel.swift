@@ -46,12 +46,12 @@ extension RecordViewModel {
     }
 
     private func createFrequencyDataList(with dates: [CallDate]) -> FrequencyDataList {
-        let todayIndex = (Constant.Record.numberOfColumns - 1) * 7 + DateManager.shared.todayWeekend().weekday! - 2 // 1 = 일요일
+        let todayIndex = (Constant.Record.numberOfColumns - 1) * 7 + Date().getTodayWeekend() - 2
         var index: Int = 0
 
         return (0..<Constant.Record.numberOfColumns * 7).map { (ind) -> Frequency in
             let currentday: Int = todayIndex - ind
-            let currentDate = DateManager.shared.todayBefore(currentday)!
+            let currentDate = Date().before(day: currentday)!
 
             if ind > todayIndex {
                 return Frequency(type: .future, date: currentDate)

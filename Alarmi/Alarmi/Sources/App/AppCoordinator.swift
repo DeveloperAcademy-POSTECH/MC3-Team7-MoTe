@@ -15,7 +15,7 @@ class AppCoordinator: Coordinator,
     private var navigationController: UINavigationController!
 
     // MARK: UserDefaults 값에서 불어와야함
-    var isRegister: Bool = false
+    var isRegister: Bool = true
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

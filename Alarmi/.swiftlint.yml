@@ -15,6 +15,8 @@ disabled_rules:
     # 타입 이름에는 alphanumeric만 포함되어야 합니다. https://realm.github.io/SwiftLint/type_name.html
     - type_name
 
+    - identifier_name
+
 # Default가 비활성화인 규칙을 활성화시키기
 opt_in_rules:
     # .count==0 보다는 .isEmpty를 사용하는 것이 좋습니다. https://realm.github.io/SwiftLint/empty_count.html
