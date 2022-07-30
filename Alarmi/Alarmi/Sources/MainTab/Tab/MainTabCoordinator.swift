@@ -39,7 +39,6 @@ final class MainTabCoordinator: Coordinator,
         setupRecordNavgigationController()
         let tabBarController = MainTabBarController(todayNavigationController: todayNavigationController,
                                                   recordNavigationController: recordNavigationController)
-        tabBarController.tabBar.isHidden = true
         navigationController.viewControllers = [tabBarController]
     }
 
@@ -53,33 +52,6 @@ final class MainTabCoordinator: Coordinator,
         let navigationController = callDelayViewController.wrappedByNavigationController()
         guard let today = todayNavigationController.viewControllers.first else { return }
         today.present(navigationController, animated: true)
-    }
-
-    func gotoRegisterCallTimeViewController() {
-        let storyboard = UIStoryboard(name: "CallTime", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterCallTimeViewController") as? RegisterCallTimeViewController else {
-            return
-        }
-        viewController.type = .setting
-        viewController.tabDelegate = self
-        todayNavigationController.pushViewController(viewController, animated: true)
-    }
-
-    func gotoRegisterPlanViewController() {
-        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
-            return
-        }
-        viewController.type = .setting
-        viewController.tabDelegate = self
-        todayNavigationController.pushViewController(viewController, animated: true)
-    }
-
-    func gotoRegisterNotifyViewController() {
-        let viewController = RegisterNotifyViewController()
-        viewController.type = .setting
-        viewController.tabDelegate = self
-        todayNavigationController?.pushViewController(viewController, animated: true)
     }
 
     func backtoTodayViewController() {
@@ -101,6 +73,7 @@ extension MainTabCoordinator {
 
     private func setupRecordNavgigationController() {
         let recordViewController = RecordViewController()
+        recordViewController.viewModel = RecordViewModel()
         recordNavigationController.viewControllers = [recordViewController]
     }
 }
