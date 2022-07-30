@@ -100,6 +100,10 @@ final class TodayViewController: UIViewController {
         fromPurposeDDayView.set(state: .init(buttonName: "미룰거예요", descriptionLabelName: "목표일로부터", dDayLabel: "D+2"))
     }
 
+    private func calculateDDay() {
+        // startDate에 커밋 내역 저장
+    }
+
     private func layout() {
         view.addSubviews(clockStackView, imageView, dDayStackView)
         clockStackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
