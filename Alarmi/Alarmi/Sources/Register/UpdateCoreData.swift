@@ -11,18 +11,130 @@ import CoreData
 import UIKit
 
 //업데이트
-func updateCoreData(id: UUID, name: String, email: String) -> Bool {
+func updateCoreData(day: Date, keyName: String) -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
-    let managedContext = appDelegate.initialContainer.viewContext
+    let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
-    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
+//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
     
     do {
+        print("update")
         let result = try managedContext.fetch(fetchRequest)
-        let object = result[0] as! NSManagedObject
+        let object = result.last as! NSManagedObject
         
-//        object.setValue(name, forKey: "name")
-//        object.setValue(email, forKey: "email")
+        object.setValue(day, forKey: keyName)
+        
+        try managedContext.save()
+        
+        return true
+    } catch let error as NSError {
+        print("Could not update. \(error), \(error.userInfo)")
+        return false
+    }
+}
+
+func updateCoreData(period: Int16, keyName: String) -> Bool {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
+//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
+    
+    do {
+        print("update")
+        let result = try managedContext.fetch(fetchRequest)
+        let object = result.last as! NSManagedObject
+        
+        object.setValue(period, forKey: keyName)
+        
+        try managedContext.save()
+        return true
+    } catch let error as NSError {
+        print("Could not update. \(error), \(error.userInfo)")
+        return false
+    }
+}
+
+func updateCoreData(day: [Date], keyName: String) -> Bool {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
+//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
+    
+    do {
+        print("update")
+        let result = try managedContext.fetch(fetchRequest)
+        let object = result.last as! NSManagedObject
+        
+        object.setValue(day, forKey: keyName)
+        
+        try managedContext.save()
+        return true
+    } catch let error as NSError {
+        print("Could not update. \(error), \(error.userInfo)")
+        return false
+    }
+}
+
+func updateToday() -> Bool {
+    // Update 오늘 되도록
+    // 중복 배열 X
+    let day = Date()
+    let keyName = "moteDate"
+    
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
+//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
+    
+    do {
+        print("moteDate")
+        let result = try managedContext.fetch(fetchRequest)
+        guard let object = result.last as? CoreDataDate else { return false }
+
+        if object.moteDate == nil {
+            object.setValue([day], forKey: keyName)
+        } else {
+            guard var curDate = object.moteDate else { return false }
+            
+            guard let lastDay = curDate.last else {return false}
+            let lastDayComponent = Calendar.current.dateComponents([.year, .month, .day], from: lastDay)
+            let todayComponent = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+            if lastDayComponent == todayComponent {
+                print("Fail!")
+                return false
+            } else {
+                print("Success!")
+                curDate.append(day)
+                object.setValue(curDate, forKey: keyName)
+            }
+        }
+        try managedContext.save()
+        return true
+    } catch let error as NSError {
+        print("Could not update. \(error), \(error.userInfo)")
+        return false
+    }
+}
+
+func updateMoteDate(day: Date, keyName: String) -> Bool {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "CoreDataDate")
+//    fetchRequest.predicate = NSPredicate(format: "id = %@", id.uuidString)
+    
+    do {
+        print("moteDate")
+        let result = try managedContext.fetch(fetchRequest)
+//        let object = result.last as
+        guard let object = result.last as? CoreDataDate else { return false }
+
+        if object.moteDate == nil {
+            object.setValue([day], forKey: keyName)
+        } else {
+            guard var curDate = object.moteDate else { return false }
+            curDate.append(day)
+            object.setValue(curDate, forKey: keyName)
+        }
         
         try managedContext.save()
         return true

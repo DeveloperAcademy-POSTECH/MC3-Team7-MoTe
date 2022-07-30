@@ -11,25 +11,34 @@ import CoreData
 import UIKit
 
 //읽어오기
-func readCoreData() throws -> [NSManagedObject]? {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-    let managedContext = appDelegate.initialContainer.viewContext
+func readCoreData() -> [CoreDataDate] {
+
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
+    let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+    let request: NSFetchRequest<CoreDataDate> = CoreDataDate.fetchRequest()
+    request.sortDescriptors = [NSSortDescriptor(key: "callDate", ascending: true)]
     
-    // Entity의 fetchRequest 생성
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CoreDataDate")
+    var items = [CoreDataDate]()
     
-    // 정렬 또는 조건 설정
-    //    let sort = NSSortDescriptor(key: "createDate", ascending: false)
-    //    fetchRequest.sortDescriptors = [sort]
-    //    fetchRequest.predicate = NSPredicate(format: "isFinished = %@", NSNumber(value: isFinished))
-    print("managedContext : ")
-    print(managedContext)
     do {
-        // fetchRequest를 통해 managedContext로부터 결과 배열을 가져오기
-        let resultCDArray = try managedContext.fetch(fetchRequest)
-        return resultCDArray
-    } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-        throw error
+        items = try context.fetch(request)
+    } catch {
+        print(error)
     }
+    
+//    print("items[0]." + "\(returnData)")
+//    var answer: String = "items[0]." + "\(returnData)"
+    
+
+    for item in items {
+        print(item.start ,terminator: " ")
+        print(item.end ,terminator: " ")
+        print(item.callTimePeriod, terminator: " ")
+        print(item.callDate ,terminator: " ")
+        print("moteDate : ",terminator: "")
+        print(item.moteDate, terminator: " ")
+        print()
+    }
+    
+    return items
 }

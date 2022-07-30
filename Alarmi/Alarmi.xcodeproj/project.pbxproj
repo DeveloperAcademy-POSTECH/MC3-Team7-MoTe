@@ -15,6 +15,8 @@
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
 		15736CBC2892DC2F00004C56 /* CoreDataDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15736CBB2892DC2F00004C56 /* CoreDataDate.swift */; };
 		15A70C7D2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */; };
+		15A70C8028956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */; };
+		15A70C8128956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */; };
 		385BB5562882BB270067AFF4 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */; };
 		385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
@@ -81,6 +83,8 @@
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
 		15736CBB2892DC2F00004C56 /* CoreDataDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDate.swift; sourceTree = "<group>"; };
 		15A70C7C2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataGoalModel.xcdatamodel; sourceTree = "<group>"; };
+		15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataDate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 		EFFD73E2287BC77D00D9F267 = {
 			isa = PBXGroup;
 			children = (
+				15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */,
+				15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */,
 				EF25AD1F287BD05E0014B41B /* .swiftlint.yml */,
 				EFFD73ED287BC77D00D9F267 /* Alarmi */,
 				EFFD7404287BC77F00D9F267 /* AlarmiTests */,
@@ -527,6 +533,7 @@
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
 				153598A52894CDCA004F62D4 /* DeleteCoreData.swift in Sources */,
 				EFF8D2D2288318CB005A4D10 /* UIFont+.swift in Sources */,
+				15A70C8028956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift in Sources */,
 				EF0C23D2288E232D00FF5A86 /* MoTeDate.swift in Sources */,
 				EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */,
 				EFF8D2A4288102B1005A4D10 /* RecordViewController.swift in Sources */,
@@ -542,6 +549,7 @@
 				15736CBC2892DC2F00004C56 /* CoreDataDate.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */,
 				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
+				15A70C8128956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift in Sources */,
 				EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,
 			);

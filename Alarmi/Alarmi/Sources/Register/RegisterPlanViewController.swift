@@ -96,14 +96,11 @@ final class RegisterPlanViewController: UIViewController {
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
         
-        planCoreDataSave(callTimePeriod: callTimePeriod, callDate: goal.startDate)
+//        planCoreDataSave(callTimePeriod: callTimePeriod, callDate: goal.startDate)
+        updateCoreData(day: goal.startDate, keyName: "callDate")
+        updateCoreData(period: Int16(callTimePeriod), keyName: "callTimePeriod")
+        updateMoteDate(day: goal.startDate, keyName: "moteDate")
         
-//        do {
-//            let array: [NSManagedObject] = try readCoreData()!
-//            print(array)
-//        } catch {
-//            print(error)
-//        }
         switch type {
         case .register:
             delegate?.gotoRegisterNotifyViewController()

@@ -10,12 +10,21 @@ import Foundation
 import CoreData
 import UIKit
 
-@objc(CoreDataGoalModel)
-class CoreDataGoalModel: NSManagedObject {
-    @NSManaged var id: UUID?
-    @NSManaged var callDate: Date?
-    @NSManaged var callTimePeriod: NSNumber!
-    @NSManaged var moTeDate: [Date]
-    @NSManaged var start: Date?
-    @NSManaged var end: Date?
-}
+//@objc(CoreDataGoalModel)
+//class CoreDataGoalModel: NSManagedObject {
+//    @NSManaged var id: UUID?
+//    @NSManaged var callDate: Date?
+//    @NSManaged var callTimePeriod: NSNumber!
+//    @NSManaged var start: Date?
+//    @NSManaged var end: Date?
+//}
+
+//class CoreDataMoteDate: NSManagedObject {
+//    @NSManaged var moTeDate: Date?
+//}
+
+//extension CoreDataDate {
+//    @nonobjc public class func fetchRequest() -> NSFetchRequest<CoreDataDate> {
+//        return NSFetchRequest<CoreDataDate>(entityName: "CoreDataDate")
+//    }
+//}

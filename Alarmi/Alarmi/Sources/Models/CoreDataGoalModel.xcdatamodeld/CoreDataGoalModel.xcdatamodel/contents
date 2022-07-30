@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CoreDataDate" representedClassName="CoreDataDate" syncable="YES" codeGenerationType="class">
+    <entity name="CoreDataDate" representedClassName=".CoreDataDate" syncable="YES">
         <attribute name="callDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="callTimePeriod" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="moTeDate" optional="YES" attributeType="Transformable"/>
+        <attribute name="isAlarm" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isAlarmAgain" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="moteDate" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName=".[Date]"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="MoteDate" representedClassName="MoteDate" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="CoreDataDate" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="CoreDataDate" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="MoteDate" positionX="-63" positionY="45" width="128" height="29"/>
     </elements>
 </model>
