@@ -55,10 +55,6 @@ final class UserNotificationManager {
         }
     }
 
-    init() {
-        requestAuthorization()
-    }
-
     func requestAuthorization() {
         notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             guard let _ = error, !granted else {
