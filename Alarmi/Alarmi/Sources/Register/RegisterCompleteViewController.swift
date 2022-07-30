@@ -57,6 +57,7 @@ final class RegisterCompleteViewController: UIViewController {
     }(AMButton())
 
     weak var delegate: RegisterCompleteViewControllerDelegate?
+    private let userNotificationManager = UserNotificationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +96,7 @@ final class RegisterCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
+        userNotificationManager.requestAuthorization()
         delegate?.finishRegister()
     }
 }
