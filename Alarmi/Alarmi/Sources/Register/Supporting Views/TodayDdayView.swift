@@ -47,7 +47,7 @@ final class TodayDdayView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.configuration?.baseBackgroundColor = .systemBlue
         $0.configuration?.titleAlignment = .center
-        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 11, leading: 15, bottom: 15, trailing: 11)
+        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 11, leading: 16, bottom: 11, trailing: 16)
         $0.layer.cornerRadius = 10
         $0.addTarget(TodayDdayView.self, action: #selector(contactButtonTapped), for: .touchUpInside)
         var container = AttributeContainer()
