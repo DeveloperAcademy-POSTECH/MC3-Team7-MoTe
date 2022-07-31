@@ -8,11 +8,13 @@
 
 import Combine
 import Foundation
+import UIKit
 
 final class SettingViewModel: ObservableObject {
 
     // MARK: Store Property
     @Published var goalPeriod: Int = 7
+    @Published var isAlarmSwitchOn: Bool = true
 
     init() {}
     
@@ -20,5 +22,9 @@ final class SettingViewModel: ObservableObject {
     
     func goalPeriodStepperDidChanged(_ value: Int) {
         goalPeriod = value
+    }
+    
+    func alarmSwitchToggled(_ isOn: Bool) {
+        isAlarmSwitchOn = isOn
     }
 }

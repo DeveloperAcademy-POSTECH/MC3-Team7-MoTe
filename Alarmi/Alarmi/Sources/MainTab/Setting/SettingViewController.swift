@@ -114,6 +114,7 @@ final class SettingViewController: UIViewController {
     
     private lazy var alarmSettingBoxView: AlarmSettingBoxView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.viewModel = viewModel
         return $0
     }(AlarmSettingBoxView())
     
