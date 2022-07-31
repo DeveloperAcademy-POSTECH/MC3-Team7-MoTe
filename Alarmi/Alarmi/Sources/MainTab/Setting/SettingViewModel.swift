@@ -37,27 +37,37 @@ final class SettingViewModel: ObservableObject {
     
     func goalPeriodStepperDidChanged(_ value: Int) {
         goalPeriod = value
-        // TODO: UserDefaults에 저장
+        guard let startDate = goalTimeUserDefaults.data?.startDate else { return }
+        let data = GoalTime(startDate: startDate, period: value)
+        goalTimeUserDefaults.save(data)
     }
     
     func startTimePickerDidChanged(_ date: Date) {
         callStartTime = date
-        // TODO: UserDefaults에 저장
+        guard let endTime = callTimeUserDefaults.data?.end else { return }
+        let data = CallTime(start: date, end: endTime)
+        callTimeUserDefaults.save(data)
     }
     
     func endTimePickerDidChanged(_ date: Date) {
         callEndTime = date
-        // TODO: UserDefaults에 저장
+        guard let startTime = callTimeUserDefaults.data?.start else { return }
+        let data = CallTime(start: startTime, end: date)
+        callTimeUserDefaults.save(data)
     }
     
     func alarmSwitchToggled(_ isOn: Bool) {
         isAlarm = isOn
-        // TODO: UserDefaults에 저장
+        guard let isAlarmAgain = alarmUserDefaults.data?.isAlarmAgain else { return }
+        let data = Alarm(isAlarm: isOn, isAlarmAgain: isAlarmAgain)
+        alarmUserDefaults.save(data)
     }
     
     func alarmAgainSwitchToggled(_ isOn: Bool) {
         isAlarmAgain = isOn
-        // TODO: UserDefaults에 저장
+        guard let isAlarm = alarmUserDefaults.data?.isAlarm else { return }
+        let data = Alarm(isAlarm: isAlarm, isAlarmAgain: isOn)
+        alarmUserDefaults.save(data)
     }
     
     func checkNotificationAuthorization() {
