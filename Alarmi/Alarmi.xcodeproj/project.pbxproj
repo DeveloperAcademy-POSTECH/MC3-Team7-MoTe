@@ -163,6 +163,14 @@
 			path = CurrentLocationView;
 			sourceTree = "<group>";
 		};
+		3861D15E28963A260001C187 /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				3861D15B2892EA170001C187 /* TodayDdayView.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
 		EF3630F2288662DA007779C0 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +182,7 @@
 		EF3630FB28867359007779C0 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				3861D15E28963A260001C187 /* SupportingViews */,
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
 				3861D14C289229FD0001C187 /* TodayViewModel.swift */,
 				EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */,
@@ -251,7 +260,6 @@
 				385BB5542882BB0E0067AFF4 /* CurrentLocationView */,
 				EFF8D2C12881D3DE005A4D10 /* AlarmSetView.swift */,
 				EFF8D2C328826931005A4D10 /* AlarmAgainSetView.swift */,
-				3861D15B2892EA170001C187 /* TodayDdayView.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
