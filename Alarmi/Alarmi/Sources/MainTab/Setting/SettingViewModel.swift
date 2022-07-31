@@ -32,4 +32,14 @@ final class SettingViewModel: ObservableObject {
     func alarmAgainSwitchToggled(_ isOn: Bool) {
         isAlarmSwitchOn = isOn
     }
+    
+    func disableView(canBeEdited: Bool, view: UIView) {
+        UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
+            let opacity: Float = canBeEdited ? 1 : 0.4
+            let isUserInteractionEnabled: Bool = canBeEdited
+            
+            view.layer.opacity = opacity
+            view.isUserInteractionEnabled = isUserInteractionEnabled
+        }, completion: nil)
+    }
 }
