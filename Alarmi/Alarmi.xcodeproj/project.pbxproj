@@ -17,6 +17,7 @@
 		50929D1C2893FCC700E68DA3 /* GoalSettingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50929D1B2893FCC700E68DA3 /* GoalSettingBoxView.swift */; };
 		50BC4AEA28928CCF00A2CDB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */; };
 		50BC4AEB28928CCF00A2CDB5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AE928928CCF00A2CDB5 /* SettingViewModel.swift */; };
+		50D91CF828966A660088FDF4 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D91CF728966A660088FDF4 /* UserNotificationManager.swift */; };
 		50FACB04289560A90045BE01 /* AlarmSettingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FACB03289560A90045BE01 /* AlarmSettingBoxView.swift */; };
 		EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D3288E234100FF5A86 /* Alarm.swift */; };
 		EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0C23D5288E234B00FF5A86 /* CallTime.swift */; };
@@ -98,6 +99,7 @@
 		50929D1B2893FCC700E68DA3 /* GoalSettingBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingBoxView.swift; sourceTree = "<group>"; };
 		50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		50BC4AE928928CCF00A2CDB5 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		50D91CF728966A660088FDF4 /* UserNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 		50FACB03289560A90045BE01 /* AlarmSettingBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmSettingBoxView.swift; sourceTree = "<group>"; };
 		EF0C23D3288E234100FF5A86 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		EF0C23D5288E234B00FF5A86 /* CallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTime.swift; sourceTree = "<group>"; };
@@ -194,13 +196,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		385BB5542882BB0E0067AFF4 /* CurrentLocationView */ = {
+		3861D15E28963A260001C187 /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
-				385BB5552882BB270067AFF4 /* RegisterLocationViewController.swift */,
-				385BB5572882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift */,
+				3861D15B2892EA170001C187 /* TodayDdayView.swift */,
 			);
-			path = CurrentLocationView;
+			path = SupportingViews;
 			sourceTree = "<group>";
 		};
 		50793FF72893CE7200DA49F7 /* Supporting Views */ = {
@@ -242,6 +243,7 @@
 				EF13EFDE2892D16900BC8D49 /* AlarmUserDefaults.swift */,
 				EF13EFE32892F85A00BC8D49 /* CallDateUserDefaults.swift */,
 				EF13EFD02892B68000BC8D49 /* DateManager.swift */,
+				50D91CF728966A660088FDF4 /* UserNotificationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -262,14 +264,6 @@
 				EF13EFE12892EBFB00BC8D49 /* UserDefaultsKey.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		3861D15E28963A260001C187 /* SupportingViews */ = {
-			isa = PBXGroup;
-			children = (
-				3861D15B2892EA170001C187 /* TodayDdayView.swift */,
-			);
-			path = SupportingViews;
 			sourceTree = "<group>";
 		};
 		EF3630F2288662DA007779C0 /* App */ = {
@@ -604,6 +598,7 @@
 				EF79622F2891048C009A176E /* FrequencyView.swift in Sources */,
 				EF3630F128866115007779C0 /* AppCoordinator.swift in Sources */,
 				507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */,
+				50D91CF828966A660088FDF4 /* UserNotificationManager.swift in Sources */,
 				50929D1C2893FCC700E68DA3 /* GoalSettingBoxView.swift in Sources */,
 				EF13EFA328916D1300BC8D49 /* PurposeContainerView.swift in Sources */,
 				EF0C23D8288E236400FF5A86 /* GoalTime.swift in Sources */,
@@ -614,14 +609,12 @@
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
 				1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */,
 				50FACB04289560A90045BE01 /* AlarmSettingBoxView.swift in Sources */,
-				EFF8D2C22881D3DE005A4D10 /* AlarmSetView.swift in Sources */,
 				EF79623828911D06009A176E /* Constant.swift in Sources */,
 				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
 				EF13EFD62892B6A000BC8D49 /* UserDefaultsManager.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
 				3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */,
-				507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */,
 				EF13EFAA28922EBB00BC8D49 /* Goal.swift in Sources */,
 				EF13EFD92892B6BA00BC8D49 /* CallDate.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
