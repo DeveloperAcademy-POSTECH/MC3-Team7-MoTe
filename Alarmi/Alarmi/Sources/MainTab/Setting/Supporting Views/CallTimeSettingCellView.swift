@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CallTimeSettingCellView: UIView {
+final class CallTimeSettingBoxView: UIView {
     
     // MARK: Views
     
@@ -133,21 +133,21 @@ final class CallTimeSettingCellView: UIView {
 #if DEBUG
 import SwiftUI
 
-struct CallTimeSettingCellViewRepresentable: UIViewRepresentable {
-    typealias UIViewType = CallTimeSettingCellView
+struct CallTimeSettingBoxViewRepresentable: UIViewRepresentable {
+    typealias UIViewType = CallTimeSettingBoxView
     
-    func makeUIView(context: Context) -> CallTimeSettingCellView {
-        CallTimeSettingCellView()
+    func makeUIView(context: Context) -> CallTimeSettingBoxView {
+        CallTimeSettingBoxView()
     }
     
-    func updateUIView(_ uiView: CallTimeSettingCellView, context: Context) {
+    func updateUIView(_ uiView: CallTimeSettingBoxView, context: Context) {
         
     }
 }
 
-struct CallTimeSettingCellView_Preview: PreviewProvider {
+struct CallTimeSettingBoxView_Preview: PreviewProvider {
     static var previews: some View {
-        CallTimeSettingCellViewRepresentable()
+        CallTimeSettingBoxViewRepresentable()
             .frame(width: 358, height: 120)
     }
 }

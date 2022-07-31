@@ -9,7 +9,7 @@
 import Combine
 import UIKit
 
-final class GoalSettingCellView: UIView {
+final class GoalSettingBoxView: UIView {
     
     // MARK: Views
     

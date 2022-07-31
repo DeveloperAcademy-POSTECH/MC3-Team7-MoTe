@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AlarmSettingCellView: UIView {
+final class AlarmSettingBoxView: UIView {
     
     // MARK: Views
     
@@ -135,21 +135,21 @@ final class AlarmSettingCellView: UIView {
 #if DEBUG
 import SwiftUI
 
-struct AlarmSettingCellViewRepresentable: UIViewRepresentable {
-    typealias UIViewType = AlarmSettingCellView
+struct AlarmSettingBoxViewRepresentable: UIViewRepresentable {
+    typealias UIViewType = AlarmSettingBoxView
     
-    func makeUIView(context: Context) -> AlarmSettingCellView {
-        AlarmSettingCellView()
+    func makeUIView(context: Context) -> AlarmSettingBoxView {
+        AlarmSettingBoxView()
     }
     
-    func updateUIView(_ uiView: AlarmSettingCellView, context: Context) {
+    func updateUIView(_ uiView: AlarmSettingBoxView, context: Context) {
         
     }
 }
 
-struct AlarmSettingCellView_Preview: PreviewProvider {
+struct AlarmSettingBoxView_Preview: PreviewProvider {
     static var previews: some View {
-        AlarmSettingCellViewRepresentable()
+        AlarmSettingBoxViewRepresentable()
             .frame(width: 358, height: 94)
     }
 }

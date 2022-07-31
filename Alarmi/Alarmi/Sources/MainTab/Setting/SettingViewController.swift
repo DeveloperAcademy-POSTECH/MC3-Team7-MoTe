@@ -47,7 +47,7 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private lazy var goalSettingCellView: GoalSettingCellView = {
+    private lazy var goalSettingBoxView: GoalSettingBoxView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.goalPeriodStepper.addTarget(
             self,
@@ -55,7 +55,7 @@ final class SettingViewController: UIViewController {
             for: .valueChanged
         )
         return $0
-    }(GoalSettingCellView())
+    }(GoalSettingBoxView())
     
     private let goalSettingDescriptionLabel: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -84,10 +84,10 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private lazy var callTimeCellView: CallTimeSettingCellView = {
+    private lazy var callTimeBoxView: CallTimeSettingBoxView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(CallTimeSettingCellView())
+    }(CallTimeSettingBoxView())
     
     private let callTimeSettingDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -116,10 +116,10 @@ final class SettingViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private lazy var alarmSettingView: AlarmSettingCellView = {
+    private lazy var alarmSettingBoxView: AlarmSettingBoxView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(AlarmSettingCellView())
+    }(AlarmSettingBoxView())
     
     private let alarmSettingDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -151,7 +151,7 @@ final class SettingViewController: UIViewController {
         viewModel.$goalPeriod
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.goalSettingCellView.goalPeriodLabel.text = String($0)
+                self?.goalSettingBoxView.goalPeriodLabel.text = String($0)
             }
             .store(in: &cancelBag)
     }
@@ -174,14 +174,14 @@ private extension SettingViewController {
     func layout() {
         view.addSubviews(settingListScrollView)
         
-        settingListScrollLayout()
-        settingListVStackLayout()
-        goalSettingLayout()
-        callTimeSettingLayout()
-        alarmSettingLayout()
+        setSettingListScrollViewLayout()
+        setSettingListVStackLayout()
+        setGoalSettingLayout()
+        setCallTimeSettingLayout()
+        setAlarmSettingLayout()
     }
     
-    func settingListScrollLayout() {
+    func setSettingListScrollViewLayout() {
         settingListScrollView.addSubviews(settingListVStack)
         
         NSLayoutConstraint.activate([
@@ -192,7 +192,7 @@ private extension SettingViewController {
         ])
     }
     
-    func settingListVStackLayout() {
+    func setSettingListVStackLayout() {
         settingListVStack.addArrangedSubviews(
             goalSettingVStack,
             callTimeSettingVStack,
@@ -208,10 +208,10 @@ private extension SettingViewController {
         ])
     }
     
-    func goalSettingLayout() {
+    func setGoalSettingLayout() {
         goalSettingVStack.addArrangedSubviews(
             goalSettingTitleLabel,
-            goalSettingCellView,
+            goalSettingBoxView,
             goalSettingDescriptionLabel
         )
         
@@ -221,19 +221,19 @@ private extension SettingViewController {
         ])
         
         NSLayoutConstraint.activate([
-            goalSettingCellView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            goalSettingCellView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+            goalSettingBoxView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            goalSettingBoxView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            goalSettingDescriptionLabel.trailingAnchor.constraint(equalTo: goalSettingCellView.trailingAnchor, constant: -16)
+            goalSettingDescriptionLabel.trailingAnchor.constraint(equalTo: goalSettingBoxView.trailingAnchor, constant: -16)
         ])
     }
     
-    func callTimeSettingLayout() {
+    func setCallTimeSettingLayout() {
         callTimeSettingVStack.addArrangedSubviews(
             callTimeSettingTitleLabel,
-            callTimeCellView,
+            callTimeBoxView,
             callTimeSettingDescriptionLabel
         )
         
@@ -243,19 +243,19 @@ private extension SettingViewController {
         ])
         
         NSLayoutConstraint.activate([
-            callTimeCellView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            callTimeCellView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+            callTimeBoxView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            callTimeBoxView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            callTimeSettingDescriptionLabel.trailingAnchor.constraint(equalTo: callTimeCellView.trailingAnchor, constant: -16)
+            callTimeSettingDescriptionLabel.trailingAnchor.constraint(equalTo: callTimeBoxView.trailingAnchor, constant: -16)
         ])
     }
     
-    func alarmSettingLayout() {
+    func setAlarmSettingLayout() {
         alarmSettingVStack.addArrangedSubviews(
             alarmSettingTitleLabel,
-            alarmSettingView,
+            alarmSettingBoxView,
             alarmSettingDescriptionLabel
         )
         
@@ -265,12 +265,12 @@ private extension SettingViewController {
         ])
         
         NSLayoutConstraint.activate([
-            alarmSettingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            alarmSettingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+            alarmSettingBoxView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            alarmSettingBoxView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingView.trailingAnchor, constant: -16)
+            alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingBoxView.trailingAnchor, constant: -16)
         ])
     }
 }
