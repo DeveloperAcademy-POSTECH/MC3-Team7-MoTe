@@ -56,7 +56,7 @@ final class UserNotificationManager {
     }
 
     func requestAuthorization(_ completion: @escaping () -> Void) {
-        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (_, error) in
             if let _ = error {
                 // TODO: 에러 처리
             } else {
