@@ -57,7 +57,6 @@ final class CallTimeSettingBoxView: UIView {
         $0.preferredDatePickerStyle = .compact
         $0.datePickerMode = .time
         $0.minuteInterval = 10
-        $0.date = viewModel?.callStartTime ?? Date()
         $0.addTarget(self, action: #selector(startTimePickerDidChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())
@@ -66,7 +65,6 @@ final class CallTimeSettingBoxView: UIView {
         $0.preferredDatePickerStyle = .compact
         $0.datePickerMode = .time
         $0.minuteInterval = 10
-        $0.date = viewModel?.callEndTime ?? Date()
         $0.addTarget(self, action: #selector(endTimePickerDidChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())
@@ -80,6 +78,20 @@ final class CallTimeSettingBoxView: UIView {
     // MARK: Property
     
     weak var viewModel: SettingViewModel?
+    
+    var callStartTime: Date? {
+        didSet {
+            guard let callStartTime = callStartTime else { return }
+            startTimePicker.date = callStartTime
+        }
+    }
+    
+    var callEndTime: Date? {
+        didSet {
+            guard let callEndTime = callEndTime else { return }
+            endTimePicker.date = callEndTime
+        }
+    }
     
     // MARK: Life Cycle
     
