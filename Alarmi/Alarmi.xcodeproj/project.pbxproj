@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */; };
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
+		15AD742628968E6700CE21E1 /* CreateCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD742528968E6700CE21E1 /* CreateCoreData.swift */; };
+		15AD742828968EF700CE21E1 /* ReadCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD742728968EF700CE21E1 /* ReadCoreData.swift */; };
+		15AD742A28968F0500CE21E1 /* SaveCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD742928968F0500CE21E1 /* SaveCoreData.swift */; };
+		15AD742C28968F4D00CE21E1 /* DeleteCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD742B28968F4D00CE21E1 /* DeleteCoreData.swift */; };
+		15AD742F28968FE300CE21E1 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15AD742D28968FE300CE21E1 /* CoreDataModel.xcdatamodeld */; };
+		15AD74322896918900CE21E1 /* CoreDataDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD74302896918900CE21E1 /* CoreDataDate+CoreDataClass.swift */; };
+		15AD74332896918900CE21E1 /* CoreDataDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD74312896918900CE21E1 /* CoreDataDate+CoreDataProperties.swift */; };
 		3861D14D289229FD0001C187 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D14C289229FD0001C187 /* TodayViewModel.swift */; };
 		3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D15B2892EA170001C187 /* TodayDdayView.swift */; };
 		5075907A28915CC50033C09B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075907928915CC50033C09B /* UIColor+.swift */; };
@@ -92,6 +99,13 @@
 /* Begin PBXFileReference section */
 		1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlanViewController.swift; sourceTree = "<group>"; };
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
+		15AD742528968E6700CE21E1 /* CreateCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCoreData.swift; sourceTree = "<group>"; };
+		15AD742728968EF700CE21E1 /* ReadCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCoreData.swift; sourceTree = "<group>"; };
+		15AD742928968F0500CE21E1 /* SaveCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoreData.swift; sourceTree = "<group>"; };
+		15AD742B28968F4D00CE21E1 /* DeleteCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCoreData.swift; sourceTree = "<group>"; };
+		15AD742E28968FE300CE21E1 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		15AD74302896918900CE21E1 /* CoreDataDate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataDate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15AD74312896918900CE21E1 /* CoreDataDate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3861D14C289229FD0001C187 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		3861D15B2892EA170001C187 /* TodayDdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDdayView.swift; sourceTree = "<group>"; };
 		5075907928915CC50033C09B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -196,6 +210,20 @@
 				EF13EFA7289226A000BC8D49 /* Frequency.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		15AD742428968E5C00CE21E1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				15AD74302896918900CE21E1 /* CoreDataDate+CoreDataClass.swift */,
+				15AD74312896918900CE21E1 /* CoreDataDate+CoreDataProperties.swift */,
+				15AD742528968E6700CE21E1 /* CreateCoreData.swift */,
+				15AD742728968EF700CE21E1 /* ReadCoreData.swift */,
+				15AD742928968F0500CE21E1 /* SaveCoreData.swift */,
+				15AD742B28968F4D00CE21E1 /* DeleteCoreData.swift */,
+				15AD742D28968FE300CE21E1 /* CoreDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		3861D15E28963A260001C187 /* SupportingViews */ = {
@@ -334,6 +362,7 @@
 		EFF8D29E2880F4F1005A4D10 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				15AD742428968E5C00CE21E1 /* CoreData */,
 				EF13EFE02892EBEB00BC8D49 /* Helper */,
 				EF13EFD32892B6A000BC8D49 /* Protocols */,
 				EF13EFCE2892B68000BC8D49 /* Manager */,
@@ -612,18 +641,22 @@
 				EF79623A289122C3009A176E /* RecordModel.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
 				1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */,
+				15AD742F28968FE300CE21E1 /* CoreDataModel.xcdatamodeld in Sources */,
 				50FACB04289560A90045BE01 /* AlarmSettingBoxView.swift in Sources */,
 				EF79623828911D06009A176E /* Constant.swift in Sources */,
 				EFF8D2C82882AE3A005A4D10 /* AMButton.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
 				EF13EFD62892B6A000BC8D49 /* UserDefaultsManager.swift in Sources */,
+				15AD74332896918900CE21E1 /* CoreDataDate+CoreDataProperties.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
 				3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */,
 				EF13EFAA28922EBB00BC8D49 /* Goal.swift in Sources */,
 				EF13EFD92892B6BA00BC8D49 /* CallDate.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
 				EF13EFE62893685A00BC8D49 /* RegisterCallTimeViewModel.swift in Sources */,
+				15AD742A28968F0500CE21E1 /* SaveCoreData.swift in Sources */,
 				EF13EFE42892F85A00BC8D49 /* CallDateUserDefaults.swift in Sources */,
+				15AD74322896918900CE21E1 /* CoreDataDate+CoreDataClass.swift in Sources */,
 				EF13EFD72892B6A000BC8D49 /* Coordinator.swift in Sources */,
 				EF3630F628866968007779C0 /* MainTabCoordinator.swift in Sources */,
 				EFF8D29B2880F226005A4D10 /* TodayViewController.swift in Sources */,
@@ -646,12 +679,15 @@
 				50BC4AEA28928CCF00A2CDB5 /* SettingViewController.swift in Sources */,
 				50BC4AEB28928CCF00A2CDB5 /* SettingViewModel.swift in Sources */,
 				EF79622B2891042C009A176E /* RecordViewModel.swift in Sources */,
+				15AD742828968EF700CE21E1 /* ReadCoreData.swift in Sources */,
 				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
 				EF13EFA62891788500BC8D49 /* RecentAchieveContainerView.swift in Sources */,
 				EF13EFA8289226A000BC8D49 /* Frequency.swift in Sources */,
 				EF13EFDB2892CEF700BC8D49 /* UserDefaults+Codable.swift in Sources */,
 				EF79622A2891042C009A176E /* RecordViewController.swift in Sources */,
 				EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */,
+				15AD742628968E6700CE21E1 /* CreateCoreData.swift in Sources */,
+				15AD742C28968F4D00CE21E1 /* DeleteCoreData.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -992,6 +1028,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		15AD742D28968FE300CE21E1 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				15AD742E28968FE300CE21E1 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 15AD742E28968FE300CE21E1 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EFFD73E3287BC77D00D9F267 /* Project object */;
 }
