@@ -1,5 +1,5 @@
 //
-//  MoTeDate.swift
+//  Goal.swift
 //  Alarmi
 //
 //  Created by Woody on 2022/07/25.
@@ -8,4 +8,7 @@
 
 import Foundation
 
-typealias MoTeDate = Date
+struct GoalTime: Codable {
+    var startDate: Date
+    var period: Int
+}

@@ -1,15 +1,15 @@
 //
-//  aViewModel.swift
+//  TodayViewModel.swift
 //  Alarmi
 //
-//  Created by Woody on 2022/07/27.
+//  Created by LeeJiSoo on 2022/07/28.
 //  Copyright (c) 2022 MoTe. All rights reserved.
 //
 
 import Combine
 import Foundation
 
-final class aViewModel: ObservableObject {
+final class TodayViewModel: ObservableObject {
 
     // MARK: Store Property
     /*
