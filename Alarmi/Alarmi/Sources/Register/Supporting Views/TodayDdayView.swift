@@ -33,6 +33,7 @@ final class TodayDdayView: UIView {
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(for: .body, weight: .bold)
         return $0
     }(UILabel())
 
