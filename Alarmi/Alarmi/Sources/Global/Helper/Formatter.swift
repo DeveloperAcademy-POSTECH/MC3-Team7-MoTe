@@ -37,4 +37,11 @@ final class Formatter {
         v.dateFormat = "HH:mm"
         return v
     }()
+
+    static let HHMMKoreaDateFormatter: DateFormatter = {
+        let v = DateFormatter()
+        v.timeZone = TimeZone(identifier: "Asia/Seoul")
+        v.dateFormat = "HH:mm"
+        return v
+    }()
 }

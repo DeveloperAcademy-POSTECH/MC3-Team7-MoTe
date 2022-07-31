@@ -9,113 +9,100 @@
 import UIKit
 
 protocol TodayDdayViewDelegate: AnyObject {
-    func presentCallDelayViewController()
+    func presentCallDelayViewController(_ type: TodayDdayView.DDayType)
 }
 
 final class TodayDdayView: UIView {
 
+    enum DDayType {
+        case lastCall
+        case nextGoal
+
+        var buttonName: String {
+            switch self {
+            case .lastCall:
+                return "전화했어요"
+            case .nextGoal:
+                return "미룰거예요"
+            }
+        }
+
+        var title: String {
+            switch self {
+            case .lastCall:
+                return "마지막 전화"
+            case .nextGoal:
+                return "목표일로부터"
+            }
+        }
+    }
     // MARK: View
 
-    private let dDayStackView: UIStackView = {
+    private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.spacing = 7
-        $0.distribution = .fill
-        $0.alignment = .center
-        return $0
-    }(UIStackView())
-
-    private let descriptionLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setDynamicFont(for: .body, weight: .bold)
+        $0.setDynamicFont(for: .body, weight: .semibold)
+        $0.textAlignment = .center
         return $0
     }(UILabel())
 
     private let dDayLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setDynamicFont(for: .largeTitle, weight: .bold)
+        $0.font = .systemFont(ofSize: 50, weight: .bold)
+        $0.textColor = .systemIndigo
         $0.textAlignment = .center
+        $0.text = "D+0"
         return $0
     }(UILabel())
 
-    private let callButton: UIButton = {
+    private lazy var button: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.configuration?.baseBackgroundColor = .systemBlue
-        $0.configuration?.titleAlignment = .center
+        $0.configuration?.baseBackgroundColor = .systemIndigo
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 11, leading: 16, bottom: 11, trailing: 16)
-        $0.layer.cornerRadius = 10
-        $0.addTarget(TodayDdayView.self, action: #selector(contactButtonTapped), for: .touchUpInside)
-        var container = AttributeContainer()
-        container.font = UIFont.preferredFont(forTextStyle: .body)
+        $0.configuration?.cornerStyle = .medium
+        $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(UIButton(configuration: .filled()))
 
     weak var delegate: TodayDdayViewDelegate?
 
-    var buttonName: String? {
-        didSet {
-            guard let buttonName = buttonName else { return }
-            callButton.configuration?.title = buttonName
-        }
-    }
+    private var type: DDayType = .lastCall
 
-    var descriptionName: String? {
-        didSet {
-            guard let buttonName = buttonName else {
-                return
-            }
-            descriptionLabel.text = descriptionName
-        }
-    }
-
-    var dDay: Int? {
-        didSet {
-            guard let dDay = dDay else { return }
-            dDayLabel.text = "\(dDay)"
-        }
-    }
-
-    // MARK: Life Cycle
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        attribute()
+    convenience init(type: DDayType) {
+        self.init()
+        self.type = type
+        var container = AttributeContainer()
+        container.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        button.configuration?.attributedTitle = AttributedString(
+            type.buttonName,
+            attributes: container
+        )
+        titleLabel.text = type.title
         layout()
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: Methods
-
-    private func attribute() {}
-
     private func layout() {
-        addSubview(dDayStackView)
-        dDayStackView.addArrangedSubviews(descriptionLabel, dDayLabel, callButton)
+        addSubviews(titleLabel, dDayLabel, button)
 
         NSLayoutConstraint.activate([
-            dDayStackView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            dDayStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            dDayStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            dDayStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            dDayLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+            dDayLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            dDayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            button.topAnchor.constraint(equalTo: dDayLabel.bottomAnchor, constant: 7),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
 }
 
 extension TodayDdayView {
 
-    // MARK: Button Action
-
-    @objc private func delayButtonTapped() {
-        delegate?.presentCallDelayViewController()
-    }
-
-    @objc private func contactButtonTapped() {
-        // TODO: 바꿔야함
-        delegate?.presentCallDelayViewController()
+    @objc private func buttonDidTap() {
+        delegate?.presentCallDelayViewController(type)
     }
 }

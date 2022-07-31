@@ -16,20 +16,21 @@ protocol TodayViewControllerDelegate: AnyObject {
 final class TodayViewController: UIViewController {
 
     // MARK: View
-    
-    private let clockStackView: UIStackView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.distribution = .fill
-        $0.alignment = .leading
-        $0.spacing = -10
-        return $0
-    }(UIStackView())
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "지금 한국은"
+        $0.textAlignment = .left
         $0.setDynamicFont(for: .body, weight: .semibold)
+        return $0
+    }(UILabel())
+
+    private lazy var koreaTimeLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textAlignment = .center
+        $0.text = Formatter.HHMMKoreaDateFormatter.string(from: Date())
+        $0.setDynamicFont(for: .largeTitle, weight: .black)
+        $0.font = .systemFont(ofSize: 108, weight: .black)
         return $0
     }(UILabel())
 
@@ -40,16 +41,13 @@ final class TodayViewController: UIViewController {
         return $0
     }(UILabel())
 
-    private lazy var realTimeClockLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.adjustsFontSizeToFitWidth = true
-        $0.textAlignment = .center
-        $0.text = dateFormatter.string(from: Date())
-        $0.font = UIFont.systemFont(ofSize: 108, weight: .black)
-        return $0
-    }(UILabel())
+    private let pandaImageBoardView: UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
 
-    private let imageView: UIImageView = {
+    private let pandaImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleAspectFit
         return $0
@@ -58,31 +56,22 @@ final class TodayViewController: UIViewController {
     private let dDayStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
-        $0.distribution = .fill
-        $0.alignment = .leading
-        $0.spacing = 32
+        $0.distribution = .equalSpacing
+        $0.alignment = .center
         return $0
     }(UIStackView())
 
     private lazy var lastCallDDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.buttonName = "전화했어요"
-        $0.descriptionName = "마지막 전화"
+        $0.delegate = self
         return $0
-    }(TodayDdayView())
+    }(TodayDdayView(type: .lastCall))
 
-    private lazy var fromPurposeDDayView: TodayDdayView = {
+    private lazy var nextGoalDDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.buttonName = "미룰거예요"
-        $0.descriptionName = "목표일로부터"
+        $0.delegate = self
         return $0
-    }(TodayDdayView())
-
-    private let dateFormatter: DateFormatter = {
-        $0.timeZone = TimeZone(identifier: "Asia/Seoul")
-        $0.dateFormat = "HH:mm"
-        return $0
-    }(DateFormatter())
+    }(TodayDdayView(type: .nextGoal))
 
     weak var delegate: TodayViewControllerDelegate?
 
@@ -109,34 +98,38 @@ final class TodayViewController: UIViewController {
     }
 
     private func layout() {
-        view.addSubviews(clockStackView, imageView, dDayStackView)
-        clockStackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
-        dDayStackView.addArrangedSubviews(lastCallDDayView, fromPurposeDDayView)
+        view.addSubviews(descriptionLabel, koreaTimeLabel, statusDescriptionLabel)
+        view.addSubviews(pandaImageBoardView, dDayStackView)
+
+        pandaImageBoardView.addSubview(pandaImageView)
+
+        dDayStackView.addArrangedSubviews(lastCallDDayView, nextGoalDDayView)
 
         NSLayoutConstraint.activate([
-            clockStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-            clockStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
-            clockStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
-        ])
+            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 21),
+            descriptionLabel.leadingAnchor.constraint(equalTo: koreaTimeLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: koreaTimeLabel.trailingAnchor),
 
-        NSLayoutConstraint.activate([
-            realTimeClockLabel.leadingAnchor.constraint(equalTo: clockStackView.leadingAnchor),
-            realTimeClockLabel.trailingAnchor.constraint(equalTo: clockStackView.trailingAnchor)
-        ])
+            koreaTimeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            koreaTimeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
 
-        NSLayoutConstraint.activate([
-            statusDescriptionLabel.trailingAnchor.constraint(equalTo: clockStackView.trailingAnchor)
-        ])
+            statusDescriptionLabel.topAnchor.constraint(equalTo: koreaTimeLabel.bottomAnchor),
+            statusDescriptionLabel.leadingAnchor.constraint(equalTo: koreaTimeLabel.leadingAnchor),
+            statusDescriptionLabel.trailingAnchor.constraint(equalTo: koreaTimeLabel.trailingAnchor),
 
-        // TODO: 이미지 크기 수정해야함. 이게맞음?
-        NSLayoutConstraint.activate([
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2)
-        ])
+            pandaImageBoardView.topAnchor.constraint(equalTo: statusDescriptionLabel.bottomAnchor),
+            pandaImageBoardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pandaImageBoardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-        NSLayoutConstraint.activate([
-            dDayStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            pandaImageView.centerXAnchor.constraint(equalTo: pandaImageBoardView.centerXAnchor),
+            pandaImageView.centerYAnchor.constraint(equalTo: pandaImageBoardView.centerYAnchor),
+            pandaImageView.leadingAnchor.constraint(equalTo: pandaImageBoardView.leadingAnchor, constant: 80),
+            pandaImageView.trailingAnchor.constraint(equalTo: pandaImageBoardView.trailingAnchor, constant: -80),
+
+            dDayStackView.topAnchor.constraint(equalTo: pandaImageBoardView.bottomAnchor),
+            dDayStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
+            dDayStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42),
+            dDayStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
             dDayStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -242,7 +235,7 @@ final class TodayViewController: UIViewController {
     }
 
     private func setTimer() {
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.currentTimeToKoreaTime(_:)), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.currentTimeToKoreaTime(_:)), userInfo: nil, repeats: true)
     }
 }
 
@@ -254,26 +247,38 @@ extension TodayViewController {
         delegate?.gotoSettingViewController()
     }
 
-    @objc private func currentTimeToKoreaTime(_ sender: Timer) {
-        let currentLocationDate = Date()
-        let koreaTime = dateFormatter.string(from: currentLocationDate)
-        realTimeClockLabel.text = koreaTime
-    }
+//    @objc private func currentTimeToKoreaTime(_ sender: Timer) {
+//        let currentLocationDate = Date()
+//        let koreaTime = dateFormatter.string(from: currentLocationDate)
+//        realTimeClockLabel.text = koreaTime
+//    }
 
     // MARK: Change Image Method
 
     @objc func switchToSleepingImage() {
-        imageView.image = UIImage(named: "sleeping")
+        pandaImageView.image = UIImage(named: "sleeping")
         statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
     }
 
     @objc func switchToWorkingImage() {
-        imageView.image = UIImage(named: "working")
+        pandaImageView.image = UIImage(named: "working")
         statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
     }
 
     @objc func switchToWaitingImage() {
-        imageView.image = UIImage(named: "waiting")
+        pandaImageView.image = UIImage(named: "waiting")
         statusDescriptionLabel.text = "전화 가능 시간이에요."
+    }
+}
+
+extension TodayViewController: TodayDdayViewDelegate {
+
+    func presentCallDelayViewController(_ type: TodayDdayView.DDayType) {
+        switch type {
+        case .nextGoal:
+            delegate?.presentCallDelayViewController()
+        case .lastCall:
+            break
+        }
     }
 }
