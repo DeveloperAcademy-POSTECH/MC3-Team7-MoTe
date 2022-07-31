@@ -18,9 +18,9 @@ class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var endTimePicker: UIDatePicker!
     @IBOutlet weak var startTimeTransferredLabel: UILabel!
     @IBOutlet weak var endTimeTransferredLabel: UILabel!
-
+    @IBOutlet weak var startTimeViewLabel: UILabel!
+    
     weak var delegate: RegisterCallTimeViewControllerDelegate?
-
     var viewModel = RegisterCallTimeViewModel()
     private var cancelBag = Set<AnyCancellable>()
 
@@ -31,8 +31,13 @@ class RegisterCallTimeViewController: UIViewController {
         return $0
     }(AMButton())
 
+    let startTimeFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        startTimeFormatter.dateFormat = "hh:mm"
+        startTimeViewLabel.text = "\(startTimeFormatter.string(from:Date()))"
 
         bind()
         attribute()
@@ -65,8 +70,8 @@ class RegisterCallTimeViewController: UIViewController {
     }
     
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
-
         viewModel.startTimePickerAction(sender.date)
+        startTimeViewLabel.text = startTimeFormatter.string(from: sender.date)
 
     }
 
