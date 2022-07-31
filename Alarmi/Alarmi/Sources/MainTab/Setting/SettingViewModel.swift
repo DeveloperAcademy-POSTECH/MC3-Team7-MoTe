@@ -14,10 +14,15 @@ final class SettingViewModel: ObservableObject {
 
     // MARK: Store Property
     @Published var goalPeriod: Int = 7
-    @Published var isAlarmSwitchOn: Bool = true // TODO: UserDefaults 연결
-    @Published var isAlarmAgainSwitchOn: Bool = true // TODO: UserDefaults 연결
+    @Published var isAlarm: Bool = true // TODO: UserDefaults 연결
+    @Published var isAlarmAgain: Bool = true // TODO: UserDefaults 연결
+    @Published var isNotificationAuthorized: Bool = false
+    
+    private let userNotificationManager = UserNotificationManager()
 
-    init() {}
+    init() {
+        checkNotificationAuthorization()
+    }
     
     // MARK: Business Logic
     
@@ -26,20 +31,26 @@ final class SettingViewModel: ObservableObject {
     }
     
     func alarmSwitchToggled(_ isOn: Bool) {
-        isAlarmSwitchOn = isOn
+        isAlarm = isOn
     }
     
     func alarmAgainSwitchToggled(_ isOn: Bool) {
-        isAlarmSwitchOn = isOn
+        isAlarmAgain = isOn
     }
     
-    func changeEditableStateOfView(isEditable: Bool, view: UIView) {
+    func checkNotificationAuthorization() {
+        isNotificationAuthorized = userNotificationManager.isNotificationAuthorized()
+    }
+    
+    func changeEditableStateOfView(isEditable: Bool, views: UIView...) {
         UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
             let opacity: Float = isEditable ? 1 : 0.4
             let isUserInteractionEnabled: Bool = isEditable
             
-            view.layer.opacity = opacity
-            view.isUserInteractionEnabled = isUserInteractionEnabled
+            for view in views {
+                view.layer.opacity = opacity
+                view.isUserInteractionEnabled = isUserInteractionEnabled
+            }
         }, completion: nil)
     }
 }

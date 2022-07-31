@@ -151,6 +151,13 @@ final class SettingViewController: UIViewController {
                 self?.goalSettingBoxView.goalPeriod = $0
             }
             .store(in: &cancelBag)
+        
+        viewModel.$isAlarm
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.alarmSettingBoxView.isAlarm = $0
+            }
+            .store(in: &cancelBag)
     }
 
     private func attribute() {
