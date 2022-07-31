@@ -42,7 +42,7 @@ final class SettingViewModel: ObservableObject {
         }
     }
     
-    func changeEditableStateOfView(isEditable: Bool, views: UIView...) {
+    func changeEditableStateOfViewWithAnimation(isEditable: Bool, views: UIView...) {
         UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
             let opacity: Float = isEditable ? 1 : 0.4
             let isUserInteractionEnabled: Bool = isEditable
@@ -52,5 +52,20 @@ final class SettingViewModel: ObservableObject {
                 view.isUserInteractionEnabled = isUserInteractionEnabled
             }
         }, completion: nil)
+    }
+    
+    func changeEditableStateOfViewWithoutAnimation(isEditable: Bool, views: UIView...) {
+        let opacity: Float = isEditable ? 1 : 0.4
+        let isUserInteractionEnabled: Bool = isEditable
+        
+        for view in views {
+            view.layer.opacity = opacity
+            view.isUserInteractionEnabled = isUserInteractionEnabled
+        }
+    }
+    
+    func changeTransparencyOfView(isTransparent: Bool, view: UIView) {
+        let opacity: Float = isTransparent ? 0 : 1
+        view.layer.opacity = opacity
     }
 }
