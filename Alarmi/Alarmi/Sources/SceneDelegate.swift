@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window?.makeKeyAndVisible()
         
-        setLightOrDarkMode()
+        TimerManager.shared.addTimerForBackgroundChange()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
@@ -37,87 +37,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {}
 
-}
-
-private extension SceneDelegate {
-
-    func setLightOrDarkMode() {
-        let calendar = Calendar.current
-        let now = Date()
-        
-        let deviceMidnightHour = getConvertedHour(koreaHour: 0)
-        let deviceAwakeHour = getConvertedHour(koreaHour: 7)
-        
-        let midnight = calendar.date(
-            bySettingHour: deviceMidnightHour,
-            minute: 0,
-            second: 0,
-            of: now
-        )!
-
-        let awakeTime = calendar.date(
-            bySettingHour: deviceAwakeHour,
-            minute: 0,
-            second: 0,
-            of: now
-        )!
-
-        let midnightCheckingTimer = Timer(
-            fireAt: midnight,
-            interval: 0,
-            target: self,
-            selector: #selector(switchToDarkMode),
-            userInfo: nil,
-            repeats: false
-        )
-        
-        let awakeTimeCheckingTimer = Timer(
-            fireAt: awakeTime,
-            interval: 0,
-            target: self,
-            selector: #selector(switchToLightMode),
-            userInfo: nil,
-            repeats: false
-        )
-
-        RunLoop.main.add(midnightCheckingTimer, forMode: .common)
-        RunLoop.main.add(awakeTimeCheckingTimer, forMode: .common)
-    }
-    
-    func getConvertedHour(koreaHour hour: Int) -> Int {
-        let calendar = Calendar.current
-        let now = Date()
-        let currentYear = calendar.component(.year, from: now)
-        let currentMonth = calendar.component(.month, from: now)
-        let currentDay = calendar.component(.day, from: now)
-
-        let myTimeFormatter: DateFormatter = { formatter in
-            formatter.timeZone = TimeZone.autoupdatingCurrent
-            formatter.dateFormat = "HH"
-            return formatter
-        }(DateFormatter())
-
-        let koreaTimeZone = TimeZone(identifier: "Asia/Seoul")
-        let koreaMidnightComponents = DateComponents(
-            timeZone: koreaTimeZone,
-            year: currentYear,
-            month: currentMonth,
-            day: currentDay,
-            hour: hour,
-            minute: 0,
-            second: 0
-        )
-        let koreaMidnightDate = calendar.date(from: koreaMidnightComponents)!
-        let convertedDateString = myTimeFormatter.string(from: koreaMidnightDate)
-        let convertedHourInt = Int(convertedDateString)!
-        return convertedHourInt
-    }
-    
-    @objc func switchToDarkMode() {
-        window?.overrideUserInterfaceStyle = .dark
-    }
-    
-    @objc func switchToLightMode() {
-        window?.overrideUserInterfaceStyle = .light
-    }
 }

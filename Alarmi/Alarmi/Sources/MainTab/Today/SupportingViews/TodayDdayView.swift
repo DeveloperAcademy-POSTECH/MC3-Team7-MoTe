@@ -14,12 +14,6 @@ protocol TodayDdayViewDelegate: AnyObject {
 
 final class TodayDdayView: UIView {
 
-    struct State {
-        var buttonName: String
-        var descriptionLabelName: String
-        var dDayLabel: String
-    }
-
     // MARK: View
 
     private let dDayStackView: UIStackView = {
@@ -58,6 +52,29 @@ final class TodayDdayView: UIView {
 
     weak var delegate: TodayDdayViewDelegate?
 
+    var buttonName: String? {
+        didSet {
+            guard let buttonName = buttonName else { return }
+            callButton.configuration?.title = buttonName
+        }
+    }
+
+    var descriptionName: String? {
+        didSet {
+            guard let buttonName = buttonName else {
+                return
+            }
+            descriptionLabel.text = descriptionName
+        }
+    }
+
+    var dDay: Int? {
+        didSet {
+            guard let dDay = dDay else { return }
+            dDayLabel.text = "\(dDay)"
+        }
+    }
+
     // MARK: Life Cycle
 
     override init(frame: CGRect) {
@@ -75,12 +92,6 @@ final class TodayDdayView: UIView {
     // MARK: Methods
 
     private func attribute() {}
-
-    func set(state: State) {
-        callButton.configuration?.attributedTitle = AttributedString(state.buttonName, attributes: AttributeContainer())
-        descriptionLabel.text = state.descriptionLabelName
-        dDayLabel.text = state.dDayLabel
-    }
 
     private func layout() {
         addSubview(dDayStackView)

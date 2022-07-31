@@ -66,13 +66,15 @@ final class TodayViewController: UIViewController {
 
     private lazy var lastCallDDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.set(state: .init(buttonName: "전화했어요", descriptionLabelName: "마지막 전화", dDayLabel: "D+9"))
+        $0.buttonName = "전화했어요"
+        $0.descriptionName = "마지막 전화"
         return $0
     }(TodayDdayView())
 
     private lazy var fromPurposeDDayView: TodayDdayView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.set(state: .init(buttonName: "미룰거예요", descriptionLabelName: "목표일로부터", dDayLabel: "D+2"))
+        $0.buttonName = "미룰거예요"
+        $0.descriptionName = "목표일로부터"
         return $0
     }(TodayDdayView())
 

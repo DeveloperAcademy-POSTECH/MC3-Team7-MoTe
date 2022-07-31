@@ -20,11 +20,9 @@ extension Date {
      date를 24시간 시각 String 반환해줍니다.
      - Parameters:
        - format: 변형할 DateFormat / Date 타입
-       - type: 12시간제, 24시간제
      */
-    func date2TimeString(_ format: Date, type: TimeType) -> String {
-        DateManager.shared.dateFormatter.dateFormat = type.rawValue
-        return DateManager.shared.dateFormatter.string(from: format)
+    func date2TimeString() -> String {
+        return Formatter.HHMMCurrentDateFormatter.string(from: self)
     }
 
     /**
@@ -32,8 +30,7 @@ extension Date {
      1일이면 true, 아니면 false를 반환합니다.
      */
     func contains1stDayOfMonth() -> Bool {
-        DateManager.shared.dateFormatter.dateFormat = "dd"
-        let day = Int(DateManager.shared.dateFormatter.string(from: self)) ?? 0
+        let day = Int(Formatter.ddCurrentDateFormatter.string(from: self)) ?? 0
         return day == 1
     }
 
@@ -42,8 +39,7 @@ extension Date {
      1월, 2월, ... n월을 반환합니다.
      */
     func getMonthString() -> String {
-        DateManager.shared.dateFormatter.dateFormat = "M월"
-        return DateManager.shared.dateFormatter.string(from: self)
+        return Formatter.MMCurrentDateFormatter.string(from: self)
     }
     
     /**
