@@ -95,9 +95,9 @@ final class RegisterPlanViewController: UIViewController {
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
-        
-        updateCoreData(day: goal.startDate, keyName: "callDate")
-        updateCoreData(period: Int16(callTimePeriod), keyName: "callTimePeriod")
+        createCoreData()
+        saveCoreData(day: goal.startDate, keyName: "callDate")
+        saveCoreData(period: Int16(callTimePeriod), keyName: "callTimePeriod")
         
         switch type {
         case .register:

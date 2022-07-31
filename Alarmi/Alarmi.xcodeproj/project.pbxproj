@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		153598A128941931004F62D4 /* SaveCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A028941931004F62D4 /* SaveCoreData.swift */; };
-		153598A32894CDB4004F62D4 /* ReadCoreDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A22894CDB4004F62D4 /* ReadCoreDate.swift */; };
+		153598A128941931004F62D4 /* CreateCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A028941931004F62D4 /* CreateCoreData.swift */; };
+		153598A32894CDB4004F62D4 /* ReadCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A22894CDB4004F62D4 /* ReadCoreData.swift */; };
 		153598A52894CDCA004F62D4 /* DeleteCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A42894CDCA004F62D4 /* DeleteCoreData.swift */; };
-		153598A72894CDE4004F62D4 /* UpdateCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A62894CDE4004F62D4 /* UpdateCoreData.swift */; };
+		153598A72894CDE4004F62D4 /* SaveCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153598A62894CDE4004F62D4 /* SaveCoreData.swift */; };
 		1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */; };
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
 		15A70C7D2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */; };
@@ -74,10 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		153598A028941931004F62D4 /* SaveCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoreData.swift; sourceTree = "<group>"; };
-		153598A22894CDB4004F62D4 /* ReadCoreDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCoreDate.swift; sourceTree = "<group>"; };
+		153598A028941931004F62D4 /* CreateCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCoreData.swift; sourceTree = "<group>"; };
+		153598A22894CDB4004F62D4 /* ReadCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCoreData.swift; sourceTree = "<group>"; };
 		153598A42894CDCA004F62D4 /* DeleteCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCoreData.swift; sourceTree = "<group>"; };
-		153598A62894CDE4004F62D4 /* UpdateCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCoreData.swift; sourceTree = "<group>"; };
+		153598A62894CDE4004F62D4 /* SaveCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoreData.swift; sourceTree = "<group>"; };
 		1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlanViewController.swift; sourceTree = "<group>"; };
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
 		15A70C7C2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataGoalModel.xcdatamodel; sourceTree = "<group>"; };
@@ -169,10 +169,10 @@
 			children = (
 				15A70C7E28956E8D00FE75D6 /* CoreDataDate+CoreDataClass.swift */,
 				15A70C7F28956E8D00FE75D6 /* CoreDataDate+CoreDataProperties.swift */,
-				153598A028941931004F62D4 /* SaveCoreData.swift */,
-				153598A22894CDB4004F62D4 /* ReadCoreDate.swift */,
+				153598A028941931004F62D4 /* CreateCoreData.swift */,
+				153598A22894CDB4004F62D4 /* ReadCoreData.swift */,
 				153598A42894CDCA004F62D4 /* DeleteCoreData.swift */,
-				153598A62894CDE4004F62D4 /* UpdateCoreData.swift */,
+				153598A62894CDE4004F62D4 /* SaveCoreData.swift */,
 				15A70C7B2894DC1700FE75D6 /* CoreDataGoalModel.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -518,9 +518,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153598A72894CDE4004F62D4 /* UpdateCoreData.swift in Sources */,
+				153598A72894CDE4004F62D4 /* SaveCoreData.swift in Sources */,
 				EFF8D2BD2881C9F1005A4D10 /* RegisterNotifyViewController.swift in Sources */,
-				153598A128941931004F62D4 /* SaveCoreData.swift in Sources */,
+				153598A128941931004F62D4 /* CreateCoreData.swift in Sources */,
 				EFF8D2C428826931005A4D10 /* AlarmAgainSetView.swift in Sources */,
 				EF3630F128866115007779C0 /* AppCoordinator.swift in Sources */,
 				507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */,
@@ -549,7 +549,7 @@
 				EF0C23DA288E237A00FF5A86 /* PushAlarm.swift in Sources */,
 				EFF8D2BF2881D219005A4D10 /* UILabel+.swift in Sources */,
 				EF7785DD28864CC700E60AD2 /* RegisterCallTimeViewController.swift in Sources */,
-				153598A32894CDB4004F62D4 /* ReadCoreDate.swift in Sources */,
+				153598A32894CDB4004F62D4 /* ReadCoreData.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
 				385BB5582882DF1D0067AFF4 /* RegisterLocationCollectionViewCell.swift in Sources */,
 				EFF8D2CA2882BC6A005A4D10 /* CallDelayViewController.swift in Sources */,
