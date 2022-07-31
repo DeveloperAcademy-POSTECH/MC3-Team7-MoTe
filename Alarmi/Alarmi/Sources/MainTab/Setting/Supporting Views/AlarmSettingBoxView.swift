@@ -56,7 +56,7 @@ final class AlarmSettingBoxView: UIView {
     private lazy var alarmSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.onTintColor = .toggleOrange
-        $0.isOn = true
+        $0.isOn = viewModel?.isAlarmSwitchOn ?? true
         $0.addTarget(self, action: #selector(alarmSwitchToggled), for: .valueChanged)
         return $0
     }(UISwitch())
@@ -64,8 +64,8 @@ final class AlarmSettingBoxView: UIView {
     private lazy var alarmAgainSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.onTintColor = .toggleOrange
-        $0.isOn = true
-        // TODO: Add Target
+        $0.isOn = viewModel?.isAlarmAgainSwitchOn ?? true
+        $0.addTarget(self, action: #selector(alarmAgainSwitchToggled), for: .valueChanged)
         return $0
     }(UISwitch())
     
@@ -136,6 +136,10 @@ private extension AlarmSettingBoxView {
     
     @objc func alarmSwitchToggled() {
         viewModel?.alarmSwitchToggled(alarmSwitch.isOn)
+    }
+    
+    @objc func alarmAgainSwitchToggled() {
+        viewModel?.alarmAgainSwitchToggled(alarmAgainSwitch.isOn)
     }
 }
 

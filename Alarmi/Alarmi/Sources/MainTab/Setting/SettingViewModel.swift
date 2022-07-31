@@ -14,7 +14,8 @@ final class SettingViewModel: ObservableObject {
 
     // MARK: Store Property
     @Published var goalPeriod: Int = 7
-    @Published var isAlarmSwitchOn: Bool = true
+    @Published var isAlarmSwitchOn: Bool = true // TODO: UserDefaults 연결
+    @Published var isAlarmAgainSwitchOn: Bool = true // TODO: UserDefaults 연결
 
     init() {}
     
@@ -25,6 +26,10 @@ final class SettingViewModel: ObservableObject {
     }
     
     func alarmSwitchToggled(_ isOn: Bool) {
+        isAlarmSwitchOn = isOn
+    }
+    
+    func alarmAgainSwitchToggled(_ isOn: Bool) {
         isAlarmSwitchOn = isOn
     }
 }
