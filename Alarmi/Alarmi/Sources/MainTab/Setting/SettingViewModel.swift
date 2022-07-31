@@ -33,10 +33,10 @@ final class SettingViewModel: ObservableObject {
         isAlarmSwitchOn = isOn
     }
     
-    func disableView(canBeEdited: Bool, view: UIView) {
+    func changeEditableStateOfView(isEditable: Bool, view: UIView) {
         UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
-            let opacity: Float = canBeEdited ? 1 : 0.4
-            let isUserInteractionEnabled: Bool = canBeEdited
+            let opacity: Float = isEditable ? 1 : 0.4
+            let isUserInteractionEnabled: Bool = isEditable
             
             view.layer.opacity = opacity
             view.isUserInteractionEnabled = isUserInteractionEnabled
