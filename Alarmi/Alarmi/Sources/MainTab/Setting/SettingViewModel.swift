@@ -13,17 +13,24 @@ import UIKit
 final class SettingViewModel: ObservableObject {
 
     // MARK: Store Property
-    @Published var goalPeriod: Int = 7
-    @Published var callStartTime: Date = Date()
-    @Published var callEndTime: Date = Date()
-    @Published var isAlarm: Bool = true
-    @Published var isAlarmAgain: Bool = true
+    @Published var goalPeriod: Int
+    @Published var callStartTime: Date
+    @Published var callEndTime: Date
+    @Published var isAlarm: Bool
+    @Published var isAlarmAgain: Bool
     @Published var isNotificationAuthorized: Bool = false
     
     private let userNotificationManager = UserNotificationManager()
+    private let goalTimeUserDefaults = GoalTimeUserDefaults(key: .goalTime)
+    private let callTimeUserDefaults = CallTimeUserDefaults(key: .callTime)
+    private let alarmUserDefaults = AlarmUserefaults(key: .alarm)
 
     init() {
-        
+        goalPeriod = goalTimeUserDefaults.data?.period ?? 7
+        callStartTime = callTimeUserDefaults.data?.start ?? Date()
+        callEndTime = callTimeUserDefaults.data?.end ?? Date()
+        isAlarm = alarmUserDefaults.data?.isAlarm ?? true
+        isAlarmAgain = alarmUserDefaults.data?.isAlarmAgain ?? true
     }
     
     // MARK: Business Logic
