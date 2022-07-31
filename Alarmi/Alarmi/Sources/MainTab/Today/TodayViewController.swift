@@ -17,103 +17,230 @@ final class TodayViewController: UIViewController {
 
     // MARK: View
     
-    private let stackView: UIStackView = {
+    private let clockStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.distribution = .fill
         $0.alignment = .leading
-        $0.spacing = 8
+        $0.spacing = -10
         return $0
     }(UIStackView())
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "마지막으로 전화한지 5일이 지났어요."
-        $0.setDynamicFont(.title2)
+        $0.text = "지금 한국은"
+        $0.setDynamicFont(for: .body, weight: .semibold)
         return $0
     }(UILabel())
 
-    private let subDescriptionLabel: UILabel = {
+    private let statusDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "2일 후면 전화하기로 한 날이에요."
-        $0.textColor = .secondaryLabel
-        $0.setDynamicFont(.body)
+        $0.textAlignment = .right
+        $0.setDynamicFont(for: .body, weight: .semibold)
         return $0
     }(UILabel())
 
-    private lazy var delayButton: UIButton = {
+    private lazy var realTimeClockLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-
-        let config = UIImage.SymbolConfiguration(font: UIFont.preferredFont(forTextStyle: .caption2))
-        let image = UIImage(systemName: "chevron.right", withConfiguration: config)
-        $0.configuration?.image = image
-        $0.configuration?.imagePlacement = .trailing
-        $0.configuration?.baseBackgroundColor = .systemBlue
-        $0.configuration?.titleAlignment = .leading
-        $0.configuration?.contentInsets = .zero
-        $0.addTarget(self, action: #selector(delayButtonTapped), for: .touchUpInside)
-
-        var container = AttributeContainer()
-        container.font = UIFont.preferredFont(forTextStyle: .footnote)
-        $0.configuration?.attributedTitle = AttributedString("이번 연락 미루기 ", attributes: container)
-
+        $0.adjustsFontSizeToFitWidth = true
+        $0.textAlignment = .center
+        $0.text = dateFormatter.string(from: Date())
+        $0.font = UIFont.systemFont(ofSize: 108, weight: .black)
         return $0
-    }(UIButton(configuration: .plain()))
+    }(UILabel())
 
-    private let callButton: UIButton = {
+    private let imageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.configuration?.baseBackgroundColor = .systemBlue
-        $0.configuration?.titleAlignment = .center
-        $0.configuration?.cornerStyle = .medium
-        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-
-        var container = AttributeContainer()
-        container.font = UIFont.preferredFont(forTextStyle: .body)
-        $0.configuration?.attributedTitle = AttributedString("오늘 전화 기록하기", attributes: container)
-
+        $0.contentMode = .scaleAspectFit
         return $0
-    }(UIButton(configuration: .filled()))
+    }(UIImageView())
+
+    private let dDayStackView: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.distribution = .fill
+        $0.alignment = .leading
+        $0.spacing = 32
+        return $0
+    }(UIStackView())
+
+    private lazy var lastCallDDayView: TodayDdayView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.set(state: .init(buttonName: "전화했어요", descriptionLabelName: "마지막 전화", dDayLabel: "D+9"))
+        return $0
+    }(TodayDdayView())
+
+    private lazy var fromPurposeDDayView: TodayDdayView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.set(state: .init(buttonName: "미룰거예요", descriptionLabelName: "목표일로부터", dDayLabel: "D+2"))
+        return $0
+    }(TodayDdayView())
+
+    private let dateFormatter: DateFormatter = {
+        $0.timeZone = TimeZone(identifier: "Asia/Seoul")
+        $0.dateFormat = "HH:mm"
+        return $0
+    }(DateFormatter())
 
     weak var delegate: TodayViewControllerDelegate?
 
     // MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setupNavigationBar()
         attribute()
         layout()
+        setTimer()
+        changeImage()
     }
 
     // MARK: Method
 
     private func attribute() {
         view.backgroundColor = .systemGroupedBackground
-        setupNavigationBar()
+    }
+
+    private func calculateDDay() {
+        // startDate에 커밋 내역 저장
     }
 
     private func layout() {
-        view.addSubviews(stackView, callButton)
+        view.addSubviews(clockStackView, imageView, dDayStackView)
+        clockStackView.addArrangedSubviews(descriptionLabel, realTimeClockLabel, statusDescriptionLabel)
+        dDayStackView.addArrangedSubviews(lastCallDDayView, fromPurposeDDayView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            clockStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            clockStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
+            clockStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42)
         ])
 
-        stackView.addArrangedSubviews(descriptionLabel, subDescriptionLabel, delayButton)
-        
         NSLayoutConstraint.activate([
-            callButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            callButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            callButton.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width - 32)
+            realTimeClockLabel.leadingAnchor.constraint(equalTo: clockStackView.leadingAnchor),
+            realTimeClockLabel.trailingAnchor.constraint(equalTo: clockStackView.trailingAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            statusDescriptionLabel.trailingAnchor.constraint(equalTo: clockStackView.trailingAnchor)
+        ])
+
+        // TODO: 이미지 크기 수정해야함. 이게맞음?
+        NSLayoutConstraint.activate([
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2)
+        ])
+
+        NSLayoutConstraint.activate([
+            dDayStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            dDayStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
     private func setupNavigationBar() {
-        title = "오늘"
         let image = UIImage(systemName: "gearshape")
         let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem = barButton
+        navigationItem.largeTitleDisplayMode = .never
+    }
+
+    private func changeImage() {
+        let calendar = Calendar.current
+        let now = Date()
+
+        let sleepingHour = getConvertedHour(koreaHour: 0)
+        let workingHour = getConvertedHour(koreaHour: 7)
+        let waitingHour = getConvertedHour(koreaHour: 18)
+
+        // 프로퍼티
+        let sleeping = calendar.date(
+            bySettingHour: sleepingHour,
+            minute: 0,
+            second: 0,
+            of: now
+        )!
+
+        let working = calendar.date(
+            bySettingHour: workingHour,
+            minute: 0,
+            second: 0,
+            of: now
+        )!
+
+        let waiting = calendar.date(
+            bySettingHour: waitingHour,
+            minute: 0,
+            second: 0,
+            of: now
+        )!
+
+        // 타이머 돌림
+        let sleepingCheckTimer = Timer(
+            fireAt: sleeping,
+            interval: 0,
+            target: self,
+            selector: #selector(switchToSleepingImage),
+            userInfo: nil,
+            repeats: false
+        )
+
+        let workingCheckTimer = Timer(
+            fireAt: working,
+            interval: 0,
+            target: self,
+            selector: #selector(switchToWorkingImage),
+            userInfo: nil,
+            repeats: false
+        )
+
+        let waitingCheckTimer = Timer(
+            fireAt: waiting,
+            interval: 0,
+            target: self,
+            selector: #selector(switchToWaitingImage),
+            userInfo: nil,
+            repeats: false
+        )
+
+        RunLoop.main.add(sleepingCheckTimer, forMode: .common)
+        RunLoop.main.add(workingCheckTimer, forMode: .common)
+        RunLoop.main.add(waitingCheckTimer, forMode: .common)
+    }
+
+    // TODO: 아보꺼머지되면 아보꺼를 재사용하도록 리팩토링
+    private func getConvertedHour(koreaHour hour: Int) -> Int {
+        let calendar = Calendar.current
+        let now = Date()
+        let currentYear = calendar.component(.year, from: now)
+        let currentMonth = calendar.component(.month, from: now)
+        let currentDay = calendar.component(.day, from: now)
+
+        let myTimeFormatter: DateFormatter = { formatter in
+            formatter.timeZone = TimeZone.autoupdatingCurrent
+            formatter.dateFormat = "HH"
+            return formatter
+        }(DateFormatter())
+
+        let koreaTimeZone = TimeZone(identifier: "Asia/Seoul")
+        let koreaMidnightComponents = DateComponents(
+            timeZone: koreaTimeZone,
+            year: currentYear,
+            month: currentMonth,
+            day: currentDay,
+            hour: hour,
+            minute: 0,
+            second: 0
+        )
+        let koreaMidnightDate = calendar.date(from: koreaMidnightComponents)!
+        let convertedDateString = myTimeFormatter.string(from: koreaMidnightDate)
+        let convertedHourInt = Int(convertedDateString)!
+        return convertedHourInt
+    }
+
+    private func setTimer() {
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.currentTimeToKoreaTime(_:)), userInfo: nil, repeats: true)
     }
 }
 
@@ -125,7 +252,26 @@ extension TodayViewController {
         delegate?.gotoSettingViewController()
     }
 
-    @objc private func delayButtonTapped() {
-        delegate?.presentCallDelayViewController()
+    @objc private func currentTimeToKoreaTime(_ sender: Timer) {
+        let currentLocationDate = Date()
+        let koreaTime = dateFormatter.string(from: currentLocationDate)
+        realTimeClockLabel.text = koreaTime
+    }
+
+    // MARK: Change Image Method
+
+    @objc func switchToSleepingImage() {
+        imageView.image = UIImage(named: "sleeping")
+        statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
+    }
+
+    @objc func switchToWorkingImage() {
+        imageView.image = UIImage(named: "working")
+        statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
+    }
+
+    @objc func switchToWaitingImage() {
+        imageView.image = UIImage(named: "waiting")
+        statusDescriptionLabel.text = "전화 가능 시간이에요."
     }
 }

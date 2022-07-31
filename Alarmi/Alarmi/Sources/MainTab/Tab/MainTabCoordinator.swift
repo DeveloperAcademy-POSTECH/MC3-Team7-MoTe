@@ -13,10 +13,7 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 }
 
 final class MainTabCoordinator: Coordinator,
-                                TodayViewControllerDelegate,
-                                MainTabRegisterCallTimeViewControllerDelegate,
-                                MainTabRegisterPlanViewControllerDelegate,
-                                MainTabRegisterNotifyViewControllerDelegate {
+                                TodayViewControllerDelegate {
     var childCoordinators: [Coordinator] = []
     weak var delegate: MainTabCoordinatorDelegate?
 
@@ -73,7 +70,8 @@ extension MainTabCoordinator {
 
     private func setupRecordNavgigationController() {
         let recordViewController = RecordViewController()
-        recordViewController.viewModel = RecordViewModel()
+        let viewModel = RecordViewModel(RecordModel())
+        recordViewController.viewModel = viewModel
         recordNavigationController.viewControllers = [recordViewController]
     }
 }
