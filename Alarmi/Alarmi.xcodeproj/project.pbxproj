@@ -39,6 +39,7 @@
 		EF13EFE42892F85A00BC8D49 /* CallDateUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFE32892F85A00BC8D49 /* CallDateUserDefaults.swift */; };
 		EF13EFE62893685A00BC8D49 /* RegisterCallTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFE52893685A00BC8D49 /* RegisterCallTimeViewModel.swift */; };
 		EF13EFE828936D4500BC8D49 /* RegisterPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EFE728936D4500BC8D49 /* RegisterPlanViewModel.swift */; };
+		EF13F00C289585EC00BC8D49 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13F00B289585EC00BC8D49 /* Date+.swift */; };
 		EF25AD20287BD05E0014B41B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF25AD1F287BD05E0014B41B /* .swiftlint.yml */; };
 		EF3630F128866115007779C0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630F028866115007779C0 /* AppCoordinator.swift */; };
 		EF3630F428866304007779C0 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3630F328866304007779C0 /* RegisterCoordinator.swift */; };
@@ -121,6 +122,7 @@
 		EF13EFE32892F85A00BC8D49 /* CallDateUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDateUserDefaults.swift; sourceTree = "<group>"; };
 		EF13EFE52893685A00BC8D49 /* RegisterCallTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCallTimeViewModel.swift; sourceTree = "<group>"; };
 		EF13EFE728936D4500BC8D49 /* RegisterPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlanViewModel.swift; sourceTree = "<group>"; };
+		EF13F00B289585EC00BC8D49 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		EF25AD1F287BD05E0014B41B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EF3630F028866115007779C0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		EF3630F328866304007779C0 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				EFF8D2D1288318CB005A4D10 /* UIFont+.swift */,
 				EF13EFDA2892CEF700BC8D49 /* UserDefaults+Codable.swift */,
 				5075907928915CC50033C09B /* UIColor+.swift */,
+				EF13F00B289585EC00BC8D49 /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				EF0C23D8288E236400FF5A86 /* GoalTime.swift in Sources */,
 				EF13EFE22892EBFB00BC8D49 /* UserDefaultsKey.swift in Sources */,
 				EF13EFD22892B68000BC8D49 /* DateManager.swift in Sources */,
+				EF13F00C289585EC00BC8D49 /* Date+.swift in Sources */,
 				EF13EFE828936D4500BC8D49 /* RegisterPlanViewModel.swift in Sources */,
 				EF79623A289122C3009A176E /* RecordModel.swift in Sources */,
 				EFFD73EF287BC77D00D9F267 /* AppDelegate.swift in Sources */,
