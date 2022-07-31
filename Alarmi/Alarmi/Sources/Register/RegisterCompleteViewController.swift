@@ -97,8 +97,11 @@ final class RegisterCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        userNotificationManager.requestAuthorization()
-        delegate?.finishRegister()
+        userNotificationManager.requestAuthorization {
+            DispatchQueue.main.async {
+                self.delegate?.finishRegister()
+            }
+        }
     }
 }
 
