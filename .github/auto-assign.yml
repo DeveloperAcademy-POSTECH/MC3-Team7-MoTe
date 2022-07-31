@@ -7,10 +7,15 @@ addAssignees: false
 # A list of reviewers to be added to pull requests (GitHub user name)
 reviewers:
   - Chaeho-Min
+  - Avo
   - deslog
+  - JI SOO
   - Lim-YongKwan
+  - Grizzly(Lim-YongKwan)
+  - wonny1012
   - wonny1012
   - wody-d
+  - Jaeyong
 # A list of keywords to be skipped the process that add reviewers if pull requests include it
 skipKeywords:
   - wip
