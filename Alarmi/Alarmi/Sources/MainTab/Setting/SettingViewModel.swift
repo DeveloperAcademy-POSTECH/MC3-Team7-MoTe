@@ -14,26 +14,43 @@ final class SettingViewModel: ObservableObject {
 
     // MARK: Store Property
     @Published var goalPeriod: Int = 7
-    @Published var isAlarm: Bool = true // TODO: UserDefaults 연결
-    @Published var isAlarmAgain: Bool = true // TODO: UserDefaults 연결
+    @Published var callStartTime: Date = Date()
+    @Published var callEndTime: Date = Date()
+    @Published var isAlarm: Bool = true
+    @Published var isAlarmAgain: Bool = true
     @Published var isNotificationAuthorized: Bool = false
     
     private let userNotificationManager = UserNotificationManager()
 
-    init() { }
+    init() {
+        
+    }
     
     // MARK: Business Logic
     
     func goalPeriodStepperDidChanged(_ value: Int) {
         goalPeriod = value
+        // TODO: UserDefaults에 저장
+    }
+    
+    func startTimePickerDidChanged(_ date: Date) {
+        callStartTime = date
+        // TODO: UserDefaults에 저장
+    }
+    
+    func endTimePickerDidChanged(_ date: Date) {
+        callEndTime = date
+        // TODO: UserDefaults에 저장
     }
     
     func alarmSwitchToggled(_ isOn: Bool) {
         isAlarm = isOn
+        // TODO: UserDefaults에 저장
     }
     
     func alarmAgainSwitchToggled(_ isOn: Bool) {
         isAlarmAgain = isOn
+        // TODO: UserDefaults에 저장
     }
     
     func checkNotificationAuthorization() {
