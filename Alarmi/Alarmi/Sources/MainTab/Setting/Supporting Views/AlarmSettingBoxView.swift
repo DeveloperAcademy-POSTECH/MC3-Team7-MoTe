@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AlarmSettingView: UIView {
+final class AlarmSettingBoxView: UIView {
     
     // MARK: Views
     
@@ -55,7 +55,7 @@ final class AlarmSettingView: UIView {
     
     private lazy var alarmSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.onTintColor = .systemOrange
+        $0.onTintColor = .toggleOrange
         $0.isOn = true
         // TODO: Add Target
         return $0
@@ -63,7 +63,7 @@ final class AlarmSettingView: UIView {
     
     private lazy var alarmAgainSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.onTintColor = .systemOrange
+        $0.onTintColor = .toggleOrange
         $0.isOn = true
         // TODO: Add Target
         return $0
@@ -93,7 +93,7 @@ final class AlarmSettingView: UIView {
     // MARK: Methods
     
     private func attribute() {
-        backgroundColor = .secondarySystemGroupedBackground
+        backgroundColor = .cellBackgroundColor
         layer.cornerRadius = 10
         layer.masksToBounds = true
     }
@@ -135,21 +135,21 @@ final class AlarmSettingView: UIView {
 #if DEBUG
 import SwiftUI
 
-struct PreviewCellRepresentable: UIViewRepresentable {
-    typealias UIViewType = AlarmSettingView
+struct AlarmSettingBoxViewRepresentable: UIViewRepresentable {
+    typealias UIViewType = AlarmSettingBoxView
     
-    func makeUIView(context: Context) -> AlarmSettingView {
-        AlarmSettingView()
+    func makeUIView(context: Context) -> AlarmSettingBoxView {
+        AlarmSettingBoxView()
     }
     
-    func updateUIView(_ uiView: AlarmSettingView, context: Context) {
+    func updateUIView(_ uiView: AlarmSettingBoxView, context: Context) {
         
     }
 }
 
-struct AlarmSettingView_Preview: PreviewProvider {
+struct AlarmSettingBoxView_Preview: PreviewProvider {
     static var previews: some View {
-        PreviewCellRepresentable()
+        AlarmSettingBoxViewRepresentable()
             .frame(width: 358, height: 94)
     }
 }
