@@ -131,6 +131,15 @@ final class SettingViewController: UIViewController {
 
     private let viewModel = SettingViewModel()
     private var cancelBag = Set<AnyCancellable>()
+    
+    private var isNotificationAuthorized: Bool = true {
+        didSet {
+            viewModel.changeEditableStateOfView(
+                isEditable: isNotificationAuthorized,
+                views: alarmSettingBoxView
+            )
+        }
+    }
 
     // MARK: LifeCycle
 
@@ -140,6 +149,12 @@ final class SettingViewController: UIViewController {
         bind()
         attribute()
         layout()
+    }
+    
+    override func viewWillAppear(_ animation: Bool) {
+        super.viewWillAppear(animation)
+        
+        viewModel.checkNotificationAuthorization()
     }
     
     // MARK: Method
@@ -156,6 +171,13 @@ final class SettingViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.alarmSettingBoxView.isAlarm = $0
+            }
+            .store(in: &cancelBag)
+        
+        viewModel.$isNotificationAuthorized
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.isNotificationAuthorized = $0
             }
             .store(in: &cancelBag)
     }

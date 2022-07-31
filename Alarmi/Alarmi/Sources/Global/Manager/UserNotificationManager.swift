@@ -97,14 +97,11 @@ final class UserNotificationManager {
         print("request 전부 삭제")
     }
     
-    func isNotificationAuthorized() -> Bool {
-        var isAuthorized = false
+    func getAuthorizationStatus(_ completion: @escaping (Bool) -> Void) {
         notificationCenter.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized {
-                isAuthorized = true
-            }
+            let authorized = settings.authorizationStatus == .authorized
+            completion(authorized)
         }
-        return isAuthorized
     }
 
     // TODO: 연락 문구 정해야함

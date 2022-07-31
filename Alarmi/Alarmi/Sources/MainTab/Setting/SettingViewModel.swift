@@ -20,9 +20,7 @@ final class SettingViewModel: ObservableObject {
     
     private let userNotificationManager = UserNotificationManager()
 
-    init() {
-        checkNotificationAuthorization()
-    }
+    init() { }
     
     // MARK: Business Logic
     
@@ -39,7 +37,9 @@ final class SettingViewModel: ObservableObject {
     }
     
     func checkNotificationAuthorization() {
-        isNotificationAuthorized = userNotificationManager.isNotificationAuthorized()
+        userNotificationManager.getAuthorizationStatus { isAuthorized in
+            self.isNotificationAuthorized = isAuthorized
+        }
     }
     
     func changeEditableStateOfView(isEditable: Bool, views: UIView...) {
