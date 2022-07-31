@@ -30,7 +30,6 @@ final class GoalSettingBoxView: UIView {
     
     private lazy var goalPeriodStepper: UIStepper = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.value = Double(viewModel?.goalPeriod ?? 7)
         $0.minimumValue = 1
         $0.maximumValue = 31
         $0.stepValue = 1
@@ -54,6 +53,7 @@ final class GoalSettingBoxView: UIView {
     var goalPeriod: Int? {
         didSet {
             guard let goalPeriod = goalPeriod else { return }
+            goalPeriodStepper.value = Double(goalPeriod)
             goalPeriodLabel.text = String(goalPeriod)
         }
     }
