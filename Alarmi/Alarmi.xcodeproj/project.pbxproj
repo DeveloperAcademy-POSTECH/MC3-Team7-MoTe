@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1537834C288480DE00E173D1 /* RegisterPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */; };
 		1537834E2884826900E173D1 /* SettingPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1537834D2884826900E173D1 /* SettingPlan.storyboard */; };
+		3861D14D289229FD0001C187 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D14C289229FD0001C187 /* TodayViewModel.swift */; };
+		3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D15B2892EA170001C187 /* TodayDdayView.swift */; };
 		5075907A28915CC50033C09B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075907928915CC50033C09B /* UIColor+.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
 		50BC4AEA28928CCF00A2CDB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */; };
@@ -86,6 +88,8 @@
 /* Begin PBXFileReference section */
 		1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlanViewController.swift; sourceTree = "<group>"; };
 		1537834D2884826900E173D1 /* SettingPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPlan.storyboard; sourceTree = "<group>"; };
+		3861D14C289229FD0001C187 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		3861D15B2892EA170001C187 /* TodayDdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDdayView.swift; sourceTree = "<group>"; };
 		5075907928915CC50033C09B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompleteViewController.swift; sourceTree = "<group>"; };
 		50BC4AE828928CCF00A2CDB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +241,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		3861D15E28963A260001C187 /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				3861D15B2892EA170001C187 /* TodayDdayView.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
 		EF3630F2288662DA007779C0 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,7 +260,9 @@
 		EF3630FB28867359007779C0 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				3861D15E28963A260001C187 /* SupportingViews */,
 				EFF8D29A2880F226005A4D10 /* TodayViewController.swift */,
+				3861D14C289229FD0001C187 /* TodayViewModel.swift */,
 				EFF8D2C92882BC6A005A4D10 /* CallDelayViewController.swift */,
 			);
 			path = Today;
@@ -581,6 +595,8 @@
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
 				EF13EFD62892B6A000BC8D49 /* UserDefaultsManager.swift in Sources */,
 				EF0C23D6288E234B00FF5A86 /* CallTime.swift in Sources */,
+				3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */,
+				507E6F362882D8A70086A4CE /* SettingViewController.swift in Sources */,
 				EF13EFAA28922EBB00BC8D49 /* Goal.swift in Sources */,
 				EF13EFD92892B6BA00BC8D49 /* CallDate.swift in Sources */,
 				EFF8D2BB28819D03005A4D10 /* UIViewController+.swift in Sources */,
@@ -602,6 +618,7 @@
 				EF7785DD28864CC700E60AD2 /* RegisterCallTimeViewController.swift in Sources */,
 				EF13EFD12892B68000BC8D49 /* CallTimeUserDefaults.swift in Sources */,
 				EFF8D2AA28811A7F005A4D10 /* UIStackView+.swift in Sources */,
+				3861D14D289229FD0001C187 /* TodayViewModel.swift in Sources */,
 				EF13EFDF2892D16900BC8D49 /* AlarmUserDefaults.swift in Sources */,
 				50BC4AEA28928CCF00A2CDB5 /* SettingViewController.swift in Sources */,
 				50BC4AEB28928CCF00A2CDB5 /* SettingViewModel.swift in Sources */,
