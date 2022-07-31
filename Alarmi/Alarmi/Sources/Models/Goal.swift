@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Goal {
+struct Goal: Codable {
     var goalDate: Date
     var isCalled: Bool
 }

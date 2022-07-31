@@ -32,14 +32,14 @@ final class RecordViewController: UIViewController {
         return  view
     }()
 
-    private lazy var purposeContainerView: PurposeContainerView = {
-        let view = PurposeContainerView()
+    private lazy var purposeBoardView: PurposeBoardView = {
+        let view = PurposeBoardView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private lazy var recentAchieveContainerView: RecentAchieveContainerView = {
-        let view = RecentAchieveContainerView()
+    private lazy var recordGoalBoardView: RecordGoalBoardView = {
+        let view = RecordGoalBoardView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -57,6 +57,8 @@ final class RecordViewController: UIViewController {
         bind()
         attribute()
         layout()
+
+        viewModel.viewDidLoad.send()
     }
 
     // MARK: Method
@@ -65,21 +67,28 @@ final class RecordViewController: UIViewController {
         viewModel.$goalCombo
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.purposeContainerView.goalCombo = $0
+                self?.purposeBoardView.goalCombo = $0
             }
             .store(in: &cancelBag)
 
         viewModel.$goalCount
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.purposeContainerView.goalCount = $0
+                self?.purposeBoardView.goalCount = $0
             }
             .store(in: &cancelBag)
 
-        viewModel.$achievement
+        viewModel.$goalCircleList
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.recentAchieveContainerView.achievements = $0
+                self?.recordGoalBoardView.updateCircleViews(with: $0)
+            }
+            .store(in: &cancelBag)
+
+        viewModel.$goalPercent
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.recordGoalBoardView.updateGoalPercentLabel(with: $0)
             }
             .store(in: &cancelBag)
 
@@ -89,9 +98,6 @@ final class RecordViewController: UIViewController {
                 self?.frequencyContainerView.frequencyDataList = dataList
             }
             .store(in: &cancelBag)
-
-        viewModel.viewDidLoad
-            .send()
     }
 
     func attribute() {
@@ -103,8 +109,8 @@ final class RecordViewController: UIViewController {
         view.addSubviews(scrollView)
         scrollView.addSubviews(contentView)
         contentView.addSubview(frequencyContainerView)
-        contentView.addSubview(purposeContainerView)
-        contentView.addSubview(recentAchieveContainerView)
+        contentView.addSubview(purposeBoardView)
+        contentView.addSubview(recordGoalBoardView)
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -127,14 +133,14 @@ final class RecordViewController: UIViewController {
             frequencyContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
         ])
         NSLayoutConstraint.activate([
-            purposeContainerView.topAnchor.constraint(equalTo: frequencyContainerView.bottomAnchor, constant: 16),
-            purposeContainerView.leadingAnchor.constraint(equalTo: frequencyContainerView.leadingAnchor),
-            purposeContainerView.trailingAnchor.constraint(equalTo: frequencyContainerView.trailingAnchor)
+            purposeBoardView.topAnchor.constraint(equalTo: frequencyContainerView.bottomAnchor, constant: 16),
+            purposeBoardView.leadingAnchor.constraint(equalTo: frequencyContainerView.leadingAnchor),
+            purposeBoardView.trailingAnchor.constraint(equalTo: frequencyContainerView.trailingAnchor)
         ])
         NSLayoutConstraint.activate([
-            recentAchieveContainerView.topAnchor.constraint(equalTo: purposeContainerView.bottomAnchor, constant: 16),
-            recentAchieveContainerView.leadingAnchor.constraint(equalTo: frequencyContainerView.leadingAnchor),
-            recentAchieveContainerView.trailingAnchor.constraint(equalTo: frequencyContainerView.trailingAnchor)
+            recordGoalBoardView.topAnchor.constraint(equalTo: purposeBoardView.bottomAnchor, constant: 16),
+            recordGoalBoardView.leadingAnchor.constraint(equalTo: frequencyContainerView.leadingAnchor),
+            recordGoalBoardView.trailingAnchor.constraint(equalTo: frequencyContainerView.trailingAnchor)
         ])
     }
 }

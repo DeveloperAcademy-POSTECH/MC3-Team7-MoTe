@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PurposeContainerView: UIView {
+final class PurposeBoardView: UIView {
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "목표 달성 횟수"

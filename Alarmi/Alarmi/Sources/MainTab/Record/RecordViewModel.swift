@@ -25,14 +25,27 @@ final class RecordViewModel: ObservableObject {
     @Published var frequencyDateList: WeekendList = RecordViewModel.dummyFrequencyDataList
     @Published var goalCount: Int = 0
     @Published var goalCombo: Int = 0
-    @Published var achievement: [Bool] = [false, true, false]
+    @Published var goalCircleList: [RecordGoalCircleDdipViewModel] = []
+    @Published var goalPercent: Int = 0
 
     init(_ model: RecordModel) {
         viewDidLoad.sink { [weak self] in
-            let storedDateList = model.fetchCallDataList()
+            // TODO: 오류 처리해야함. callDateList가 개수를 넘어가면 오류.
+            let storedDateList = model.fetchCallDateList()
             self?.prepareFrequencyDataList(storedDateList)
-        }
-        .store(in: &cancelBag)
+        }.store(in: &cancelBag)
+
+        viewDidLoad.sink { [weak self] in
+            var recentGoals = model.fetchGoalList().prefix(10).map(RecordGoalCircleDdipViewModel.init)
+            let success: Double = Double(recentGoals.filter { $0.color == .systemGreen }.count)
+            if !recentGoals.isEmpty {
+                self?.goalPercent = Int(success / Double(recentGoals.count) * 100)
+            }
+            while recentGoals.count < 10 { recentGoals.append(.init()) }
+            self?.goalCircleList = recentGoals
+
+        }.store(in: &cancelBag)
+
     }
 }
 
