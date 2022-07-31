@@ -70,6 +70,7 @@ final class RegisterCompleteViewController: UIViewController {
     
     private func attribute() {
         view.backgroundColor = .backgroundColor
+        navigationItem.hidesBackButton = true
     }
     
     private func layout() {
