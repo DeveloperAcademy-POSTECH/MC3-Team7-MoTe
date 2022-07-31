@@ -95,7 +95,7 @@ final class GoalSettingBoxView: UIView {
         NSLayoutConstraint.activate([
             goalPeriodDescriptionLabel.centerYAnchor.constraint(equalTo: goalPeriodLabel.centerYAnchor),
             goalPeriodDescriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 46),
-            goalPeriodDescriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: goalPeriodLabel.trailingAnchor, constant: 8)
+            goalPeriodDescriptionLabel.leadingAnchor.constraint(equalTo: goalPeriodLabel.trailingAnchor, constant: 8)
         ])
         
         NSLayoutConstraint.activate([
@@ -108,7 +108,7 @@ final class GoalSettingBoxView: UIView {
             goalSettingRowView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             goalSettingRowView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             goalSettingRowView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            goalSettingRowView.heightAnchor.constraint(greaterThanOrEqualTo: goalPeriodLabel.heightAnchor),
+            goalSettingRowView.heightAnchor.constraint(equalTo: goalPeriodLabel.heightAnchor),
             goalSettingRowView.heightAnchor.constraint(greaterThanOrEqualTo: goalPeriodStepper.heightAnchor)
         ])
     }

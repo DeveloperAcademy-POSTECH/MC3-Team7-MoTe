@@ -16,7 +16,7 @@ final class SettingViewController: UIViewController {
     private let settingListScrollView: UIScrollView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentInsetAdjustmentBehavior = .never
-        $0.contentInset = .init(top: 16, left: 0, bottom: 32, right: 0)
+        $0.contentInset = .init(top: 16, left: 0, bottom: 16, right: 0)
         return $0
     }(UIScrollView())
     
@@ -184,7 +184,7 @@ private extension SettingViewController {
             settingListScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             settingListScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             settingListScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            settingListScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            settingListScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
