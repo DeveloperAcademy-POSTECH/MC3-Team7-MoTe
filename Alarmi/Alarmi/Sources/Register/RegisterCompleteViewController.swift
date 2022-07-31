@@ -16,8 +16,6 @@ final class RegisterCompleteViewController: UIViewController {
     
     // MARK: View
 
-    let encoder = JSONEncoder()
-    
     private let descriptionStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -38,14 +36,14 @@ final class RegisterCompleteViewController: UIViewController {
     
     private let primaryDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "모든 설정을 완료했어요."
+        $0.text = "기본 설정을 완료했어요."
         $0.setDynamicFont(.title3)
         return $0
     }(UILabel())
     
     private let secondaryDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "목표일이 되면 부모님께 전화드리고\n기록을 남겨보세요."
+        $0.text = "알림을 허용하여 잊지 말고\n부모님께 전화드리고 기록을 남겨보세요."
         $0.textAlignment = .center
         $0.setDynamicFont(.title3)
         return $0
@@ -53,12 +51,13 @@ final class RegisterCompleteViewController: UIViewController {
     
     private lazy var startButton: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.title = "완료"
+        $0.title = "알림을 허용하고 시작하기"
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
 
     weak var delegate: RegisterCompleteViewControllerDelegate?
+    private let userNotificationManager = UserNotificationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +69,8 @@ final class RegisterCompleteViewController: UIViewController {
     // MARK: Method
     
     private func attribute() {
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .backgroundColor
+        navigationItem.hidesBackButton = true
     }
     
     private func layout() {
@@ -97,7 +97,11 @@ final class RegisterCompleteViewController: UIViewController {
     }
 
     @objc private func buttonDidTap() {
-        delegate?.finishRegister()
+        userNotificationManager.requestAuthorization {
+            DispatchQueue.main.async {
+                self.delegate?.finishRegister()
+            }
+        }
     }
 }
 
