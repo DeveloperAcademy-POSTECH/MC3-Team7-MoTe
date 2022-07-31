@@ -96,6 +96,16 @@ final class UserNotificationManager {
         notificationCenter.removeAllPendingNotificationRequests()
         print("request 전부 삭제")
     }
+    
+    func isNotificationAuthorized() -> Bool {
+        var isAuthorized = false
+        notificationCenter.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                isAuthorized = true
+            }
+        }
+        return isAuthorized
+    }
 
     // TODO: 연락 문구 정해야함
     private func makeNotificationContent(_ index: Int) -> UNMutableNotificationContent {
