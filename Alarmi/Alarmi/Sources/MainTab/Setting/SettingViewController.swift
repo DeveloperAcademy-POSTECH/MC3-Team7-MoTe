@@ -49,11 +49,7 @@ final class SettingViewController: UIViewController {
     
     private lazy var goalSettingBoxView: GoalSettingBoxView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.goalPeriodStepper.addTarget(
-            self,
-            action: #selector(goalPeriodStepperDidChanged(_:)),
-            for: .valueChanged
-        )
+        $0.viewModel = viewModel
         return $0
     }(GoalSettingBoxView())
     
@@ -151,7 +147,7 @@ final class SettingViewController: UIViewController {
         viewModel.$goalPeriod
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.goalSettingBoxView.goalPeriodLabel.text = String($0)
+                self?.goalSettingBoxView.goalPeriod = $0
             }
             .store(in: &cancelBag)
     }
@@ -272,14 +268,6 @@ private extension SettingViewController {
         NSLayoutConstraint.activate([
             alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingBoxView.trailingAnchor, constant: -16)
         ])
-    }
-}
-
-// MARK: Business Logic Method
-
-private extension SettingViewController {
-    @objc func goalPeriodStepperDidChanged(_ sender: UIStepper!) {
-        viewModel.goalPeriodStepperDidChanged(Int(sender.value))
     }
 }
 

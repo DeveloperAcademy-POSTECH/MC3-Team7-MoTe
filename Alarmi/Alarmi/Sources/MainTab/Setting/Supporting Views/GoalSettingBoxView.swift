@@ -13,7 +13,7 @@ final class GoalSettingBoxView: UIView {
     
     // MARK: Views
     
-    let goalPeriodLabel: UILabel = {
+    private let goalPeriodLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
         $0.text = "7"
@@ -28,12 +28,17 @@ final class GoalSettingBoxView: UIView {
         return $0
     }(UILabel())
     
-    lazy var goalPeriodStepper: UIStepper = {
+    private lazy var goalPeriodStepper: UIStepper = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.value = 7
         $0.minimumValue = 1
         $0.maximumValue = 31
         $0.stepValue = 1
+        $0.addTarget(
+            self,
+            action: #selector(goalPeriodStepperDidChanged(_:)),
+            for: .valueChanged
+        )
         return $0
     }(UIStepper())
     
@@ -43,6 +48,15 @@ final class GoalSettingBoxView: UIView {
     }(UIView())
     
     // MARK: Property
+    
+    weak var viewModel: SettingViewModel?
+    
+    var goalPeriod: Int? {
+        didSet {
+            guard let goalPeriod = goalPeriod else { return }
+            goalPeriodLabel.text = String(goalPeriod)
+        }
+    }
     
     // MARK: Life Cycle
     
@@ -98,4 +112,32 @@ final class GoalSettingBoxView: UIView {
             goalSettingRowView.heightAnchor.constraint(greaterThanOrEqualTo: goalPeriodStepper.heightAnchor)
         ])
     }
+    
+    @objc private func goalPeriodStepperDidChanged(_ sender: UIStepper!) {
+        viewModel?.goalPeriodStepperDidChanged(Int(sender.value))
+    }
 }
+
+// MARK: - Preview
+
+#if DEBUG
+import SwiftUI
+
+struct GoalSettingBoxViewRepresentable: UIViewRepresentable {
+    typealias UIViewType = GoalSettingBoxView
+    
+    func makeUIView(context: Context) -> GoalSettingBoxView {
+        GoalSettingBoxView()
+    }
+    
+    func updateUIView(_ uiView: GoalSettingBoxView, context: Context) {
+        
+    }
+}
+
+struct GoalSettingBoxView_Preview: PreviewProvider {
+    static var previews: some View {
+        GoalSettingBoxViewRepresentable()
+    }
+}
+#endif
