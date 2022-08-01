@@ -23,7 +23,12 @@ final class TodayViewModel: ObservableObject {
 
     private var cancellable = Set<AnyCancellable>()
 
+    private var model: TodayModel!
+    private var alarmManager = UserNotificationManager.shared
+
     init(_ model: TodayModel) {
+        self.model = model
+        setAlarm()
         viewWillAppear.sink { [weak self] _ in
             self?.todayKoreaState = Date().judgeKoreaState()
         }.store(in: &cancellable)
@@ -32,15 +37,13 @@ final class TodayViewModel: ObservableObject {
             .sink { [weak self] in
                 let nextGoal = TodayDDayDdipViewModel.init($0)
                 self?.nextGoal = nextGoal
-                self?.goalTimeDate = $0.startDate.before(day: -$0.period + 1) 
+                self?.goalTimeDate = $0.startDate.before(day: -$0.period + 1)
             }.store(in: &cancellable)
-
         model.callDateList
             .sink { [weak self] in
                 guard let lastCall = $0.last.map(TodayDDayDdipViewModel.init) else { return }
                 self?.lastCall = lastCall
             }.store(in: &cancellable)
-
         model.callDateList
             .compactMap { _ in model.callDateList.value.last }
             .filter { Calendar.current.isDateInToday($0.date) }
@@ -61,11 +64,20 @@ final class TodayViewModel: ObservableObject {
             }.store(in: &cancellable)
 
         didCallButtonTapped
+            .filter { _ in model.callDateList.value.isEmpty }
+            .sink { [weak self] _ in
+                self?.todayDidCall = true
+                model.addTodayDate(with: !(self?.nextGoal.isPassed ?? true))
+                let currentGoalTime = model.goalTime.value
+                model.updateGoalTime(
+                    .init(startDate: Date(), period: currentGoalTime.period)
+                )
+            }.store(in: &cancellable)
+        didCallButtonTapped
             .compactMap { _ in model.callDateList.value.last }
             .filter { date in !Calendar.current.isDateInToday(date.date) }
             .sink { [weak self] _ in
                 self?.todayDidCall = true
-
                 model.addTodayDate(with: !(self?.nextGoal.isPassed ?? true))
                 let currentGoalTime = model.goalTime.value
                 model.updateGoalTime(
@@ -74,6 +86,33 @@ final class TodayViewModel: ObservableObject {
             }.store(in: &cancellable)
     }
 
+    private func setAlarm() {
+
+        model.callTime
+            .sink { [weak self] time in
+                guard let goalTime = self?.model.goalTime.value else { return }
+                self?.alarmManager.requestAuthorization { [weak self] in
+                    self?.alarmManager.sendUserNotification(
+                        startTime: time.start,
+                        endTime: time.end,
+                        startDate: goalTime.startDate,
+                        goalPeriod: goalTime.period)
+                }
+            }.store(in: &cancellable)
+
+        model.goalTime
+            .sink { [weak self] goalTime in
+                guard let callTime = self?.model.callTime.value else { return }
+                self?.alarmManager.requestAuthorization { [weak self] in
+                    self?.alarmManager.sendUserNotification(
+                        startTime: callTime.start,
+                        endTime: callTime.end,
+                        startDate: goalTime.startDate,
+                        goalPeriod: goalTime.period)
+                }
+            }.store(in: &cancellable)
+
+    }
     deinit {
         print("☠️☠️☠️☠️ \(String(describing: self)) ☠️☠️☠️☠️☠️")
     }

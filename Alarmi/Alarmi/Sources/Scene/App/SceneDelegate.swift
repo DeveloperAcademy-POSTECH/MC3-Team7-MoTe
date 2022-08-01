@@ -42,7 +42,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         // MARK: 테스트용
-
         CallDateUserefaults(key: .callDate).removeAll()
         CallDateUserefaults(key: .callDate).save([
 //            CallDate(date: Date().before(day: 60), isGoalSuccess: true),

@@ -12,6 +12,7 @@ import Foundation
 final class TodayModel {
     private let callDateDataSource: CallDateRepository
     private let goalTimeDataSource: GoalTimeRepository
+    private let callTimeDataSource: CallTimeRepository
 
     var callDateList: CurrentValueSubject<[CallDate], Never> {
         return callDateDataSource.callDateList
@@ -20,13 +21,16 @@ final class TodayModel {
         return goalTimeDataSource.goalTime
     }
 
-    private var cancellable = Set<AnyCancellable>()
+    var callTime: CurrentValueSubject<CallTime, Never> {
+        return callTimeDataSource.callTime
+    }
 
     init(callDateSource: CallDateRepository = CallDateRepositoryImpl(),
          goalTimeDataSource: GoalTimeRepository = GoalTimeRepositoryImpl(),
-         callTimerDataSource: CallTimeRepository = CallTimeRepositoryImpl() ) {
+         callTimeDataSource: CallTimeRepository = CallTimeRepositoryImpl()) {
         self.callDateDataSource = callDateSource
         self.goalTimeDataSource = goalTimeDataSource
+        self.callTimeDataSource = callTimeDataSource
     }
 
     func updateGoalTime(_ goalTime: GoalTime) {

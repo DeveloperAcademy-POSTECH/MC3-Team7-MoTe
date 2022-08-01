@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 protocol CallTimeRepository {
-    var callTimer: CurrentValueSubject<CallTime, Never> { get }
+    var callTime: CurrentValueSubject<CallTime, Never> { get }
 
     func update(callTime: CallTime)
 }
@@ -18,19 +18,18 @@ protocol CallTimeRepository {
 final class CallTimeRepositoryImpl: CallTimeRepository {
     private let callTimeUserDefaults = CallTimeUserDefaults(key: .callDate)
 
-    var callTimer: CurrentValueSubject<CallTime, Never> {
-        .init(callTimeUserDefaults.data ?? dummyCallTime)
-    }
+    lazy var callTime = CurrentValueSubject<CallTime, Never>(value)
 
     func update(callTime: CallTime) {
         callTimeUserDefaults.removeAll()
         callTimeUserDefaults.save(callTime)
+        self.callTime.send(callTime)
     }
 
 }
 
 extension CallTimeRepositoryImpl {
-    var dummyCallTime: CallTime {
-        return .init(start: Date(), end: Date().addingTimeInterval(600))
+    var value: CallTime {
+        callTimeUserDefaults.data ?? .init(start: Date(), end: Date().addingTimeInterval(600))
     }
 }

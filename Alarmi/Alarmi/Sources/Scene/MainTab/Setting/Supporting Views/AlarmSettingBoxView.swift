@@ -57,7 +57,6 @@ final class AlarmSettingBoxView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.onTintColor = .toggleOrange
         $0.isOn = true
-        // TODO: Add Target
         return $0
     }(UISwitch())
     
@@ -65,7 +64,6 @@ final class AlarmSettingBoxView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.onTintColor = .toggleOrange
         $0.isOn = true
-        // TODO: Add Target
         return $0
     }(UISwitch())
     
