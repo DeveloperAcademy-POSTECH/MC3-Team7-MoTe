@@ -70,8 +70,7 @@ class RegisterCallTimeViewController: UIViewController {
     
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
         viewModel.startTimePickerAction(sender.date)
-        startTimeViewLabel.text = startTimeFormatter.string(from: sender.date)
-
+        startTimeViewLabel.text = sender.date.date2TimeString(type: ._24HTime)
     }
 
     @IBAction func endTimePickerAction(_ sender: UIDatePicker) {
