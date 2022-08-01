@@ -45,18 +45,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         CallDateUserefaults(key: .callDate).removeAll()
         CallDateUserefaults(key: .callDate).save([
-            CallDate(date: Date().before(day: 60), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 39), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 21), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 10), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 9), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 8), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 7), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 6), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 5), isGoalSuccess: true),
-            CallDate(date: Date().before(day: 4), isGoalSuccess: false),
-            CallDate(date: Date().before(day: 1), isGoalSuccess: false),
-            CallDate(date: Date().before(day: 0), isGoalSuccess: false)
+//            CallDate(date: Date().before(day: 60), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 39), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 21), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 10), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 9), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 8), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 7), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 6), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 5), isGoalSuccess: true),
+//            CallDate(date: Date().before(day: 4), isGoalSuccess: false),
+//            CallDate(date: Date().before(day: 1), isGoalSuccess: false),
+//            CallDate(date: Date().before(day: 0), isGoalSuccess: false)
         ])
     }
 

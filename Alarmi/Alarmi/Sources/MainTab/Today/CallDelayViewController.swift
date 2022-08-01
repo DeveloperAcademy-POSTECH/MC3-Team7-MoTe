@@ -41,13 +41,30 @@ class CallDelayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bind()
         attribute()
         layout()
     }
 
+    private func bind() {
+        viewModel.$goalTimeDate
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.datePicker.date = $0
+            }.store(in: &cancellable)
+    }
+
     private func attribute() {
-        setup()
-        setupNavigationBar()
+        view.backgroundColor = .systemGroupedBackground
+        title = "연락 미루기"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소",
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cancelButtonPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(doneButtonPressed))
     }
 
     private func layout() {
@@ -75,23 +92,6 @@ class CallDelayViewController: UIViewController {
             datePicker.bottomAnchor.constraint(equalTo: datePickerContainerView.bottomAnchor, constant: 0)
         ])
     }
-
-    private func setup() {
-        view.backgroundColor = .systemGroupedBackground
-    }
-
-    private func setupNavigationBar() {
-        title = "연락 미루기"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소",
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(cancelButtonPressed))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료",
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(doneButtonPressed))
-    }
-
 }
 
 extension CallDelayViewController {
@@ -101,12 +101,11 @@ extension CallDelayViewController {
     }
 
     @objc private func doneButtonPressed() {
-
+        viewModel.didTapGoalTimeChangeButton.send(datePicker.date)
         dismiss(animated: true)
     }
 
     @objc private func datePickerValueChanged() {
-        print("데이터피커 값 ", datePicker.date)
-        viewModel.datePickerValueChanged.send(datePicker.date)
+
     }
 }

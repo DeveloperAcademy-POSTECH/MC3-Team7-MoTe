@@ -56,6 +56,7 @@ final class RegisterPlanViewController: UIViewController {
             $0.layer.masksToBounds = true
         }
         startDatePicker.minimumDate = Date()
+        settingDayStepper.value = Double(viewModel.callTimePeriod)
     }
 
     private func layout() {

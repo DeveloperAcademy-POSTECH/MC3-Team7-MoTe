@@ -21,6 +21,7 @@ final class RegisterPlanViewModel: ObservableObject {
 
     func settingDayStepper(_ value: Int) {
         callTimePeriod = value
+        goalTime.period = value
     }
 
     func settingStartDatePicker(_ date: Date) {
@@ -28,6 +29,7 @@ final class RegisterPlanViewModel: ObservableObject {
     }
 
     func buttonDidTap() {
+
         GoalTimeUserDefaults(key: .goalTime).save(goalTime)
     }
 }

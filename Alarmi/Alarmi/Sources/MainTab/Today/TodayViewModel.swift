@@ -13,25 +13,26 @@ final class TodayViewModel: ObservableObject {
 
     var viewWillAppear = PassthroughSubject<Void, Never>()
     var didCallButtonTapped = PassthroughSubject<Void, Never>()
-    var datePickerValueChanged = PassthroughSubject<Date, Never>()
+    var didTapGoalTimeChangeButton = PassthroughSubject<Date, Never>()
 
+    @Published var todayKoreaState: KoreaParentState = .canCall
     @Published var lastCall: TodayDDayDdipViewModel = .init()
     @Published var nextGoal: TodayDDayDdipViewModel = .init()
-
     @Published var todayDidCall: Bool = false
+    @Published var goalTimeDate: Date = Date()
 
     private var cancellable = Set<AnyCancellable>()
 
     init(_ model: TodayModel) {
-
-//        viewWillAppear.sink { _ in
-//            <#code#>
-//        }
+        viewWillAppear.sink { [weak self] _ in
+            self?.todayKoreaState = Date().judgeKoreaState()
+        }.store(in: &cancellable)
 
         model.goalTime
             .sink { [weak self] in
                 let nextGoal = TodayDDayDdipViewModel.init($0)
                 self?.nextGoal = nextGoal
+                self?.goalTimeDate = $0.startDate.before(day: -$0.period + 1) 
             }.store(in: &cancellable)
 
         model.callDateList
@@ -47,31 +48,29 @@ final class TodayViewModel: ObservableObject {
                 self?.todayDidCall = true
             }.store(in: &cancellable)
 
-        datePickerValueChanged
+        didTapGoalTimeChangeButton
             .sink {
-                let currentGoalTime = model.goalTime.value
+                let currentGoalTimePeriod = model.goalTime.value.period
+                let dayDistance: Int = Date().fullDistance(from: $0, resultIn: .day)!
+                let addingValue: Int = dayDistance >= 0 ? -currentGoalTimePeriod + 1 : -currentGoalTimePeriod
                 model.updateGoalTime(
                     .init(
-                        startDate: $0,
-                        period: currentGoalTime.period
+                        startDate: Calendar.current.date(byAdding: .day, value: addingValue, to: $0)!,
+                        period: currentGoalTimePeriod
                     ))
             }.store(in: &cancellable)
 
         didCallButtonTapped
             .compactMap { _ in model.callDateList.value.last }
-            .filter { date in
-                !Calendar.current.isDateInToday(date.date)
-            }
+            .filter { date in !Calendar.current.isDateInToday(date.date) }
             .sink { [weak self] _ in
                 self?.todayDidCall = true
 
                 model.addTodayDate(with: !(self?.nextGoal.isPassed ?? true))
                 let currentGoalTime = model.goalTime.value
                 model.updateGoalTime(
-                    .init(
-                        startDate: Date(),
-                        period: currentGoalTime.period
-                    ))
+                    .init(startDate: Date(), period: currentGoalTime.period)
+                )
             }.store(in: &cancellable)
     }
 

@@ -103,6 +103,14 @@ final class TodayViewController: UIViewController {
 
     private func bind() {
 
+        viewModel.$todayKoreaState
+            .map { $0.todayModel }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.pandaImageView.image = UIImage(named: $0.imageName)
+                self?.statusDescriptionLabel.text = $0.description
+            }.store(in: &cancellable)
+
         TimerManager.shared.timer
             .autoconnect()
             .map { $0.judgeKoreaState().todayModel }
