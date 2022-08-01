@@ -13,10 +13,10 @@ final class GoalSettingBoxView: UIView {
     
     // MARK: Views
     
-    private lazy var goalPeriodLabel: UILabel = {
+    private let goalPeriodLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
-        $0.text = String(viewModel?.goalPeriod ?? 7)
+        $0.text = "7"
         return $0
     }(UILabel())
     
@@ -30,6 +30,7 @@ final class GoalSettingBoxView: UIView {
     
     private lazy var goalPeriodStepper: UIStepper = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.value = 7
         $0.minimumValue = 1
         $0.maximumValue = 31
         $0.stepValue = 1
@@ -53,7 +54,6 @@ final class GoalSettingBoxView: UIView {
     var goalPeriod: Int? {
         didSet {
             guard let goalPeriod = goalPeriod else { return }
-            goalPeriodStepper.value = Double(goalPeriod)
             goalPeriodLabel.text = String(goalPeriod)
         }
     }

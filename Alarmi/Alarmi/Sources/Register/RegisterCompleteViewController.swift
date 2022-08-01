@@ -58,7 +58,6 @@ final class RegisterCompleteViewController: UIViewController {
 
     weak var delegate: RegisterCompleteViewControllerDelegate?
     private let userNotificationManager = UserNotificationManager()
-    private let alarmUserDefaults = AlarmUserefaults(key: .alarm)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +99,6 @@ final class RegisterCompleteViewController: UIViewController {
     @objc private func buttonDidTap() {
         userNotificationManager.requestAuthorization {
             DispatchQueue.main.async {
-                self.alarmUserDefaults.save(Alarm(isAlarm: true, isAlarmAgain: true))
                 self.delegate?.finishRegister()
             }
         }

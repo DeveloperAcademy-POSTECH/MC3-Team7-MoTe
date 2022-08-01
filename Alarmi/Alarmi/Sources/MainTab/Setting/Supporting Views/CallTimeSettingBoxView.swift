@@ -53,19 +53,17 @@ final class CallTimeSettingBoxView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var startTimePicker: UIDatePicker = {
+    private let startTimePicker: UIDatePicker = {
         $0.preferredDatePickerStyle = .compact
         $0.datePickerMode = .time
         $0.minuteInterval = 10
-        $0.addTarget(self, action: #selector(startTimePickerDidChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())
     
-    private lazy var endTimePicker: UIDatePicker = {
+    private let endTimePicker: UIDatePicker = {
         $0.preferredDatePickerStyle = .compact
         $0.datePickerMode = .time
         $0.minuteInterval = 10
-        $0.addTarget(self, action: #selector(endTimePickerDidChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())
     
@@ -76,22 +74,6 @@ final class CallTimeSettingBoxView: UIView {
     }(UIView())
     
     // MARK: Property
-    
-    weak var viewModel: SettingViewModel?
-    
-    var callStartTime: Date? {
-        didSet {
-            guard let callStartTime = callStartTime else { return }
-            startTimePicker.date = callStartTime
-        }
-    }
-    
-    var callEndTime: Date? {
-        didSet {
-            guard let callEndTime = callEndTime else { return }
-            endTimePicker.date = callEndTime
-        }
-    }
     
     // MARK: Life Cycle
     
@@ -143,14 +125,6 @@ final class CallTimeSettingBoxView: UIView {
             cellVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             cellVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
-    }
-    
-    @objc private func startTimePickerDidChanged() {
-        viewModel?.startTimePickerDidChanged(startTimePicker.date)
-    }
-    
-    @objc private func endTimePickerDidChanged() {
-        viewModel?.endTimePickerDidChanged(endTimePicker.date)
     }
 }
 
