@@ -11,5 +11,4 @@ import Foundation
 struct Alarm: Codable {
     var isAlarm: Bool
     var isAlarmAgain: Bool
-    var alarmRepeatCount: Int
 }
