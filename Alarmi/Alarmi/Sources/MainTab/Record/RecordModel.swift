@@ -10,29 +10,13 @@ import Combine
 import Foundation
 
 struct RecordModel {
-    private let callDateSource: CallDateRepository
-    private let goalDataSource: GoalRepostiroy
+    private let callDateDataSource: CallDateRepository
 
-    init(callDateSource: CallDateRepository = CallDateUserefaults(key: .callDate),
-         goalDataSource: GoalRepostiroy = GoalUserefaults(key: .goal)) {
-        self.callDateSource = callDateSource
-        self.goalDataSource = goalDataSource
+    var callDateList: CurrentValueSubject<[CallDate], Never> {
+        return callDateDataSource.callDateList
     }
-
-    func fetchCallDateList() -> [CallDate] {
-        return callDateSource.fetchCallDateList()
+    
+    init(callDateDataSource: CallDateRepository = CallDateRepositoryImpl()) {
+        self.callDateDataSource = callDateDataSource
     }
-
-    func fetchGoalList() -> [Goal] {
-        return goalDataSource.fetchGoalList()
-    }
-}
-
-protocol CallDateRepository {
-    func fetchCallDateList() -> [CallDate]
-
-}
-
-protocol GoalRepostiroy {
-    func fetchGoalList() -> [Goal]
 }

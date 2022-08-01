@@ -47,7 +47,8 @@ final class MainTabCoordinator: Coordinator,
     func presentCallDelayViewController() {
         let callDelayViewController = CallDelayViewController()
         let navigationController = callDelayViewController.wrappedByNavigationController()
-        guard let today = todayNavigationController.viewControllers.first else { return }
+        guard let today = todayNavigationController.viewControllers.first as? TodayViewController else { return }
+        callDelayViewController.viewModel = today.viewModel
         today.present(navigationController, animated: true)
     }
 
@@ -65,6 +66,7 @@ extension MainTabCoordinator {
     private func setupTodayNavigationController() {
         let todayViewController = TodayViewController()
         todayViewController.delegate = self
+        todayViewController.viewModel = TodayViewModel(TodayModel())
         todayNavigationController.viewControllers = [todayViewController]
     }
 

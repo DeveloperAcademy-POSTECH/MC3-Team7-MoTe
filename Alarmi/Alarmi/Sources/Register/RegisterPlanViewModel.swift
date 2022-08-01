@@ -13,7 +13,6 @@ final class RegisterPlanViewModel: ObservableObject {
 
     // MARK: Store Property
     @Published var callTimePeriod: Int = 7
-    private let userDefaults = GoalTimeUserDefaults(key: .goalTime)
     private var goalTime: GoalTime = .init(startDate: Date(), period: 7)
 
     init() {}
@@ -29,6 +28,6 @@ final class RegisterPlanViewModel: ObservableObject {
     }
 
     func buttonDidTap() {
-        userDefaults.save(goalTime)
+        GoalTimeUserDefaults(key: .goalTime).save(goalTime)
     }
 }

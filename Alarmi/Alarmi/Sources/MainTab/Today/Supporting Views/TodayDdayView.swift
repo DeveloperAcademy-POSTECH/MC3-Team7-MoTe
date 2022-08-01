@@ -9,34 +9,10 @@
 import UIKit
 
 protocol TodayDdayViewDelegate: AnyObject {
-    func presentCallDelayViewController(_ type: TodayDdayView.DDayType)
+    func buttonDidTap(_ type: TodayDdayView.DDayType)
 }
 
 final class TodayDdayView: UIView {
-
-    enum DDayType {
-        case lastCall
-        case nextGoal
-
-        var buttonName: String {
-            switch self {
-            case .lastCall:
-                return "전화했어요"
-            case .nextGoal:
-                return "미룰거예요"
-            }
-        }
-
-        var title: String {
-            switch self {
-            case .lastCall:
-                return "마지막 전화"
-            case .nextGoal:
-                return "목표일로부터"
-            }
-        }
-    }
-    // MARK: View
 
     private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +56,15 @@ final class TodayDdayView: UIView {
         layout()
     }
 
+    func update(with viewModel: TodayDDayDdipViewModel) {
+        self.dDayLabel.text = "D\(viewModel.isPassed ? "+" : "-")\(viewModel.dday)"
+    }
+
+    func updateButton(_ didCall: Bool) {
+        button.configuration?.baseBackgroundColor = didCall ? .systemGray : .systemIndigo
+        button.isUserInteractionEnabled = !didCall
+    }
+
     private func layout() {
         addSubviews(titleLabel, dDayLabel, button)
 
@@ -103,6 +88,33 @@ final class TodayDdayView: UIView {
 extension TodayDdayView {
 
     @objc private func buttonDidTap() {
-        delegate?.presentCallDelayViewController(type)
+        delegate?.buttonDidTap(type)
     }
+}
+
+extension TodayDdayView {
+
+    enum DDayType {
+        case lastCall
+        case nextGoal
+
+        var buttonName: String {
+            switch self {
+            case .lastCall:
+                return "전화했어요"
+            case .nextGoal:
+                return "미룰거예요"
+            }
+        }
+
+        var title: String {
+            switch self {
+            case .lastCall:
+                return "마지막 전화"
+            case .nextGoal:
+                return "목표일로부터"
+            }
+        }
+    }
+
 }

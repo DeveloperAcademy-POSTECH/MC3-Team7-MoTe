@@ -12,42 +12,24 @@ final class TimerManager {
     static let shared = TimerManager()
     private init() {}
 
-    func addTimerForBackgroundChange() {
-        DispatchQueue.global().async { [weak self] in
-            guard let darkModeTimer = self?.createAwakeTimerTimer() else { fatalError() }
-            guard let lightModeTimer = self?.createMidNightTimeTimer() else { fatalError() }
+    let timer = Timer.publish(every: 1, tolerance: 0, on: .current, in: .default, options: nil)
+}
 
-            RunLoop.current.add(darkModeTimer, forMode: .default)
-            RunLoop.current.add(lightModeTimer, forMode: .default)
-            RunLoop.current.run()
-        }
+/*
+extension TimerManager {
+
+    private func createClockTimer() -> Timer.TimerPublisher {
+        return Timer.publish(
+            every: 1,
+            tolerance: nil,
+            on: .current,
+            in: .default,
+            options: nil
+        )
     }
-
 }
 
 extension TimerManager {
-
-    private func createMidNightTimeTimer() -> Timer {
-        return Timer(
-            fireAt: KoreaTimeManager.shared.getTodayMidNightTime(),
-            interval: 0,
-            target: Self.shared,
-            selector: #selector(switchToDarkMode),
-            userInfo: nil,
-            repeats: false
-        )
-    }
-
-    private func createAwakeTimerTimer() -> Timer {
-        return Timer(
-            fireAt: KoreaTimeManager.shared.getTodayAwakeTime(),
-            interval: 0,
-            target: Self.shared,
-            selector: #selector(switchToLightMode),
-            userInfo: nil,
-            repeats: false
-        )
-    }
 
     private var window: UIWindow? {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { fatalError() }
@@ -66,4 +48,6 @@ extension TimerManager {
             self?.window?.overrideUserInterfaceStyle = .light
         }
     }
+
 }
+*/

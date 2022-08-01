@@ -10,9 +10,9 @@ import UIKit
 
 struct RecordGoalCircleDdipViewModel {
     var color: UIColor
-
-    init(_ model: Goal) {
-        color = model.isCalled ?.systemGreen : .systemRed
+    
+    init(_ model: CallDate) {
+        color = model.isGoalSuccess ?.systemGreen : .systemRed
     }
 
     init(_ color: UIColor = .systemGray) {

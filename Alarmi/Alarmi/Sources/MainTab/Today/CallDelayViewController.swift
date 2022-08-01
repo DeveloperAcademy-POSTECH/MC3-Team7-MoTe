@@ -6,6 +6,7 @@
 //  Copyright © 2022 MoTe. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 class CallDelayViewController: UIViewController {
@@ -33,7 +34,10 @@ class CallDelayViewController: UIViewController {
         $0.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())
-    
+
+    var viewModel: TodayViewModel!
+    private var cancellable = Set<AnyCancellable>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -97,12 +101,12 @@ extension CallDelayViewController {
     }
 
     @objc private func doneButtonPressed() {
-        // TODO: 알람 매니저를 통해 notification 재설정
+
         dismiss(animated: true)
     }
 
     @objc private func datePickerValueChanged() {
-        // TODO: 선택된 값 저장
-        print(datePicker.date)
+        print("데이터피커 값 ", datePicker.date)
+        viewModel.datePickerValueChanged.send(datePicker.date)
     }
 }

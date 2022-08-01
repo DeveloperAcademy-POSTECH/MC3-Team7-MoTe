@@ -6,6 +6,7 @@
 //  Copyright © 2022 MoTe. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 protocol TodayViewControllerDelegate: AnyObject {
@@ -75,26 +76,67 @@ final class TodayViewController: UIViewController {
 
     weak var delegate: TodayViewControllerDelegate?
 
+    var viewModel: TodayViewModel!
+    private var cancellable = Set<AnyCancellable>()
     // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationBar()
+        bind()
         attribute()
         layout()
-        setTimer()
-        changeImage()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewModel.viewWillAppear.send()
     }
 
     // MARK: Method
 
     private func attribute() {
         view.backgroundColor = .systemGroupedBackground
+        setupNavigationBar()
     }
 
-    private func calculateDDay() {
-        // startDate에 커밋 내역 저장
+    private func bind() {
+
+        TimerManager.shared.timer
+            .autoconnect()
+            .map { $0.judgeKoreaState().todayModel }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.pandaImageView.image = UIImage(named: $0.imageName)
+                self?.statusDescriptionLabel.text = $0.description
+            }.store(in: &cancellable)
+
+        TimerManager.shared.timer
+            .autoconnect()
+            .map { Formatter.HHMMKoreaDateFormatter.string(from: $0) }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.koreaTimeLabel.text = $0
+            }.store(in: &cancellable)
+
+        viewModel.$lastCall
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.lastCallDDayView.update(with: $0)
+            }.store(in: &cancellable)
+
+        viewModel.$nextGoal
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.nextGoalDDayView.update(with: $0)
+            }.store(in: &cancellable)
+
+        viewModel.$todayDidCall
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] didCall in
+                self?.lastCallDDayView.updateButton(didCall)
+            }.store(in: &cancellable)
     }
 
     private func layout() {
@@ -141,144 +183,19 @@ final class TodayViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
     }
 
-    private func changeImage() {
-        let calendar = Calendar.current
-        let now = Date()
-
-        let sleepingHour = getConvertedHour(koreaHour: 0)
-        let workingHour = getConvertedHour(koreaHour: 7)
-        let waitingHour = getConvertedHour(koreaHour: 18)
-
-        // 프로퍼티
-        let sleeping = calendar.date(
-            bySettingHour: sleepingHour,
-            minute: 0,
-            second: 0,
-            of: now
-        )!
-
-        let working = calendar.date(
-            bySettingHour: workingHour,
-            minute: 0,
-            second: 0,
-            of: now
-        )!
-
-        let waiting = calendar.date(
-            bySettingHour: waitingHour,
-            minute: 0,
-            second: 0,
-            of: now
-        )!
-
-        // 타이머 돌림
-        let sleepingCheckTimer = Timer(
-            fireAt: sleeping,
-            interval: 0,
-            target: self,
-            selector: #selector(switchToSleepingImage),
-            userInfo: nil,
-            repeats: false
-        )
-
-        let workingCheckTimer = Timer(
-            fireAt: working,
-            interval: 0,
-            target: self,
-            selector: #selector(switchToWorkingImage),
-            userInfo: nil,
-            repeats: false
-        )
-
-        let waitingCheckTimer = Timer(
-            fireAt: waiting,
-            interval: 0,
-            target: self,
-            selector: #selector(switchToWaitingImage),
-            userInfo: nil,
-            repeats: false
-        )
-
-        RunLoop.main.add(sleepingCheckTimer, forMode: .common)
-        RunLoop.main.add(workingCheckTimer, forMode: .common)
-        RunLoop.main.add(waitingCheckTimer, forMode: .common)
-    }
-
-    // TODO: 아보꺼머지되면 아보꺼를 재사용하도록 리팩토링
-    private func getConvertedHour(koreaHour hour: Int) -> Int {
-        let calendar = Calendar.current
-        let now = Date()
-        let currentYear = calendar.component(.year, from: now)
-        let currentMonth = calendar.component(.month, from: now)
-        let currentDay = calendar.component(.day, from: now)
-
-        let myTimeFormatter: DateFormatter = { formatter in
-            formatter.timeZone = TimeZone.autoupdatingCurrent
-            formatter.dateFormat = "HH"
-            return formatter
-        }(DateFormatter())
-
-        let koreaTimeZone = TimeZone(identifier: "Asia/Seoul")
-        let koreaMidnightComponents = DateComponents(
-            timeZone: koreaTimeZone,
-            year: currentYear,
-            month: currentMonth,
-            day: currentDay,
-            hour: hour,
-            minute: 0,
-            second: 0
-        )
-        let koreaMidnightDate = calendar.date(from: koreaMidnightComponents)!
-        let convertedDateString = myTimeFormatter.string(from: koreaMidnightDate)
-        let convertedHourInt = Int(convertedDateString)!
-        return convertedHourInt
-    }
-
-    private func setTimer() {
-//        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.currentTimeToKoreaTime(_:)), userInfo: nil, repeats: true)
-    }
-}
-
-extension TodayViewController {
-
-    // MARK: Button Action
-
     @objc private func settingButtonTapped() {
         delegate?.gotoSettingViewController()
-    }
-
-//    @objc private func currentTimeToKoreaTime(_ sender: Timer) {
-//        let currentLocationDate = Date()
-//        let koreaTime = dateFormatter.string(from: currentLocationDate)
-//        realTimeClockLabel.text = koreaTime
-//    }
-
-    // MARK: Change Image Method
-
-    @objc func switchToSleepingImage() {
-        pandaImageView.image = UIImage(named: "sleeping")
-        statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
-    }
-
-    @objc func switchToWorkingImage() {
-        pandaImageView.image = UIImage(named: "working")
-        statusDescriptionLabel.text = "전화 가능 시간이 아니에요."
-    }
-
-    @objc func switchToWaitingImage() {
-        pandaImageView.image = UIImage(named: "waiting")
-        statusDescriptionLabel.text = "전화 가능 시간이에요."
     }
 }
 
 extension TodayViewController: TodayDdayViewDelegate {
 
-    func presentCallDelayViewController(_ type: TodayDdayView.DDayType) {
+    func buttonDidTap(_ type: TodayDdayView.DDayType) {
         switch type {
-        case .nextGoal:
+        case .nextGoal: // 미루기 버튼
             delegate?.presentCallDelayViewController()
-        case .lastCall:
-            break
+        case .lastCall: // 전화했어요 버튼
+            viewModel?.didCallButtonTapped.send()
         }
     }
 }

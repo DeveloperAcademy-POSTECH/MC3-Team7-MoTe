@@ -8,4 +8,7 @@
 
 import Foundation
 
-typealias CallDate = Date
+struct CallDate: Codable {
+    var date: Date
+    var isGoalSuccess: Bool
+}

@@ -80,21 +80,9 @@ extension FrequencyView {
 }
 
 struct FrequencyView_Previews: PreviewProvider {
-    static var dummyFrequencyDataList: [[Frequency]] {
-        .init((0..<Constant.Record.numberOfColumns).map { _ in
-            [
-                Frequency(type: .none, date: Date()),
-                Frequency(type: .none, date: Date()),
-                Frequency(type: .none, date: Date()),
-                Frequency(type: .none, date: Date()),
-                Frequency(type: .none, date: Date()),
-                Frequency(type: .none, date: Date()),
-                Frequency(type: .none, date: Date())
-            ]
-        })
-    }
+
     static var previews: some View {
-        FrequencyView(frequencyDataList: FrequencyView_Previews.dummyFrequencyDataList)
+        FrequencyView(frequencyDataList: [])
             .frame(width: 320, height: 150, alignment: .center)
             .previewLayout(.sizeThatFits)
     }

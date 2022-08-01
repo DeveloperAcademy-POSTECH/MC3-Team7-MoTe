@@ -14,7 +14,7 @@ final class RecordViewModel: ObservableObject {
     typealias WeekendList = [Weekdend]
     typealias FrequencyDataList = [Frequency]
 
-    var cancelBag = Set<AnyCancellable>()
+    var cancellable = Set<AnyCancellable>()
 
     // MARK: Input
 
@@ -29,23 +29,22 @@ final class RecordViewModel: ObservableObject {
     @Published var goalPercent: Int = 0
 
     init(_ model: RecordModel) {
-        viewDidLoad.sink { [weak self] in
-            // TODO: 오류 처리해야함. callDateList가 개수를 넘어가면 오류.
-            let storedDateList = model.fetchCallDateList()
-            self?.prepareFrequencyDataList(storedDateList)
-        }.store(in: &cancelBag)
 
-        viewDidLoad.sink { [weak self] in
-            var recentGoals = model.fetchGoalList().prefix(10).map(RecordGoalCircleDdipViewModel.init)
+        model.callDateList.sink { [weak self] in
+            self?.goalCount = $0.count
+
+            var recentGoals = $0.suffix(10).map(RecordGoalCircleDdipViewModel.init)
             let success: Double = Double(recentGoals.filter { $0.color == .systemGreen }.count)
             if !recentGoals.isEmpty {
                 self?.goalPercent = Int(success / Double(recentGoals.count) * 100)
             }
             while recentGoals.count < 10 { recentGoals.append(.init()) }
             self?.goalCircleList = recentGoals
+        }.store(in: &cancellable)
 
-        }.store(in: &cancelBag)
-
+        model.callDateList.sink { [weak self] in
+            self?.prepareFrequencyDataList($0)
+        }.store(in: &cancellable)
     }
 }
 
@@ -64,15 +63,17 @@ extension RecordViewModel {
 
         return (0..<Constant.Record.numberOfColumns * 7).map { (ind) -> Frequency in
             let currentday: Int = todayIndex - ind
-            let currentDate = Date().before(day: currentday)!
+            let currentDate = Date().before(day: currentday)
 
             if ind > todayIndex {
                 return Frequency(type: .future, date: currentDate)
             } else {
-                guard index != dates.count else { return Frequency(type: .none, date: currentDate) }
-                if Calendar.current.compare(currentDate, to: dates[index], toGranularity: .day) == .orderedSame {
+                guard index != dates.count else {
+                    return Frequency(type: .none, date: currentDate)
+                }
+                if Calendar.current.compare(currentDate, to: dates[index].date, toGranularity: .day) == .orderedSame {
                     index += 1
-                    return Frequency(type: .did, date: dates[index-1])
+                    return Frequency(type: .did, date: dates[index-1].date)
                 } else {
                     return Frequency(type: .none, date: currentDate)
                 }

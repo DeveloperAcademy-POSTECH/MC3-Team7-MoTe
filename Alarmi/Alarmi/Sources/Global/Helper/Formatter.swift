@@ -20,7 +20,7 @@ final class Formatter {
     static let ddCurrentDateFormatter: DateFormatter = {
         let v = DateFormatter()
         v.timeZone = .autoupdatingCurrent
-        v.dateFormat = "HH"
+        v.dateFormat = "dd"
         return v
     }()
 
@@ -42,6 +42,13 @@ final class Formatter {
         let v = DateFormatter()
         v.timeZone = TimeZone(identifier: "Asia/Seoul")
         v.dateFormat = "HH:mm"
+        return v
+    }()
+
+    static let HHKoreaDateFormatter: DateFormatter = {
+        let v = DateFormatter()
+        v.timeZone = TimeZone(identifier: "Asia/Seoul")
+        v.dateFormat = "HH"
         return v
     }()
 }

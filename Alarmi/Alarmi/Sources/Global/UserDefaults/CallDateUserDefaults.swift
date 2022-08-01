@@ -33,9 +33,3 @@ struct CallDateUserefaults: UserDefaultsManager {
         UserDefaults.standard.removeObject(forKey: key)
     }
 }
-
-extension CallDateUserefaults: CallDateRepository {
-    func fetchCallDateList() -> [CallDate] {
-        return self.data ?? []
-    }
-}

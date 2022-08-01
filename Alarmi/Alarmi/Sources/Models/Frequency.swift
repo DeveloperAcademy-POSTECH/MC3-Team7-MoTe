@@ -9,9 +9,23 @@
 import Foundation
 
 struct Frequency: Hashable {
-    var id = UUID()
     var type: CallType
-    var date: CallDate
+    var date: Date
+
+    init(type: CallType,
+         date: Date) {
+        self.type = type
+        self.date = date
+    }
+
+    static func == (lhs: Frequency, rhs: Frequency) -> Bool {
+        (lhs.date == rhs.date) &&
+        (lhs.type == rhs.type)
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(type)
+    }
 }
 
 enum CallType {
