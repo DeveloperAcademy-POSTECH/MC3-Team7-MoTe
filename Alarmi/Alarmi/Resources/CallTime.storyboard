@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,34 +18,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-xc-u2w" userLabel="Box">
-                                <rect key="frame" x="16" y="300.66666666666669" width="396" height="97.666666666666686"/>
+                                <rect key="frame" x="16" y="297.33333333333331" width="396" height="91"/>
                                 <subviews>
                                     <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="kXk-Fg-wcj">
-                                        <rect key="frame" x="211" y="6" width="163" height="34.333333333333336"/>
+                                        <rect key="frame" x="211" y="6" width="163" height="31"/>
                                         <connections>
                                             <action selector="startTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="tWt-Fk-J5r"/>
                                         </connections>
                                     </datePicker>
                                     <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AOG-F6-Kcg">
-                                        <rect key="frame" x="242" y="55.333333333333314" width="132" height="34.333333333333343"/>
+                                        <rect key="frame" x="242" y="52" width="132" height="31"/>
                                         <connections>
                                             <action selector="endTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="ViC-a4-iad"/>
                                         </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 시간" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaO-Cw-bnp">
-                                        <rect key="frame" x="16.000000000000004" y="12.999999999999998" width="63.333333333333343" height="20.333333333333329"/>
+                                        <rect key="frame" x="16.000000000000004" y="13" width="52.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="종료 시간" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kz-Wa-Gsv">
-                                        <rect key="frame" x="16.000000000000004" y="60.333333333333321" width="63.333333333333343" height="24.333333333333336"/>
+                                        <rect key="frame" x="16.000000000000004" y="57" width="52.333333333333343" height="21"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="659-Te-BpZ" userLabel="Divider">
-                                        <rect key="frame" x="16" y="46.333333333333314" width="380" height="1"/>
+                                        <rect key="frame" x="16" y="43" width="380" height="1"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <color key="tintColor" systemColor="systemGrayColor"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
@@ -82,7 +81,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csS-Cm-x5k">
-                                <rect key="frame" x="66.333333333333343" y="235" width="295.33333333333326" height="33.666666666666686"/>
+                                <rect key="frame" x="77.666666666666686" y="235" width="273" height="30.333333333333314"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -103,6 +102,12 @@
                                             <constraint firstAttribute="width" constant="31" id="WMn-iQ-ZSr"/>
                                             <constraint firstAttribute="height" constant="2" id="jcx-p2-fGZ"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXe-6E-v36" userLabel="Push">
                                         <rect key="frame" x="7" y="41" width="64" height="17"/>
@@ -111,6 +116,12 @@
                                             <constraint firstAttribute="width" constant="64" id="Ja0-je-vB9"/>
                                             <constraint firstAttribute="height" constant="17" id="f6I-bb-LDb"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" name="ToggleOrange"/>
@@ -124,6 +135,12 @@
                                     <constraint firstItem="xJF-U8-nI5" firstAttribute="top" secondItem="pSg-eh-VXB" secondAttribute="top" constant="16" id="wfA-DP-ZFA"/>
                                     <constraint firstAttribute="bottom" secondItem="yPa-Hv-Pb0" secondAttribute="bottom" constant="4" id="z9k-iX-O3y"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QWX-nT-ug7"/>
