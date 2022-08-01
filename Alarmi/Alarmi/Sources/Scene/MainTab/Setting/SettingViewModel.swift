@@ -18,7 +18,7 @@ final class SettingViewModel: ObservableObject {
     @Published var isAlarmAgain: Bool = true // TODO: UserDefaults 연결
     @Published var isNotificationAuthorized: Bool = false
     
-    private let userNotificationManager = UserNotificationManager()
+    private let userNotificationManager = UserNotificationManager.shared
 
     init() { }
     

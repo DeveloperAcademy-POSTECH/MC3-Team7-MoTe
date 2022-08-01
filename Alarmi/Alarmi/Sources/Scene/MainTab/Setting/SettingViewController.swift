@@ -137,7 +137,7 @@ final class SettingViewController: UIViewController {
 
     // MARK: Store Property
 
-    private let viewModel = SettingViewModel()
+    var viewModel: SettingViewModel!
     private var cancelBag = Set<AnyCancellable>()
     
     private var isNotificationAuthorized: Bool = false {

@@ -42,6 +42,9 @@ final class MainTabCoordinator: Coordinator,
 
     func gotoSettingViewController() {
         let settingViewController = SettingViewController()
+//        guard let today = todayNavigationController.viewControllers.first as? TodayViewController else { return }
+//        settingViewController.viewModel = today.viewModel
+        settingViewController.viewModel = SettingViewModel()
         todayNavigationController.pushViewController(settingViewController, animated: true)
     }
 
