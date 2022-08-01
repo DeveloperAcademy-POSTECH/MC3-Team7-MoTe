@@ -22,9 +22,9 @@ extension Date {
        - format: 변형할 DateFormat / Date 타입
        - type: 12시간제, 24시간제
      */
-    func date2TimeString(_ format: Date, type: TimeType) -> String {
+    func date2TimeString(type: TimeType) -> String {
         DateManager.shared.dateFormatter.dateFormat = type.rawValue
-        return DateManager.shared.dateFormatter.string(from: format)
+        return DateManager.shared.dateFormatter.string(from: self)
     }
 
     /**

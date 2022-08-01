@@ -36,8 +36,7 @@ class RegisterCallTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startTimeFormatter.dateFormat = "hh:mm"
-        startTimeViewLabel.text = "\(startTimeFormatter.string(from:Date()))"
+        startTimeViewLabel.text = "\(Date().date2TimeString(type: ._24HTime))"
 
         bind()
         attribute()
