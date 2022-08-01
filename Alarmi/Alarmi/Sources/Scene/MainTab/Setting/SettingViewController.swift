@@ -114,6 +114,7 @@ final class SettingViewController: UIViewController {
     
     private lazy var alarmSettingBoxView: AlarmSettingBoxView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.viewModel = viewModel
         return $0
     }(AlarmSettingBoxView())
     
@@ -125,11 +126,32 @@ final class SettingViewController: UIViewController {
         $0.text = "알림이 온 이후에 전화를 기록하지 않으면,\n전화 시간 종료 전에 알림을 총 6번 보내드려요."
         return $0
     }(UILabel())
+    
+    private let alarmSettingDeepLinkLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setDynamicFont(.caption1)
+        $0.textAlignment = .center
+        $0.text = "알림 권한을 허용해야 알림을 설정할 수 있어요.\n설정에서 알림 권한을 허용해주세요."
+        return $0
+    }(UILabel())
 
     // MARK: Store Property
 
     private let viewModel = SettingViewModel()
     private var cancelBag = Set<AnyCancellable>()
+    
+    private var isNotificationAuthorized: Bool = false {
+        didSet {
+            viewModel.changeEditableStateOfViewWithoutAnimation(
+                isEditable: isNotificationAuthorized,
+                views: alarmSettingBoxView
+            )
+            viewModel.changeTransparencyOfView(
+                isTransparent: isNotificationAuthorized,
+                view: alarmSettingDeepLinkLabel
+            )
+        }
+    }
 
     // MARK: LifeCycle
 
@@ -141,6 +163,12 @@ final class SettingViewController: UIViewController {
         layout()
     }
     
+    override func viewWillAppear(_ animation: Bool) {
+        super.viewWillAppear(animation)
+        
+        viewModel.checkNotificationAuthorization()
+    }
+    
     // MARK: Method
     
     private func bind() {
@@ -148,6 +176,20 @@ final class SettingViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.goalSettingBoxView.goalPeriod = $0
+            }
+            .store(in: &cancelBag)
+        
+        viewModel.$isAlarm
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.alarmSettingBoxView.isAlarm = $0
+            }
+            .store(in: &cancelBag)
+        
+        viewModel.$isNotificationAuthorized
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.isNotificationAuthorized = $0
             }
             .store(in: &cancelBag)
     }
@@ -252,7 +294,8 @@ private extension SettingViewController {
         alarmSettingVStack.addArrangedSubviews(
             alarmSettingTitleLabel,
             alarmSettingBoxView,
-            alarmSettingDescriptionLabel
+            alarmSettingDescriptionLabel,
+            alarmSettingDeepLinkLabel
         )
         
         NSLayoutConstraint.activate([
@@ -267,6 +310,10 @@ private extension SettingViewController {
         
         NSLayoutConstraint.activate([
             alarmSettingDescriptionLabel.trailingAnchor.constraint(equalTo: alarmSettingBoxView.trailingAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            alarmSettingDeepLinkLabel.centerXAnchor.constraint(equalTo: alarmSettingBoxView.centerXAnchor)
         ])
     }
 }

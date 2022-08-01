@@ -97,6 +97,13 @@ final class UserNotificationManager {
         notificationCenter.removeAllPendingNotificationRequests()
         print("request 전부 삭제")
     }
+    
+    func getAuthorizationStatus(_ completion: @escaping (Bool) -> Void) {
+        notificationCenter.getNotificationSettings { settings in
+            let authorized = settings.authorizationStatus == .authorized
+            completion(authorized)
+        }
+    }
 
     private func makeNotificationContent(_ index: Int) -> UNMutableNotificationContent {
         let notificationContent = UNMutableNotificationContent()
