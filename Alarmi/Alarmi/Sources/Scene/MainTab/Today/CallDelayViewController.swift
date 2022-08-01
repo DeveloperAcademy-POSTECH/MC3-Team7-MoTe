@@ -108,8 +108,15 @@ extension CallDelayViewController {
     }
 
     @objc private func doneButtonPressed() {
-        viewModel.didTapGoalTimeChangeButton.send(datePicker.date)
-        self.delegate?.dismiss(self)
+        let date = datePicker.date
+        guard let dayDistance: Int = Date().fullDistance(from: date, resultIn: .day) else { return }
+
+        if dayDistance > 98 {
+            self.delegate?.presentAlert(self)
+        } else {
+            viewModel.didTapGoalTimeChangeButton.send(datePicker.date)
+            self.delegate?.dismiss(self)
+        }
     }
 
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {

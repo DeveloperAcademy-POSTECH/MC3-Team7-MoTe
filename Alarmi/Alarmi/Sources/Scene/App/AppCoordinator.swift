@@ -15,7 +15,7 @@ class AppCoordinator: Coordinator,
     private var navigationController: UINavigationController!
 
     // MARK: UserDefaults 값에서 불어와야함
-    var isRegister: Bool = false
+    lazy var isRegister: Bool = FirstUserDefaults(key: .firstUser).data ?? false
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -45,6 +45,7 @@ class AppCoordinator: Coordinator,
 
     func didRegister(_ coordinator: RegisterCoordinator) {
         childCoordinators = childCoordinators.filter { $0 !== coordinator }
+        FirstUserDefaults(key: .firstUser).save(true)
         showMainTabController()
     }
 

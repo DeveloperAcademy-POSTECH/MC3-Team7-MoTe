@@ -42,9 +42,7 @@ final class MainTabCoordinator: Coordinator,
 
     func gotoSettingViewController() {
         let settingViewController = SettingViewController()
-//        guard let today = todayNavigationController.viewControllers.first as? TodayViewController else { return }
-//        settingViewController.viewModel = today.viewModel
-        settingViewController.viewModel = SettingViewModel()
+        settingViewController.viewModel = SettingViewModel(SettingModel())
         todayNavigationController.pushViewController(settingViewController, animated: true)
     }
 
@@ -52,6 +50,7 @@ final class MainTabCoordinator: Coordinator,
         let callDelayViewController = CallDelayViewController()
         let navigationController = callDelayViewController.wrappedByNavigationController()
         guard let today = todayNavigationController.viewControllers.first as? TodayViewController else { return }
+        callDelayViewController.delegate = self
         callDelayViewController.viewModel = today.viewModel
         today.present(navigationController, animated: true)
     }

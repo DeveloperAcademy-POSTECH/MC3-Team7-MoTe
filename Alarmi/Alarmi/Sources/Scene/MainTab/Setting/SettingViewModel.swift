@@ -13,61 +13,74 @@ import UIKit
 final class SettingViewModel: ObservableObject {
 
     // MARK: Store Property
-    @Published var goalPeriod: Int
-    @Published var callStartTime: Date
-    @Published var callEndTime: Date
-    @Published var isAlarm: Bool
-    @Published var isAlarmAgain: Bool
+    @Published var goalPeriod: Int = 0
+    @Published var callStartTime: Date = Date()
+    @Published var callEndTime: Date = Date()
+    @Published var isAlarm: Bool = true
+    @Published var isAlarmAgain: Bool = true
     @Published var isNotificationAuthorized: Bool = false
     
     private let userNotificationManager = UserNotificationManager.shared
-    private let goalTimeUserDefaults = GoalTimeUserDefaults(key: .goalTime)
-    private let callTimeUserDefaults = CallTimeUserDefaults(key: .callTime)
-    private let alarmUserDefaults = AlarmUserefaults(key: .alarm)
 
-    init() {
-        goalPeriod = goalTimeUserDefaults.data?.period ?? 7
-        callStartTime = callTimeUserDefaults.data?.start ?? Date()
-        callEndTime = callTimeUserDefaults.data?.end ?? Date()
-        isAlarm = alarmUserDefaults.data?.isAlarm ?? true
-        isAlarmAgain = alarmUserDefaults.data?.isAlarmAgain ?? true
+    private var model: SettingModel!
+    private var cancellable = Set<AnyCancellable>()
+
+    init(_ model: SettingModel) {
+        self.model = model
+
+        model.goalTime
+            .sink { [weak self] in
+                self?.goalPeriod = $0.period
+            }.store(in: &cancellable)
+
+        model.callTime
+            .sink { [weak self] in
+                self?.callStartTime = $0.start
+                self?.callEndTime = $0.end
+            }.store(in: &cancellable)
+
+        model.alarm
+            .sink { [weak self] in
+                self?.isAlarm = $0.isAlarm
+                self?.isAlarmAgain = $0.isAlarmAgain
+            }.store(in: &cancellable)
     }
-    
+
     // MARK: Business Logic
     
     func goalPeriodStepperDidChanged(_ value: Int) {
         goalPeriod = value
-        guard let startDate = goalTimeUserDefaults.data?.startDate else { return }
-        let data = GoalTime(startDate: startDate, period: value)
-        goalTimeUserDefaults.save(data)
+        let startDate = model.goalTime.value.startDate
+        let newGoal = GoalTime(startDate: startDate, period: value)
+        model.updateGoalTime(newGoal)
     }
     
     func startTimePickerDidChanged(_ date: Date) {
         callStartTime = date
-        guard let endTime = callTimeUserDefaults.data?.end else { return }
-        let data = CallTime(start: date, end: endTime)
-        callTimeUserDefaults.save(data)
+        let endTime = model.callTime.value.end
+        let newCallTime = CallTime(start: date, end: endTime)
+        model.updateCallTimer(newCallTime)
     }
     
     func endTimePickerDidChanged(_ date: Date) {
         callEndTime = date
-        guard let startTime = callTimeUserDefaults.data?.start else { return }
-        let data = CallTime(start: startTime, end: date)
-        callTimeUserDefaults.save(data)
+        let startTime = model.callTime.value.start
+        let newCallTime = CallTime(start: startTime, end: date)
+        model.updateCallTimer(newCallTime)
     }
     
     func alarmSwitchToggled(_ isOn: Bool) {
         isAlarm = isOn
-        guard let isAlarmAgain = alarmUserDefaults.data?.isAlarmAgain else { return }
-        let data = Alarm(isAlarm: isOn, isAlarmAgain: isAlarmAgain)
-        alarmUserDefaults.save(data)
+        let isAlarmAgain = model.alarm.value.isAlarmAgain
+        let alarm = Alarm(isAlarm: isOn, isAlarmAgain: isAlarmAgain)
+        model.updateAlarm(alarm)
     }
     
     func alarmAgainSwitchToggled(_ isOn: Bool) {
         isAlarmAgain = isOn
-        guard let isAlarm = alarmUserDefaults.data?.isAlarm else { return }
-        let data = Alarm(isAlarm: isAlarm, isAlarmAgain: isOn)
-        alarmUserDefaults.save(data)
+        let isAlarm = model.alarm.value.isAlarm
+        let alarm = Alarm(isAlarm: isAlarm, isAlarmAgain: isOn)
+        model.updateAlarm(alarm)
     }
     
     func checkNotificationAuthorization() {

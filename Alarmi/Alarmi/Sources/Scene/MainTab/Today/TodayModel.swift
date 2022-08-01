@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-final class TodayModel {
+struct TodayModel {
     private let callDateDataSource: CallDateRepository
     private let goalTimeDataSource: GoalTimeRepository
     private let callTimeDataSource: CallTimeRepository
@@ -43,9 +43,5 @@ final class TodayModel {
 
     func removeTodayDate() {
         callDateDataSource.removeTodayDate()
-    }
-
-    deinit {
-        print("☠️☠️☠️☠️ \(String(describing: self)) ☠️☠️☠️☠️☠️")
     }
 }

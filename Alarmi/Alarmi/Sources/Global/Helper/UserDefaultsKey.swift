@@ -13,5 +13,5 @@ enum UserDefaultsKey: String {
     case alarm
     case goalTime
     case callDate
-    case goal
+    case firstUser
 }
