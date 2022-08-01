@@ -23,13 +23,30 @@ final class MainTabCoordinator: Coordinator,
     private var todayNavigationController: UINavigationController!
     private var recordNavigationController: UINavigationController!
 
-    init(navigationController: UINavigationController) {
+    private var goalTimeRepository: GoalTimeRepository!
+    private var callDateRepository: CallDateRepository!
+    private var alarmRepostiory: AlarmRepository!
+    private var callTimeRepository: CallTimeRepository!
+
+    init(
+        navigationController: UINavigationController,
+        goalTimeRepository: GoalTimeRepository,
+        callDateRepository: CallDateRepository,
+        alarmRepostiory: AlarmRepository,
+        callTimeRepository: CallTimeRepository
+    ) {
         navigationController.navigationBar.isHidden = true
         self.navigationController = navigationController
         self.todayNavigationController = UINavigationController()
         self.recordNavigationController = UINavigationController()
         todayNavigationController.navigationBar.prefersLargeTitles = true
         recordNavigationController.navigationBar.prefersLargeTitles = true
+
+        self.navigationController = navigationController
+        self.goalTimeRepository = goalTimeRepository
+        self.callDateRepository = callDateRepository
+        self.alarmRepostiory = alarmRepostiory
+        self.callTimeRepository = callTimeRepository
     }
 
     func start() {
@@ -42,7 +59,13 @@ final class MainTabCoordinator: Coordinator,
 
     func gotoSettingViewController() {
         let settingViewController = SettingViewController()
-        settingViewController.viewModel = SettingViewModel(SettingModel())
+        settingViewController.viewModel = SettingViewModel(
+            SettingModel(
+                goalTimeDataSource: goalTimeRepository,
+                callTimeDataSource: callTimeRepository,
+                alarmDataSource: alarmRepostiory
+            )
+        )
         todayNavigationController.pushViewController(settingViewController, animated: true)
     }
 
@@ -76,7 +99,13 @@ extension MainTabCoordinator {
     private func setupTodayNavigationController() {
         let todayViewController = TodayViewController()
         todayViewController.delegate = self
-        todayViewController.viewModel = TodayViewModel(TodayModel())
+        todayViewController.viewModel = TodayViewModel(
+            TodayModel(
+                callDateSource: callDateRepository,
+                goalTimeDataSource: goalTimeRepository,
+                callTimeDataSource: callTimeRepository
+            )
+        )
         todayNavigationController.viewControllers = [todayViewController]
     }
 

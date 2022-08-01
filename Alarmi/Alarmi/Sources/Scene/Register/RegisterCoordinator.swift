@@ -21,8 +21,10 @@ final class RegisterCoordinator: Coordinator,
     weak var delegate: ReigsterCoordinatorDelegate?
 
     private var navigationController: UINavigationController!
-    
-    init(navigationController: UINavigationController) {
+
+    init(
+        navigationController: UINavigationController
+    ) {
         self.navigationController = navigationController
     }
 

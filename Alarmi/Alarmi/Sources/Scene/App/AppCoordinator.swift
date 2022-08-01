@@ -13,11 +13,25 @@ class AppCoordinator: Coordinator,
                       MainTabCoordinatorDelegate {
     var childCoordinators: [Coordinator] = []
     private var navigationController: UINavigationController!
+    private var goalTimeReppository: GoalTimeRepository!
+    private var callDateRepository: CallDateRepository!
+    private var alarmRepostiory: AlarmRepository!
+    private var callTimeRepository: CallTimeRepository!
 
     lazy var isRegister: Bool = FirstUserDefaults(key: .firstUser).data ?? false
 
-    init(navigationController: UINavigationController) {
+    init(
+        navigationController: UINavigationController,
+        goalTimeRepository: GoalTimeRepository,
+        callDateRepository: CallDateRepository,
+        alarmRepostiory: AlarmRepository,
+        callTimeRepository: CallTimeRepository
+    ) {
         self.navigationController = navigationController
+        self.goalTimeReppository = goalTimeRepository
+        self.callDateRepository = callDateRepository
+        self.alarmRepostiory = alarmRepostiory
+        self.callTimeRepository = callTimeRepository
     }
     
     func start() {
@@ -29,7 +43,13 @@ class AppCoordinator: Coordinator,
     }
 
     private func showMainTabController() {
-        let coordinator = MainTabCoordinator(navigationController: navigationController)
+        let coordinator = MainTabCoordinator(
+            navigationController: navigationController,
+            goalTimeRepository: goalTimeReppository,
+            callDateRepository: callDateRepository,
+            alarmRepostiory: alarmRepostiory,
+            callTimeRepository: callTimeRepository
+        )
         coordinator.delegate = self
         coordinator.start()
         childCoordinators.append(coordinator)

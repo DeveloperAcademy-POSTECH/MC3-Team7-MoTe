@@ -12,6 +12,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var coordinator: AppCoordinator?
+//
+//    var goalTimeReppository: GoalTimeRepository
+//    var callDateRepository: CallDateRepository
+//    var alarmRepostiory: AlarmRepository
+//    var callTimeRepository: CallTimeRepository
 
     private var cancellable = Set<AnyCancellable>()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,12 +26,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
         self.window?.rootViewController = navigationController
 
-        coordinator = AppCoordinator(navigationController: navigationController)
+        coordinator = AppCoordinator(
+            navigationController: navigationController,
+            goalTimeRepository: GoalTimeRepositoryImpl(),
+            callDateRepository: CallDateRepositoryImpl(),
+            alarmRepostiory: AlarmRepositoryImpl(),
+            callTimeRepository: CallTimeRepositoryImpl()
+        )
         coordinator?.start()
 
         window?.makeKeyAndVisible()
-
         window?.overrideUserInterfaceStyle = Date().judgeKoreaState().mode
+
 
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
