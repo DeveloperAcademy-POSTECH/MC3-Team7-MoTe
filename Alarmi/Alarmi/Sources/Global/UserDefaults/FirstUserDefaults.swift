@@ -17,7 +17,7 @@ struct FirstUserDefaults: UserDefaultsManager {
         self.key = key.rawValue
     }
     var data: T? {
-        return UserDefaults.standard.getCodable(for: key)
+        return UserDefaults.standard.bool(forKey: key)
     }
 
     var isEmpty: Bool {
