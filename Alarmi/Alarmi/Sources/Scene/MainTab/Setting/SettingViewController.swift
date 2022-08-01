@@ -82,6 +82,7 @@ final class SettingViewController: UIViewController {
     
     private lazy var callTimeBoxView: CallTimeSettingBoxView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.viewModel = viewModel
         return $0
     }(CallTimeSettingBoxView())
     
@@ -179,10 +180,31 @@ final class SettingViewController: UIViewController {
             }
             .store(in: &cancelBag)
         
+        viewModel.$callStartTime
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.callTimeBoxView.callStartTime = $0
+            }
+            .store(in: &cancelBag)
+        
+        viewModel.$callEndTime
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.callTimeBoxView.callEndTime = $0
+            }
+            .store(in: &cancelBag)
+        
         viewModel.$isAlarm
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.alarmSettingBoxView.isAlarm = $0
+            }
+            .store(in: &cancelBag)
+        
+        viewModel.$isAlarmAgain
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.alarmSettingBoxView.isAlarmAgain = $0
             }
             .store(in: &cancelBag)
         
