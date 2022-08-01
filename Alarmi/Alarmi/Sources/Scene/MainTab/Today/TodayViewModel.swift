@@ -67,7 +67,7 @@ final class TodayViewModel: ObservableObject {
             .filter { _ in model.callDateList.value.isEmpty }
             .sink { [weak self] _ in
                 self?.todayDidCall = true
-                model.addTodayDate(with: !(self?.nextGoal.isPassed ?? true))
+                model.addTodayDate(with: !(self?.nextGoal.isBefore ?? true))
                 let currentGoalTime = model.goalTime.value
                 model.updateGoalTime(
                     .init(startDate: Date(), period: currentGoalTime.period)
@@ -78,7 +78,7 @@ final class TodayViewModel: ObservableObject {
             .filter { date in !Calendar.current.isDateInToday(date.date) }
             .sink { [weak self] _ in
                 self?.todayDidCall = true
-                model.addTodayDate(with: !(self?.nextGoal.isPassed ?? true))
+                model.addTodayDate(with: !(self?.nextGoal.isBefore ?? true))
                 let currentGoalTime = model.goalTime.value
                 model.updateGoalTime(
                     .init(startDate: Date(), period: currentGoalTime.period)

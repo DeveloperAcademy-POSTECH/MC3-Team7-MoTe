@@ -10,7 +10,7 @@ import Foundation
 
 struct TodayDDayDdipViewModel {
     var dday: Int = 0
-    var isPassed: Bool = false
+    var isBefore: Bool = false
     init() {}
 
     init(_ model: CallDate?) {
@@ -18,7 +18,7 @@ struct TodayDDayDdipViewModel {
               let result = Date().fullDistance(from: model.date, resultIn: .day) else { return }
 
         self.dday = abs(result)
-        self.isPassed = result >= 0 ? false : true
+        self.isBefore = result >= 0 ? false : true
     }
 
     init(_ model: GoalTime) {
@@ -27,6 +27,6 @@ struct TodayDDayDdipViewModel {
             let result = Date().fullDistance(from: nextGoal, resultIn: .day) else { return }
 
         self.dday = abs(result)
-        self.isPassed = result >= 0 ? false : true
+        self.isBefore = result >= 0 ? false : true
     }
 }

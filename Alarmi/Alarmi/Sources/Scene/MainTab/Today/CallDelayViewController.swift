@@ -9,6 +9,11 @@
 import Combine
 import UIKit
 
+protocol CallDelayViewControllerDelegate: AnyObject {
+    func presentAlert(_ viewcontroller: CallDelayViewController)
+    func dismiss(_ viewcontroller: CallDelayViewController)
+}
+
 class CallDelayViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
@@ -37,6 +42,7 @@ class CallDelayViewController: UIViewController {
 
     var viewModel: TodayViewModel!
     private var cancellable = Set<AnyCancellable>()
+    weak var delegate: CallDelayViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +61,7 @@ class CallDelayViewController: UIViewController {
     }
 
     private func attribute() {
+        datePicker.minimumDate = Date()
         view.backgroundColor = .systemGroupedBackground
         title = "연락 미루기"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소",
@@ -97,15 +104,20 @@ class CallDelayViewController: UIViewController {
 extension CallDelayViewController {
 
     @objc private func cancelButtonPressed() {
-        dismiss(animated: true)
+        self.delegate?.dismiss(self)
     }
 
     @objc private func doneButtonPressed() {
         viewModel.didTapGoalTimeChangeButton.send(datePicker.date)
-        dismiss(animated: true)
+        self.delegate?.dismiss(self)
     }
 
-    @objc private func datePickerValueChanged() {
+    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
+        let date = sender.date
+        guard let dayDistance: Int = Date().fullDistance(from: date, resultIn: .day) else { return }
 
+        if dayDistance > 98 {
+            self.delegate?.presentAlert(self)
+        }
     }
 }

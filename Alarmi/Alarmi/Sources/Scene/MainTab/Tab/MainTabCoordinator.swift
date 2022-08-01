@@ -13,7 +13,8 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 }
 
 final class MainTabCoordinator: Coordinator,
-                                TodayViewControllerDelegate {
+                                TodayViewControllerDelegate,
+                                CallDelayViewControllerDelegate {
     var childCoordinators: [Coordinator] = []
     weak var delegate: MainTabCoordinatorDelegate?
 
@@ -34,7 +35,7 @@ final class MainTabCoordinator: Coordinator,
     func start() {
         setupTodayNavigationController()
         setupRecordNavgigationController()
-        let tabBarController = MainTabBarController(todayNavigationController: todayNavigationController,
+        tabBarController = MainTabBarController(todayNavigationController: todayNavigationController,
                                                   recordNavigationController: recordNavigationController)
         navigationController.viewControllers = [tabBarController]
     }
@@ -60,6 +61,13 @@ final class MainTabCoordinator: Coordinator,
         todayNavigationController.popViewController(animated: true)
     }
 
+    func presentAlert(_ viewcontroller: CallDelayViewController) {
+        viewcontroller.present(createWarningAlertController(), animated: true)
+    }
+
+    func dismiss(_ viewcontroller: CallDelayViewController) {
+        viewcontroller.dismiss(animated: true)
+    }
 }
 
 extension MainTabCoordinator {
@@ -75,5 +83,19 @@ extension MainTabCoordinator {
         let viewModel = RecordViewModel(RecordModel())
         recordViewController.viewModel = viewModel
         recordNavigationController.viewControllers = [recordViewController]
+    }
+}
+
+extension MainTabCoordinator {
+    private func createWarningAlertController() -> UIAlertController {
+        let alertController = UIAlertController(
+            title: "경고문",
+            message: "🔥 당신은 불효자이신가요? 🔥\n당신은 자식의 자격이 없습니다.\n당장 전화드리세요.",
+            preferredStyle: .alert
+        )
+        let action = UIAlertAction(title: "알겠어용", style: .default)
+        alertController.addAction(action)
+
+        return alertController
     }
 }

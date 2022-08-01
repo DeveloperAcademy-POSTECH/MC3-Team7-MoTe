@@ -57,7 +57,7 @@ final class TodayDdayView: UIView {
     }
 
     func update(with viewModel: TodayDDayDdipViewModel) {
-        self.dDayLabel.text = "D\(viewModel.isPassed ? "+" : "-")\(viewModel.dday)"
+        self.dDayLabel.text = "D\(viewModel.isBefore ? "+" : "-")\(viewModel.dday)"
     }
 
     func updateButton(_ didCall: Bool) {
