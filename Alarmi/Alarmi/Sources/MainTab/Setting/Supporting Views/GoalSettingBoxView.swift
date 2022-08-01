@@ -16,7 +16,6 @@ final class GoalSettingBoxView: UIView {
     private lazy var goalPeriodLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
-        $0.text = String(viewModel?.goalPeriod ?? 7)
         return $0
     }(UILabel())
     
