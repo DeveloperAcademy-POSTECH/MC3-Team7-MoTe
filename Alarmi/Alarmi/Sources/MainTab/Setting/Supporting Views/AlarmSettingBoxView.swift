@@ -56,16 +56,16 @@ final class AlarmSettingBoxView: UIView {
     private lazy var alarmSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.onTintColor = .toggleOrange
-        $0.isOn = true
-        // TODO: Add Target
+        $0.isOn = viewModel?.isAlarm ?? true
+        $0.addTarget(self, action: #selector(alarmSwitchToggled), for: .valueChanged)
         return $0
     }(UISwitch())
     
     private lazy var alarmAgainSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.onTintColor = .toggleOrange
-        $0.isOn = true
-        // TODO: Add Target
+        $0.isOn = viewModel?.isAlarmAgain ?? true
+        $0.addTarget(self, action: #selector(alarmAgainSwitchToggled), for: .valueChanged)
         return $0
     }(UISwitch())
     
@@ -76,6 +76,18 @@ final class AlarmSettingBoxView: UIView {
     }(UIView())
     
     // MARK: Property
+    
+    weak var viewModel: SettingViewModel?
+    
+    var isAlarm: Bool? {
+        didSet {
+            guard let isAlarm = isAlarm else { return }
+            viewModel?.changeEditableStateOfViewWithAnimation(
+                isEditable: isAlarm,
+                views: alarmAgainSwitch
+            )
+        }
+    }
     
     // MARK: Life Cycle
     
@@ -127,6 +139,17 @@ final class AlarmSettingBoxView: UIView {
             alarmSettingVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             alarmSettingVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
+    }
+}
+
+private extension AlarmSettingBoxView {
+    
+    @objc func alarmSwitchToggled() {
+        viewModel?.alarmSwitchToggled(alarmSwitch.isOn)
+    }
+    
+    @objc func alarmAgainSwitchToggled() {
+        viewModel?.alarmAgainSwitchToggled(alarmAgainSwitch.isOn)
     }
 }
 
