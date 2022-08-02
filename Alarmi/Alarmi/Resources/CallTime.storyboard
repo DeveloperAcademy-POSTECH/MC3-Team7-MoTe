@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,44 +14,38 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterCallTimeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yZ7-ft-2hv" customClass="RegisterCallTimeViewController" customModule="Alarmi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XeI-YG-Wpf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화할 수 있는 시간대를 알려주세요." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJm-7A-cNj">
-                                <rect key="frame" x="16" y="44" width="243" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-xc-u2w">
-                                <rect key="frame" x="16" y="80.5" width="382" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-xc-u2w" userLabel="Box">
+                                <rect key="frame" x="16" y="297.33333333333331" width="396" height="91"/>
                                 <subviews>
                                     <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="kXk-Fg-wcj">
-                                        <rect key="frame" x="211" y="8" width="163" height="34.5"/>
+                                        <rect key="frame" x="211" y="6" width="163" height="31"/>
                                         <connections>
                                             <action selector="startTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="tWt-Fk-J5r"/>
                                         </connections>
                                     </datePicker>
                                     <datePicker verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AOG-F6-Kcg">
-                                        <rect key="frame" x="242" y="57.5" width="132" height="34.5"/>
+                                        <rect key="frame" x="242" y="52" width="132" height="31"/>
                                         <connections>
                                             <action selector="endTimePickerAction:" destination="yZ7-ft-2hv" eventType="valueChanged" id="ViC-a4-iad"/>
                                         </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 시간" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaO-Cw-bnp">
-                                        <rect key="frame" x="16" y="15" width="63.5" height="20.5"/>
+                                        <rect key="frame" x="16.000000000000004" y="13" width="52.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 시간" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kz-Wa-Gsv">
-                                        <rect key="frame" x="16" y="62.5" width="63.5" height="24.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="종료 시간" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kz-Wa-Gsv">
+                                        <rect key="frame" x="16.000000000000004" y="57" width="52.333333333333343" height="21"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="659-Te-BpZ">
-                                        <rect key="frame" x="16" y="48.5" width="366" height="1"/>
+                                    <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="659-Te-BpZ" userLabel="Divider">
+                                        <rect key="frame" x="16" y="43" width="380" height="1"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <color key="tintColor" systemColor="systemGrayColor"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
@@ -62,16 +56,16 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="12.9" id="42q-zf-g3T"/>
-                                    <constraint firstItem="kXk-Fg-wcj" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="top" constant="8" id="4Sc-DV-6Wz"/>
+                                    <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="13" id="42q-zf-g3T"/>
                                     <constraint firstAttribute="trailing" secondItem="kXk-Fg-wcj" secondAttribute="trailing" constant="8" id="56a-EX-b2V"/>
                                     <constraint firstAttribute="trailing" secondItem="AOG-F6-Kcg" secondAttribute="trailing" constant="8" id="61D-xK-7Xl"/>
                                     <constraint firstItem="PaO-Cw-bnp" firstAttribute="centerY" secondItem="kXk-Fg-wcj" secondAttribute="centerY" id="9nN-Vo-xjx"/>
                                     <constraint firstAttribute="trailing" secondItem="659-Te-BpZ" secondAttribute="trailing" id="IOX-dx-aMX"/>
+                                    <constraint firstAttribute="bottom" secondItem="2Kz-Wa-Gsv" secondAttribute="bottom" constant="13" id="IZD-5Y-rRm"/>
                                     <constraint firstItem="PaO-Cw-bnp" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="KN2-Qj-d0M"/>
                                     <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="LMc-ho-oCJ"/>
                                     <constraint firstItem="659-Te-BpZ" firstAttribute="leading" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="Lcn-vm-meC"/>
-                                    <constraint firstAttribute="bottom" secondItem="AOG-F6-Kcg" secondAttribute="bottom" constant="8" id="Mg9-eZ-N6H"/>
+                                    <constraint firstItem="PaO-Cw-bnp" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="top" constant="13" id="OSr-Vh-obg"/>
                                     <constraint firstItem="AOG-F6-Kcg" firstAttribute="top" secondItem="659-Te-BpZ" secondAttribute="bottom" constant="8" id="VQP-V1-zNf"/>
                                     <constraint firstItem="659-Te-BpZ" firstAttribute="top" secondItem="kXk-Fg-wcj" secondAttribute="bottom" constant="6" id="aqg-fx-8nR"/>
                                     <constraint firstItem="2Kz-Wa-Gsv" firstAttribute="centerY" secondItem="AOG-F6-Kcg" secondAttribute="centerY" id="hqj-6P-UMc"/>
@@ -86,44 +80,103 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-74-lwU">
-                                <rect key="frame" x="117" y="188.5" width="273" height="14.5"/>
-                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csS-Cm-x5k" userLabel="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요.">
+                                <rect key="frame" x="77.666666666666686" y="235" width="273" height="30.333333333333314"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSg-eh-VXB" userLabel="Phone">
+                                <rect key="frame" x="175" y="76" width="78" height="143"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJF-U8-nI5">
+                                        <rect key="frame" x="25" y="16" width="28.333333333333329" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPa-Hv-Pb0" userLabel="HomeIndicator">
+                                        <rect key="frame" x="23.666666666666657" y="137" width="31" height="2"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="31" id="WMn-iQ-ZSr"/>
+                                            <constraint firstAttribute="height" constant="2" id="jcx-p2-fGZ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXe-6E-v36" userLabel="Push">
+                                        <rect key="frame" x="7" y="41" width="64" height="17"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="Ja0-je-vB9"/>
+                                            <constraint firstAttribute="height" constant="17" id="f6I-bb-LDb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="ToggleOrange"/>
+                                <constraints>
+                                    <constraint firstItem="XXe-6E-v36" firstAttribute="centerX" secondItem="pSg-eh-VXB" secondAttribute="centerX" id="DzG-O6-pF4"/>
+                                    <constraint firstItem="yPa-Hv-Pb0" firstAttribute="centerX" secondItem="pSg-eh-VXB" secondAttribute="centerX" id="Jmm-uD-ldv"/>
+                                    <constraint firstAttribute="height" constant="143" id="Qh6-8V-9TH"/>
+                                    <constraint firstItem="XXe-6E-v36" firstAttribute="top" secondItem="pSg-eh-VXB" secondAttribute="top" constant="41" id="WzO-Qd-FOH"/>
+                                    <constraint firstAttribute="width" constant="78" id="bsO-ov-j2D"/>
+                                    <constraint firstItem="xJF-U8-nI5" firstAttribute="centerX" secondItem="pSg-eh-VXB" secondAttribute="centerX" id="lhX-pn-g63"/>
+                                    <constraint firstItem="xJF-U8-nI5" firstAttribute="top" secondItem="pSg-eh-VXB" secondAttribute="top" constant="16" id="wfA-DP-ZFA"/>
+                                    <constraint firstAttribute="bottom" secondItem="yPa-Hv-Pb0" secondAttribute="bottom" constant="4" id="z9k-iX-O3y"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QWX-nT-ug7"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jJm-7A-cNj" secondAttribute="trailing" constant="16" id="3Un-qd-NG2"/>
-                            <constraint firstItem="jJm-7A-cNj" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="16" id="4Do-0U-tnD"/>
-                            <constraint firstItem="jJm-7A-cNj" firstAttribute="top" secondItem="QWX-nT-ug7" secondAttribute="top" id="55c-fx-Zpr"/>
-                            <constraint firstItem="ZPr-74-lwU" firstAttribute="top" secondItem="wTm-xc-u2w" secondAttribute="bottom" constant="8" id="CYd-Dl-Ozm"/>
-                            <constraint firstItem="wTm-xc-u2w" firstAttribute="top" secondItem="jJm-7A-cNj" secondAttribute="bottom" constant="16" id="EIE-LJ-hCH"/>
-                            <constraint firstItem="ZPr-74-lwU" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="-8" id="MMH-Fg-ttR"/>
-                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="16" id="NLw-fT-zyl"/>
+                            <constraint firstItem="pSg-eh-VXB" firstAttribute="centerX" secondItem="QWX-nT-ug7" secondAttribute="centerX" id="DIm-fR-Z98"/>
+                            <constraint firstItem="csS-Cm-x5k" firstAttribute="centerX" secondItem="QWX-nT-ug7" secondAttribute="centerX" id="KAo-WL-dKI"/>
                             <constraint firstItem="wTm-xc-u2w" firstAttribute="leading" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="16" id="dCY-nE-nSS"/>
-                            <constraint firstItem="ZPr-74-lwU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wTm-xc-u2w" secondAttribute="leading" constant="16" id="gOH-ct-dW2"/>
+                            <constraint firstItem="wTm-xc-u2w" firstAttribute="top" secondItem="csS-Cm-x5k" secondAttribute="bottom" constant="32" id="hkr-IC-Pbc"/>
+                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="csS-Cm-x5k" secondAttribute="trailing" constant="16" id="iqP-Xn-xtm"/>
+                            <constraint firstItem="csS-Cm-x5k" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QWX-nT-ug7" secondAttribute="leading" constant="16" id="jmJ-IB-1Ls"/>
+                            <constraint firstItem="QWX-nT-ug7" firstAttribute="trailing" secondItem="wTm-xc-u2w" secondAttribute="trailing" constant="16" id="qH0-d6-RwT"/>
+                            <constraint firstItem="csS-Cm-x5k" firstAttribute="top" secondItem="pSg-eh-VXB" secondAttribute="bottom" constant="16" id="r8m-uq-zFb"/>
+                            <constraint firstItem="pSg-eh-VXB" firstAttribute="top" secondItem="QWX-nT-ug7" secondAttribute="top" constant="32" id="uGG-zr-4CH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8tf-xe-LTG"/>
                     <connections>
                         <outlet property="endTimePicker" destination="AOG-F6-Kcg" id="JZR-Kh-YKF"/>
                         <outlet property="startTimePicker" destination="kXk-Fg-wcj" id="dET-uq-4MO"/>
+                        <outlet property="startTimeViewLabel" destination="xJF-U8-nI5" id="qTE-7s-fvl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxZ-Tx-9MD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1346.376811594203" y="97.767857142857139"/>
+            <point key="canvasLocation" x="1345.7943925233644" y="97.192224622030238"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="ToggleOrange">
+            <color red="0.95294117647058818" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">

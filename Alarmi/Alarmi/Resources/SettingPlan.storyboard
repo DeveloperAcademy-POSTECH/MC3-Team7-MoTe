@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,14 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부모님께 며칠에 한 번 전화할 건가요?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZO-ex-iOy">
-                                <rect key="frame" x="16" y="140" width="382" height="17"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI4-03-WPT">
-                                <rect key="frame" x="16" y="173" width="382" height="64"/>
+                                <rect key="frame" x="16" y="393.5" width="382" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="일에 한 번" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbM-OW-z4l">
                                         <rect key="frame" x="42" y="23.5" width="56.5" height="17"/>
@@ -63,7 +58,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWN-FC-Xy9">
-                                <rect key="frame" x="16" y="253" width="382" height="82"/>
+                                <rect key="frame" x="16" y="473.5" width="382" height="82"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="STa-iL-Iqz">
                                         <rect key="frame" x="16" y="16" width="350" height="50"/>
@@ -93,27 +88,76 @@
                                     <constraint firstItem="STa-iL-Iqz" firstAttribute="top" secondItem="vWN-FC-Xy9" secondAttribute="top" constant="16" id="tIS-eO-16h"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 설정하면 시작일부터 목표일마다 알림을 보내드려요." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XV-Bb-8CV">
-                                <rect key="frame" x="102" y="343" width="280" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표를 설정하여 주기적으로 연락해보세요. 알림을 설정하면 시작일부터 목표일마다 알림을 보내드려요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkE-EI-gjX" userLabel="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요.">
+                                <rect key="frame" x="67" y="331" width="280" height="30.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-Pi-YUO" userLabel="Phone">
+                                <rect key="frame" x="168" y="172" width="78" height="143"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ln3-6E-Paj" userLabel="HomeIndicator">
+                                        <rect key="frame" x="23.5" y="137" width="31" height="2"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="31" id="7RB-Q2-U5P"/>
+                                            <constraint firstAttribute="height" constant="2" id="kC3-8j-oEF"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TcV-Jz-9N8" userLabel="Push">
+                                        <rect key="frame" x="7" y="41" width="64" height="17"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="BWe-4M-PBd"/>
+                                            <constraint firstAttribute="width" constant="64" id="xm3-bN-fXu"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="ToggleOrange"/>
+                                <constraints>
+                                    <constraint firstItem="TcV-Jz-9N8" firstAttribute="top" secondItem="7fe-Pi-YUO" secondAttribute="top" constant="41" id="595-mZ-Bjh"/>
+                                    <constraint firstItem="ln3-6E-Paj" firstAttribute="centerX" secondItem="7fe-Pi-YUO" secondAttribute="centerX" id="6aZ-kB-CQ4"/>
+                                    <constraint firstItem="TcV-Jz-9N8" firstAttribute="centerX" secondItem="7fe-Pi-YUO" secondAttribute="centerX" id="RzI-On-fGU"/>
+                                    <constraint firstAttribute="width" constant="78" id="UIU-7l-kOg"/>
+                                    <constraint firstAttribute="bottom" secondItem="ln3-6E-Paj" secondAttribute="bottom" constant="4" id="XGR-fo-vKY"/>
+                                    <constraint firstAttribute="height" constant="143" id="tyB-RL-1oq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hI4-03-WPT" firstAttribute="top" secondItem="LZO-ex-iOy" secondAttribute="bottom" constant="16" id="93E-A9-cNd"/>
-                            <constraint firstItem="LZO-ex-iOy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AKz-uA-qq2"/>
+                            <constraint firstItem="7fe-Pi-YUO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="C6M-h7-Jla"/>
+                            <constraint firstItem="hI4-03-WPT" firstAttribute="top" secondItem="YkE-EI-gjX" secondAttribute="bottom" constant="32" id="G4G-bB-eKx"/>
+                            <constraint firstItem="YkE-EI-gjX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Gj2-2x-At7"/>
                             <constraint firstItem="vWN-FC-Xy9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Lqc-HZ-rqn"/>
                             <constraint firstItem="hI4-03-WPT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="QHp-E2-WSs"/>
-                            <constraint firstItem="5XV-Bb-8CV" firstAttribute="trailing" secondItem="vWN-FC-Xy9" secondAttribute="trailing" constant="-16" id="Udx-Rm-4yL"/>
-                            <constraint firstItem="LZO-ex-iOy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Y9l-cS-ALc"/>
+                            <constraint firstItem="YkE-EI-gjX" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="RwH-s4-8Or"/>
+                            <constraint firstItem="YkE-EI-gjX" firstAttribute="top" secondItem="7fe-Pi-YUO" secondAttribute="bottom" constant="16" id="UiK-FE-ELO"/>
+                            <constraint firstItem="7fe-Pi-YUO" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="W4d-lc-rjO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hI4-03-WPT" secondAttribute="trailing" constant="16" id="ZgU-wR-R5J"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YkE-EI-gjX" secondAttribute="trailing" constant="16" id="aBH-2z-Iwd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vWN-FC-Xy9" secondAttribute="trailing" constant="16" id="dMR-Ha-URk"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LZO-ex-iOy" secondAttribute="trailing" constant="16" id="gso-Lu-50e"/>
                             <constraint firstItem="vWN-FC-Xy9" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="bottom" constant="16" id="m0V-8Q-RZW"/>
-                            <constraint firstItem="5XV-Bb-8CV" firstAttribute="top" secondItem="vWN-FC-Xy9" secondAttribute="bottom" constant="8" id="sLc-M7-wuq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="목표" largeTitleDisplayMode="always" id="nre-KA-2FK"/>
@@ -153,6 +197,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="ToggleOrange">
+            <color red="0.95294117647058818" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
