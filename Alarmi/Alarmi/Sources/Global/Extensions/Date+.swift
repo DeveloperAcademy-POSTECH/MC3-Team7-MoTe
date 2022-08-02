@@ -111,21 +111,15 @@ extension Date {
             koreanAwakingTimeCurrentDate.timeIntervalSinceNow >= 0 {
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                print("dark , canCall")
                 return .canCall
             } else {
-                print("sleeping")
                 return .sleeping
             }
         } else {
-            print(callStartTimeDate)
-            print(callEndTimeDate)
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                print("light, canCall")
                 return .canCall
             } else {
-                print("working")
                 return .working
             }
         }
