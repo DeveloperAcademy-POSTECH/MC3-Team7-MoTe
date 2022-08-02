@@ -80,7 +80,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csS-Cm-x5k">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csS-Cm-x5k" userLabel="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요.">
                                 <rect key="frame" x="77.666666666666686" y="235" width="273" height="30.333333333333314"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <nil key="textColor"/>
