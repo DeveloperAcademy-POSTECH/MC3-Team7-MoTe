@@ -31,8 +31,6 @@ class RegisterCallTimeViewController: UIViewController {
         return $0
     }(AMButton())
 
-    let startTimeFormatter = DateFormatter()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
