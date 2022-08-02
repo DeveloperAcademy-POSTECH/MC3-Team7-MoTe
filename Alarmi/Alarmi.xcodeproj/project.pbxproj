@@ -245,7 +245,7 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		3861D15E28963A260001C187 /* SupportingViews */ = {
+		3861D15E28963A260001C187 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
 				3861D15B2892EA170001C187 /* TodayDdayView.swift */,
@@ -371,10 +371,10 @@
 			isa = PBXGroup;
 			children = (
 				EF3630F328866304007779C0 /* RegisterCoordinator.swift */,
-				EF7785DB28864CC700E60AD2 /* RegisterCallTimeViewController.swift */,
-				EF13EFE52893685A00BC8D49 /* RegisterCallTimeViewModel.swift */,
 				1537834B288480DE00E173D1 /* RegisterPlanViewController.swift */,
 				EF13EFE728936D4500BC8D49 /* RegisterPlanViewModel.swift */,
+				EF7785DB28864CC700E60AD2 /* RegisterCallTimeViewController.swift */,
+				EF13EFE52893685A00BC8D49 /* RegisterCallTimeViewModel.swift */,
 				507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */,
 			);
 			path = Register;
@@ -750,7 +750,6 @@
 				EF79622A2891042C009A176E /* RecordViewController.swift in Sources */,
 				EFE21A96289740F9009D8C65 /* CallTimeRepository.swift in Sources */,
 				EF24DDDE2897C4B900F76673 /* RecordGoalCircleView.swift in Sources */,
-				EF0C23D4288E234100FF5A86 /* Alarm.swift in Sources */,
 				15AD742628968E6700CE21E1 /* CreateCoreData.swift in Sources */,
 				15AD742C28968F4D00CE21E1 /* DeleteCoreData.swift in Sources */,
 				EFFD73F1287BC77D00D9F267 /* SceneDelegate.swift in Sources */,

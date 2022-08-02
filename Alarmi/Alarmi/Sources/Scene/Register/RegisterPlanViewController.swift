@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 protocol RegisterPlanViewControllerDelegate: AnyObject {
-    func gotoRegisterCompleteViewController()
+    func gotoRegisterCallTimeViewController()
 }
 
 final class RegisterPlanViewController: UIViewController {
@@ -57,6 +57,8 @@ final class RegisterPlanViewController: UIViewController {
         }
         startDatePicker.minimumDate = Date()
         settingDayStepper.value = Double(viewModel.callTimePeriod)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "목표"
     }
 
     private func layout() {
@@ -81,7 +83,7 @@ final class RegisterPlanViewController: UIViewController {
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
-        delegate?.gotoRegisterCompleteViewController()
+        delegate?.gotoRegisterCallTimeViewController()
         viewModel.buttonDidTap()
     }
 }

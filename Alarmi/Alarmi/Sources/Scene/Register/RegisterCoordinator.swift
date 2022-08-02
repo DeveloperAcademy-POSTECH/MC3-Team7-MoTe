@@ -29,17 +29,17 @@ final class RegisterCoordinator: Coordinator,
     }
 
     func start() {
-        let storyboard = UIStoryboard(name: "CallTime", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterCallTimeViewController") as? RegisterCallTimeViewController else {
+        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
             return
         }
         viewController.delegate = self
-        self.navigationController.viewControllers = [viewController]
+        navigationController.viewControllers = [viewController]
     }
-
-    func gotoRegisterPlanViewController() {
-        let storyboard = UIStoryboard(name: "SettingPlan", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterPlanViewController") as? RegisterPlanViewController else {
+    
+    func gotoRegisterCallTimeViewController() {
+        let storyboard = UIStoryboard(name: "CallTime", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "RegisterCallTimeViewController") as? RegisterCallTimeViewController else {
             return
         }
         viewController.delegate = self
@@ -49,7 +49,7 @@ final class RegisterCoordinator: Coordinator,
     func gotoRegisterCompleteViewController() {
         let viewController = RegisterCompleteViewController()
         viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func finishRegister() {

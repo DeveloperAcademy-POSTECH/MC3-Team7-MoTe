@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 protocol RegisterCallTimeViewControllerDelegate: AnyObject {
-    func gotoRegisterPlanViewController()
+    func gotoRegisterCompleteViewController()
 }
 
 class RegisterCallTimeViewController: UIViewController {
@@ -49,7 +49,7 @@ class RegisterCallTimeViewController: UIViewController {
     }
     private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.title = "전화 시간"
+        title = "전화 시간"
     }
     
     private func layout() {
@@ -75,7 +75,7 @@ class RegisterCallTimeViewController: UIViewController {
 extension RegisterCallTimeViewController {
 
     @objc private func buttonDidTap() {
-        delegate?.gotoRegisterPlanViewController()
+        delegate?.gotoRegisterCompleteViewController()
         viewModel.storeCallTime()
     }
 }
