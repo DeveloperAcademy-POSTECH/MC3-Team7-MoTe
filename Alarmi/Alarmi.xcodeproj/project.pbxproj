@@ -231,7 +231,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3861D15E28963A260001C187 /* Supporting Views */ = {
 		15AD742428968E5C00CE21E1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
