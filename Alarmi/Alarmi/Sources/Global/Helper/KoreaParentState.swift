@@ -28,7 +28,7 @@ enum KoreaParentState {
         var imageName: String
         var description: String
 
-        static let sleeping = TodayDdipModel(imageName: "sleeping", description: "전화 가능 시간이 아니에요.")
+        static let sleeping = TodayDdipModel(imageName: "sleeping", description: "자고 있을 시간이에요.")
         static let working = TodayDdipModel(imageName: "working", description: "전화 가능 시간이 아니에요.")
         static let canCall = TodayDdipModel(imageName: "waiting", description: "전화 가능 시간이에요.")
     }
