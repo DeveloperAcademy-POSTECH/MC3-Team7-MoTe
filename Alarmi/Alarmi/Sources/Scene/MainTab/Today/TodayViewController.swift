@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 protocol TodayViewControllerDelegate: AnyObject {
-    func gotoSettingViewController()
+    func gotoSettingViewControllerFromTodayView()
     func presentCallDelayViewController()
 }
 
@@ -188,10 +188,12 @@ final class TodayViewController: UIViewController {
         let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem = barButton
         navigationItem.largeTitleDisplayMode = .never
+        title = "오늘"
+        navigationItem.titleView = UIView()
     }
 
     @objc private func settingButtonTapped() {
-        delegate?.gotoSettingViewController()
+        delegate?.gotoSettingViewControllerFromTodayView()
     }
 }
 

@@ -14,6 +14,7 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 
 final class MainTabCoordinator: Coordinator,
                                 TodayViewControllerDelegate,
+                                RecordViewControllerDelegate,
                                 CallDelayViewControllerDelegate {
     var childCoordinators: [Coordinator] = []
     weak var delegate: MainTabCoordinatorDelegate?
@@ -57,7 +58,7 @@ final class MainTabCoordinator: Coordinator,
         navigationController.viewControllers = [tabBarController]
     }
 
-    func gotoSettingViewController() {
+    func gotoSettingViewControllerFromTodayView() {
         let settingViewController = SettingViewController()
         settingViewController.viewModel = SettingViewModel(
             SettingModel(
@@ -67,6 +68,18 @@ final class MainTabCoordinator: Coordinator,
             )
         )
         todayNavigationController.pushViewController(settingViewController, animated: true)
+    }
+    
+    func gotoSettingViewControllerFromRecordView() {
+        let settingViewController = SettingViewController()
+        settingViewController.viewModel = SettingViewModel(
+            SettingModel(
+                goalTimeDataSource: goalTimeRepository,
+                callTimeDataSource: callTimeRepository,
+                alarmDataSource: alarmRepostiory
+            )
+        )
+        recordNavigationController.pushViewController(settingViewController, animated: true)
     }
 
     func presentCallDelayViewController() {
@@ -111,6 +124,7 @@ extension MainTabCoordinator {
 
     private func setupRecordNavgigationController() {
         let recordViewController = RecordViewController()
+        recordViewController.delegate = self
         let viewModel = RecordViewModel(
             RecordModel(
                 callDateDataSource: callDateRepository
