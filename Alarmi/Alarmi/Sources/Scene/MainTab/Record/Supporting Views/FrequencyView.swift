@@ -47,9 +47,9 @@ struct FrequencyView: View {
                             ForEach(weekend, id: \.self) { date in
                                 switch date.type {
                                 case .none:
-                                    Color(UIColor.systemGray5)
+                                    Color(UIColor.systemGray4)
                                 case .future:
-                                    Color(UIColor.systemGray6)
+                                    Color(UIColor.systemGray4).opacity(0.4)
                                 case .did:
                                     Color(UIColor.tintColor)
                                 }
