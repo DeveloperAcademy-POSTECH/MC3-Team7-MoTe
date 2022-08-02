@@ -34,7 +34,7 @@ struct TodayDDayDdipViewModel {
         print(nextGoal)
         print(result)
         self.dday = abs(result)
-        self.isBefore = result >= 0 ? false : true
+        self.isBefore = result >= 0 ? true : false
     }
 }
 
@@ -44,6 +44,7 @@ final class TodayDdayView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(for: .body, weight: .semibold)
         $0.textAlignment = .center
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -53,6 +54,7 @@ final class TodayDdayView: UIView {
         $0.textColor = .systemIndigo
         $0.textAlignment = .center
         $0.text = "D+0"
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -61,6 +63,7 @@ final class TodayDdayView: UIView {
         $0.configuration?.baseBackgroundColor = .systemIndigo
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 11, leading: 16, bottom: 11, trailing: 16)
         $0.configuration?.cornerStyle = .medium
+        $0.configuration?.baseBackgroundColor = .tintColor
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(UIButton(configuration: .filled()))
@@ -86,13 +89,18 @@ final class TodayDdayView: UIView {
         if type != .lastCall {
             type = viewModel.isBefore ? .delay : .nextGoal
             self.titleLabel.text = type.title
+            
+            if type == .delay {
+                self.dDayLabel.textColor = viewModel.isBefore ? .goalDateRed : .tintColor
+            }
         }
-
-        self.dDayLabel.text = "D\(viewModel.isBefore ? "-" : "+")\(viewModel.dday)"
+        
+        self.dDayLabel.textColor = viewModel.isBefore ? .goalDateRed : .tintColor
+        self.dDayLabel.text = "D\(viewModel.isBefore ? "+" : "-")\(viewModel.dday)"
     }
 
     func updateButton(_ didCall: Bool) {
-        button.configuration?.baseBackgroundColor = didCall ? .systemGray : .systemIndigo
+        button.configuration?.baseBackgroundColor = didCall ? .systemGray : .tintColor
         button.isUserInteractionEnabled = !didCall
     }
 
