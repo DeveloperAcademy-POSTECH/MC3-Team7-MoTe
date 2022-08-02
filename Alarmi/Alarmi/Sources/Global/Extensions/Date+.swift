@@ -70,15 +70,15 @@ extension Date {
     private var awakingTimeHour: Int { 7 }
 
     private var koreanSleepingTimeCurrentDate: Date {
-        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(0))!
-        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
-        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(sleepingTimeHour))!
+        let currentDateString = Formatter.YYYYMMddHHmmCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddHHmmCurrentDateFormatter.date(from: currentDateString)!
     }
 
     private var koreanAwakingTimeCurrentDate: Date {
-        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(7))!
-        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
-        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(awakingTimeHour))!
+        let currentDateString = Formatter.YYYYMMddHHmmCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddHHmmCurrentDateFormatter.date(from: currentDateString)!
     }
 
     private var callStartTimeDate: Date {
@@ -111,14 +111,14 @@ extension Date {
             koreanAwakingTimeCurrentDate.timeIntervalSinceNow >= 0 {
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                return .canCall
+                return .canCallDark
             } else {
                 return .sleeping
             }
         } else {
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                return .canCall
+                return .canCallLight
             } else {
                 return .working
             }

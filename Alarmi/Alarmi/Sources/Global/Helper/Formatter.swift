@@ -38,10 +38,10 @@ final class Formatter {
         return v
     }()
 
-    static let YYYYMMddCurrentDateFormatter: DateFormatter = {
+    static let YYYYMMddHHmmCurrentDateFormatter: DateFormatter = {
         let v = DateFormatter()
         v.timeZone = .autoupdatingCurrent
-        v.dateFormat = "YYYY-MM-dd"
+        v.dateFormat = "YYYY-MM-dd HH:mm"
         return v
     }()
 
