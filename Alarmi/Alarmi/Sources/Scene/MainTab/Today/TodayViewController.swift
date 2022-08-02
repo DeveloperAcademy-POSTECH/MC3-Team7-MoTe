@@ -62,6 +62,7 @@ final class TodayViewController: UIViewController {
         $0.axis = .horizontal
         $0.distribution = .equalSpacing
         $0.alignment = .center
+        $0.spacing = 32
         return $0
     }(UIStackView())
 
@@ -159,29 +160,24 @@ final class TodayViewController: UIViewController {
         dDayStackView.addArrangedSubviews(lastCallDDayView, nextGoalDDayView)
 
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 21),
+            descriptionLabel.topAnchor.constraint(equalTo: koreaTimeLabel.topAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: koreaTimeLabel.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: koreaTimeLabel.trailingAnchor),
 
             koreaTimeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            koreaTimeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
+            koreaTimeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
 
-            statusDescriptionLabel.topAnchor.constraint(equalTo: koreaTimeLabel.bottomAnchor),
+            statusDescriptionLabel.bottomAnchor.constraint(equalTo: koreaTimeLabel.bottomAnchor),
             statusDescriptionLabel.leadingAnchor.constraint(equalTo: koreaTimeLabel.leadingAnchor),
             statusDescriptionLabel.trailingAnchor.constraint(equalTo: koreaTimeLabel.trailingAnchor),
 
-            pandaImageBoardView.topAnchor.constraint(equalTo: statusDescriptionLabel.bottomAnchor),
-            pandaImageBoardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pandaImageBoardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pandaImageBoardView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pandaImageBoardView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             pandaImageView.centerXAnchor.constraint(equalTo: pandaImageBoardView.centerXAnchor),
             pandaImageView.centerYAnchor.constraint(equalTo: pandaImageBoardView.centerYAnchor),
-            pandaImageView.leadingAnchor.constraint(equalTo: pandaImageBoardView.leadingAnchor, constant: 80),
-            pandaImageView.trailingAnchor.constraint(equalTo: pandaImageBoardView.trailingAnchor, constant: -80),
+            pandaImageView.widthAnchor.constraint(equalToConstant: 200),
 
-            dDayStackView.topAnchor.constraint(equalTo: pandaImageBoardView.bottomAnchor),
-            dDayStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
-            dDayStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42),
             dDayStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
             dDayStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
