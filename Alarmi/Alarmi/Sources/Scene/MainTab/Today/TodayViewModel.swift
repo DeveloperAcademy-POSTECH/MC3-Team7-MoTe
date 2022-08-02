@@ -15,7 +15,7 @@ final class TodayViewModel: ObservableObject {
     var didCallButtonTapped = PassthroughSubject<Void, Never>()
     var didTapGoalTimeChangeButton = PassthroughSubject<Date, Never>()
 
-    @Published var todayKoreaState: KoreaParentState = .canCall
+    @Published var todayKoreaState: KoreaParentState = .canCallLight
     @Published var lastCall: TodayDDayDdipViewModel = .init()
     @Published var nextGoal: TodayDDayDdipViewModel = .init()
     @Published var todayDidCall: Bool = false

@@ -11,7 +11,8 @@ import UIKit
 enum KoreaParentState {
     case sleeping
     case working
-    case canCall
+    case canCallLight
+    case canCallDark
 
     var mode: UIUserInterfaceStyle {
         switch self {
@@ -19,8 +20,10 @@ enum KoreaParentState {
             return .dark
         case .working:
             return .light
-        case .canCall:
-            return .unspecified
+        case .canCallLight:
+            return .light
+        case .canCallDark:
+            return .dark
         }
     }
 
@@ -39,7 +42,9 @@ enum KoreaParentState {
             return .sleeping
         case .working:
             return .working
-        case .canCall:
+        case .canCallLight:
+            return .canCall
+        case .canCallDark:
             return .canCall
         }
     }

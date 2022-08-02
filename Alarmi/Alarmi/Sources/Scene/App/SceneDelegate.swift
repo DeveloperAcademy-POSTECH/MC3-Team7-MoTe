@@ -43,7 +43,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             TimerManager.shared.timer
                 .autoconnect()
                 .map { $0.judgeKoreaState() }
-                .filter { $0 != .canCall }
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] in
                     self?.window?.overrideUserInterfaceStyle = $0.mode

@@ -67,7 +67,7 @@ extension Date {
 extension Date {
 
     private var sleepingTimeHour: Int { 0 }
-    private var awakingTimeHour: Int { 8 }
+    private var awakingTimeHour: Int { 7 }
 
     private var koreanSleepingTimeCurrentDate: Date {
         let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(sleepingTimeHour))!
@@ -111,14 +111,14 @@ extension Date {
             koreanAwakingTimeCurrentDate.timeIntervalSinceNow >= 0 {
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                return .canCall
+                return .canCallDark
             } else {
                 return .sleeping
             }
         } else {
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                return .canCall
+                return .canCallLight
             } else {
                 return .working
             }
