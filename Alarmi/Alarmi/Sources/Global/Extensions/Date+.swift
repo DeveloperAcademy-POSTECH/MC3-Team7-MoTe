@@ -67,18 +67,18 @@ extension Date {
 extension Date {
 
     private var sleepingTimeHour: Int { 0 }
-    private var awakingTimeHour: Int { 7 }
+    private var awakingTimeHour: Int { 8 }
 
     private var koreanSleepingTimeCurrentDate: Date {
-        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(0))!
-        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
-        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(sleepingTimeHour))!
+        let currentDateString = Formatter.YYYYMMddHHmmCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddHHmmCurrentDateFormatter.date(from: currentDateString)!
     }
 
     private var koreanAwakingTimeCurrentDate: Date {
-        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(7))!
-        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
-        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(awakingTimeHour))!
+        let currentDateString = Formatter.YYYYMMddHHmmCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddHHmmCurrentDateFormatter.date(from: currentDateString)!
     }
 
     private var callStartTimeDate: Date {
@@ -111,21 +111,15 @@ extension Date {
             koreanAwakingTimeCurrentDate.timeIntervalSinceNow >= 0 {
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                print("dark , canCall")
                 return .canCall
             } else {
-                print("sleeping")
                 return .sleeping
             }
         } else {
-            print(callStartTimeDate)
-            print(callEndTimeDate)
             if callStartTimeDate.timeIntervalSinceNow <= 0 &&
                 callEndTimeDate.timeIntervalSinceNow >= 0 {
-                print("light, canCall")
                 return .canCall
             } else {
-                print("working")
                 return .working
             }
         }
