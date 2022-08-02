@@ -31,8 +31,6 @@ struct TodayDDayDdipViewModel {
             return
         }
         let result = Date().distance(from: nextGoal, only: .day)
-        print(nextGoal)
-        print(result)
         self.dday = abs(result)
         self.isBefore = result >= 0 ? false : true
     }

@@ -37,28 +37,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = Date().judgeKoreaState().mode
-
+        
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             TimerManager.shared.timer
                 .autoconnect()
-                .filter { $0.judgeKoreaState() != .canCall }
-                .map { $0.judgeKoreaState().mode }
+                .map { $0.judgeKoreaState() }
+                .filter { $0 != .canCall }
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] in
-                    self?.window?.overrideUserInterfaceStyle = $0
+                    self?.window?.overrideUserInterfaceStyle = $0.mode
                 }.store(in: &self.cancellable)
             RunLoop.current.run()
         }
 
         // MARK: 테스트용
-        CallDateUserefaults(key: .callDate).removeAll()
-        CallTimeUserDefaults(key: .callTime).removeAll()
-        GoalTimeUserDefaults(key: .goalTime).removeAll()
-
-        CallTimeUserDefaults(key: .callTime).save(.init(start: Date(), end: Date().addingTimeInterval(600)))
-        GoalTimeUserDefaults(key: .goalTime).save(.init(startDate: Date(), period: 7))
-        AlarmUserefaults(key: .alarm).save(.init(isAlarm: true, isAlarmAgain: true))
+//        CallDateUserefaults(key: .callDate).removeAll()
+//        CallTimeUserDefaults(key: .callTime).removeAll()
+//        GoalTimeUserDefaults(key: .goalTime).removeAll()
+//
+//        CallTimeUserDefaults(key: .callTime).save(.init(start: Date(), end: Date().addingTimeInterval(600)))
+//        GoalTimeUserDefaults(key: .goalTime).save(.init(startDate: Date(), period: 7))
+//        AlarmUserefaults(key: .alarm).save(.init(isAlarm: true, isAlarmAgain: true))
 //        CallDateUserefaults(key: .callDate).save([
 //            CallDate(date: Date().before(day: 60), isGoalSuccess: true),
 //            CallDate(date: Date().before(day: 39), isGoalSuccess: true),
