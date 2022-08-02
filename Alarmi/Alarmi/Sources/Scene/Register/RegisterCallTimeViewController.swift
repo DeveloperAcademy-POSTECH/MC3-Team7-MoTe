@@ -26,7 +26,7 @@ class RegisterCallTimeViewController: UIViewController {
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.title = "다음"
+        $0.title = "완료"
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
