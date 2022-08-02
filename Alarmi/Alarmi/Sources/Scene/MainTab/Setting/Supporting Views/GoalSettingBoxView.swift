@@ -23,7 +23,7 @@ final class GoalSettingBoxView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
         $0.textColor = .secondaryLabel
-        $0.text = "일에 한 번"
+        $0.text = "Call onece every days."
         return $0
     }(UILabel())
     

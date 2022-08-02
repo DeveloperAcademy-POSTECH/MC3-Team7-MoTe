@@ -42,14 +42,14 @@ final class AlarmSettingBoxView: UIView {
     private let alarmRowLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
-        $0.text = "알림"
+        $0.text = "Push Notification"
         return $0
     }(UILabel())
     
     private let alarmAgainRowLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
-        $0.text = "다시 알림"
+        $0.text = "Repeat"
         return $0
     }(UILabel())
     

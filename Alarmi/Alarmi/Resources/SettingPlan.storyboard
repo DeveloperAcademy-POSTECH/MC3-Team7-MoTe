@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--목표-->
+        <!--Goal-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="RegisterPlanViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="RegisterPlanViewController" customModule="Alarmi" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,19 +20,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI4-03-WPT">
                                 <rect key="frame" x="16" y="393.5" width="382" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="일에 한 번" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbM-OW-z4l">
-                                        <rect key="frame" x="42" y="23.5" width="56.5" height="17"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-0S-ywc">
                                         <rect key="frame" x="16" y="16" width="350" height="32"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Call once every" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbM-OW-z4l">
+                                                <rect key="frame" x="0.0" y="7.5" width="120" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="cua-sh-nWH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-24-XeL">
-                                                <rect key="frame" x="0.0" y="7.5" width="248" height="17"/>
+                                                <rect key="frame" x="128" y="7.5" width="8" height="17"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="days." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4H-x8-APd">
+                                                <rect key="frame" x="144" y="7.5" width="104" height="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minimumValue="1" maximumValue="31" translatesAutoresizingMaskIntoConstraints="NO" id="tb8-aC-X8G">
@@ -46,14 +55,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fbM-OW-z4l" secondAttribute="bottom" constant="16" id="F85-Gf-u9g"/>
-                                    <constraint firstItem="fbM-OW-z4l" firstAttribute="centerY" secondItem="PF7-0S-ywc" secondAttribute="centerY" id="Lo5-hx-jS6"/>
-                                    <constraint firstItem="tb8-aC-X8G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fbM-OW-z4l" secondAttribute="trailing" constant="8" id="QOw-8l-aYx"/>
                                     <constraint firstAttribute="bottom" secondItem="PF7-0S-ywc" secondAttribute="bottom" constant="16" id="TGh-AC-lI9"/>
                                     <constraint firstItem="PF7-0S-ywc" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="top" constant="16" id="ZgB-jb-yIz"/>
                                     <constraint firstAttribute="trailing" secondItem="PF7-0S-ywc" secondAttribute="trailing" constant="16" id="gCr-Ia-Wly"/>
-                                    <constraint firstItem="fbM-OW-z4l" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="42" id="l1U-F4-p4y"/>
-                                    <constraint firstItem="fbM-OW-z4l" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hI4-03-WPT" secondAttribute="top" constant="16" id="mrB-nc-94T"/>
                                     <constraint firstItem="PF7-0S-ywc" firstAttribute="leading" secondItem="hI4-03-WPT" secondAttribute="leading" constant="16" id="qGd-ST-MY2"/>
                                 </constraints>
                             </view>
@@ -63,14 +67,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="STa-iL-Iqz">
                                         <rect key="frame" x="16" y="16" width="350" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표 시작일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpN-w2-sXu">
-                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="50"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpN-w2-sXu">
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cGg-Ty-44o">
-                                                <rect key="frame" x="72.5" y="0.0" width="277.5" height="50"/>
+                                                <rect key="frame" x="77" y="0.0" width="273" height="50"/>
                                                 <locale key="locale" localeIdentifier="ko"/>
                                                 <connections>
                                                     <action selector="settingStartDatePicker:" destination="Y6W-OH-hqX" eventType="valueChanged" id="SBB-8f-0Ni"/>
@@ -88,8 +92,10 @@
                                     <constraint firstItem="STa-iL-Iqz" firstAttribute="top" secondItem="vWN-FC-Xy9" secondAttribute="top" constant="16" id="tIS-eO-16h"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표를 설정하여 주기적으로 연락해보세요. 알림을 설정하면 시작일부터 목표일마다 알림을 보내드려요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkE-EI-gjX" userLabel="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요.">
-                                <rect key="frame" x="67" y="331" width="280" height="30.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkE-EI-gjX" userLabel="전화할 수 있는 시간대를 알려주세요. 알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요.">
+                                <rect key="frame" x="43.5" y="331" width="327.5" height="30.5"/>
+                                <string key="text">Set your goal and call periodically.
+We will send you a notification periodically from start date</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -160,7 +166,7 @@
                             <constraint firstItem="vWN-FC-Xy9" firstAttribute="top" secondItem="hI4-03-WPT" secondAttribute="bottom" constant="16" id="m0V-8Q-RZW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="목표" largeTitleDisplayMode="always" id="nre-KA-2FK"/>
+                    <navigationItem key="navigationItem" title="Goal" largeTitleDisplayMode="always" id="nre-KA-2FK"/>
                     <connections>
                         <outlet property="settingDayLabel" destination="1Ej-24-XeL" id="o6P-GG-siU"/>
                         <outlet property="settingDayStepper" destination="tb8-aC-X8G" id="fRS-UC-w5m"/>

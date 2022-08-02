@@ -43,7 +43,7 @@ final class SettingViewController: UIViewController {
     private let goalSettingTitleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(for: .title3, weight: .bold)
-        $0.text = "목표 설정"
+        $0.text = "Goal Period"
         return $0
     }(UILabel())
     
@@ -58,7 +58,7 @@ final class SettingViewController: UIViewController {
         $0.setDynamicFont(.caption1)
         $0.textAlignment = .right
         $0.textColor = .secondaryLabel
-        $0.text = "알림을 설정하면 목표일마다 알림을 보내드려요."
+        $0.text = "We will send you a notification at goal day."
         return $0
     }(UILabel())
     
@@ -76,7 +76,7 @@ final class SettingViewController: UIViewController {
     private let callTimeSettingTitleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(for: .title3, weight: .bold)
-        $0.text = "전화 시간 설정"
+        $0.text = "Available Call Time"
         return $0
     }(UILabel())
     
@@ -91,7 +91,7 @@ final class SettingViewController: UIViewController {
         $0.setDynamicFont(.caption1)
         $0.textAlignment = .right
         $0.textColor = .secondaryLabel
-        $0.text = "알림을 설정하면 목표일의 이 시간대에 알림을 보내드려요."
+        $0.text = "We will send you a notification at this time of goal day."
         return $0
     }(UILabel())
     
@@ -109,7 +109,7 @@ final class SettingViewController: UIViewController {
     private let alarmSettingTitleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(for: .title3, weight: .bold)
-        $0.text = "알림 설정"
+        $0.text = "Notification"
         return $0
     }(UILabel())
     
@@ -124,7 +124,7 @@ final class SettingViewController: UIViewController {
         $0.setDynamicFont(.caption1)
         $0.textAlignment = .right
         $0.textColor = .secondaryLabel
-        $0.text = "알림이 온 이후에 전화를 기록하지 않으면,\n전화 시간 종료 전에 알림을 총 6번 보내드려요."
+        $0.text = "If you don’t check call at goal day,\n we will send you notifications repeatedly."
         return $0
     }(UILabel())
     
@@ -132,7 +132,7 @@ final class SettingViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.caption1)
         $0.textAlignment = .center
-        $0.text = "알림 권한을 허용해야 알림을 설정할 수 있어요.\n설정에서 알림 권한을 허용해주세요."
+//        $0.text = "알림 권한을 허용해야 알림을 설정할 수 있어요.\n설정에서 알림 권한을 허용해주세요."
         return $0
     }(UILabel())
 
@@ -222,7 +222,7 @@ final class SettingViewController: UIViewController {
     }
 
     private func setNavigationBar() {
-        title = "설정"
+        title = "Setting"
         navigationController?.navigationBar.prefersLargeTitles = false
     }
 }

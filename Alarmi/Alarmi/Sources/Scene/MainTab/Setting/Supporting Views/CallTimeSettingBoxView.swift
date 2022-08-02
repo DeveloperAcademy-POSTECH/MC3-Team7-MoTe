@@ -42,14 +42,14 @@ final class CallTimeSettingBoxView: UIView {
     private let startTimeLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
-        $0.text = "시작 시간"
+        $0.text = "Start Time"
         return $0
     }(UILabel())
     
     private let endTimeLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(.body)
-        $0.text = "종료 시간"
+        $0.text = "End Time"
         return $0
     }(UILabel())
     

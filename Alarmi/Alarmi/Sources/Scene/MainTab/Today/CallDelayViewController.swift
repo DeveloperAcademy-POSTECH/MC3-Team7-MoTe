@@ -18,7 +18,7 @@ class CallDelayViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "선택한 날짜에 알림이 오도록 이번 연락을 미룹니다."
+        $0.text = "Delay next call to get notification on the selected day."
         $0.setDynamicFont(.body)
         return $0
     }(UILabel())
@@ -63,12 +63,12 @@ class CallDelayViewController: UIViewController {
     private func attribute() {
         datePicker.minimumDate = Date()
         view.backgroundColor = .systemGroupedBackground
-        title = "연락 미루기"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소",
+        title = "Delay"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel",
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(cancelButtonPressed))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료",
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Complete",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(doneButtonPressed))

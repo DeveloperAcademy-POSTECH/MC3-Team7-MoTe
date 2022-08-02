@@ -13,7 +13,7 @@ final class FrequencyContainerView: UIView {
     weak var parentViewController: UIViewController?
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "빈도"
+        $0.text = "Frequency"
         $0.setDynamicFont(for: .title3, weight: .semibold)
         return $0
     }(UILabel())
