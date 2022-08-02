@@ -34,7 +34,7 @@ class RegisterCallTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startTimeViewLabel.text = "\(Date().date2TimeString(type: ._24HTime))"
+        startTimeViewLabel.text = "\(Date().date2TimeString())"
 
         bind()
         attribute()
@@ -68,7 +68,7 @@ class RegisterCallTimeViewController: UIViewController {
     
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
         viewModel.startTimePickerAction(sender.date)
-        startTimeViewLabel.text = sender.date.date2TimeString(type: ._24HTime)
+        startTimeViewLabel.text = sender.date.date2TimeString()
     }
 
     @IBAction func endTimePickerAction(_ sender: UIDatePicker) {
