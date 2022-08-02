@@ -20,7 +20,7 @@ final class TodayViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "지금 한국은"
+        $0.text = "Now, in Korea..."
         $0.textAlignment = .left
         $0.setDynamicFont(for: .body, weight: .semibold)
         return $0

@@ -131,22 +131,22 @@ extension TodayDdayView {
         var buttonName: String {
             switch self {
             case .lastCall:
-                return "전화했어요"
+                return "Called"
             case .nextGoal:
-                return "미룰거예요"
+                return "Delay"
             case .delay:
-                return "미룰거예요"
+                return "Delay"
             }
         }
 
         var title: String {
-            switch self {
+            switch self {  
             case .lastCall:
-                return "마지막 전화"
+                return "Last Call"
             case .nextGoal:
-                return "다음 목표일"
+                return "Lext Call"
             case .delay:
-                return "목표일로부터"
+                return "Lext Call"
             }
         }
     }

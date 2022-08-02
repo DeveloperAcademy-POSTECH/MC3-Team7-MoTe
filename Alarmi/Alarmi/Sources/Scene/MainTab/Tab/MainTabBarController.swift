@@ -17,9 +17,9 @@ final class MainTabBarController: UITabBarController {
         var title: String {
             switch self {
             case .today:
-                return "오늘"
+                return "Today"
             case .record:
-                return "기록"
+                return "History"
             }
         }
 

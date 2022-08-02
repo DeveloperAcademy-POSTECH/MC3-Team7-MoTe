@@ -36,14 +36,14 @@ final class RegisterCompleteViewController: UIViewController {
     
     private let primaryDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "기본 설정을 완료했어요."
+        $0.text = "All settings are completed."
         $0.setDynamicFont(.title3)
         return $0
     }(UILabel())
     
     private let secondaryDescriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "알림을 허용하여 잊지 말고\n부모님께 전화드리고 기록을 남겨보세요."
+        $0.text = "Allow notifications and don’t forget to call your parents."
         $0.textAlignment = .center
         $0.setDynamicFont(.title3)
         return $0
@@ -51,7 +51,7 @@ final class RegisterCompleteViewController: UIViewController {
     
     private lazy var startButton: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.title = "알림을 허용하고 시작하기"
+        $0.title = "Allow notifications and start"
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())

@@ -11,7 +11,7 @@ import UIKit
 final class RecordGoalBoardView: UIView {
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "최근 10회 달성률"
+        $0.text = "Goal Achievement Rate"
         $0.setDynamicFont(for: .title3, weight: .semibold)
         return $0
     }(UILabel())
