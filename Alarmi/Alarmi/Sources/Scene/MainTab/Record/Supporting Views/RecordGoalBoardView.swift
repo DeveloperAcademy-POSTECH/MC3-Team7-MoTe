@@ -8,30 +8,6 @@
 
 import UIKit
 
-struct RecordGoalCircleDdipViewModel {
-    var color: UIColor
-    
-    init(_ model: CallDate) {
-        color = model.isGoalSuccess ?.systemGreen : .systemRed
-    }
-
-    init(_ color: UIColor = .systemGray) {
-        self.color = color
-    }
-}
-
-final class RecordGoalCircleView: UIView {
-    init(_ viewModel: RecordGoalCircleDdipViewModel) {
-        super.init(frame: .zero)
-        self.backgroundColor = viewModel.color
-        self.translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-}
-
 final class RecordGoalBoardView: UIView {
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -116,3 +92,4 @@ final class RecordGoalBoardView: UIView {
         ])
     }
 }
+

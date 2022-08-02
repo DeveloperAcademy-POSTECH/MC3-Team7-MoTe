@@ -38,6 +38,13 @@ final class Formatter {
         return v
     }()
 
+    static let YYYYMMddCurrentDateFormatter: DateFormatter = {
+        let v = DateFormatter()
+        v.timeZone = .autoupdatingCurrent
+        v.dateFormat = "YYYY-MM-dd"
+        return v
+    }()
+
     static let HHMMKoreaDateFormatter: DateFormatter = {
         let v = DateFormatter()
         v.timeZone = TimeZone(identifier: "Asia/Seoul")

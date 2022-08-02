@@ -38,7 +38,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = Date().judgeKoreaState().mode
 
-
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             TimerManager.shared.timer
@@ -54,7 +53,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // MARK: 테스트용
         CallDateUserefaults(key: .callDate).removeAll()
-        CallDateUserefaults(key: .callDate).save([
+        CallTimeUserDefaults(key: .callTime).removeAll()
+        GoalTimeUserDefaults(key: .goalTime).removeAll()
+
+        CallTimeUserDefaults(key: .callTime).save(.init(start: Date(), end: Date().addingTimeInterval(600)))
+        GoalTimeUserDefaults(key: .goalTime).save(.init(startDate: Date(), period: 7))
+        AlarmUserefaults(key: .alarm).save(.init(isAlarm: true, isAlarmAgain: true))
+//        CallDateUserefaults(key: .callDate).save([
 //            CallDate(date: Date().before(day: 60), isGoalSuccess: true),
 //            CallDate(date: Date().before(day: 39), isGoalSuccess: true),
 //            CallDate(date: Date().before(day: 21), isGoalSuccess: true),
@@ -67,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            CallDate(date: Date().before(day: 4), isGoalSuccess: false),
 //            CallDate(date: Date().before(day: 1), isGoalSuccess: false),
 //            CallDate(date: Date().before(day: 0), isGoalSuccess: false)
-        ])
+//        ])
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

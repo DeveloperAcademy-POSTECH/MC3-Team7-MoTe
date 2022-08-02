@@ -19,7 +19,7 @@ final class TodayViewModel: ObservableObject {
     @Published var lastCall: TodayDDayDdipViewModel = .init()
     @Published var nextGoal: TodayDDayDdipViewModel = .init()
     @Published var todayDidCall: Bool = false
-    @Published var goalTimeDate: Date = Date()
+    @Published var callDelayGoalTimeDate: Date = Date()
 
     private var cancellable = Set<AnyCancellable>()
 
@@ -37,13 +37,15 @@ final class TodayViewModel: ObservableObject {
             .sink { [weak self] in
                 let nextGoal = TodayDDayDdipViewModel.init($0)
                 self?.nextGoal = nextGoal
-                self?.goalTimeDate = $0.startDate.before(day: -$0.period + 1)
+                self?.callDelayGoalTimeDate = $0.startDate.before(day: -$0.period + 1)
             }.store(in: &cancellable)
+
         model.callDateList
             .sink { [weak self] in
                 guard let lastCall = $0.last.map(TodayDDayDdipViewModel.init) else { return }
                 self?.lastCall = lastCall
             }.store(in: &cancellable)
+
         model.callDateList
             .compactMap { _ in model.callDateList.value.last }
             .filter { Calendar.current.isDateInToday($0.date) }
@@ -67,7 +69,7 @@ final class TodayViewModel: ObservableObject {
             .filter { _ in model.callDateList.value.isEmpty }
             .sink { [weak self] _ in
                 self?.todayDidCall = true
-                model.addTodayDate(with: !(self?.nextGoal.isBefore ?? true))
+                model.addTodayDate(with: (self?.nextGoal.isBefore ?? true))
                 let currentGoalTime = model.goalTime.value
                 model.updateGoalTime(
                     .init(startDate: Date(), period: currentGoalTime.period)
@@ -78,10 +80,13 @@ final class TodayViewModel: ObservableObject {
             .filter { date in !Calendar.current.isDateInToday(date.date) }
             .sink { [weak self] _ in
                 self?.todayDidCall = true
-                model.addTodayDate(with: !(self?.nextGoal.isBefore ?? true))
+                model.addTodayDate(with: (self?.nextGoal.isBefore ?? true))
                 let currentGoalTime = model.goalTime.value
                 model.updateGoalTime(
-                    .init(startDate: Date(), period: currentGoalTime.period)
+                    .init(
+                        startDate: Date().before(day: -1),
+                        period: currentGoalTime.period
+                    )
                 )
             }.store(in: &cancellable)
     }

@@ -38,7 +38,8 @@ struct SettingModel {
         goalTimeDataSource.updateGoalTime(goalTime)
     }
 
-    func updateCallTimer(_ callTime: CallTime) {
+    func updateCallTime(_ callTime: CallTime) {
+        print("updateCallTime", callTime)
         callTimeDataSource.update(callTime: callTime)
     }
 

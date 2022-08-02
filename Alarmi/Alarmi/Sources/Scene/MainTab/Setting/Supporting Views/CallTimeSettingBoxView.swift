@@ -56,7 +56,7 @@ final class CallTimeSettingBoxView: UIView {
     private lazy var startTimePicker: UIDatePicker = {
         $0.preferredDatePickerStyle = .compact
         $0.datePickerMode = .time
-        $0.minuteInterval = 10
+        $0.minuteInterval = 1
         $0.addTarget(self, action: #selector(startTimePickerDidChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())
@@ -64,7 +64,7 @@ final class CallTimeSettingBoxView: UIView {
     private lazy var endTimePicker: UIDatePicker = {
         $0.preferredDatePickerStyle = .compact
         $0.datePickerMode = .time
-        $0.minuteInterval = 10
+        $0.minuteInterval = 1
         $0.addTarget(self, action: #selector(endTimePickerDidChanged), for: .valueChanged)
         return $0
     }(UIDatePicker())

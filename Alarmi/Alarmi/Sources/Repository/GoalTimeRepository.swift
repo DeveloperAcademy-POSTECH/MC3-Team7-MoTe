@@ -31,6 +31,6 @@ final class GoalTimeRepositoryImpl: GoalTimeRepository {
 
 extension GoalTimeRepositoryImpl {
     var value: GoalTime {
-        goalTimeUserDefaults.data!
+        goalTimeUserDefaults.data ?? .init(startDate: Date(), period: 7)
     }
 }

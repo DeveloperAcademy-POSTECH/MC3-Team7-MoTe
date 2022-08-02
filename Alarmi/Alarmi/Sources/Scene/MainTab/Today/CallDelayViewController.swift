@@ -53,7 +53,7 @@ class CallDelayViewController: UIViewController {
     }
 
     private func bind() {
-        viewModel.$goalTimeDate
+        viewModel.$callDelayGoalTimeDate
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.datePicker.date = $0

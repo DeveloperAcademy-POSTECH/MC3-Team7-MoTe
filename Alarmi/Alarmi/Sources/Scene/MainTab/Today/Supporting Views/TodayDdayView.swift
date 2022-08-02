@@ -12,6 +12,32 @@ protocol TodayDdayViewDelegate: AnyObject {
     func buttonDidTap(_ type: TodayDdayView.DDayType)
 }
 
+struct TodayDDayDdipViewModel {
+    var dday: Int = 0
+    var isBefore: Bool = false
+    init() {}
+
+    init(_ model: CallDate?) {
+        guard let model = model else { return }
+
+        let result = Date().distance(from: model.date, only: .day)
+        self.dday = abs(result)
+        self.isBefore = result >= 0 ? false : true
+    }
+
+    init(_ model: GoalTime) {
+        guard
+            let nextGoal = Calendar.current.date(byAdding: .day, value: model.period, to: model.startDate) else {
+            return
+        }
+        let result = Date().distance(from: nextGoal, only: .day)
+        print(nextGoal)
+        print(result)
+        self.dday = abs(result)
+        self.isBefore = result >= 0 ? false : true
+    }
+}
+
 final class TodayDdayView: UIView {
 
     private let titleLabel: UILabel = {
@@ -57,7 +83,12 @@ final class TodayDdayView: UIView {
     }
 
     func update(with viewModel: TodayDDayDdipViewModel) {
-        self.dDayLabel.text = "D\(viewModel.isBefore ? "+" : "-")\(viewModel.dday)"
+        if type != .lastCall {
+            type = viewModel.isBefore ? .delay : .nextGoal
+            self.titleLabel.text = type.title
+        }
+
+        self.dDayLabel.text = "D\(viewModel.isBefore ? "-" : "+")\(viewModel.dday)"
     }
 
     func updateButton(_ didCall: Bool) {
@@ -97,12 +128,15 @@ extension TodayDdayView {
     enum DDayType {
         case lastCall
         case nextGoal
+        case delay
 
         var buttonName: String {
             switch self {
             case .lastCall:
                 return "전화했어요"
             case .nextGoal:
+                return "미룰거예요"
+            case .delay:
                 return "미룰거예요"
             }
         }
@@ -112,6 +146,8 @@ extension TodayDdayView {
             case .lastCall:
                 return "마지막 전화"
             case .nextGoal:
+                return "다음 목표일"
+            case .delay:
                 return "목표일로부터"
             }
         }

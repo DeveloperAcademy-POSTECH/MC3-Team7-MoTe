@@ -16,7 +16,7 @@ protocol CallTimeRepository {
 }
 
 final class CallTimeRepositoryImpl: CallTimeRepository {
-    private let callTimeUserDefaults = CallTimeUserDefaults(key: .callDate)
+    private let callTimeUserDefaults = CallTimeUserDefaults(key: .callTime)
 
     lazy var callTime = CurrentValueSubject<CallTime, Never>(value)
 

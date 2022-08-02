@@ -18,7 +18,7 @@ final class SettingViewModel: ObservableObject {
     @Published var callEndTime: Date = Date()
     @Published var isAlarm: Bool = true
     @Published var isAlarmAgain: Bool = true
-    @Published var isNotificationAuthorized: Bool = false
+    @Published var isNotificationAuthorized: Bool = true
     
     private let userNotificationManager = UserNotificationManager.shared
 
@@ -59,14 +59,14 @@ final class SettingViewModel: ObservableObject {
         callStartTime = date
         let endTime = model.callTime.value.end
         let newCallTime = CallTime(start: date, end: endTime)
-        model.updateCallTimer(newCallTime)
+        model.updateCallTime(newCallTime)
     }
     
     func endTimePickerDidChanged(_ date: Date) {
         callEndTime = date
         let startTime = model.callTime.value.start
         let newCallTime = CallTime(start: startTime, end: date)
-        model.updateCallTimer(newCallTime)
+        model.updateCallTime(newCallTime)
     }
     
     func alarmSwitchToggled(_ isOn: Bool) {

@@ -66,19 +66,68 @@ extension Date {
 
 extension Date {
 
-    private var sleepingTime: Int { 0 }
-    private var workingTime: Int { 8 }
-    private var callTime: Int { 18 }
+    private var sleepingTimeHour: Int { 0 }
+    private var awakingTimeHour: Int { 7 }
 
-    // MARK: 시간 알고리즘 필요합니다.
+    private var koreanSleepingTimeCurrentDate: Date {
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(0))!
+        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+    }
+
+    private var koreanAwakingTimeCurrentDate: Date {
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(7))!
+        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+    }
+
+    private var callStartTimeDate: Date {
+        guard let callTime = CallTimeUserDefaults(key: .callTime).data else {
+            return Date()
+        }
+        return callTime.start
+    }
+
+    private var callEndTimeDate: Date {
+        guard let callTime = CallTimeUserDefaults(key: .callTime).data else {
+            return Date()
+        }
+        return callTime.end
+    }
+
     func judgeKoreaState() -> KoreaParentState {
-        let nowHour = Int(Formatter.HHKoreaDateFormatter.string(from: self))!
-        if nowHour >= 0 && (sleepingTime..<workingTime).contains(nowHour) {
-            return .sleeping
-        } else if (workingTime..<callTime).contains(nowHour) {
-            return .working
+
+        /*
+         1. sleep 시간 확인
+           -  맞다: dark + 이미지/텍스트 = "자고있느 ㄴ시간이에요"
+           -  아니다: light + 이미지/텍스트 = "전화가능시간이 아니에요"
+
+         2. callTime
+          - 맞다: 이미지 텍스트
+          - 아니면: 나가기
+         */
+
+        if koreanSleepingTimeCurrentDate.timeIntervalSinceNow <= 0 &&
+            koreanAwakingTimeCurrentDate.timeIntervalSinceNow >= 0 {
+            if callStartTimeDate.timeIntervalSinceNow <= 0 &&
+                callEndTimeDate.timeIntervalSinceNow >= 0 {
+                print("dark , canCall")
+                return .canCall
+            } else {
+                print("sleeping")
+                return .sleeping
+            }
         } else {
-            return .canCall
+            print(callStartTimeDate)
+            print(callEndTimeDate)
+            if callStartTimeDate.timeIntervalSinceNow <= 0 &&
+                callEndTimeDate.timeIntervalSinceNow >= 0 {
+                print("light, canCall")
+                return .canCall
+            } else {
+                print("working")
+                return .working
+            }
         }
     }
 }

@@ -12,6 +12,9 @@ extension DateComponents {
     static func koreaHour(_ hour: Int) -> Self {
         return .init(
             timeZone: TimeZone(identifier: "Asia/Seoul"),
+            year: Calendar.current.component(.year, from: Date()),
+            month: Calendar.current.component(.month, from: Date()),
+            day: Calendar.current.component(.day, from: Date()),
             hour: hour
         )
     }

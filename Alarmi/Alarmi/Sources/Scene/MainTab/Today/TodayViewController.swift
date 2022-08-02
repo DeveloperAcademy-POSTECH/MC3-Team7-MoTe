@@ -204,6 +204,8 @@ extension TodayViewController: TodayDdayViewDelegate {
             delegate?.presentCallDelayViewController()
         case .lastCall: // 전화했어요 버튼
             viewModel?.didCallButtonTapped.send()
+        case .delay:
+            delegate?.presentCallDelayViewController()
         }
     }
 }

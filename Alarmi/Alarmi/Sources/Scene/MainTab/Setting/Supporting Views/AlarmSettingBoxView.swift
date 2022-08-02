@@ -80,6 +80,7 @@ final class AlarmSettingBoxView: UIView {
     var isAlarm: Bool? {
         didSet {
             guard let isAlarm = isAlarm else { return }
+            alarmSwitch.isOn = isAlarm
             viewModel?.changeEditableStateOfViewWithAnimation(
                 isEditable: isAlarm,
                 views: alarmAgainSwitch
