@@ -23,6 +23,7 @@ final class TodayViewController: UIViewController {
         $0.text = "지금 한국은"
         $0.textAlignment = .left
         $0.setDynamicFont(for: .body, weight: .semibold)
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -32,6 +33,7 @@ final class TodayViewController: UIViewController {
         $0.text = Formatter.HHMMKoreaDateFormatter.string(from: Date())
         $0.setDynamicFont(for: .largeTitle, weight: .black)
         $0.font = .systemFont(ofSize: 108, weight: .black)
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -39,6 +41,7 @@ final class TodayViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .right
         $0.setDynamicFont(for: .body, weight: .semibold)
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -97,7 +100,7 @@ final class TodayViewController: UIViewController {
     // MARK: Method
 
     private func attribute() {
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .backgroundColor
         setupNavigationBar()
     }
 

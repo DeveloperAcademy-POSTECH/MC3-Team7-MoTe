@@ -27,7 +27,7 @@ final class PurposeBoardView: UIView {
 
     private lazy var circleView1: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = .systemIndigo
+        $0.backgroundColor = .tintColor
         $0.layer.cornerRadius = 40
         $0.layer.masksToBounds = true
         return $0
@@ -100,7 +100,7 @@ final class PurposeBoardView: UIView {
     }
 
     private func attribute() {
-        self.backgroundColor = .secondarySystemGroupedBackground
+        self.backgroundColor = .cellBackgroundColor
         self.layer.cornerRadius = 10
     }
 

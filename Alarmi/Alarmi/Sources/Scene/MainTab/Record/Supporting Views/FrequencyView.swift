@@ -51,7 +51,7 @@ struct FrequencyView: View {
                                 case .future:
                                     Color(UIColor.systemGray6)
                                 case .did:
-                                    Color.indigo
+                                    Color(UIColor.tintColor)
                                 }
                             }
                             .frame(width: self.calculateBoxWidth(),

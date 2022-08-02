@@ -46,15 +46,10 @@ class RegisterCallTimeViewController: UIViewController {
 
     private func attribute() {
         configureNavigationBar()
-        configureBackground()
     }
     private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.title = "전화 시간"
-    }
-    
-    private func configureBackground() {
-        view.backgroundColor = .systemGroupedBackground
     }
     
     private func layout() {

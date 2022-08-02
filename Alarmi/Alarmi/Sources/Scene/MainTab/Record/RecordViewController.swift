@@ -27,7 +27,6 @@ final class RecordViewController: UIViewController {
 
     private lazy var frequencyContainerView: FrequencyContainerView = {
         let view = FrequencyContainerView()
-        view.parentViewController = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return  view
     }()
@@ -101,7 +100,7 @@ final class RecordViewController: UIViewController {
     }
 
     func attribute() {
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .backgroundColor
         title = "기록"
     }
 
