@@ -11,6 +11,8 @@ import UserNotifications
 import UniformTypeIdentifiers
 
 final class UserNotificationManager {
+    static let shared = UserNotificationManager()
+    private init() {}
     private let notificationCenter = UNUserNotificationCenter.current()
 
     enum Content: Int {
@@ -58,7 +60,7 @@ final class UserNotificationManager {
     func requestAuthorization(_ completion: @escaping () -> Void) {
         notificationCenter.requestAuthorization(options: [.alert, .sound]) { (_, error) in
             if let _ = error {
-                // TODO: 에러 처리
+
             } else {
                 completion()
             }
@@ -91,7 +93,6 @@ final class UserNotificationManager {
         }
     }
 
-    // TODO: 연락 커밋을 눌렀을때 해당 메서드를 불러서 request 모두 삭제
     func removeAllPendingRequest() {
         notificationCenter.removeAllPendingNotificationRequests()
         print("request 전부 삭제")
@@ -104,7 +105,6 @@ final class UserNotificationManager {
         }
     }
 
-    // TODO: 연락 문구 정해야함
     private func makeNotificationContent(_ index: Int) -> UNMutableNotificationContent {
         let notificationContent = UNMutableNotificationContent()
         let indexName = Content(rawValue: index)

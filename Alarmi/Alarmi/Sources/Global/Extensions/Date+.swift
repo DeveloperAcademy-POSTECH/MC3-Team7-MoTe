@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Date {
 
@@ -20,11 +21,9 @@ extension Date {
      date를 24시간 시각 String 반환해줍니다.
      - Parameters:
        - format: 변형할 DateFormat / Date 타입
-       - type: 12시간제, 24시간제
      */
-    func date2TimeString(type: TimeType) -> String {
-        DateManager.shared.dateFormatter.dateFormat = type.rawValue
-        return DateManager.shared.dateFormatter.string(from: self)
+    func date2TimeString() -> String {
+        return Formatter.HHMMCurrentDateFormatter.string(from: self)
     }
 
     /**
@@ -32,8 +31,7 @@ extension Date {
      1일이면 true, 아니면 false를 반환합니다.
      */
     func contains1stDayOfMonth() -> Bool {
-        DateManager.shared.dateFormatter.dateFormat = "dd"
-        let day = Int(DateManager.shared.dateFormatter.string(from: self)) ?? 0
+        let day = Int(Formatter.ddCurrentDateFormatter.string(from: self)) ?? 0
         return day == 1
     }
 
@@ -42,8 +40,7 @@ extension Date {
      1월, 2월, ... n월을 반환합니다.
      */
     func getMonthString() -> String {
-        DateManager.shared.dateFormatter.dateFormat = "M월"
-        return DateManager.shared.dateFormatter.string(from: self)
+        return Formatter.MMCurrentDateFormatter.string(from: self)
     }
     
     /**
@@ -62,7 +59,92 @@ extension Date {
      - Parameters:
       - day: n일
      */
-    func before(day: Int) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: -day, to: self)
+    func before(day: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: -day, to: self)!
+    }
+}
+
+extension Date {
+
+    private var sleepingTimeHour: Int { 0 }
+    private var awakingTimeHour: Int { 7 }
+
+    private var koreanSleepingTimeCurrentDate: Date {
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(0))!
+        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+    }
+
+    private var koreanAwakingTimeCurrentDate: Date {
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(7))!
+        let currentDateString = Formatter.YYYYMMddCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddCurrentDateFormatter.date(from: currentDateString)!
+    }
+
+    private var callStartTimeDate: Date {
+        guard let callTime = CallTimeUserDefaults(key: .callTime).data else {
+            return Date()
+        }
+        return callTime.start
+    }
+
+    private var callEndTimeDate: Date {
+        guard let callTime = CallTimeUserDefaults(key: .callTime).data else {
+            return Date()
+        }
+        return callTime.end
+    }
+
+    func judgeKoreaState() -> KoreaParentState {
+
+        /*
+         1. sleep 시간 확인
+           -  맞다: dark + 이미지/텍스트 = "자고있느 ㄴ시간이에요"
+           -  아니다: light + 이미지/텍스트 = "전화가능시간이 아니에요"
+
+         2. callTime
+          - 맞다: 이미지 텍스트
+          - 아니면: 나가기
+         */
+
+        if koreanSleepingTimeCurrentDate.timeIntervalSinceNow <= 0 &&
+            koreanAwakingTimeCurrentDate.timeIntervalSinceNow >= 0 {
+            if callStartTimeDate.timeIntervalSinceNow <= 0 &&
+                callEndTimeDate.timeIntervalSinceNow >= 0 {
+                print("dark , canCall")
+                return .canCall
+            } else {
+                print("sleeping")
+                return .sleeping
+            }
+        } else {
+            print(callStartTimeDate)
+            print(callEndTimeDate)
+            if callStartTimeDate.timeIntervalSinceNow <= 0 &&
+                callEndTimeDate.timeIntervalSinceNow >= 0 {
+                print("light, canCall")
+                return .canCall
+            } else {
+                print("working")
+                return .working
+            }
+        }
+    }
+}
+
+extension Date {
+
+    func fullDistance(from date: Date, resultIn component: Calendar.Component, calendar: Calendar = .current) -> Int? {
+        calendar.dateComponents([component], from: self, to: date).value(for: component)
+    }
+
+    func distance(from date: Date, only component: Calendar.Component, calendar: Calendar = .current) -> Int {
+        let days1 = calendar.component(component, from: self)
+        let days2 = calendar.component(component, from: date)
+        return days1 - days2
+    }
+
+    func hasSame(_ component: Calendar.Component, as date: Date) -> Bool {
+        distance(from: date, only: component) == 0
     }
 }
