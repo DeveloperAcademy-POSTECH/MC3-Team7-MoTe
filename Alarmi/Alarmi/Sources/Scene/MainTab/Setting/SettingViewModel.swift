@@ -28,9 +28,9 @@ final class SettingViewModel: ObservableObject {
     init(_ model: SettingModel) {
         self.model = model
 
-        model.goalTime
+        model.callPeriod
             .sink { [weak self] in
-                self?.goalPeriod = $0.period
+                self?.goalPeriod = $0
             }.store(in: &cancellable)
 
         model.callTime
@@ -49,10 +49,7 @@ final class SettingViewModel: ObservableObject {
     // MARK: Business Logic
     
     func goalPeriodStepperDidChanged(_ value: Int) {
-        goalPeriod = value
-        let startDate = model.goalTime.value.startDate
-        let newGoal = GoalTime(startDate: startDate, period: value)
-        model.updateGoalTime(newGoal)
+        model.updateCallPeriod(value)
     }
     
     func startTimePickerDidChanged(_ date: Date) {
@@ -74,6 +71,16 @@ final class SettingViewModel: ObservableObject {
         let isAlarmAgain = model.alarm.value.isAlarmAgain
         let alarm = Alarm(isAlarm: isOn, isAlarmAgain: isAlarmAgain)
         model.updateAlarm(alarm)
+        userNotificationManager.removeAllPendingRequest()
+        if isOn {
+            let startDate: Date = model.goalDate.value.before(day: model.callPeriod.value)
+            userNotificationManager.sendUserNotification(
+                startTime: model.callTime.value.start,
+                endTime: model.callTime.value.end,
+                startDate: startDate,
+                goalPeriod: model.callPeriod.value
+            )
+        }
     }
     
     func alarmAgainSwitchToggled(_ isOn: Bool) {

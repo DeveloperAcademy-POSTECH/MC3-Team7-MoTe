@@ -7,32 +7,58 @@
 //
 
 import UIKit
+import SwiftDate
 
 protocol TodayDdayViewDelegate: AnyObject {
     func buttonDidTap(_ type: TodayDdayView.DDayType)
 }
 
 struct TodayDDayDdipViewModel {
-    var dday: Int = 0
-    var isBefore: Bool = false
+    var dday: String = "-"
+    var color: UIColor? = .tintColor
+
     init() {}
-
-    init(_ model: CallDate?) {
-        guard let model = model else { return }
-
-        let result = Date().distance(from: model.date, only: .day)
-        self.dday = abs(result)
-        self.isBefore = result >= 0 ? false : true
+    init(dday: String, color: UIColor = .tintColor) {
+        self.dday = dday
+        self.color = color
     }
+    init(_ model: GoalDate) {
+        guard let dDayInt = Date().fullDistance(
+            from: model,
+            resultIn: .day
+        ) else { return }
 
-    init(_ model: GoalTime) {
-        guard
-            let nextGoal = Calendar.current.date(byAdding: .day, value: model.period, to: model.startDate) else {
-            return
+        var dDayString = "-"
+        var color: UIColor? = .tintColor
+        if model.isToday {
+            dDayString = "오늘"
+        } else if dDayInt > 0 {
+            dDayString = "D-\(dDayInt+1)"
+        } else if dDayInt == 0 {
+            dDayString = "D-1"
+        } else {
+            dDayString = "D+\(abs(dDayInt))"
+            color = .goalDateRed
         }
-        let result = Date().distance(from: nextGoal, only: .day)
-        self.dday = abs(result)
-        self.isBefore = result >= 0 ? false : true
+       
+        self.dday = dDayString
+        self.color = color
+    }
+    init(_ model: CallDate) {
+        guard let dDayInt = Date().fullDistance(
+            from: model.date,
+            resultIn: .day
+        ) else { return }
+
+        var dDayString = "-"
+        if dDayInt > 0 {
+            dDayString = "D+\(dDayInt)"
+        } else if dDayInt == 0 {
+            dDayString = "오늘"
+        } else {
+            dDayString = "D-\(abs(dDayInt))"
+        }
+        self.dday = dDayString
     }
 }
 
@@ -42,6 +68,7 @@ final class TodayDdayView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setDynamicFont(for: .body, weight: .semibold)
         $0.textAlignment = .center
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -51,6 +78,7 @@ final class TodayDdayView: UIView {
         $0.textColor = .systemIndigo
         $0.textAlignment = .center
         $0.text = "D+0"
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -59,6 +87,7 @@ final class TodayDdayView: UIView {
         $0.configuration?.baseBackgroundColor = .systemIndigo
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 11, leading: 16, bottom: 11, trailing: 16)
         $0.configuration?.cornerStyle = .medium
+        $0.configuration?.baseBackgroundColor = .tintColor
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(UIButton(configuration: .filled()))
@@ -81,16 +110,29 @@ final class TodayDdayView: UIView {
     }
 
     func update(with viewModel: TodayDDayDdipViewModel) {
+        dDayLabel.textColor = viewModel.color
+        dDayLabel.text = viewModel.dday
+
         if type != .lastCall {
-            type = viewModel.isBefore ? .delay : .nextGoal
-            self.titleLabel.text = type.title
+            type = viewModel.dday.contains("+") ? .delay : .nextGoal
+            titleLabel.text = type.title
         }
 
-        self.dDayLabel.text = "D\(viewModel.isBefore ? "-" : "+")\(viewModel.dday)"
+//        if type != .lastCall {
+//            type = viewModel.isBefore ? .delay : .nextGoal
+//            self.titleLabel.text = type.title
+//
+//            if type == .delay {
+//                self.dDayLabel.textColor = viewModel.isBefore ? .goalDateRed : .tintColor
+//            }
+//        }
+//
+//        self.dDayLabel.textColor = viewModel.isBefore ? .goalDateRed : .tintColor
+//        self.dDayLabel.text = "D\(viewModel.isBefore ? "+" : "-")\(viewModel.dday)"
     }
 
     func updateButton(_ didCall: Bool) {
-        button.configuration?.baseBackgroundColor = didCall ? .systemGray : .systemIndigo
+        button.configuration?.baseBackgroundColor = didCall ? .systemGray : .tintColor
         button.isUserInteractionEnabled = !didCall
     }
 

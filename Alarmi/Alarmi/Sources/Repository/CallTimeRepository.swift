@@ -30,6 +30,10 @@ final class CallTimeRepositoryImpl: CallTimeRepository {
 
 extension CallTimeRepositoryImpl {
     var value: CallTime {
-        callTimeUserDefaults.data ?? .init(start: Date(), end: Date().addingTimeInterval(600))
+        callTimeUserDefaults.data ?? .init(
+            start: Date.koreanDefulatCallStartTimeCurrentDate,
+            end: Date.koreanDefulatCallEndTimeCurrentDate
+        )
+
     }
 }

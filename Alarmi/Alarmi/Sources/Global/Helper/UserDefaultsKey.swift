@@ -11,7 +11,8 @@ import Foundation
 enum UserDefaultsKey: String {
     case callTime
     case alarm
-    case goalTime
+    case callPeriod
+    case goalDate
     case callDate
     case firstUser
 }

@@ -95,7 +95,6 @@ final class UserNotificationManager {
 
     func removeAllPendingRequest() {
         notificationCenter.removeAllPendingNotificationRequests()
-        print("request 전부 삭제")
     }
     
     func getAuthorizationStatus(_ completion: @escaping (Bool) -> Void) {

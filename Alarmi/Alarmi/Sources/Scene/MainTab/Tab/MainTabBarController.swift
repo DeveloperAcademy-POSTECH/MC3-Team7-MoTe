@@ -56,7 +56,6 @@ final class MainTabBarController: UITabBarController {
     }
 
     private func attribute() {
-        tabBar.tintColor = .systemBlue
-        tabBar.backgroundColor = .systemGroupedBackground
+        tabBar.tintColor = .tintColor
     }
 }

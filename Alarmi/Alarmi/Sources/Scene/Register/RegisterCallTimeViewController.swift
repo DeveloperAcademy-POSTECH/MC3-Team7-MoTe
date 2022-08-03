@@ -10,53 +10,39 @@ import Combine
 import UIKit
 
 protocol RegisterCallTimeViewControllerDelegate: AnyObject {
-    func gotoRegisterPlanViewController()
+    func gotoRegisterCompleteViewController()
 }
 
 class RegisterCallTimeViewController: UIViewController {
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
-    @IBOutlet weak var startTimeTransferredLabel: UILabel!
-    @IBOutlet weak var endTimeTransferredLabel: UILabel!
     @IBOutlet weak var startTimeViewLabel: UILabel!
     
-    weak var delegate: RegisterCallTimeViewControllerDelegate?
-    var viewModel = RegisterCallTimeViewModel()
+    var viewModel: RegisterViewModel!
     private var cancelBag = Set<AnyCancellable>()
 
     private lazy var button: AMButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.title = "다음"
+        $0.title = "완료"
         $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         return $0
     }(AMButton())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        startTimeViewLabel.text = "\(Date().date2TimeString())"
 
-        bind()
         attribute()
         layout()
     }
 
-    private func bind() {
+    private func attribute() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "전화 시간"
+        startTimeViewLabel.text = Date.koreanDefulatCallStartTimeCurrentDate.date2TimeString()
+        startTimePicker.date = Date.koreanDefulatCallStartTimeCurrentDate
+        endTimePicker.date = Date.koreanDefulatCallEndTimeCurrentDate
     }
 
-    private func attribute() {
-        configureNavigationBar()
-        configureBackground()
-    }
-    private func configureNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.title = "전화 시간"
-    }
-    
-    private func configureBackground() {
-        view.backgroundColor = .systemGroupedBackground
-    }
-    
     private func layout() {
         view.addSubview(button)
         NSLayoutConstraint.activate([
@@ -67,20 +53,18 @@ class RegisterCallTimeViewController: UIViewController {
     }
     
     @IBAction func startTimePickerAction(_ sender: UIDatePicker) {
-        viewModel.startTimePickerAction(sender.date)
+        viewModel.startTimeDate.send(sender.date)
         startTimeViewLabel.text = sender.date.date2TimeString()
     }
 
     @IBAction func endTimePickerAction(_ sender: UIDatePicker) {
-        viewModel.endTimePickerAction(sender.date)
-
+        viewModel.endTimeDate.send(sender.date)
     }
 }
 
 extension RegisterCallTimeViewController {
 
     @objc private func buttonDidTap() {
-        delegate?.gotoRegisterPlanViewController()
-        viewModel.storeCallTime()
+        viewModel.callTimeNextButtonDidTap.send(Void())
     }
 }

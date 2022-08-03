@@ -67,7 +67,7 @@ final class RecordGoalBoardView: UIView {
     }
 
     private func attribute() {
-        self.backgroundColor = .secondarySystemGroupedBackground
+        self.backgroundColor = .cellBackgroundColor
         self.layer.cornerRadius = 10
     }
 
@@ -92,4 +92,3 @@ final class RecordGoalBoardView: UIView {
         ])
     }
 }
-
