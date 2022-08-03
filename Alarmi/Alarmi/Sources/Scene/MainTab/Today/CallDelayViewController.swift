@@ -61,7 +61,7 @@ class CallDelayViewController: UIViewController {
     }
 
     private func attribute() {
-        datePicker.minimumDate = Date()
+        datePicker.minimumDate = Date().before(day: -1)
         view.backgroundColor = .backgroundColor
         title = "연락 미루기"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소",
@@ -109,9 +109,9 @@ extension CallDelayViewController {
 
     @objc private func doneButtonPressed() {
         let date = datePicker.date
-        guard let dayDistance: Int = Date().fullDistance(from: date, resultIn: .day) else { return }
+        guard let dayDistance = Date().fullDistance(from: date, resultIn: .day) else { return }
 
-        if dayDistance > 98 {
+        if dayDistance > 99 {
             self.delegate?.presentAlert(self)
         } else {
             viewModel.didTapGoalTimeChangeButton.send(datePicker.date)
@@ -120,10 +120,10 @@ extension CallDelayViewController {
     }
 
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        let date = sender.date
-        guard let dayDistance: Int = Date().fullDistance(from: date, resultIn: .day) else { return }
+        let date = datePicker.date
+        guard let dayDistance = Date().fullDistance(from: date, resultIn: .day) else { return }
 
-        if dayDistance > 98 {
+        if dayDistance > 99 {
             self.delegate?.presentAlert(self)
         }
     }

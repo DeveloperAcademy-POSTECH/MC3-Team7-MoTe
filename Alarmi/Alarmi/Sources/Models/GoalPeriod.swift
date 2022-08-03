@@ -8,7 +8,4 @@
 
 import Foundation
 
-struct GoalTime: Codable {
-    var startDate: Date
-    var period: Int
-}
+typealias CallPeriod = Int

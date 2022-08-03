@@ -92,4 +92,3 @@ final class RecordGoalBoardView: UIView {
         ])
     }
 }
-

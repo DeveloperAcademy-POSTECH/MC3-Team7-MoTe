@@ -1,19 +1,20 @@
 //
-//  TodayModel.swift
+//  RegisterModel.swift
 //  Alarmi
 //
-//  Created by Woody on 2022/08/01.
+//  Created by Woody on 2022/08/02.
 //  Copyright © 2022 MoTe. All rights reserved.
 //
 
-import Combine
 import Foundation
+import Combine
 
-struct TodayModel {
+struct RegisterModel {
     private let callDateDataSource: CallDateRepository
     private let callPeriodRepository: CallPeriodRepository
     private let callTimeDataSource: CallTimeRepository
     private let goalDateDataSource: GoalDateRepository
+    private let alarmDataSource: AlarmRepository
 
     var callDateList: CurrentValueSubject<[CallDate], Never> {
         return callDateDataSource.callDateList
@@ -33,27 +34,29 @@ struct TodayModel {
     init(callDateSource: CallDateRepository = CallDateRepositoryImpl(),
          callPeriodDataSource: CallPeriodRepository = CallPeriodRepositoryImpl(),
          callTimeDataSource: CallTimeRepository = CallTimeRepositoryImpl(),
-         goalDateDataSource: GoalDateRepository = GoalDateRepositoryImpl()
+         goalDateDataSource: GoalDateRepository = GoalDateRepositoryImpl(),
+         alarmDataSource: AlarmRepository = AlarmRepositoryImpl()
     ) {
         self.callDateDataSource = callDateSource
         self.callPeriodRepository = callPeriodDataSource
         self.callTimeDataSource = callTimeDataSource
         self.goalDateDataSource = goalDateDataSource
+        self.alarmDataSource = alarmDataSource
     }
 
     func updateCallPeriod(_ callPeriod: CallPeriod) {
         return callPeriodRepository.updateCallPeriod(callPeriod)
     }
 
-    func addTodayDate(with isGoalSuccess: Bool) {
-        callDateDataSource.addTodayDate(with: isGoalSuccess)
-    }
-
-    func removeTodayDate() {
-        callDateDataSource.removeTodayDate()
-    }
-
     func updateGoalDate(_ date: GoalDate) {
         goalDateDataSource.updateGoalDate(date)
+    }
+
+    func updateAlarm(_ alarm: Alarm) {
+        alarmDataSource.update(alarm: alarm)
+    }
+
+    func updateCallTime(_ callTime: CallTime) {
+        callTimeDataSource.update(callTime: callTime)
     }
 }

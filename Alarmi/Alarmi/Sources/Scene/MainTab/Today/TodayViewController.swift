@@ -90,12 +90,7 @@ final class TodayViewController: UIViewController {
         bind()
         attribute()
         layout()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        viewModel.viewWillAppear.send()
+        viewModel.viewDidLoad.send()
     }
 
     // MARK: Method
@@ -132,13 +127,13 @@ final class TodayViewController: UIViewController {
                 self?.koreaTimeLabel.text = $0
             }.store(in: &cancellable)
 
-        viewModel.$lastCall
+        viewModel.$lastCallDDay
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.lastCallDDayView.update(with: $0)
             }.store(in: &cancellable)
 
-        viewModel.$nextGoal
+        viewModel.$goaldDay
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.nextGoalDDayView.update(with: $0)

@@ -17,6 +17,7 @@ disabled_rules:
 
     - identifier_name
 
+    - function_body_length
 # Default가 비활성화인 규칙을 활성화시키기
 opt_in_rules:
     # .count==0 보다는 .isEmpty를 사용하는 것이 좋습니다. https://realm.github.io/SwiftLint/empty_count.html

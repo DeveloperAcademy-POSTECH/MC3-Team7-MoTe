@@ -28,9 +28,7 @@ final class RegisterPlanViewController: UIViewController {
         return $0
     }(AMButton())
 
-    weak var delegate: RegisterPlanViewControllerDelegate?
-
-    var viewModel = RegisterPlanViewModel()
+    var viewModel: RegisterViewModel!
     private var cancelBag = Set<AnyCancellable>()
 
     override func viewDidLoad() {
@@ -42,7 +40,7 @@ final class RegisterPlanViewController: UIViewController {
     }
 
     private func bind() {
-        viewModel.$callTimePeriod
+        viewModel.$callPeriod
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.settingDayLabel.text = String($0)
@@ -56,7 +54,7 @@ final class RegisterPlanViewController: UIViewController {
             $0.layer.masksToBounds = true
         }
         startDatePicker.minimumDate = Date()
-        settingDayStepper.value = Double(viewModel.callTimePeriod)
+        settingDayStepper.value = Double(viewModel.callPeriod)
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "목표"
     }
@@ -73,17 +71,16 @@ final class RegisterPlanViewController: UIViewController {
     }
     
     @IBAction private func settingDayStepper(_ sender: UIStepper) {
-        viewModel.settingDayStepper(Int(sender.value))
+        viewModel.dayStepper.send(Int(sender.value))
     }
 
     @IBAction private func settingStartDatePicker(_ sender: UIDatePicker) {
-        viewModel.settingStartDatePicker(sender.date)
+        viewModel.startDate = sender.date
     }
 }
 
 extension RegisterPlanViewController {
     @objc private func buttonDidTap() {
-        delegate?.gotoRegisterCallTimeViewController()
-        viewModel.buttonDidTap()
+        viewModel.goalNextButtonDidTap.send(Void())
     }
 }

@@ -62,12 +62,30 @@ extension Date {
     func before(day: Int) -> Date {
         return Calendar.current.date(byAdding: .day, value: -day, to: self)!
     }
+
+    func after(day: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: day, to: self)!
+    }
 }
 
 extension Date {
 
     private var sleepingTimeHour: Int { 0 }
     private var awakingTimeHour: Int { 7 }
+    static var defaultCallStartTime: String { "18:30" }
+    static var defaultCallEndTime: String { "23:30" }
+
+    static var koreanDefulatCallStartTimeCurrentDate: Date {
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaTime(defaultCallStartTime))!
+        let currentDateString = Formatter.YYYYMMddHHmmCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddHHmmCurrentDateFormatter.date(from: currentDateString)!
+    }
+
+    static var koreanDefulatCallEndTimeCurrentDate: Date {
+        let koreaDate = Calendar.current.date(from: DateComponents.koreaTime(defaultCallEndTime))!
+        let currentDateString = Formatter.YYYYMMddHHmmCurrentDateFormatter.string(from: koreaDate)
+        return Formatter.YYYYMMddHHmmCurrentDateFormatter.date(from: currentDateString)!
+    }
 
     private var koreanSleepingTimeCurrentDate: Date {
         let koreaDate = Calendar.current.date(from: DateComponents.koreaHour(sleepingTimeHour))!
@@ -85,14 +103,14 @@ extension Date {
         guard let callTime = CallTimeUserDefaults(key: .callTime).data else {
             return Date()
         }
-        return callTime.start
+        return Calendar.current.date(from: DateComponents.convertTime(callTime.start))!
     }
 
     private var callEndTimeDate: Date {
         guard let callTime = CallTimeUserDefaults(key: .callTime).data else {
             return Date()
         }
-        return callTime.end
+        return Calendar.current.date(from: DateComponents.convertTime(callTime.end))!
     }
 
     func judgeKoreaState() -> KoreaParentState {
@@ -109,15 +127,15 @@ extension Date {
 
         if koreanSleepingTimeCurrentDate.timeIntervalSinceNow <= 0 &&
             koreanAwakingTimeCurrentDate.timeIntervalSinceNow >= 0 {
-            if callStartTimeDate.timeIntervalSinceNow <= 0 &&
-                callEndTimeDate.timeIntervalSinceNow >= 0 {
+            if callStartTimeDate.isInPast &&
+                callEndTimeDate.isInFuture {
                 return .canCallDark
             } else {
                 return .sleeping
             }
         } else {
-            if callStartTimeDate.timeIntervalSinceNow <= 0 &&
-                callEndTimeDate.timeIntervalSinceNow >= 0 {
+            if callStartTimeDate.isInPast &&
+                callEndTimeDate.isInFuture {
                 return .canCallLight
             } else {
                 return .working

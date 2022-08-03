@@ -24,17 +24,19 @@ final class MainTabCoordinator: Coordinator,
     private var todayNavigationController: UINavigationController!
     private var recordNavigationController: UINavigationController!
 
-    private var goalTimeRepository: GoalTimeRepository!
+    private var callPeriodRepository: CallPeriodRepository!
     private var callDateRepository: CallDateRepository!
     private var alarmRepostiory: AlarmRepository!
     private var callTimeRepository: CallTimeRepository!
+    private var goalDateRepository: GoalDateRepository!
 
     init(
         navigationController: UINavigationController,
-        goalTimeRepository: GoalTimeRepository,
+        callPeriodRepository: CallPeriodRepository,
         callDateRepository: CallDateRepository,
         alarmRepostiory: AlarmRepository,
-        callTimeRepository: CallTimeRepository
+        callTimeRepository: CallTimeRepository,
+        goalDateRepository: GoalDateRepository
     ) {
         navigationController.navigationBar.isHidden = true
         self.navigationController = navigationController
@@ -44,10 +46,11 @@ final class MainTabCoordinator: Coordinator,
         recordNavigationController.navigationBar.prefersLargeTitles = true
 
         self.navigationController = navigationController
-        self.goalTimeRepository = goalTimeRepository
+        self.callPeriodRepository = callPeriodRepository
         self.callDateRepository = callDateRepository
         self.alarmRepostiory = alarmRepostiory
         self.callTimeRepository = callTimeRepository
+        self.goalDateRepository = goalDateRepository
     }
 
     func start() {
@@ -55,14 +58,14 @@ final class MainTabCoordinator: Coordinator,
         setupRecordNavgigationController()
         tabBarController = MainTabBarController(todayNavigationController: todayNavigationController,
                                                   recordNavigationController: recordNavigationController)
-        navigationController.viewControllers = [tabBarController]
+        navigationController.setViewControllers([tabBarController], animated: true)
     }
 
     func gotoSettingViewControllerFromTodayView() {
         let settingViewController = SettingViewController()
         settingViewController.viewModel = SettingViewModel(
             SettingModel(
-                goalTimeDataSource: goalTimeRepository,
+                callPeriodDataSource: callPeriodRepository,
                 callTimeDataSource: callTimeRepository,
                 alarmDataSource: alarmRepostiory
             )
@@ -74,7 +77,7 @@ final class MainTabCoordinator: Coordinator,
         let settingViewController = SettingViewController()
         settingViewController.viewModel = SettingViewModel(
             SettingModel(
-                goalTimeDataSource: goalTimeRepository,
+                callPeriodDataSource: callPeriodRepository,
                 callTimeDataSource: callTimeRepository,
                 alarmDataSource: alarmRepostiory
             )
@@ -115,8 +118,9 @@ extension MainTabCoordinator {
         todayViewController.viewModel = TodayViewModel(
             TodayModel(
                 callDateSource: callDateRepository,
-                goalTimeDataSource: goalTimeRepository,
-                callTimeDataSource: callTimeRepository
+                callPeriodDataSource: callPeriodRepository,
+                callTimeDataSource: callTimeRepository,
+                goalDateDataSource: goalDateRepository
             )
         )
         todayNavigationController.viewControllers = [todayViewController]
@@ -146,5 +150,27 @@ extension MainTabCoordinator {
         alertController.addAction(action)
 
         return alertController
+    }
+
+    private enum WarningAlert {
+        case notAllow
+        case completeWarning
+
+        var title: String {
+            switch self {
+            case .notAllow:
+                return "못 미뤄요 경고문"
+            case .completeWarning:
+                return "정말 미루실 거예요...?"
+            }
+        }
+        var message: String {
+            switch self {
+            case .notAllow:
+                return "🔥 당신은 불효자이신가요? 🔥\n당신은 자식의 자격이 없습니다.\n당장 전화드리세요."
+            case .completeWarning:
+                return "알림을 이 날로 미루게 돼요. "
+            }
+        }
     }
 }
