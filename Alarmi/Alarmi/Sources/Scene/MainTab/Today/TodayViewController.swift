@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 protocol TodayViewControllerDelegate: AnyObject {
-    func gotoSettingViewController()
+    func gotoSettingViewControllerFromTodayView()
     func presentCallDelayViewController()
 }
 
@@ -23,6 +23,7 @@ final class TodayViewController: UIViewController {
         $0.text = "지금 한국은"
         $0.textAlignment = .left
         $0.setDynamicFont(for: .body, weight: .semibold)
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -32,6 +33,7 @@ final class TodayViewController: UIViewController {
         $0.text = Formatter.HHMMKoreaDateFormatter.string(from: Date())
         $0.setDynamicFont(for: .largeTitle, weight: .black)
         $0.font = .systemFont(ofSize: 108, weight: .black)
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -39,6 +41,7 @@ final class TodayViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .right
         $0.setDynamicFont(for: .body, weight: .semibold)
+        $0.textColor = .tintColor
         return $0
     }(UILabel())
 
@@ -59,6 +62,7 @@ final class TodayViewController: UIViewController {
         $0.axis = .horizontal
         $0.distribution = .equalSpacing
         $0.alignment = .center
+        $0.spacing = 32
         return $0
     }(UIStackView())
 
@@ -86,18 +90,13 @@ final class TodayViewController: UIViewController {
         bind()
         attribute()
         layout()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        viewModel.viewWillAppear.send()
+        viewModel.viewDidLoad.send()
     }
 
     // MARK: Method
 
     private func attribute() {
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .backgroundColor
         setupNavigationBar()
     }
 
@@ -128,13 +127,13 @@ final class TodayViewController: UIViewController {
                 self?.koreaTimeLabel.text = $0
             }.store(in: &cancellable)
 
-        viewModel.$lastCall
+        viewModel.$lastCallDDay
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.lastCallDDayView.update(with: $0)
             }.store(in: &cancellable)
 
-        viewModel.$nextGoal
+        viewModel.$goaldDay
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.nextGoalDDayView.update(with: $0)
@@ -156,29 +155,24 @@ final class TodayViewController: UIViewController {
         dDayStackView.addArrangedSubviews(lastCallDDayView, nextGoalDDayView)
 
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 21),
+            descriptionLabel.topAnchor.constraint(equalTo: koreaTimeLabel.topAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: koreaTimeLabel.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: koreaTimeLabel.trailingAnchor),
 
             koreaTimeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            koreaTimeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
+            koreaTimeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
 
-            statusDescriptionLabel.topAnchor.constraint(equalTo: koreaTimeLabel.bottomAnchor),
+            statusDescriptionLabel.bottomAnchor.constraint(equalTo: koreaTimeLabel.bottomAnchor),
             statusDescriptionLabel.leadingAnchor.constraint(equalTo: koreaTimeLabel.leadingAnchor),
             statusDescriptionLabel.trailingAnchor.constraint(equalTo: koreaTimeLabel.trailingAnchor),
 
-            pandaImageBoardView.topAnchor.constraint(equalTo: statusDescriptionLabel.bottomAnchor),
-            pandaImageBoardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pandaImageBoardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pandaImageBoardView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pandaImageBoardView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             pandaImageView.centerXAnchor.constraint(equalTo: pandaImageBoardView.centerXAnchor),
             pandaImageView.centerYAnchor.constraint(equalTo: pandaImageBoardView.centerYAnchor),
-            pandaImageView.leadingAnchor.constraint(equalTo: pandaImageBoardView.leadingAnchor, constant: 80),
-            pandaImageView.trailingAnchor.constraint(equalTo: pandaImageBoardView.trailingAnchor, constant: -80),
+            pandaImageView.widthAnchor.constraint(equalToConstant: 200),
 
-            dDayStackView.topAnchor.constraint(equalTo: pandaImageBoardView.bottomAnchor),
-            dDayStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 42),
-            dDayStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42),
             dDayStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
             dDayStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
@@ -189,10 +183,12 @@ final class TodayViewController: UIViewController {
         let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem = barButton
         navigationItem.largeTitleDisplayMode = .never
+        title = "오늘"
+        navigationItem.titleView = UIView()
     }
 
     @objc private func settingButtonTapped() {
-        delegate?.gotoSettingViewController()
+        delegate?.gotoSettingViewControllerFromTodayView()
     }
 }
 

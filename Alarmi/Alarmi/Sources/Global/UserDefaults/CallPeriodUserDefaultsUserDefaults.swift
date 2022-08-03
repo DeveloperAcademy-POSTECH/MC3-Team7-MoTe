@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct GoalTimeUserDefaults: UserDefaultsManager {
-    typealias T = GoalTime
+struct CallPeriodUserDefaults: UserDefaultsManager {
+    typealias T = CallPeriod
 
     private var key: String
 
@@ -18,7 +18,7 @@ struct GoalTimeUserDefaults: UserDefaultsManager {
     }
     
     var data: T? {
-        return UserDefaults.standard.getCodable(for: key)
+        return UserDefaults.standard.integer(forKey: key)
     }
 
     var isEmpty: Bool {
@@ -26,7 +26,7 @@ struct GoalTimeUserDefaults: UserDefaultsManager {
     }
 
     func save(_ data: T) {
-        UserDefaults.standard.storeCodable(data, key: key)
+        UserDefaults.standard.set(data, forKey: key)
     }
 
     func removeAll() {

@@ -27,7 +27,7 @@ final class AMButton: UIButton {
     }
 
     private func attribute() {
-        configuration?.baseBackgroundColor = .systemBlue
+        configuration?.baseBackgroundColor = .tintColor
         configuration?.titleAlignment = .center
         configuration?.cornerStyle = .medium
     }

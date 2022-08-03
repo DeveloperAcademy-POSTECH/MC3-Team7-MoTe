@@ -17,6 +17,7 @@ final class SettingViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentInsetAdjustmentBehavior = .never
         $0.contentInset = .init(top: 16, left: 0, bottom: 16, right: 0)
+        $0.contentOffset = .init(x: 0, y: -16)
         return $0
     }(UIScrollView())
     
@@ -223,7 +224,7 @@ final class SettingViewController: UIViewController {
 
     private func setNavigationBar() {
         title = "설정"
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
     }
 }
 

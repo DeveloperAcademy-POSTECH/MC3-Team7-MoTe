@@ -12,52 +12,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var coordinator: AppCoordinator?
-//
-//    var goalTimeReppository: GoalTimeRepository
-//    var callDateRepository: CallDateRepository
-//    var alarmRepostiory: AlarmRepository
-//    var callTimeRepository: CallTimeRepository
-
+    
     private var cancellable = Set<AnyCancellable>()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = scene.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
 
-        let navigationController = UINavigationController()
-        self.window?.rootViewController = navigationController
-
-        coordinator = AppCoordinator(
-            navigationController: navigationController,
-            goalTimeRepository: GoalTimeRepositoryImpl(),
-            callDateRepository: CallDateRepositoryImpl(),
-            alarmRepostiory: AlarmRepositoryImpl(),
-            callTimeRepository: CallTimeRepositoryImpl()
-        )
-        coordinator?.start()
-
-        window?.makeKeyAndVisible()
-        window?.overrideUserInterfaceStyle = Date().judgeKoreaState().mode
-        
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            TimerManager.shared.timer
-                .autoconnect()
-                .map { $0.judgeKoreaState() }
-                .filter { $0 != .canCall }
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] in
-                    self?.window?.overrideUserInterfaceStyle = $0.mode
-                }.store(in: &self.cancellable)
-            RunLoop.current.run()
-        }
-
         // MARK: 테스트용
 //        CallDateUserefaults(key: .callDate).removeAll()
 //        CallTimeUserDefaults(key: .callTime).removeAll()
-//        GoalTimeUserDefaults(key: .goalTime).removeAll()
-//
+//        CallPeriodUserDefaults(key: .callPeriod).removeAll()
+//        GoalDateUserDefaults(key: .goalDate).removeAll()
+//        AlarmUserefaults(key: .alarm).removeAll()
+
 //        CallTimeUserDefaults(key: .callTime).save(.init(start: Date(), end: Date().addingTimeInterval(600)))
-//        GoalTimeUserDefaults(key: .goalTime).save(.init(startDate: Date(), period: 7))
+//        GoalDateUserDefaults(key: .goalDate).save(Date().after(day: 5))
+//        CallPeriodUserDefaults(key: .callPeriod).save(7)
 //        AlarmUserefaults(key: .alarm).save(.init(isAlarm: true, isAlarmAgain: true))
 //        CallDateUserefaults(key: .callDate).save([
 //            CallDate(date: Date().before(day: 60), isGoalSuccess: true),
@@ -70,9 +40,47 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            CallDate(date: Date().before(day: 6), isGoalSuccess: true),
 //            CallDate(date: Date().before(day: 5), isGoalSuccess: true),
 //            CallDate(date: Date().before(day: 4), isGoalSuccess: false),
-//            CallDate(date: Date().before(day: 1), isGoalSuccess: false),
-//            CallDate(date: Date().before(day: 0), isGoalSuccess: false)
+//            CallDate(date: Date().before(day: 1), isGoalSuccess: false)
 //        ])
+
+
+
+
+
+
+
+
+
+
+
+        let navigationController = UINavigationController()
+        self.window?.rootViewController = navigationController
+
+        coordinator = AppCoordinator(
+            navigationController: navigationController,
+            callPeriodRepository: CallPeriodRepositoryImpl(),
+            callDateRepository: CallDateRepositoryImpl(),
+            alarmRepostiory: AlarmRepositoryImpl(),
+            callTimeRepository: CallTimeRepositoryImpl(),
+            goalDateRepository: GoalDateRepositoryImpl()
+        )
+        coordinator?.start()
+
+        window?.makeKeyAndVisible()
+        window?.overrideUserInterfaceStyle = Date().judgeKoreaState().mode
+        
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            TimerManager.shared.timer
+                .autoconnect()
+                .map { $0.judgeKoreaState() }
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] in
+                    self?.window?.overrideUserInterfaceStyle = $0.mode
+                }.store(in: &self.cancellable)
+            RunLoop.current.run()
+        }
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

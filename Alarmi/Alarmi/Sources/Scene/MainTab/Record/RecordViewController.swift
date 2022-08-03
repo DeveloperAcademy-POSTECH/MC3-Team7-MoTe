@@ -9,6 +9,10 @@
 import Combine
 import UIKit
 
+protocol RecordViewControllerDelegate: AnyObject {
+    func gotoSettingViewControllerFromRecordView()
+}
+
 final class RecordViewController: UIViewController {
 
     // MARK: View
@@ -27,7 +31,6 @@ final class RecordViewController: UIViewController {
 
     private lazy var frequencyContainerView: FrequencyContainerView = {
         let view = FrequencyContainerView()
-        view.parentViewController = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return  view
     }()
@@ -48,6 +51,7 @@ final class RecordViewController: UIViewController {
 
     var viewModel: RecordViewModel!
     private var cancelBag = Set<AnyCancellable>()
+    weak var delegate: RecordViewControllerDelegate?
 
     // MARK: LifeCycle
 
@@ -101,8 +105,19 @@ final class RecordViewController: UIViewController {
     }
 
     func attribute() {
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .backgroundColor
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
         title = "기록"
+        let image = UIImage(systemName: "gearshape")
+        let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingButtonTapped))
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+
+    @objc private func settingButtonTapped() {
+        delegate?.gotoSettingViewControllerFromRecordView()
     }
 
     func layout() {

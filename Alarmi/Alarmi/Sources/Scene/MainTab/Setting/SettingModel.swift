@@ -10,12 +10,13 @@ import Combine
 import Foundation
 
 struct SettingModel {
-    private let goalTimeDataSource: GoalTimeRepository
+    private let callPeriodDataSource: CallPeriodRepository
     private let callTimeDataSource: CallTimeRepository
     private let alarmDataSource: AlarmRepository
+    private let goalDateDataSource: GoalDateRepository
 
-    var goalTime: CurrentValueSubject<GoalTime, Never> {
-        return goalTimeDataSource.goalTime
+    var callPeriod: CurrentValueSubject<CallPeriod, Never> {
+        return callPeriodDataSource.callPeriod
     }
 
     var callTime: CurrentValueSubject<CallTime, Never> {
@@ -26,16 +27,22 @@ struct SettingModel {
         return alarmDataSource.alarm
     }
 
-    init(goalTimeDataSource: GoalTimeRepository = GoalTimeRepositoryImpl(),
-         callTimeDataSource: CallTimeRepository = CallTimeRepositoryImpl(),
-         alarmDataSource: AlarmRepository = AlarmRepositoryImpl()) {
-        self.goalTimeDataSource = goalTimeDataSource
-        self.callTimeDataSource = callTimeDataSource
-        self.alarmDataSource = alarmDataSource
+    var goalDate: CurrentValueSubject<GoalDate, Never> {
+        return goalDateDataSource.goalDate
     }
 
-    func updateGoalTime(_ goalTime: GoalTime) {
-        goalTimeDataSource.updateGoalTime(goalTime)
+    init(callPeriodDataSource: CallPeriodRepository = CallPeriodRepositoryImpl(),
+         callTimeDataSource: CallTimeRepository = CallTimeRepositoryImpl(),
+         alarmDataSource: AlarmRepository = AlarmRepositoryImpl(),
+         goalDateDataSource: GoalDateRepository = GoalDateRepositoryImpl()) {
+        self.callPeriodDataSource = callPeriodDataSource
+        self.callTimeDataSource = callTimeDataSource
+        self.alarmDataSource = alarmDataSource
+        self.goalDateDataSource = goalDateDataSource
+    }
+
+    func updateCallPeriod(_ callPeriod: CallPeriod) {
+        callPeriodDataSource.updateCallPeriod(callPeriod)
     }
 
     func updateCallTime(_ callTime: CallTime) {

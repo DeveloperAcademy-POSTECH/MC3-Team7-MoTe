@@ -11,30 +11,38 @@ import Foundation
 
 struct TodayModel {
     private let callDateDataSource: CallDateRepository
-    private let goalTimeDataSource: GoalTimeRepository
+    private let callPeriodRepository: CallPeriodRepository
     private let callTimeDataSource: CallTimeRepository
+    private let goalDateDataSource: GoalDateRepository
 
     var callDateList: CurrentValueSubject<[CallDate], Never> {
         return callDateDataSource.callDateList
     }
-    var goalTime: CurrentValueSubject<GoalTime, Never> {
-        return goalTimeDataSource.goalTime
+    var callPeriod: CurrentValueSubject<CallPeriod, Never> {
+        return callPeriodRepository.callPeriod
     }
 
     var callTime: CurrentValueSubject<CallTime, Never> {
         return callTimeDataSource.callTime
     }
 
-    init(callDateSource: CallDateRepository = CallDateRepositoryImpl(),
-         goalTimeDataSource: GoalTimeRepository = GoalTimeRepositoryImpl(),
-         callTimeDataSource: CallTimeRepository = CallTimeRepositoryImpl()) {
-        self.callDateDataSource = callDateSource
-        self.goalTimeDataSource = goalTimeDataSource
-        self.callTimeDataSource = callTimeDataSource
+    var goalDate: CurrentValueSubject<GoalDate, Never> {
+        return goalDateDataSource.goalDate
     }
 
-    func updateGoalTime(_ goalTime: GoalTime) {
-        return goalTimeDataSource.updateGoalTime(goalTime)
+    init(callDateSource: CallDateRepository = CallDateRepositoryImpl(),
+         callPeriodDataSource: CallPeriodRepository = CallPeriodRepositoryImpl(),
+         callTimeDataSource: CallTimeRepository = CallTimeRepositoryImpl(),
+         goalDateDataSource: GoalDateRepository = GoalDateRepositoryImpl()
+    ) {
+        self.callDateDataSource = callDateSource
+        self.callPeriodRepository = callPeriodDataSource
+        self.callTimeDataSource = callTimeDataSource
+        self.goalDateDataSource = goalDateDataSource
+    }
+
+    func updateCallPeriod(_ callPeriod: CallPeriod) {
+        return callPeriodRepository.updateCallPeriod(callPeriod)
     }
 
     func addTodayDate(with isGoalSuccess: Bool) {
@@ -43,5 +51,9 @@ struct TodayModel {
 
     func removeTodayDate() {
         callDateDataSource.removeTodayDate()
+    }
+
+    func updateGoalDate(_ date: GoalDate) {
+        goalDateDataSource.updateGoalDate(date)
     }
 }

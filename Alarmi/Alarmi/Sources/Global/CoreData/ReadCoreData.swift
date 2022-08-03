@@ -23,10 +23,10 @@ func readCoreData() -> [CoreDataDate] {
     } catch {
         print(error)
     }
-    
-    for item in items {
-        print(item.callDate, terminator: " ")
-    }
+
+//    for _ in items {
+//        print(item.callDate, terminator: " ")
+//    }
     
     return items
 }

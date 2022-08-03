@@ -10,7 +10,6 @@ import SwiftUI
 import UIKit
 
 final class FrequencyContainerView: UIView {
-    weak var parentViewController: UIViewController?
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "빈도"
@@ -24,6 +23,7 @@ final class FrequencyContainerView: UIView {
             guard let frequencyDataList = frequencyDataList else { return }
             subviews.forEach { $0.removeFromSuperview() }
             contentView = UIHostingController(rootView: FrequencyView(frequencyDataList: frequencyDataList))
+            contentView.view.backgroundColor = .clear
             layout()
         }
     }
@@ -43,8 +43,9 @@ final class FrequencyContainerView: UIView {
     }
 
     private func attribute() {
-        self.backgroundColor = .secondarySystemGroupedBackground
+        self.backgroundColor = .cellBackgroundColor
         self.layer.cornerRadius = 10
+        contentView.view.backgroundColor = .clear
     }
 
     private func layout() {
@@ -57,7 +58,7 @@ final class FrequencyContainerView: UIView {
         addSubview(contentView.view)
         contentView.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentView.view.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            contentView.view.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             contentView.view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             contentView.view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             contentView.view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
