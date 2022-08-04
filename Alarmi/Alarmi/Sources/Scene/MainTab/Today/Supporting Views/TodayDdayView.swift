@@ -14,7 +14,7 @@ protocol TodayDdayViewDelegate: AnyObject {
 }
 
 struct TodayDDayDdipViewModel {
-    var dday: String = "-"
+    var dday: String = "D+7"
     var color: UIColor? = .tintColor
 
     init() {}
@@ -33,7 +33,8 @@ struct TodayDDayDdipViewModel {
         if model.isToday {
             dDayString = "오늘"
         } else if dDayInt > 0 {
-            dDayString = "D-\(dDayInt+1)"
+            dDayString = "오늘"
+//            dDayString = "D-\(dDayInt+1)"
         } else if dDayInt == 0 {
             dDayString = "D-1"
         } else {

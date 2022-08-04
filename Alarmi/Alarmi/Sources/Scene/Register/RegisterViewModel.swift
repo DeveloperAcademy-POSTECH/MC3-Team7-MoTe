@@ -86,6 +86,7 @@ final class RegisterViewModel: ObservableObject {
                         startDate: startDate,
                         goalPeriod: model.callPeriod.value
                     )
+                    print("usernotification 설정 완료")
                     DispatchQueue.main.async {
                         self?.registerCompleteViewControllerDelegate?.finishRegister()
                     }

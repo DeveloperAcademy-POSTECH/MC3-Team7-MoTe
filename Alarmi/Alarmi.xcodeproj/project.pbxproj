@@ -18,6 +18,7 @@
 		15AD74332896918900CE21E1 /* CoreDataDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD74312896918900CE21E1 /* CoreDataDate+CoreDataProperties.swift */; };
 		3861D14D289229FD0001C187 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D14C289229FD0001C187 /* TodayViewModel.swift */; };
 		3861D15C2892EA170001C187 /* TodayDdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861D15B2892EA170001C187 /* TodayDdayView.swift */; };
+		3861D164289B5A380001C187 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 3861D163289B5A380001C187 /* SwiftDate */; };
 		5075907A28915CC50033C09B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075907928915CC50033C09B /* UIColor+.swift */; };
 		50793FF92893CEB700DA49F7 /* CallTimeSettingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50793FF82893CEB700DA49F7 /* CallTimeSettingBoxView.swift */; };
 		507E6F3428826AD80086A4CE /* RegisterCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E6F3328826AD80086A4CE /* RegisterCompleteViewController.swift */; };
@@ -205,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3861D164289B5A380001C187 /* SwiftDate in Frameworks */,
 				EF95FEFE28995D840020322C /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,6 +556,7 @@
 			name = Alarmi;
 			packageProductDependencies = (
 				EF95FEFD28995D840020322C /* SwiftDate */,
+				3861D163289B5A380001C187 /* SwiftDate */,
 			);
 			productName = Alarmi;
 			productReference = EFFD73EB287BC77D00D9F267 /* Alarmi.app */;
@@ -630,6 +633,7 @@
 			mainGroup = EFFD73E2287BC77D00D9F267;
 			packageReferences = (
 				EF95FEFC28995D840020322C /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				3861D162289B5A380001C187 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = EFFD73EC287BC77D00D9F267 /* Products */;
 			projectDirPath = "";
@@ -1115,6 +1119,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3861D162289B5A380001C187 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		EF95FEFC28995D840020322C /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
@@ -1126,6 +1138,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3861D163289B5A380001C187 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3861D162289B5A380001C187 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
 		EF95FEFD28995D840020322C /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EF95FEFC28995D840020322C /* XCRemoteSwiftPackageReference "SwiftDate" */;

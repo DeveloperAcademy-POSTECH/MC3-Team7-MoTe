@@ -26,33 +26,33 @@ final class UserNotificationManager {
         var title: String {
             switch self {
             case .one:
-                return "원"
+                return "부모님께 전화해주세요~"
             case .two:
-                return "투"
+                return "부모님이 기다리고 있어요."
             case .three:
-                return "쓰리"
+                return "전화를 아직도 안 한다고..?"
             case .four:
-                return "포"
+                return "넌 항상 그런식이야."
             case .five:
-                return "파이브"
+                return "너 미쳤어???"
             case .six:
-                return "식스"
+                return "넌 불효자다. 자식의 자격이 없어요."
             }
         }
         var body: String {
             switch self {
             case .one:
-                return "바디원"
+                return "오늘은 전화하는 날입니다. 카카오톡을 키고 한국에 계신 부모님께 전화를 드려보세요."
             case .two:
-                return "바디투"
+                return "부모님이 목이 빠지기 일보 직전이에요."
             case .three:
-                return "바디쓰리"
+                return "손가락이 다쳤니…? 부모님은 마음이 다쳐가요"
             case .four:
-                return "바디포"
+                return "라는 말이 듣기 싫으면 전화하세요."
             case .five:
-                return "바디파이브"
+                return "그러다 호적 파여요."
             case .six:
-                return "바디식스"
+                return "아~~~~~~~~~~~~~직두 전화를 안하셨다구요? 마지막이에요. 당장 해주세요."
             }
         }
     }
@@ -68,35 +68,54 @@ final class UserNotificationManager {
     }
 
     func sendUserNotification(startTime: Date, endTime: Date, startDate: Date, goalPeriod: Int) {
-        let notificationInterval = calculateTimeInterval(startTime, endTime)
-        var requestDateComponents = calculateDate(startDate, goalPeriod)
-        notificationCenter.getNotificationSettings { [weak self] (settings) in
-            guard settings.authorizationStatus == UNAuthorizationStatus.authorized else { return }
-            for cycle in 0..<100 {
-                if cycle == 0 {
-                    var notificationTimeComponents = Calendar.current.dateComponents([.hour, .minute], from: startTime)
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if granted {
                     for index in 1..<7 {
-                        requestDateComponents.hour = notificationTimeComponents.hour
-                        requestDateComponents.minute = notificationTimeComponents.minute
-
-                        guard let request = self?.makeNotificationRequest(index, requestDateComponents) else { return }
-
-                        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                        notificationTimeComponents = self?.calculateTime(startTime, notificationInterval, index) ?? DateComponents()
+                        let content = self.makeNotificationContent(index)
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(56+index), repeats: false)
+                        let request = UNNotificationRequest(identifier: "\(index)_notification", content: content, trigger: trigger)
+                        self.notificationCenter.add(request, withCompletionHandler: nil)
                     }
                 } else {
-                    guard let request = self? .makeNotificationRequest(1, requestDateComponents) else { return }
-                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    print("Not Granted")
                 }
-                requestDateComponents = self?.calculateDate(startDate, 1) ?? DateComponents()
             }
         }
     }
 
+//    func sendUserNotification(startTime: Date, endTime: Date, startDate: Date, goalPeriod: Int) {
+//        let notificationInterval = calculateTimeInterval(startTime, endTime)
+//        var requestDateComponents = calculateDate(startDate, goalPeriod)
+//        notificationCenter.getNotificationSettings { [weak self] (settings) in
+//            guard settings.authorizationStatus == UNAuthorizationStatus.authorized else { return }
+//            for cycle in 0..<100 {
+//                if cycle == 0 {
+//                    var notificationTimeComponents = Calendar.current.dateComponents([.hour, .minute], from: startTime)
+//                    for index in 1..<7 {
+//                        requestDateComponents.hour = notificationTimeComponents.hour
+//                        requestDateComponents.minute = notificationTimeComponents.minute
+//
+//                        guard let request = self?.makeNotificationRequest(index, requestDateComponents) else { return }
+//
+//                        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//                        notificationTimeComponents = self?.calculateTime(startTime, notificationInterval, index) ?? DateComponents()
+//                    }
+//                } else {
+//                    guard let request = self? .makeNotificationRequest(1, requestDateComponents) else { return }
+//                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//                }
+//                requestDateComponents = self?.calculateDate(startDate, 1) ?? DateComponents()
+//            }
+//        }
+//    }
+
     func removeAllPendingRequest() {
         notificationCenter.removeAllPendingNotificationRequests()
     }
-    
+
     func getAuthorizationStatus(_ completion: @escaping (Bool) -> Void) {
         notificationCenter.getNotificationSettings { settings in
             let authorized = settings.authorizationStatus == .authorized
